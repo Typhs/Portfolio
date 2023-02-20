@@ -6,6 +6,8 @@ ROUGH IDEAS:
 
 - Maybe use the very code that composes the websiteu in the background (maybe we can do something the Matrix effect)
 
+- Word Rain animation - like fluid animation of many words falling, rotating and overall translating X and Y
+
 PAGES:
 - Old Projects
 	
