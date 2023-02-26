@@ -23,7 +23,7 @@
 				<span class="subtitle">I am a Front-End Programmer.</span>
 			</div>
 		</div>
-		{{ rotatingDeg }}
+		<!-- {{ rotatingDeg }} -->
 	</div>
 </template>
 
