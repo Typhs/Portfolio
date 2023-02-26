@@ -1,0 +1,12 @@
+
+.w-fit-content{
+	width: fit-content;
+}
+
+.space-evenly{
+	justify-content: space-evenly;
+}
+
+.outline-red{
+	outline: 1px solid red;
+}

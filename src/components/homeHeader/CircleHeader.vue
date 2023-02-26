@@ -1,12 +1,12 @@
 <template>
 	<div>
 	
-		<div class="circle-container" @mousemove="mouseMove">
+		<div class="circle-container canvas-outer-container" @mousemove="mouseMove">
 
 			<div class="moon-container">
 				<div class="moon-background"/>
 			</div>
-			<div class="canvas-outer-container">
+			<div class="">
 				<vue-p5
 					class="canvas-container"
 					:style="`rotate: ${rotatingDeg}deg;`"
@@ -38,8 +38,23 @@ export default {
 	data() {
 		return {
 			p5: undefined,
-			rotatingDeg: 0,
 		}
+	},
+	props: {
+		value: {
+			type: Number,
+			default: 0 
+		},
+	},
+	computed: {	
+    rotatingDeg: {
+      get() {
+        return this.value
+      },
+      set(value) {
+        this.$emit('input', value)
+      }
+    }
 	},
 	mounted () {
 		this.init()
@@ -108,9 +123,9 @@ export default {
 $moon-color: rgb(71, 142, 236);
 
 .circle-container{
-	width: fit-content;
-	margin: auto;
-	padding: 0;
+	//width: fit-content;
+	//margin: auto;
+	//padding: 0;
 	position: relative;
 	*{
 		box-sizing: border-box;
@@ -128,6 +143,7 @@ $moon-color: rgb(71, 142, 236);
 		user-select: none;
 		letter-spacing: 2px;
 		line-height: 38px;
+		text-align: center;
 		margin: auto;
 		span{
 			display: block;
@@ -143,8 +159,9 @@ $moon-color: rgb(71, 142, 236);
 	}
 	.moon-container{
 		position: absolute;
-		left: 0%;
-		top: 0%;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
 		width: 500px;
 		height: 500px;
 		z-index: 2;
@@ -171,7 +188,8 @@ $moon-color: rgb(71, 142, 236);
 
 .canvas-outer-container{
 	position: relative;
-	--canvas-size: 550px;
+	--canvas-size: 600px;
+	padding: 50px;
 	max-width: --canvas-size;
 	min-width: --canvas-size;
 	max-height: --canvas-size;

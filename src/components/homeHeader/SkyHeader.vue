@@ -1,21 +1,23 @@
 <template>
 	<div class="header-banner">
-		<circle-header/>
+		<circle-header class="center-middle" v-model="circleRotatingAngle"/>
+
+		<br>s
+		<br> ssssss        
+		{{ circleRotatingAngle }}
 	</div>
 </template>
 
 <script>
 import CircleHeader from "@/components/homeHeader/CircleHeader.vue";
-import Typewriter from "@/components/Typewriter.vue";
 
 export default {
 	components: {
-    Typewriter,
     CircleHeader
 	},
 	data() {
 		return {
-			
+			circleRotatingAngle: 0
 		}
 	},
 	mounted () {
@@ -32,5 +34,14 @@ export default {
 	position: relative;
 	background-color: rgb(23, 45, 70);
 	height: 600px;
+	/*banana*/ color: white; //
 }
+
+.center-middle{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
 </style>
