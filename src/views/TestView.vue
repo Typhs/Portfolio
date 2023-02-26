@@ -12,7 +12,7 @@ export default {
 	components: {
     Typewriter,
     CircleHeader
-},
+	},
 	data() {
 		return {
 			
