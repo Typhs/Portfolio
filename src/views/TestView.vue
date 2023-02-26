@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="a">
 		<circle-header/>
 	</div>
 </template>
@@ -28,5 +28,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.a{
+	position: relative;
+	background-color: rgb(23, 45, 70);
+}
 </style>

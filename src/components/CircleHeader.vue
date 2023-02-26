@@ -3,12 +3,17 @@
 	
 		<div class="circle-container" @mousemove="mouseMove">
 
-			<vue-p5
-				:style="`rotate: ${rotatingDeg}deg;`"
-				class="slowly-rotating"
-				@setup="setup"
-				@draw="draw"
-			/>
+			<div class="moon-container">
+				<div class="moon-background"/>
+			</div>
+			<div class="canvas-outer-container">
+				<vue-p5
+					class="canvas-container"
+					:style="`rotate: ${rotatingDeg}deg;`"
+					@setup="setup"
+					@draw="draw"
+				/>
+			</div>
 			<div class="hidden-message">
 
 				<span>
@@ -16,9 +21,6 @@
 				</span>
 				
 				<span class="subtitle">I am a Front-End Programmer.</span>
-			</div>
-			<div class="moon-container">
-				<div class="moon-background"/>
 			</div>
 		</div>
 		{{ rotatingDeg }}
@@ -44,15 +46,17 @@ export default {
 	},
 	methods:{
 		init(){
-			
 		},
 		setup(p5) {
 			const canvas = p5.createCanvas(500, 500)
-			p5.radius = 0.9*p5.min(p5.width, p5.height)/2;
+			p5.radius = 1 * p5.min(p5.width, p5.height)/2;
+			
+			p5.fill(71, 142, 236)
+			p5.ellipse(250,250,500,500, 200);
+			
 			p5.frameRate(60)
 			p5.noLoop();
-
-			for(let i = 0; i < 300; i++){
+			for(let i = 0; i < 250; i++){
 				this.draw(p5, true)
 			}
 			this.p5 = p5
@@ -84,10 +88,16 @@ export default {
 		},
 		mouseMove(){
 			
-			for(let i=0; i < 3; i++) {
-				this.draw(this.p5)
+			for(let i=0; i < 10; i++) {
+				this.draw(this.p5, true)
 			}
+			
+			// anime({
+			// 	targets: ".slowly-rotating",
+			// 	rotate: this.rotatingDeg,
+			// 	duration: 0,
 
+			// })
 			this.rotatingDeg = this.rotatingDeg + 0.05
 		}
 	}
@@ -95,7 +105,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$moon-color: rgb(236, 225, 71);
+$moon-color: rgb(71, 142, 236);
 
 .circle-container{
 	width: fit-content;
@@ -107,7 +117,7 @@ $moon-color: rgb(236, 225, 71);
 	}
 	.hidden-message{
 		font-family: fantasy;
-		width: 80%;
+		width: 70%;
 		position: absolute;
 		font-size: 40px;
 		left: 50%;
@@ -128,26 +138,26 @@ $moon-color: rgb(236, 225, 71);
 			font-size: 25px;
 		}	
 	}
+	.canvas-container{
+		position: relative;
+	}
 	.moon-container{
 		position: absolute;
-		left: 0;
-		top: -0.5%;
-		width: 100%;
-		height: 100%;
-		z-index: -1;
-		padding: 5%;
-
-		transform: scaleY(0.99);
+		left: 0%;
+		top: 0%;
+		width: 500px;
+		height: 500px;
+		z-index: 2;
+			
 		.moon-background{
 			position: relative;
 			width: 100%;
 			height: 100%;
-			background-color: $moon-color;
+			//background-color: $moon-color;
 			border-radius: 1000px;
-			box-shadow: inset 0 0 100px 20px rgba(0, 0, 0, 0.3);
+			box-shadow: inset 0 0 100px 10px rgba(0, 0, 0, 0.3), 0 0 50px transparentize(lighten($moon-color, 5), .90),  0 0 100px 20px rgba(0, 0, 0, 0.1);
 		}
 	}
-
 }
 
 @keyframes slowly-rotate {
@@ -159,9 +169,14 @@ $moon-color: rgb(236, 225, 71);
 	}
 }
 
-.slowly-rotating{
-	border-radius: 1000px;
+.canvas-outer-container{
+	position: relative;
+	--canvas-size: 550px;
+	max-width: --canvas-size;
+	min-width: --canvas-size;
+	max-height: --canvas-size;
+	min-height: --canvas-size;
+	overflow: hidden;
 }
-
 
 </style>
