@@ -11,7 +11,10 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: #c7c7c7;
 }
 
+html, body, #app{
+  background-color: rgb(19, 19, 19) ;
+}
 </style>

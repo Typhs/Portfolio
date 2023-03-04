@@ -7,7 +7,7 @@
 
 		<circle-header class="center-middle" v-model="circleRotatingAngle"/>
 
-		{{ circleRotatingAngle }}
+		<!-- {{ circleRotatingAngle }} -->
 	</div>
 </template>
 
@@ -40,13 +40,6 @@ export default {
 
 <style lang="scss" scoped>
  
-
-.header-banner{
-	position: relative;
-	background-color: rgb(23, 45, 70);
-	height: 600px;
-}
-
 .center-middle{
 	position: absolute;
 	top: 50%;
@@ -58,12 +51,15 @@ $star-color: gold;
 
 .star-container{
 	height: 600px;
-
   background: radial-gradient(ellipse at center, #213246 0%, #202947 100%);
   overflow: hidden;
 }
 
-@function multiple-box-shadow ($n){
+@function multiple-box-shadow($n){
+	// Explanation:
+	// you can add infinite box-shadows to an element, just by concatenating then with commas
+	// what this does is it creates n box-shadows on an element with randomized coordenates, so a single element has many box-shadows each with a random X and Y value
+	// then you just need to animate that single element and all the box-shadows will update accordingly 
   $value: '#{random(2000)}px #{random(2000)}px #{$star-color}';
   @for $i from 2 through $n{
     $value: '#{$value} , #{random(2000)}px #{random(2000)}px #{$star-color}';
@@ -72,76 +68,39 @@ $star-color: gold;
   @return unquote($value);
 }
 
-$shadows-small:  multiple-box-shadow(1500);
-$shadows-medium: multiple-box-shadow(500);
-$shadows-big:    multiple-box-shadow(100);
+$shadows-small:  multiple-box-shadow(1800);
+$shadows-medium: multiple-box-shadow(1300);
+$shadows-big:    multiple-box-shadow(300);
+
+
+@mixin make-star($modifier){
+	border-radius: 5px;
+	$num-of-stars: ( (4 - $modifier) * 400) + 400;
+	width: $modifier + 0px;
+	height: $modifier + 0px;
+	background: transparent;
+	box-shadow: multiple-box-shadow($num-of-stars);
+	animation: animate-star 50+(50 * ($modifier+0s)) linear infinite;	
+}
 
 .stars1{
-  width: 1px;
-  height: 1px;
-  background: transparent;
-  box-shadow: $shadows-small;
-  animation: animStar 50s linear infinite;
-    
-  &:after{
-    content: " ";
-    position: absolute;
-    top: 2000px;
-    width: 1px;
-    height: 1px;
-    background: transparent;
-    box-shadow: $shadows-small;
-	}
-
+	@include make-star(1);
 }
-
     
 .stars2{
-  width: 2px;
-  height: 2px;
-  background: transparent;
-  box-shadow: $shadows-medium;
-  animation: animStar 100s linear infinite;
-    
-  &:after{
-
-    content: " ";
-    position: absolute;
-    top: 2000px;
-    width: 2px;
-    height: 2px;
-    background: transparent;
-    box-shadow: $shadows-medium;
-	}
-}
-    
+	@include make-star(2);
+}    
 .stars3{
-
-  width: 5px;
-  height: 5px;
-	border-radius: 100px;
-  background: transparent;
-  box-shadow: $shadows-big;
-  animation: animStar 150s linear infinite;
-    
-  &:after{
-    content: " ";
-    position: absolute;
-    top: 2000px;
-    width: 3px;
-    height: 3px;
-    background: transparent;
-    box-shadow: $shadows-big;
-	}
+	@include make-star(4);
 }
 
 
-@keyframes animStar{
+@keyframes animate-star{
   0%{
-    transform: translateY(0px)
+    transform: translateY(0px);
 	}	
   100%{
-    transform: translateY(-2000px)
+    transform: translateY(-2000px);
 	}
 }
     

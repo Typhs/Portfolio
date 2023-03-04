@@ -15,14 +15,12 @@
 				/>
 			</div>
 			<div class="hidden-message">
-
 				<span>
 					My name's Ty
-				</span>
-				
+				</span>				
 				<span class="subtitle">I am a Front-End Programmer</span>
 			</div>
-			<div class="easter-egg-message">You sneaky little thing</div>
+			<div class="easter-egg-message">You sneaky little thing!</div>
 		</div>
 		<!-- {{ rotatingDeg }} -->
 	</div>
@@ -161,7 +159,7 @@ $moon-color: rgb(71, 142, 236);
 		top: 50%;
 		transform: translate(-50%, -50%);
 		color: transparent;
-		font-size: 40px;
+		font-size: 30px;
 		padding: 20px;
 		user-select: auto !important;
 		text-align: center;
