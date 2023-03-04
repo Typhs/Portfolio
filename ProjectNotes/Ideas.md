@@ -1,5 +1,5 @@
 # ROUGH IDEAS: 
-- We can have some character of easter egg appear in random spots of the website, slightly hidden - when clicked it may teleport elsewhere random
+- We can have some character or easter egg appear in random spots of the website, slightly hidden - when clicked it may teleport elsewhere random
 
 - Code Lenses - Some way for the user to find the source code of a certain element - may be an overlay, or perphas a draggable lens-like element or something else entirely
 
@@ -18,3 +18,5 @@
 	* Circle Header thingy
 	* Add some init() animations, like the moon growing for like 0.2s when first shown or something
 	* Grid of stars behind the Moon, in parallax layers and randomly positioned
+	* Make starts hade randomized colors - but make sure the colors are kepts in pallet
+	* We could make the 'star-bg-transition' a parallax scroll - that'd feel cooler

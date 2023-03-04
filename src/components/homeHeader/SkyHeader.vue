@@ -1,4 +1,5 @@
 <template>
+	<div>
 	<div class="star-container" :style="starContainerStyle">
 		
 		<div class='stars1'/>
@@ -8,7 +9,13 @@
 		<circle-header class="center-middle" v-model="circleRotatingAngle"/>
 
 		<!-- {{ circleRotatingAngle }} -->
+
 	</div>
+
+	<div class="star-transition-bg">
+		Howdy
+	</div>
+</div>
 </template>
 
 <script>
@@ -50,7 +57,7 @@ export default {
 $star-color: gold;
 
 .star-container{
-	height: 600px;
+	height: 150vh;
   background: radial-gradient(ellipse at center, #213246 0%, #202947 100%);
   overflow: hidden;
 }
@@ -67,10 +74,6 @@ $star-color: gold;
 
   @return unquote($value);
 }
-
-$shadows-small:  multiple-box-shadow(1800);
-$shadows-medium: multiple-box-shadow(1300);
-$shadows-big:    multiple-box-shadow(300);
 
 
 @mixin make-star($modifier){
@@ -103,7 +106,28 @@ $shadows-big:    multiple-box-shadow(300);
     transform: translateY(-2000px);
 	}
 }
-    
+ 
+
+.star-transition-bg{
+	height: 800px;	
+	//outline: 1px solid red;
+	position: relative;
+}
+
+.star-transition-bg:before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: -100%;
+	background-color: transparent !important;
+	background-image: url("@/assets/star-bg-transition.svg");
+	background-position: top;
+	background-size: contain;
+	background-repeat: repeat-x;
+	transform: rotate(180deg);
+	pointer-events: none;
+}
 
 
 </style>

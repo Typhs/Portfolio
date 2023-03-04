@@ -164,6 +164,7 @@ $moon-color: rgb(71, 142, 236);
 		user-select: auto !important;
 		text-align: center;
 		z-index: 2;
+		cursor: default;
 	}
 	.canvas-container{
 		position: relative;
