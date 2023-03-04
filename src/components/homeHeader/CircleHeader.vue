@@ -20,8 +20,9 @@
 					My name's Ty
 				</span>
 				
-				<span class="subtitle">I am a Front-End Programmer.</span>
+				<span class="subtitle">I am a Front-End Programmer</span>
 			</div>
+			<div class="easter-egg-message">You sneaky little thing</div>
 		</div>
 		<!-- {{ rotatingDeg }} -->
 	</div>
@@ -132,13 +133,13 @@ $moon-color: rgb(71, 142, 236);
 	}
 	.hidden-message{
 		font-family: fantasy;
-		width: 70%;
-		position: absolute;
+		width: 60%;
 		font-size: 40px;
+		position: absolute;
 		left: 50%;
 		top: 50%;
-		font-weight: 500;
 		transform: translate(-50%, -50%);
+		font-weight: 500;
 		color: transparentize($moon-color, .4);
 		user-select: none;
 		letter-spacing: 2px;
@@ -153,6 +154,18 @@ $moon-color: rgb(71, 142, 236);
 			margin-top: 30px;
 			font-size: 25px;
 		}	
+	}
+	.easter-egg-message{
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		color: transparent;
+		font-size: 40px;
+		padding: 20px;
+		user-select: auto !important;
+		text-align: center;
+		z-index: 2;
 	}
 	.canvas-container{
 		position: relative;
@@ -172,7 +185,7 @@ $moon-color: rgb(71, 142, 236);
 			height: 100%;
 			//background-color: $moon-color;
 			border-radius: 1000px;
-			box-shadow: inset 0 0 100px 10px rgba(0, 0, 0, 0.3), 0 0 50px transparentize(lighten($moon-color, 5), .90),  0 0 100px 20px rgba(0, 0, 0, 0.1);
+			box-shadow: inset 0 0 100px 20px rgba(0, 0, 0, 0.35), 0 0 50px transparentize(lighten($moon-color, 5), .90),  0 0 100px 20px rgba(0, 0, 0, 0.1);
 		}
 	}
 }

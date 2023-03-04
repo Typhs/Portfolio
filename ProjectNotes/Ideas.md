@@ -17,3 +17,4 @@
 	* Starts with Parallaxing scene and a typewriter title - just like our old portfolio
 	* Circle Header thingy
 	* Add some init() animations, like the moon growing for like 0.2s when first shown or something
+	* Grid of stars behind the Moon, in parallax layers and randomly positioned
