@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import TestArea from "@/views/TestView.vue"
+import AboutMeView from '@/views/AboutMeView.vue';
 
 
 Vue.use(VueRouter)
@@ -19,6 +20,15 @@ const routes = [
     component: TestArea,
     meta: {
       title: "test-area"
+    },
+  },  
+  {
+    path: '/about-me',
+    name: 'about',
+    title:"About Me", 
+    component: AboutMeView,
+    meta: {
+      title: "About Me"
     },
   },  
   { //========== 404 ROUTE REDIRECT ========== 

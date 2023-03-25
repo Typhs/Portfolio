@@ -35,7 +35,9 @@ export default {
 	},
 	computed: {
 		starContainerStyle() {
-			let styles = `box-shadow: inset 0 0 ${this.circleRotatingAngle * 8}px rgba(0,0,0, 0.5);`
+      let shadowSize = `${this.circleRotatingAngle * 8}vw`;
+      let shadowWeight = `${this.circleRotatingAngle * 10}px`;
+			const styles = `box-shadow: inset 0 0 ${shadowSize} ${shadowWeight} rgba(0,0,0, 0.5);`
 			return styles
 		}
 	},
