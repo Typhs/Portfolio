@@ -1,11 +1,11 @@
 <template>
 	<div>
 	<div class="star-container" :style="starContainerStyle">
-		
+<!-- 		
 		<div class='stars1'/>
 		<div class='stars2'/>
-		<div class='stars3'/>
-
+		<div class='stars3'/> -->
+    <constellation-background class="full-height"/>
 		<circle-header class="center-middle" v-model="circleRotatingAngle"/>
 
 		<!-- {{ circleRotatingAngle }} -->
@@ -20,10 +20,11 @@
 
 <script>
 import CircleHeader from "@/components/homeHeader/CircleHeader.vue";
-
+import ConstellationBackground from "@/components/homeHeader/ConstellationBackground.vue";
 export default {
 	components: {
-    CircleHeader
+    CircleHeader,
+    ConstellationBackground
 	},
 	data() {
 		return {
@@ -48,7 +49,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
- 
+ .full-height{
+  height: 150vh;
+ }
 .center-middle{
 	position: absolute;
 	top: 50%;
