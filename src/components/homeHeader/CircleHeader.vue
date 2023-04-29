@@ -70,9 +70,9 @@ export default {
 			
 			p5.frameRate(60)
 			p5.noLoop();
-			// for(let i = 0; i < 250; i++){
-			// 	this.draw(p5, true)
-			// }
+			for(let i = 0; i < 250; i++){
+				this.draw(p5, true)
+			}
 			this.p5 = p5
 		},
 		draw(p5, week=false) {
