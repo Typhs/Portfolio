@@ -5,9 +5,10 @@
 			<div class="moon-container">
 				<div class="moon-background"/>
 			</div>
-			<div class="">
+
+			<!-- <div> -->
         <canvas id="circle-canvas" class="canvas-container" :style="`rotate: ${rotatingDeg}deg`"></canvas>
-			</div>
+			<!-- </div> -->
 			<div class="hidden-message">
 				<span>
 					My name's Ty
@@ -57,6 +58,8 @@ export default {
 	methods:{
     initCircle(){
       this.canvas = d3.select("#circle-canvas")
+      // this.canvas.style('z-index', 5)
+      // this.canvas.style('position', 'relative')
       this.canvas.attr('width',this.DIMENTIONS.x)
       this.canvas.attr('height',this.DIMENTIONS.y)
       
@@ -152,13 +155,13 @@ $moon-color: rgb(71, 142, 236);
 		transform: translate(-50%, -50%);
 		width: 500px;
 		height: 500px;
-		z-index: 2;
+		z-index: 0;
 			
 		.moon-background{
 			position: relative;
 			width: 100%;
 			height: 100%;
-			//background-color: $moon-color;
+      background-color: $moon-color;
 			border-radius: 1000px;
 			box-shadow: inset 0 0 100px 20px rgba(0, 0, 0, 0.35), 0 0 50px transparentize(lighten($moon-color, 5), .90),  0 0 100px 20px rgba(0, 0, 0, 0.1);
 		}
