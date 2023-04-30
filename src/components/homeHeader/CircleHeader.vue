@@ -28,7 +28,7 @@
 
 <script>
 import VueP5 from 'vue-p5';
-import anime from "animejs"
+
 
 export default {
 	components: {

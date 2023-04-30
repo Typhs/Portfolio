@@ -21,6 +21,7 @@
 <script>
 import CircleHeader from "@/components/homeHeader/CircleHeader.vue";
 import ConstellationBackground from "@/components/homeHeader/ConstellationBackground.vue";
+
 export default {
 	components: {
     CircleHeader,
