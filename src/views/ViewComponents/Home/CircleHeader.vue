@@ -30,10 +30,8 @@ export default {
 		return {
 			canvas: <any>undefined,
 
-      DIMENTIONS: {
-        x: 500,
-        y:500,
-      }
+      CIRCLE_DIAMETER: '500px',
+      COLOR_TEST: 'red',
 		}
 	},
 	props: {
@@ -60,8 +58,8 @@ export default {
       this.canvas = d3.select("#circle-canvas")
       // this.canvas.style('z-index', 5)
       // this.canvas.style('position', 'relative')
-      this.canvas.attr('width',this.DIMENTIONS.x)
-      this.canvas.attr('height',this.DIMENTIONS.y)
+      this.canvas.attr('width',this.CIRCLE_DIAMETER)
+      this.canvas.attr('height',this.CIRCLE_DIAMETER)
       
       this.circleDrawLine()
     },
@@ -98,8 +96,8 @@ export default {
 
 <style lang="scss" scoped>
 $moon-color: rgb(71, 142, 236);
-$canvas-size: 500px;
-
+$canvas-size: v-bind(CIRCLE_DIAMETER);
+//$canvas-size: 500px
 .circle-container{
 	//width: fit-content;
 	//margin: auto;
@@ -180,7 +178,6 @@ $canvas-size: 500px;
 
 .canvas-outer-container{
 	position: relative;
-	$canvas-size: 500px;
   max-width: $canvas-size;
 	min-width: $canvas-size;
 	max-height: $canvas-size;
