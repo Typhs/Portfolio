@@ -98,6 +98,7 @@ export default {
 
 <style lang="scss" scoped>
 $moon-color: rgb(71, 142, 236);
+$canvas-size: 500px;
 
 .circle-container{
 	//width: fit-content;
@@ -153,8 +154,8 @@ $moon-color: rgb(71, 142, 236);
 		left: 50%;
 		top: 50%;
 		transform: translate(-50%, -50%);
-		width: 500px;
-		height: 500px;
+		width: 100%;
+		height: 100%;
 		z-index: 0;
 			
 		.moon-background{
@@ -179,13 +180,11 @@ $moon-color: rgb(71, 142, 236);
 
 .canvas-outer-container{
 	position: relative;
-	--canvas-size: 600px;
-	padding: 50px;
-	max-width: --canvas-size;
-	min-width: --canvas-size;
-	max-height: --canvas-size;
-	min-height: --canvas-size;
-	overflow: hidden;
+	$canvas-size: 500px;
+  max-width: $canvas-size;
+	min-width: $canvas-size;
+	max-height: $canvas-size;
+	min-height: $canvas-size;
 }
 
 </style>
