@@ -61,6 +61,7 @@ export default {
 $star-color: gold;
 
 .star-container{
+  position: relative;
 	height: 150vh;
   background: radial-gradient(ellipse at center, #213246 0%, #202947 100%);
   overflow: hidden;

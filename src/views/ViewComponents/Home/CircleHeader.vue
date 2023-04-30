@@ -1,17 +1,14 @@
 <template>
 	<div>
+|{{ rotatingDeg }}|
 	
-		<div class="circle-container canvas-outer-container" @mousemove="mouseMove">
+		<div class="circle-container canvas-outer-container" @mousemove="circleMouseMove">
 
 			<div class="moon-container">
 				<div class="moon-background"/>
 			</div>
 			<div class="">
-				<!-- <vue-p5
-					class="canvas-container"
-					:style="`rotate: ${rotatingDeg}deg;`"
-          
-				/> -->
+        <canvas id="circle-canvas" class="canvas-container" :style="`rotate: ${rotatingDeg};`"></canvas>
 			</div>
 			<div class="hidden-message">
 				<span>
@@ -21,20 +18,23 @@
 			</div>
 			<div class="easter-egg-message">You sneaky little thing!</div>
 		</div>
-
   </div>
 </template>
 
 <script lang="ts">
-// import VueP5 from 'vue-p5';
-  
+import * as d3 from "d3";
+
 export default {
 	components: {
-		//VueP5,
 	},
 	data() {
 		return {
-			p5: undefined,
+			canvas: <any>undefined,
+
+      DIMENTIONS: {
+        x: 500,
+        y:500,
+      }
 		}
 	},
 	props: {
@@ -54,65 +54,110 @@ export default {
     }
 	},
 	mounted () {
-		this.init()
-	},
+		this.initCircle()
+    
+  },
 	methods:{
-		init(){
-		},
-		setup(p5: any) {
-      console.log(p5)
-			const canvas = p5.createCanvas(500, 500)
-			p5.radius = 1 * p5.min(p5.width, p5.height)/2;
+		// setup(p5: any) {
+    //   console.log(p5)
+		// 	const canvas = p5.createCanvas(500, 500)
+		// 	p5.radius = 1 * p5.min(p5.width, p5.height)/2;
 			
-			p5.fill(71, 142, 236)
-			p5.ellipse(250,250,500,500, 200);
+		// 	p5.fill(71, 142, 236)
+		// 	p5.ellipse(250,250,500,500, 200);
 			
-			p5.frameRate(60)
-			p5.noLoop();
-			for(let i = 0; i < 250; i++){
-				this.draw(p5, true)
-			}
-			this.p5 = p5
-		},
-		draw(p5: any, week=false) {
-			let weight = Math.floor(Math.random() * (50 - 0 + 1) + 0) 
+		// 	p5.frameRate(60)
+		// 	p5.noLoop();
+		// 	for(let i = 0; i < 250; i++){
+		// 		this.draw(p5, true)
+		// 	}
+		// 	this.p5 = p5
+		// },
+		// draw(p5: any, week=false) {
+		// 	let weight = Math.floor(Math.random() * (50 - 0 + 1) + 0) 
 			
-			if (week){
-				weight = Math.floor(Math.random() * (20 - 0 + 1) + 0) 
-			}
+		// 	if (week){
+		// 		weight = Math.floor(Math.random() * (20 - 0 + 1) + 0) 
+		// 	}
 
-			p5.stroke(0,0,0, weight);
+		// 	p5.stroke(0,0,0, weight);
 			
-			let width = p5.width
-			let height = p5.height
-			let radius = p5.radius
+		// 	let width = p5.width
+		// 	let height = p5.height
+		// 	let radius = p5.radius
 
-			// find a random point on a circle
-			var angle1 = p5.random(0,2*p5.PI);
-			var xpos1 = width/2 + radius*p5.cos(angle1);
-			var ypos1 = height/2 + radius*p5.sin(angle1);
+		// 	// find a random point on a circle
+		// 	var angle1 = p5.random(0,2*p5.PI);
+		// 	var xpos1 = width/2 + radius*p5.cos(angle1);
+		// 	var ypos1 = height/2 + radius*p5.sin(angle1);
 
-			// find another random point on the circle
-			var angle2 = p5.random(0,2*p5.PI);
-			var xpos2 = width/2 + radius*p5.cos(angle2);
-			var ypos2 = height/2 + radius*p5.sin(angle2);
+		// 	// find another random point on the circle
+		// 	var angle2 = p5.random(0,2*p5.PI);
+		// 	var xpos2 = width/2 + radius*p5.cos(angle2);
+		// 	var ypos2 = height/2 + radius*p5.sin(angle2);
 
-			p5.line(xpos1, ypos1, xpos2, ypos2);
-		},
-		mouseMove(){
+		// 	p5.line(xpos1, ypos1, xpos2, ypos2);
+		// },
+		// mouseMove(){
 			
-			for(let i=0; i < 10; i++) {
-				this.draw(this.p5, true)
-			}
+		// 	for(let i=0; i < 10; i++) {
+		// 		this.draw(this.p5, true)
+		// 	}
 			
-			// anime({
-			// 	targets: ".slowly-rotating",
-			// 	rotate: this.rotatingDeg,
-			// 	duration: 0,
+		// 	// anime({
+		// 	// 	targets: ".slowly-rotating",
+		// 	// 	rotate: this.rotatingDeg,
+		// 	// 	duration: 0,
 
-			// })
-			this.rotatingDeg = this.rotatingDeg + 0.05
-		}
+		// 	// })
+		// 	this.rotatingDeg = this.rotatingDeg + 0.05
+		// },
+    initCircle(){
+      this.canvas = d3.select("#circle-canvas")
+      this.canvas.attr('width',this.DIMENTIONS.x)
+      this.canvas.attr('height',this.DIMENTIONS.y)
+      
+      this.circleDrawLine()
+    },
+    circleDrawLine(){
+      const ctx = this.canvas.node().getContext('2d');
+
+      let radius = this.canvas.node().width / 2
+      
+
+      function randomCoordinates(){
+        let angle = Math.random()*Math.PI*2;
+        let x = (Math.cos(angle)*radius) + radius;
+        let y = (Math.sin(angle)*radius) + radius;
+        return [x, y]
+      }
+      
+      // let angle = Math.random()*Math.PI*2;
+      // let x1 = Math.cos(angle)*radius;
+      // let y1 = Math.sin(angle)*radius;
+
+      // angle = Math.random()*Math.PI*2;
+
+      // let x2 = Math.cos(angle)*radius;
+      // let y2 = Math.sin(angle)*radius;
+      
+
+      ctx.beginPath();
+      let [x, y] = randomCoordinates()
+      ctx.moveTo(x, y);
+
+      [x, y] = randomCoordinates()
+      ctx.lineTo(x, y);
+  
+
+      ctx.strokeStyle = "rgba(0,0,0, 0.2)"
+      ctx.lineWidth = .5;
+      ctx.stroke();
+    },
+    circleMouseMove(){
+      this.circleDrawLine()
+      this.rotatingDeg = this.rotatingDeg + 0.05
+    }
 	}
 }
 </script>
