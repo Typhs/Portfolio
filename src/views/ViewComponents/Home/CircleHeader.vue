@@ -31,7 +31,6 @@ export default {
 			canvas: <any>undefined,
 
       CIRCLE_DIAMETER: '500px',
-      COLOR_TEST: 'red',
 		}
 	},
 	props: {
@@ -59,7 +58,7 @@ export default {
       this.canvas.attr('width',this.CIRCLE_DIAMETER)
       this.canvas.attr('height',this.CIRCLE_DIAMETER)
       
-      this.circleDrawLine()
+      // this.circleDrawLine()
     },
     circleDrawLine(){
       let radius = parseInt(this.CIRCLE_DIAMETER.replaceAll('px','')) / 2
