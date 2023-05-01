@@ -15,3 +15,7 @@ export default{
   },
 }
 </script>
+
+<style lang="scss">
+@import "@/StyleSheets/BaseStyles.scss";
+</style>
