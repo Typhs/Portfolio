@@ -76,7 +76,7 @@ export default {
       this.canvas.append('path')
         .attr('d', `M ${a[0]} ${a[1]} ${b[0]} ${b[1]}`)
         .attr('stroke-width','0.5')
-        .attr('stroke', 'rgba(0,0,0,0.5)')
+        .attr('stroke', 'rgba(0,0,0,0.6)')
         .attr("stroke-dasharray", radius*2 + " " + radius*2)
         .attr("stroke-dashoffset", radius*2)
         .transition()
@@ -174,7 +174,6 @@ $canvas-size: v-bind(CIRCLE_DIAMETER);
 		transform: rotate(360deg);
 	}
 }
-
 .canvas-outer-container{
 	position: relative;
   max-width: $canvas-size;

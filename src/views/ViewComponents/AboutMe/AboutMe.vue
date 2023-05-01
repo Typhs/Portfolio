@@ -14,8 +14,6 @@
 <script lang="ts">
 import anime from 'animejs';
 
-
-
 export default {
 	components: {
 

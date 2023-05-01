@@ -13,6 +13,10 @@ const routes = [
     component: () => import('@/views/ViewComponents/AboutMe/AboutMe.vue'),
     meta: {}
   },
+  {
+    path:  "/:catchAll(.*)",
+    redirect:  {path: '/'}
+  }
 ]
 
 const router = createRouter({

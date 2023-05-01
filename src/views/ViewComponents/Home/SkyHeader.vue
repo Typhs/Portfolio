@@ -3,8 +3,8 @@
     
     <div class="star-container" :style="starContainerStyle">
   
-      <constellation-background class="full-height"/>
-      <circle-header class="center-middle" v-model="circleRotatingAngle"/>
+      <constellation-background class="full-height expand-init"/>
+      <circle-header class="center-middle expand-init" v-model="circleRotatingAngle"/>
 
     </div>
 
@@ -61,6 +61,24 @@ export default {
 	height: 150vh;
   background: radial-gradient(ellipse at center, #213246 0%, #202947 100%);
   overflow: hidden;
+}
+
+.expand-init::v-deep >*{
+  animation: expand-init 0.4s ease-out;
+  animation-iteration-count: 1; 
+}
+
+@keyframes expand-init {
+  0%{
+    transform: scale(0)
+  }
+  30%{
+    transform: scale(0)
+  } 
+  100%{
+    transform: scale(1);
+  }
+  
 }
 
 
