@@ -7,7 +7,7 @@
 			</div>
 
 			<!-- <div> -->
-        <canvas id="circle-canvas" class="canvas-container" :style="`rotate: ${rotatingDeg}deg`"></canvas>
+      <svg id="circle-svg" class="canvas-container" :style="`rotate: ${rotatingDeg}deg`"/>
 			<!-- </div> -->
 			<div class="hidden-message">
 				<span>
@@ -55,47 +55,35 @@ export default {
 	},
 	methods:{
     initCircle(){
-      this.canvas = d3.select("#circle-canvas")
-      // this.canvas.style('z-index', 5)
-      // this.canvas.style('position', 'relative')
+      this.canvas = d3.select("#circle-svg")
       this.canvas.attr('width',this.CIRCLE_DIAMETER)
       this.canvas.attr('height',this.CIRCLE_DIAMETER)
       
       this.circleDrawLine()
     },
     circleDrawLine(){
-      const ctx = this.canvas.node().getContext('2d');
-      let radius = this.canvas.node().width / 2
-
+      let radius = parseInt(this.CIRCLE_DIAMETER.replaceAll('px','')) / 2
+      
       function randomCoordinates(){
         let angle = Math.random()*Math.PI*2;
         let x = (Math.cos(angle)*radius) + radius;
         let y = (Math.sin(angle)*radius) + radius;
         return [x, y]
       }
-      
-      ctx.beginPath();
-      let [x, y] = randomCoordinates()
-      ctx.moveTo(x, y);
 
-      [x, y] = randomCoordinates()
-      ctx.lineTo(x, y);
-      
+      let a = randomCoordinates()
+      let b = randomCoordinates()
 
-      ctx.strokeStyle = "rgba(0,0,0, 0.2)"
-      ctx.lineWidth = .5;
-      // ctx.lineWidth = 5;
-      ctx.stroke();
-      // let path = <any> d3.select("#circle-canvas");
-      // var totalLength = this.canvas.node().width;
-      // path
-      //   .attr("stroke-dasharray", totalLength + " " + totalLength)
-      //   .attr("stroke-dashoffset", totalLength)
-      //   .transition()
-      //     .duration(2000)
-      //     .ease("linear")
-      //     .attr("stroke-dashoffset", 0);
-
+      this.canvas.append('path')
+        .attr('d', `M ${a[0]} ${a[1]} ${b[0]} ${b[1]}`)
+        .attr('stroke-width','0.5')
+        .attr('stroke', 'rgba(0,0,0,0.5)')
+        .attr("stroke-dasharray", radius*2 + " " + radius*2)
+        .attr("stroke-dashoffset", radius*2)
+        .transition()
+          .duration(400)
+          .ease(d3.easeCubicIn)
+          .attr("stroke-dashoffset", 0);
     },
     circleMouseMove(){
       this.circleDrawLine()
@@ -106,7 +94,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$moon-color: rgb(71, 142, 236);
+$moon-color: rgb(165, 193, 230);
 //$moon-color: rgb(187, 187, 187);
 $canvas-size: v-bind(CIRCLE_DIAMETER);
 //$canvas-size: 500px
