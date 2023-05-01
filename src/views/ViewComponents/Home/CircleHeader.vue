@@ -80,11 +80,22 @@ export default {
 
       [x, y] = randomCoordinates()
       ctx.lineTo(x, y);
-  
+      
 
       ctx.strokeStyle = "rgba(0,0,0, 0.2)"
       ctx.lineWidth = .5;
+      // ctx.lineWidth = 5;
       ctx.stroke();
+      // let path = <any> d3.select("#circle-canvas");
+      // var totalLength = this.canvas.node().width;
+      // path
+      //   .attr("stroke-dasharray", totalLength + " " + totalLength)
+      //   .attr("stroke-dashoffset", totalLength)
+      //   .transition()
+      //     .duration(2000)
+      //     .ease("linear")
+      //     .attr("stroke-dashoffset", 0);
+
     },
     circleMouseMove(){
       this.circleDrawLine()
@@ -96,6 +107,7 @@ export default {
 
 <style lang="scss" scoped>
 $moon-color: rgb(71, 142, 236);
+//$moon-color: rgb(187, 187, 187);
 $canvas-size: v-bind(CIRCLE_DIAMETER);
 //$canvas-size: 500px
 .circle-container{
