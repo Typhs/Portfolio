@@ -141,6 +141,11 @@
   resolved "https://registry.yarnpkg.com/@mdi/font/-/font-7.0.96.tgz#9853c222623072f5575b4039c8c195ea929b61fc"
   integrity sha512-rzlxTfR64hqY8yiBzDjmANfcd8rv+T5C0Yedv/TWk2QyAQYdc66e0kaN1ipmnYU3RukHRTRcBARHzzm+tIhL7w==
 
+"@types/animejs@^3.1.7":
+  version "3.1.7"
+  resolved "https://registry.yarnpkg.com/@types/animejs/-/animejs-3.1.7.tgz#4d9b23fff04b52e755119625a6087e2bc024527a"
+  integrity sha512-kFSyjM+fLo3oE9noWEtUvF82ttN8fTrKohiEMIrSzEzEjnsCmtO0rBCUQBlSPEb2w8vfN+v4/Zo0tK21Bgmq4g==
+
 "@types/d3-array@*":
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/@types/d3-array/-/d3-array-3.0.4.tgz#44eebe40be57476cad6a0cd6a85b0f57d54185a2"

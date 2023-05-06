@@ -63,7 +63,8 @@ export default {
   overflow: hidden;
 }
 
-.expand-init::v-deep >*{
+//.expand-init::v-deep >*{
+.expand-init:deep(>*){
   animation: expand-init 0.4s ease-out;
   animation-iteration-count: 1; 
 }
