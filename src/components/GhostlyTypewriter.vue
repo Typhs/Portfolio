@@ -3,7 +3,7 @@
     
 
 		<div class="words-container" ref="words-container">
-          <!-- Keep in mind that nested V-Fors need to carry down a specific key for each parent V-For otherwise they repeat -->
+          <!-- Keep in mind that nested V-Fors need to carry down a specific key for each parent V-For otherwise their keys repeat -->
       <p v-for="(paragraph, pIdx) in resultedSplit" :key="'paragraph-' + pIdx" class="d-flex flex-wrap mb-3">
         <span v-for="(word, wIdx) in paragraph" :key="`word-${pIdx}-${wIdx}`" class="d-flex typewritter-word">
           <span 

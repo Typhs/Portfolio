@@ -16,11 +16,13 @@ export default {
     }
 	},
 	mounted () {
-		this.initParticlesJS()
+		this.initParticlesJS()    
+    const numOfParticles  = Math.max(Math.floor(window.innerWidth / 15), 50)
+
     const config = {
   "particles": {
     "number": {
-      "value": 100,
+      "value": numOfParticles,
       "density": {
         "enable": false,
         "value_area": 800
