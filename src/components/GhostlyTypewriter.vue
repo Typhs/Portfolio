@@ -3,28 +3,20 @@
     
 
 		<div class="words-container" ref="words-container">
-			<!-- <div v-for="(word, idx) in paragraphSplit" :key="'word-'+ idx" class="word"
-				v-html="word + '&nbsp;'"
-			>
-			</div> -->
-		
           <!-- Keep in mind that nested V-Fors need to carry down a specific key for each parent V-For otherwise they repeat -->
-      <div v-for="(paragraph, pIdx) in resultedSplit" :key="'paragraph-' + pIdx" class="d-flex flex-wrap">
-        
-        <div v-for="(word, wIdx) in paragraph" :key="`word-${pIdx}-${wIdx}`" class="d-flex mr-1">
-          
-          <div 
+      <p v-for="(paragraph, pIdx) in resultedSplit" :key="'paragraph-' + pIdx" class="d-flex flex-wrap mb-3">
+        <span v-for="(word, wIdx) in paragraph" :key="`word-${pIdx}-${wIdx}`" class="d-flex typewritter-word">
+          <span 
             v-for="(letter, lIdx) in word" :key="`letter-${pIdx}-${wIdx}-${lIdx}`"
             class="typewritter-letter"
-            :class="`typewritter-letter-${pIdx}-${wIdx}`"
+            :class="`typewritter-letter-${pIdx}`"
           >
             {{ letter }}
-          </div>
-      
-        </div>
-      
-      </div>    
-    
+          </span>
+          <span v-html="'&nbsp;'">
+          </span>
+        </span>
+      </p>   
 
     </div>
 
@@ -61,18 +53,6 @@ export default {
     this.initTypewritter()
   },
 	computed: {
-		paragraphSplit() {
-			let r = this.paragraph.split(" ")
-			let idx = 0
-			r.forEach(letter => {
-				if (letter == " "){
-					r[idx] = "&nbsp;"
-				}
-				idx = idx + 1
-			});
-
-			return r 
-		},
     containerDimentions(){
       const c =  (this.$refs['words-container'] as any)
       return {
@@ -119,11 +99,6 @@ export default {
     async initTypewritter(){
       const paragraphs = this.paragraphs 
 
-        // paragraphs
-        //   words
-        //     letters
-        
-      
 
       for(let i=0; i < paragraphs.length; i++){
         await this.animateParagraph(paragraphs[i], i)
@@ -134,33 +109,11 @@ export default {
 
       return new Promise<void>(async (resolve, reject) => {
         
-        const split = paragraph.split(' ')
-        
-
-        for(let i=0; i < split.length; i++){
-          await this.animateWord(split[i], pIdx, i)
-        }
-
-        // split.forEach(async (word)=>{
-        //   await this.animateWord(word)
-        //   console.log('awa')
-        // })
-
-      });
-    },
-    animateWord(word: string, pIdx: number, wIdx: number){
-      return new Promise<void>((resolve, reject)=>{
-        
-        // setTimeout(() => {
-        //   console.log(word)
-        //   resolve()
-        // }, 1000);
-
         anime({
-          targets: `.typewritter-letter-${pIdx}-${wIdx}`,
+          targets: `.typewritter-letter-${pIdx}`,
           direction: "reverse",
           position: ["relative", "absolute"],
-          duration: () => anime.random(1000, 3000) + 100,
+          duration: () => anime.random(1000, 3000) + 500,
           left: () => anime.random(0, this.containerDimentions.x) + "px", 
           top: () => anime.random(0, this.containerDimentions.y) + "px", 
           rotate: () => anime.random(-180, 180),
@@ -172,8 +125,9 @@ export default {
           } 
         })
 
-      })
-    }
+
+      });
+    },
 	},
 }
 
@@ -193,7 +147,8 @@ export default {
 	position: relative;
 	overflow: hidden;
 	padding: 20px;
-
+  font-size: 20px;
+  font-family: Roboto;
   
   .typewritter-letter{
     position: relative;
