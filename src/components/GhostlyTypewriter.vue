@@ -1,18 +1,45 @@
 <template>
 	<div class="">
+    
 
 		<div class="words-container" ref="words-container">
-			
-			<div v-for="(word, idx) in paragraphSplit" :key="'word-'+ idx" class="word"
-				v-html="word"
+			<!-- <div v-for="(word, idx) in paragraphSplit" :key="'word-'+ idx" class="word"
+				v-html="word + '&nbsp;'"
 			>
-			</div>
-		</div>
-	</div>
+			</div> -->
+		
+          <!-- Keep in mind that nested V-Fors need to carry down a specific key for each parent V-For otherwise they repeat -->
+      <div v-for="(paragraph, pIdx) in resultedSplit" :key="'paragraph-' + pIdx" class="d-flex flex-wrap">
+        
+        <div v-for="(word, wIdx) in paragraph" :key="`word-${pIdx}-${wIdx}`" class="d-flex mr-1">
+          
+          <div 
+            v-for="(letter, lIdx) in word" :key="`letter-${pIdx}-${wIdx}-${lIdx}`"
+            class="typewritter-letter"
+            :class="`typewritter-letter-${pIdx}-${wIdx}`"
+          >
+            {{ letter }}
+          </div>
+      
+        </div>
+      
+      </div>    
+    
+
+    </div>
+
+	
+  </div>
 </template>
 
 <script lang="ts">
 import anime from 'animejs';
+
+/*
+
+
+*/
+
 
 export default {
 	components: {
@@ -20,16 +47,22 @@ export default {
 	},
 	data() {
 		return {
-			paragraph: "I am Ty, and Welcome to my portfolio!. I am a Front-End developer specialized in putting out great products of relatively high complexity with little directional information, producing both the design and mechanical interactions of visual assets.",
+			paragraph: "I am Ty, and Welcome to my portfolio!. I am a Front-End developer specialized in putting out great products of relatively high complexity with little directional information, producing both the design and mechanical interactions of visual assets.",    
     }
 	},
+  props: {
+    paragraphs: {
+      type: Array<string>,
+      required: true 
+    },
+  },
 	mounted () {
-		this.init()
-	},
+		// this.init()
+    this.initTypewritter()
+  },
 	computed: {
 		paragraphSplit() {
-			//let r = structuredClone(this.paragraph)
-			let r = this.paragraph.split("")
+			let r = this.paragraph.split(" ")
 			let idx = 0
 			r.forEach(letter => {
 				if (letter == " "){
@@ -39,7 +72,29 @@ export default {
 			});
 
 			return r 
-		}
+		},
+    containerDimentions(){
+      const c =  (this.$refs['words-container'] as any)
+      return {
+        x: c.clientWidth,
+        y: c.clientHeight
+      }
+    },
+    resultedSplit(){
+      let paragraphs = this.paragraphs 
+      let r = new Array();
+
+      paragraphs.forEach((p)=>{
+        let words = new Array();
+        let pSplit = p.split(' ')
+        pSplit.forEach((w)=>{
+          words.push(w.split(''))
+        })
+        r.push(words)
+      })
+  
+      return r
+    }
 	},
 	methods: {
 		init(){
@@ -60,7 +115,65 @@ export default {
         complete: ()=>{console.log("s")} 
       })
 
-		}
+		},
+    async initTypewritter(){
+      const paragraphs = this.paragraphs 
+
+        // paragraphs
+        //   words
+        //     letters
+        
+      
+
+      for(let i=0; i < paragraphs.length; i++){
+        await this.animateParagraph(paragraphs[i], i)
+      }
+
+    },
+    async animateParagraph(paragraph: string, pIdx: number){
+
+      return new Promise<void>(async (resolve, reject) => {
+        
+        const split = paragraph.split(' ')
+        
+
+        for(let i=0; i < split.length; i++){
+          await this.animateWord(split[i], pIdx, i)
+        }
+
+        // split.forEach(async (word)=>{
+        //   await this.animateWord(word)
+        //   console.log('awa')
+        // })
+
+      });
+    },
+    animateWord(word: string, pIdx: number, wIdx: number){
+      return new Promise<void>((resolve, reject)=>{
+        
+        // setTimeout(() => {
+        //   console.log(word)
+        //   resolve()
+        // }, 1000);
+
+        anime({
+          targets: `.typewritter-letter-${pIdx}-${wIdx}`,
+          direction: "reverse",
+          position: ["relative", "absolute"],
+          duration: () => anime.random(1000, 3000) + 100,
+          left: () => anime.random(0, this.containerDimentions.x) + "px", 
+          top: () => anime.random(0, this.containerDimentions.y) + "px", 
+          rotate: () => anime.random(-180, 180),
+          easing: "easeInOutQuad",
+          opacity: [1, 0],
+          delay: anime.stagger(130, {from: 'last'}),
+          complete: ()=>{
+            resolve()
+          } 
+        })
+
+      })
+    }
 	},
 }
 
@@ -80,10 +193,12 @@ export default {
 	position: relative;
 	overflow: hidden;
 	padding: 20px;
+
+  
+  .typewritter-letter{
+    position: relative;
+    opacity: 0;
+  }
 }
-.word{
-	//outline: 1px solid red;
-	//margin-right: 5px;
-	position: relative;
-}
+
 </style>
