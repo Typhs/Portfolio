@@ -14,6 +14,12 @@ const routes = [
     meta: {}
   },
   {
+    path: '/test',
+    name: "test",
+    component: () => import('@/views/ViewComponents/TestView.vue'),
+    meta: {}
+  },
+  {
     path:  "/:catchAll(.*)",
     redirect:  {path: '/'}
   }
