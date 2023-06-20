@@ -74,7 +74,7 @@ $parallaxHeight: 100vh;
 }
 .after-parallax{
   position: relative;
-	background-color: $bronze;
+	background-color: #0a0914;
 }
 .parallax-layer {
 	background-position: bottom center;
@@ -87,29 +87,46 @@ $parallaxHeight: 100vh;
 }
 
 
+@mixin layer-bg-setup(){
+  background-repeat: repeat-x;
+}
+
 .layer-bg {
-	background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_bg.jpg');
+	//background-image: url('@/assets/Header/BuildingsHeader-1.png');
   background-position: bottom;
 }
 .layer-1 {
-	background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_03.png');
+	//background-image: url('@/assets/Header/BuildingsHeader-1.png');
 	background-position: left bottom;
+  @include layer-bg-setup;
 }
 .layer-2 {
-	background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_02.png');
+	background-image: url('@/assets/Header/BuildingsHeader-2.png');
   background-position: bottom;
+  @include layer-bg-setup;
+  background-size: 700px auto;
+
 }
 .layer-3 {
-	background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_man.png');
+	background-image: url('@/assets/Header/BuildingsHeader-3.png');
 	background-position: right bottom;
+  @include layer-bg-setup;
+  background-size: 900px auto;
 }
 .layer-4 {
-	background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_01.png');
+	background-image: url('@/assets/Header/BuildingsHeader-1.png');
   background-position: bottom;
+  @include layer-bg-setup;
+  background-size: 800px auto;
 }
 .layer-overlay {
-	background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_overlay.png');
+	background-image: url('@/assets/Header/BuildingsHeader-clouds.png');
   background-position: bottom;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  background-repeat: repeat;
+
 }
 
 </style>

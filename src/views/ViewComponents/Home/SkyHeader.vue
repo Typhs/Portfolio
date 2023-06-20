@@ -8,9 +8,19 @@
 
     </div>
 
-	<div class="star-transition-bg">
-		Howdy
-	</div>
+    <div class="star-transition-bg">
+      <div>
+        <!-- ADD REST OF HOME PAGE HERE -->
+        <div align="center">
+          <h1>
+            My name is Ty
+          </h1>
+          <p>And I'm a particularly clever Front-End Developer</p>
+        </div>
+      
+      </div>  
+    </div>
+    
 </div>
 </template>
 
