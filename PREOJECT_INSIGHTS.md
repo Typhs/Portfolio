@@ -9,3 +9,15 @@
   - with user location fetch weather data to see if it's raining on such location
   - if so, do some func mechanics with it, like adding light raining effect on the background, or maybe something with an umbrella
 
+
+
+---------- TO DO ----------  
+
+* Hero Header
+  - Remake parallax image layers (SVGs)
+  - Add parallaxing effect to the header files
+
+* Decide content
+
+---------- TO DO ---------- 
+  

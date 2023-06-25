@@ -110,17 +110,11 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
   &:hover {
     .perspective-card-info {
       transform: translateY(0);
-    }
-    .perspective-card-info .card-content{
-      opacity: 1;
-    }
-    .perspective-card-info, .perspective-card-info .card-content{
       transition: 0.6s $hoverEasing;
-    }
-    .perspective-card-info:after {
-      transition: 5s $hoverEasing;
-      opacity: 1;
-      transform: translateY(0);
+      .card-content{
+        opacity: 1;
+        transition: 0.6s $hoverEasing;
+      }
     }
     .perspective-card-bg {
       transition: 
@@ -182,18 +176,12 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
   transform: translateY(40%);
   transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
   
-  .card-content{
-    opacity: 0;
-    text-shadow: rgba(black, 1) 0 2px 3px;
-    transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
-  }
-  
   &:after {
-    //fallback
     box-sizing: content-box !important;
     content: '';
     position: absolute;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     z-index: 0;
     width: 100%;
     height: 100%;
@@ -203,12 +191,31 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
     transform: translateY(100%);
     transition: 5s 1s $returnEasing;
   }
+  
+  .card-content{
+    $max-lines-num: 3;
+    opacity: 0;
+    height: calc(2.5ex * $max-lines-num);
+    overflow: hidden;
+    padding: 0;
+    line-height: 2.5ex;
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $max-lines-num;
+    -webkit-box-orient: vertical;
+    text-shadow: rgba(black, 1) 0 2px 3px;
+    transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  
+
+  .card-title{
+    font-family: "Playfair Display";
+    font-size: 30px;
+    font-weight: 700;
+    text-shadow: rgba(black, 0.5) 0 10px 10px;
+  }
 }
 
-.perspective-card-info .card-title{
-  font-family: "Playfair Display";
-  font-size: 30px;
-  font-weight: 700;
-  text-shadow: rgba(black, 0.5) 0 10px 10px;
-}
 </style>
