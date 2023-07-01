@@ -14,10 +14,17 @@
 ---------- TO DO ----------  
 
 * Hero Header
-  - Remake parallax image layers (SVGs)
-  - Add parallaxing effect to the header files
+ - Remake parallax image layers (SVGs)
+ - Add parallaxing effect to the header files
 
 * Decide content
-
+* Make translation logic and files
+* Make a logo - probably a Delta Tau
+* Sections
+ - Previous Projects Page
+ - About-Me/Contact Page  
+ - Home Page
+ - 404 Page
 ---------- TO DO ---------- 
   
+

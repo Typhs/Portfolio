@@ -11,11 +11,17 @@
     <div class="star-transition-bg">
       <div>
         <!-- ADD REST OF HOME PAGE HERE -->
-        <div align="center">
+        <div align="center" class="pt-15">
           <h1>
             My name is Ty
           </h1>
           <p>And I'm a particularly clever Front-End Developer</p>
+          
+          <br v-for="i in 5" :key="'home-br-spacer-'+i">
+
+          <p>
+            This project is yet in construction
+          </p>
         </div>
       
       </div>  

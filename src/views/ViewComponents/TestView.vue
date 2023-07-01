@@ -13,9 +13,7 @@
     </div>
     
     <div class="after-parallax"> 
-      <div style="height: 300px"></div>
-      <div style="height: 300px"></div>
-      <div style="height: 300px"></div>
+      <div style="height: 900px"></div>
     </div>
   </div>
 </div>
@@ -104,20 +102,20 @@ $parallaxHeight: 100vh;
 	background-image: url('@/assets/Header/BuildingsHeader-2.png');
   background-position: bottom;
   @include layer-bg-setup;
-  background-size: 700px auto;
+  background-size: 1200px auto;
 
 }
 .layer-3 {
 	background-image: url('@/assets/Header/BuildingsHeader-3.png');
 	background-position: right bottom;
   @include layer-bg-setup;
-  background-size: 900px auto;
+  background-size: 1500px auto;
 }
 .layer-4 {
 	background-image: url('@/assets/Header/BuildingsHeader-1.png');
   background-position: bottom;
   @include layer-bg-setup;
-  background-size: 800px auto;
+  background-size: 1500px auto;
 }
 .layer-overlay {
 	background-image: url('@/assets/Header/BuildingsHeader-clouds.png');
