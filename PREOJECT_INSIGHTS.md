@@ -16,6 +16,7 @@
 * Hero Header
  - Remake parallax image layers (SVGs)
  - Add parallaxing effect to the header files
+ - parallax transition theme ideas: buildings, clocks and gears 
 
 * Decide content
 * Make translation logic and files
@@ -28,3 +29,5 @@
 ---------- TO DO ---------- 
   
 
+* idea: On hero Header - use some parralaxing effect - not many layers are need, I actually think more than like 4 would be too much, 2 or 3 would be nice
+  * we can have like a 2° layer that's initially fully hidden by the 1° one but scrolls faster than the previous ones, so it'll show in the background upon scroll 

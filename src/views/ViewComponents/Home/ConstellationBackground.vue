@@ -17,7 +17,8 @@ export default {
 	},
 	mounted () {
 		this.initParticlesJS()    
-    const numOfParticles  = Math.max(Math.floor(window.innerWidth / 15), 50)
+    const numOfParticles  = Math.max(Math.floor(window.innerWidth / 15), 40)
+    // this regulates the number of floaty particles to somewhat the same density on different screen sizes
 
     const config = {
   "particles": {
@@ -52,7 +53,7 @@ export default {
       }
     },
     "size": {
-      "value": 3.5,
+      "value": 2.5,
       "random": true,
       "anim": {
         "enable": false,
@@ -63,14 +64,14 @@ export default {
     },
     "line_linked": {
       "enable": true,
-      "distance": 100,
+      "distance": 50,
       "color": "#ffffff",
       "opacity": 0.4,
       "width": 1,
     },
     "move": {
       "enable": true,
-      "speed": 2.5,
+      "speed": 3,
       "direction": "none",
       "random": true,
       "straight": false,
@@ -98,7 +99,7 @@ export default {
     },
     "modes": {
       "grab": {
-        "distance": 120,
+        "distance": 130,
         "line_linked": {
           "opacity": 0.15
         }
@@ -1609,19 +1610,6 @@ return array.indexOf(value) > -1;
 window.pJSDom = [];
 
 window.particlesJS = function(tag_id, params){
-
-//console.log(params);
-
-/* no string id? so it's object params, and set the id with default id */
-if(typeof(tag_id) != 'string'){
-  params = tag_id;
-  tag_id = 'particles-js';
-}
-
-/* no id? set the id to default id */
-if(!tag_id){
-  tag_id = 'particles-js';
-}
 
 /* pJS elements */
 var pJS_tag = document.getElementById(tag_id),
