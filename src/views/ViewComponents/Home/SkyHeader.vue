@@ -101,7 +101,7 @@ export default {
 
 
 .star-transition-bg{
-	height: 800px;	
+	min-height: 800px;	
 	//outline: 1px solid red;
 	position: relative;
 }
