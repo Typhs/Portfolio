@@ -15,6 +15,12 @@ export default {
       uuid: uuidv4()
     }
 	},
+  props: {
+    speedModifier: {
+      type: Number,
+      default: 1
+    },
+  },
 	mounted () {
 		this.initParticlesJS()    
     const numOfParticles  = Math.max(Math.floor(window.innerWidth / 15), 40)
@@ -137,9 +143,9 @@ export default {
       // -------------------------------------------------------------
       // SOURCE CODE: https://github.com/VincentGarreau/particles.js/
       // -------------------------------------------------------------
-
+  let _this = this
   var pJS = function(tag_id, params){
-
+    
   var canvas_el = document.querySelector('#'+tag_id+' > .particles-js-canvas-el');
 
 
@@ -372,7 +378,6 @@ export default {
 
 
   /* --------- pJS functions - particles ----------- */
-
   pJS.fn.particle = function(color, opacity, position){
 
     /* size */
@@ -531,7 +536,6 @@ export default {
 
   };
 
-
   pJS.fn.particle.prototype.draw = function() {
 
     var p = this;
@@ -654,8 +658,11 @@ export default {
       // }
 
       /* move the particle */
+      let particleSpeed = pJS.particles.move.speed/2
+      particleSpeed = particleSpeed * _this.speedModifier
+      
       if(pJS.particles.move.enable){
-        var ms = pJS.particles.move.speed/2;
+        var ms =  particleSpeed
         p.x += p.vx * ms;
         p.y += p.vy * ms;
       }
@@ -768,7 +775,7 @@ export default {
     }
 
   };
-
+  
   pJS.fn.particlesDraw = function(){
 
     /* clear canvas */
@@ -1455,7 +1462,6 @@ export default {
           if(!pJS.particles.move.enable) cancelRequestAnimFrame(pJS.fn.drawAnimFrame);
           else pJS.fn.drawAnimFrame = requestAnimFrame(pJS.fn.vendors.draw);
         }else{
-          //console.log('still loading...');
           if(!pJS.tmp.img_error) pJS.fn.drawAnimFrame = requestAnimFrame(pJS.fn.vendors.draw);
         }
 
@@ -1488,7 +1494,6 @@ export default {
       if(pJS.tmp.img_type == 'svg' && pJS.tmp.source_svg == undefined){
         pJS.tmp.checkAnimFrame = requestAnimFrame(check);
       }else{
-        //console.log('images loaded! cancel check');
         cancelRequestAnimFrame(pJS.tmp.checkAnimFrame);
         if(!pJS.tmp.img_error){
           pJS.fn.vendors.init();

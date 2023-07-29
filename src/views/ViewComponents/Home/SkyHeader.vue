@@ -3,8 +3,8 @@
     
     <div class="star-container" :style="starContainerStyle">
   
-      <constellation-background class="full-height expand-init"/>
-      <circle-header class="center-middle expand-init" v-model="circleRotatingAngle"/>
+      <constellation-background class="full-height expand-init" :speedModifier="constellationSpeed"/>
+      <circle-header class="center-middle expand-init" v-model="circleRotatingAngle" @mousemove="speedUpConstellation()"/>
 
     </div>
 
@@ -33,6 +33,7 @@
 <script lang="ts">
 import CircleHeader from "@/views/ViewComponents/Home/CircleHeader.vue";
 import ConstellationBackground from "@/views/ViewComponents/Home/ConstellationBackground.vue";
+import { TIMEOUT } from 'dns';
 
 export default {
 	components: {
@@ -41,8 +42,10 @@ export default {
 	},
 	data() {
 		return {
-			circleRotatingAngle: 0
-		}
+			circleRotatingAngle: 0,
+      constellationSpeed: 1,
+      speedTimeout: undefined as undefined | ReturnType<typeof setTimeout>,
+    }
 	},
 	mounted () {
 		
@@ -56,7 +59,13 @@ export default {
 		}
 	},
 	methods: {
-		
+		speedUpConstellation(){
+      clearTimeout(this.speedTimeout)
+      this.constellationSpeed = 3
+      this.speedTimeout = setTimeout(() => {
+        this.constellationSpeed = 1;  
+      }, 100);
+    }
 	},
 }
 </script>
