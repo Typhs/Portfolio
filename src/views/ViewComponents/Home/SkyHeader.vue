@@ -61,7 +61,7 @@ export default {
 	methods: {
 		speedUpConstellation(){
       clearTimeout(this.speedTimeout)
-      this.constellationSpeed = 3
+      this.constellationSpeed = 15
       this.speedTimeout = setTimeout(() => {
         this.constellationSpeed = 1;  
       }, 100);
