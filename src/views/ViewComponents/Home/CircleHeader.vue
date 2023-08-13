@@ -75,7 +75,7 @@ export default {
 
       this.canvas.append('path')
         .attr('d', `M ${a[0]} ${a[1]} ${b[0]} ${b[1]}`)
-        .attr('stroke-width','0.5')
+        .attr('stroke-width','1')
         .attr('stroke', 'rgba(0,0,0,0.3)')
         .attr("stroke-dasharray", radius*2 + " " + radius*2)
         .attr("stroke-dashoffset", radius*2)
@@ -114,13 +114,13 @@ $canvas-size: v-bind(CIRCLE_DIAMETER);
 		top: 50%;
 		transform: translate(-50%, -50%);
 		font-weight: 500;
-		color: transparentize($moon-color, .4);
+		color: transparentize($moon-color, .3);
 		user-select: none;
 		letter-spacing: 2px;
 		line-height: 38px;
 		text-align: center;
 		margin: auto;
-    font-weight: bold;
+    font-weight: bolder;
     span{
 			display: block;
 			margin-bottom: 10px;

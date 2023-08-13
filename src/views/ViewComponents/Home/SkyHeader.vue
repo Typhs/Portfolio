@@ -33,7 +33,6 @@
 <script lang="ts">
 import CircleHeader from "@/views/ViewComponents/Home/CircleHeader.vue";
 import ConstellationBackground from "@/views/ViewComponents/Home/ConstellationBackground.vue";
-import { TIMEOUT } from 'dns';
 
 export default {
 	components: {
