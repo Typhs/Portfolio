@@ -1,10 +1,10 @@
 <template>
 	<div>
     
-    <div class="star-container" :style="starContainerStyle">
+    <div class="star-container">
   
-      <constellation-background class="full-height expand-init"/>
-      <circle-header class="center-middle expand-init" v-model="circleRotatingAngle"/>
+      <constellation-background class="full-height expand-init" :speedModifier="constellationSpeed"/>
+      <circle-header class="center-middle expand-init" v-model="circleRotatingAngle" @mousemove="speedUpConstellation()"/>
 
     </div>
 
@@ -41,27 +41,30 @@ export default {
 	},
 	data() {
 		return {
-			circleRotatingAngle: 0
-		}
+			circleRotatingAngle: 0,
+      constellationSpeed: 1,
+      speedTimeout: undefined as undefined | ReturnType<typeof setTimeout>,
+    }
 	},
 	mounted () {
 		
 	},
-	computed: {
-		starContainerStyle() {
-      let shadowSize = `${this.circleRotatingAngle * 8}vw`;
-      let shadowWeight = `${this.circleRotatingAngle * 10}px`;
-			const styles = `box-shadow: inset 0 0 ${shadowSize} ${shadowWeight} rgba(0,0,0, 0.5);`
-			return styles
-		}
-	},
 	methods: {
-		
+		speedUpConstellation(){
+      clearTimeout(this.speedTimeout)
+      this.constellationSpeed = 8
+      this.speedTimeout = setTimeout(() => {
+        this.constellationSpeed = 1;  
+      }, 100);
+    }
 	},
 }
 </script>
 
 <style lang="scss" scoped>
+
+$rotatingAngle: v-bind(circleRotatingAngle);
+
  .full-height{
   height: 100%;
 }
@@ -77,6 +80,8 @@ export default {
 	height: 150vh;
   background: radial-gradient(ellipse at center, #213246 0%, #202947 100%);
   overflow: hidden;
+
+  box-shadow: inset 0 0 calc(#{$rotatingAngle} * 10vw) calc( #{$rotatingAngle} * 10px) rgba(0,0,0, 0.5);
 }
 
 //.expand-init::v-deep >*{
@@ -101,7 +106,7 @@ export default {
 
 
 .star-transition-bg{
-	height: 800px;	
+	min-height: 800px;	
 	//outline: 1px solid red;
 	position: relative;
 }
