@@ -1,7 +1,7 @@
 <template>
 <div> 
   <!-- https://codesandbox.io/s/snboj?file=/index.html:277-1412- -->
-  <canvas ref="moon-canvas"  @mousemove="drawLine()"></canvas>
+  <canvas ref="moon-canvas"  class="moon-canvas" @mousemove="drawLine()"></canvas>
 </div>
 </template>
 
@@ -75,21 +75,16 @@ this.geojson = {type: 'Feature', geometry: {type: 'LineString', coordinates: []}
           ]
         )
       }
-      
-      //t controls time in the animation
-      // to speed up rotation, add more to the count
-      // this.projection.rotate([t / 100, t / 100, t / 100]);
-      
-
-      // this.context.clearRect(0, 0, this.dimention.width, this.dimention.height);
-      // this.context.beginPath();
-      // this.geoGenerator(this.geojson);
-      // this.context.stroke();
-
-      // window.requestAnimationFrame(this.draw);
     },
   },
 }
 </script>
 
 
+<style lang="scss" scoped>
+
+.moon-canvas{
+  border-radius: 50%;
+}
+
+</style>
