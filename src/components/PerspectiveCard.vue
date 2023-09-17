@@ -1,31 +1,31 @@
 <template>
-<div>
-  
-  <div class="perspective-card-wrap"
-    @mousemove="handleMouseMove"
-    @mouseenter="handleMouseEnter"
-    @mouseleave="handleMouseLeave"
-    ref="perspective-card"
-  >
+  <div>
+    <div
+      class="perspective-card-wrap"
+      @mousemove="handleMouseMove"
+      @mouseenter="handleMouseEnter"
+      @mouseleave="handleMouseLeave"
+      ref="perspective-card"
+    >
+      <div class="perspective-card" :style="cardStyle">
+        <div
+          class="perspective-card-bg"
+          :style="[cardBgTransform, cardBgImage]"
+        ></div>
 
-    <div class="perspective-card" :style="cardStyle">
-      
-      <div class="perspective-card-bg" :style="[cardBgTransform, cardBgImage]"></div>
-      
-      <div class="perspective-card-info">
-        <div class="card-title">
-          <slot name="header">Lorem Ipsum</slot>
+        <div class="perspective-card-info">
+          <div class="card-title">
+            <slot name="header">Lorem Ipsum</slot>
+          </div>
+          <p class="card-content">
+            <slot name="content"
+              >Lorem ipsum dolor sit amet consectetur adipisicing elit.</slot
+            >
+          </p>
         </div>
-        <p class="card-content">
-          <slot name="content">Lorem ipsum dolor sit amet consectetur adipisicing elit.</slot>
-        </p>
       </div>
-    
     </div>
-
   </div>
-
-</div>
 </template>
 
 <script lang="ts">
@@ -36,13 +36,13 @@ export default {
       height: 0 as number,
       mouseX: 0 as number,
       mouseY: 0 as number,
-      mouseLeaveDelay: undefined as (undefined | ReturnType<typeof setTimeout>)
-    }
+      mouseLeaveDelay: undefined as undefined | ReturnType<typeof setTimeout>,
+    };
   },
   props: {
     dataImage: {
       type: String,
-      default: ""
+      default: "",
     },
   },
   computed: {
@@ -56,44 +56,44 @@ export default {
       const rX = this.mousePX * 30;
       const rY = this.mousePY * -30;
       return {
-        transform: `rotateY(${rX}deg) rotateX(${rY}deg)`
+        transform: `rotateY(${rX}deg) rotateX(${rY}deg)`,
       };
     },
     cardBgTransform() {
       const tX = this.mousePX * -40;
       const tY = this.mousePY * -40;
       return {
-        transform: `translateX(${tX}px) translateY(${tY}px)`
-      }
+        transform: `translateX(${tX}px) translateY(${tY}px)`,
+      };
     },
     cardBgImage() {
       return {
-        backgroundImage: `url(${this.dataImage})`
-      }
-    }
+        backgroundImage: `url(${this.dataImage})`,
+      };
+    },
   },
-  mounted () {
-    const cardEl = this.$refs['perspective-card'];
+  mounted() {
+    const cardEl = this.$refs["perspective-card"];
     this.width = cardEl.offsetWidth;
     this.height = cardEl.offsetHeight;
   },
   methods: {
     handleMouseMove(e: any) {
-      const cardEl = this.$refs['perspective-card'];
-      this.mouseX = e.pageX - cardEl.offsetLeft - this.width/2;
-      this.mouseY = e.pageY - cardEl.offsetTop - this.height/2;
+      const cardEl = this.$refs["perspective-card"];
+      this.mouseX = e.pageX - cardEl.offsetLeft - this.width / 2;
+      this.mouseY = e.pageY - cardEl.offsetTop - this.height / 2;
     },
     handleMouseEnter() {
       clearTimeout(this.mouseLeaveDelay);
     },
     handleMouseLeave() {
-      this.mouseLeaveDelay = setTimeout(()=>{
+      this.mouseLeaveDelay = setTimeout(() => {
         this.mouseX = 0;
         this.mouseY = 0;
       }, 1000);
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -106,18 +106,18 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
   transform: perspective(800px);
   transform-style: preserve-3d;
   cursor: pointer;
-  
+
   &:hover {
     .perspective-card-info {
       transform: translateY(0);
       transition: 0.6s $hoverEasing;
-      .card-content{
+      .card-content {
         opacity: 1;
         transition: 0.6s $hoverEasing;
       }
     }
     .perspective-card-bg {
-      transition: 
+      transition:
         0.6s $hoverEasing,
         opacity 5s $hoverEasing;
       opacity: 0.8;
@@ -155,7 +155,8 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
 .perspective-card-bg {
   opacity: 0.5;
   position: absolute;
-  top: -20px; left: -20px;
+  top: -20px;
+  left: -20px;
   width: 100%;
   height: 100%;
   padding: 20px;
@@ -175,31 +176,35 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
   color: #fff;
   transform: translateY(40%);
   transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
-  
+
   &:after {
     box-sizing: content-box !important;
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     z-index: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(to bottom, transparent 0%, rgba(#000, 0.6) 100%);
+    background-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(#000, 0.6) 100%
+    );
     background-blend-mode: overlay;
     opacity: 0;
     transform: translateY(100%);
     transition: 5s 1s $returnEasing;
   }
-  
-  .card-content{
+
+  .card-content {
     $max-lines-num: 3;
     opacity: 0;
     height: calc(2.5ex * $max-lines-num);
     overflow: hidden;
     padding: 0;
     line-height: 2.5ex;
-    
+
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -208,14 +213,12 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
     text-shadow: rgba(black, 1) 0 2px 3px;
     transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
   }
-  
 
-  .card-title{
+  .card-title {
     font-family: "Playfair Display";
     font-size: 30px;
     font-weight: 700;
     text-shadow: rgba(black, 0.5) 0 10px 10px;
   }
 }
-
 </style>

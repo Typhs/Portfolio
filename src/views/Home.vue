@@ -1,15 +1,13 @@
 <template>
-  <sky-header/>
+  <sky-header />
 </template>
 
 <script lang="ts">
-import SkyHeader from '@/views/ViewComponents/Home/SkyHeader.vue'
+import SkyHeader from "@/views/ViewComponents/Home/SkyHeader.vue";
 
-export default{
+export default {
   components: {
-    SkyHeader
+    SkyHeader,
   },
-}
+};
 </script>
-
-
