@@ -1,18 +1,43 @@
 <template>
-  <div style="position: relative">
-    <div style="position: relative; overflow: hidden; height: fit-content">
-      <div class="parallax-container" ref="parallax-container">
-        <div class="layer-bg parallax-layer" data-depth="0.10" />
-        <div class="layer-1 parallax-layer" data-depth="0.20" />
-        <div class="layer-3 parallax-layer" data-depth="0.40" />
-        <div class="layer-2 parallax-layer" data-depth="0.50" />
-        <div class="layer-overlay parallax-layer" data-depth="0.85" />
-        <div class="layer-4 parallax-layer" data-depth="1.00" />
+  <div>
+    <div class="parallax-container" ref="parallax-container">
+      <div class="parallax-background parallax-layer" data-depth="0.10">
+        <constellation-background
+          class="h-100 expand-init"
+          :speedModifier="1"
+        />
       </div>
 
-      <div class="after-parallax">
-        <div style="height: 900px"></div>
+      <div class="parallax-layer h-100 pointer-events-none" data-depth="0.40">
+        <circle-header-v2
+          class="center-middle expand-init pointer-events-all"
+        />
+        <!-- v-model="circleRotatingAngle"
+          @mousemove="speedUpConstellation()" -->
       </div>
+
+      <div
+        class="layer-0 parallax-layer pointer-events-none"
+        data-depth="0.1"
+      />
+
+      <div
+        class="layer-1 parallax-layer pointer-events-none"
+        data-depth="0.2"
+      />
+
+      <div
+        class="layer-2 parallax-layer pointer-events-none"
+        data-depth="0.5"
+      />
+
+      <!-- <div class="layer-3 parallax-layer pointer-events-none" data-depth="0.5" /> -->
+
+      <!-- <div class="layer-overlay parallax-layer" data-depth="0.85" /> -->
+    </div>
+
+    <div class="after-parallax">
+      <div style="height: 1500px">after</div>
     </div>
   </div>
 </template>
@@ -20,10 +45,16 @@
 <script lang="ts">
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { HtmlHTMLAttributes } from "vue";
 gsap.registerPlugin(ScrollTrigger);
+import ConstellationBackground from "@/views/ViewComponents/Home/ConstellationBackground.vue";
+import CircleHeaderV2 from "@/views/ViewComponents/Home/CircleHeaderV2.vue";
 
 export default {
-  components: {},
+  components: {
+    ConstellationBackground,
+    CircleHeaderV2,
+  },
   data() {
     return {};
   },
@@ -54,8 +85,7 @@ export default {
 </script>
 
 <style lang="scss">
-$bronze: #130d0a;
-$parallaxHeight: 100vh;
+$parallaxHeight: 130vh;
 
 .parallax-container {
   height: $parallaxHeight;
@@ -79,43 +109,56 @@ $parallaxHeight: 100vh;
   z-index: -1;
 }
 
-@mixin layer-bg-setup() {
-  background-repeat: repeat-x;
+.parallax-background {
+  background-image: url("@/assets/heroHeader/header-background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  //filter: contrast(2);
 }
 
-.layer-bg {
-  //background-image: url('@/assets/Header/BuildingsHeader-1.png');
-  background-position: bottom;
+.layer-0 {
+  background-image: url("@/assets/heroHeader/bg-fade-wave.png");
+  background-position: left bottom;
+  background-size: 100% auto;
 }
 .layer-1 {
-  //background-image: url('@/assets/Header/BuildingsHeader-1.png');
+  background-image: url("@/assets/heroHeader/back-buildings-RESIZED.png");
   background-position: left bottom;
-  @include layer-bg-setup;
+  background-size: 100% auto;
 }
 .layer-2 {
-  background-image: url("@/assets/Header/BuildingsHeader-2.png");
+  background-image: url("@/assets/heroHeader/front-buildings-RESIZED.png");
   background-position: bottom;
-  @include layer-bg-setup;
-  background-size: 1200px auto;
+  background-size: 100% auto;
 }
 .layer-3 {
-  background-image: url("@/assets/Header/BuildingsHeader-3.png");
+  background-image: url("@/assets/header/BuildingsHeader-3.png");
   background-position: right bottom;
-  @include layer-bg-setup;
-  background-size: 1500px auto;
-}
-.layer-4 {
-  background-image: url("@/assets/Header/BuildingsHeader-1.png");
-  background-position: bottom;
-  @include layer-bg-setup;
-  background-size: 1500px auto;
+  background-size: 100% auto;
 }
 .layer-overlay {
-  background-image: url("@/assets/Header/BuildingsHeader-clouds.png");
+  //background-image: url("@/assets/header/BuildingsHeader-clouds.png");
+  //background-color: red;
   background-position: bottom;
   background-size: cover;
   background-position: center;
-  opacity: 0.2;
+  //opacity: 0.2;
   background-repeat: repeat;
+  box-shadow: inset 0 0 100px 15px red;
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}
+.pointer-events-all {
+  pointer-events: all;
+}
+
+.center-middle {
+  position: absolute;
+  top: 50vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 </style>

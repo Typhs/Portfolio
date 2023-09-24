@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <!-- https://codesandbox.io/s/snboj?file=/index.html:277-1412- -->
-    <canvas ref="moon-canvas" class="moon-canvas" @mousemove="drawLine()" />
-  </div>
+  <!-- <div> -->
+  <canvas ref="moon-canvas" class="moon-canvas" @mousemove="drawLine()" />
+  <!-- </div> -->
 </template>
 
 <script lang="ts">
@@ -46,7 +45,7 @@ export default {
       .attr("height", this.dimention.height + "px");
 
     this.context.lineWidth = 0.4;
-    this.context.strokeStyle = "rgba(255, 255, 255, 0.6)";
+    this.context.strokeStyle = "rgba(0, 0, 0, 0.7)";
 
     this.projection = d3
       .geoOrthographic()
@@ -62,7 +61,7 @@ export default {
       type: "Feature",
       geometry: { type: "LineString", coordinates: [] },
     } as GeoJson;
-    function banana(_this: any, t: number) {
+    function rotateProjection(_this: any, t: number) {
       window.requestAnimationFrame(() => {
         _this.context.clearRect(
           0,
@@ -75,19 +74,22 @@ export default {
         _this.geoGenerator(_this.geojson);
         _this.context.stroke();
         // console.log(t)
-        banana(_this, t + 4);
+        rotateProjection(_this, t + 4);
       });
     }
-    banana(this, 1);
+    rotateProjection(this, 1);
   },
   methods: {
     drawLine() {
-      this.count = this.count + 10;
-      if ((this.geojson as GeoJson).geometry.coordinates.length < 6000) {
-        (this.geojson as GeoJson).geometry.coordinates.push([
-          -180 + Math.random() * 360,
-          -90 + Math.random() * 180,
-        ]);
+      const drawTimes = 2;
+      for (let i = 0; i < drawTimes; i++) {
+        this.count = this.count + 10;
+        if ((this.geojson as GeoJson).geometry.coordinates.length < 6000) {
+          (this.geojson as GeoJson).geometry.coordinates.push([
+            -180 + Math.random() * 360,
+            -90 + Math.random() * 180,
+          ]);
+        }
       }
     },
   },
@@ -95,7 +97,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$moon-color: rgb(165, 193, 230);
+$moon-color: rgb(61, 92, 160);
+$moon-color: rgb(61, 92, 160);
 .moon-canvas {
   border-radius: 50%;
+  background-color: $moon-color;
+
+  box-shadow:
+    inset 0 0 20px transparentize(#312094, 0.4),
+    inset 0 0 100px 20px rgba(0, 0, 0, 0.5),
+    0 0 100px rgba(158, 187, 219, 0.25),
+    0 0 100px 20px rgba(0, 0, 0, 0.1);
 }
 </style>

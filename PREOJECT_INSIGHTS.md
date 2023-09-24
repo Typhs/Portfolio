@@ -25,5 +25,13 @@
 * 404 Page
   ---------- TO DO ----------
 
-- idea: On hero Header - use some parralaxing effect - not many layers are need, I actually think more than like 4 would be too much, 2 or 3 would be nice
+  ---------- IDEAS ----------
+
+* On hero Header - use some parralaxing effect - not many layers are need, I actually think more than like 4 would be too much, 2 or 3 would be nice
+
   - we can have like a 2° layer that's initially fully hidden by the 1° one but scrolls faster than the previous ones, so it'll show in the background upon scroll
+
+* At the end of the page, we can have a campfire, with some nice ash and wisps effects with ParticlesJS
+
+- for interactivity we could do marshmallows - user can pick one up on a stick and the tip of the stick follows the position of the cursor
+  ---------- IDEAS ----------
