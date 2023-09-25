@@ -34,4 +34,6 @@
 * At the end of the page, we can have a campfire, with some nice ash and wisps effects with ParticlesJS
 
 - for interactivity we could do marshmallows - user can pick one up on a stick and the tip of the stick follows the position of the cursor
+
+* Use some Persona 5 style UI elements
   ---------- IDEAS ----------

@@ -32,6 +32,22 @@ export default {
       },
     };
   },
+  props: {
+    modelValue: {
+      type: Number,
+      default: 0,
+    },
+  },
+  computed: {
+    rotatingDeg: {
+      get() {
+        return this.modelValue;
+      },
+      set(modelValue: any) {
+        this.$emit("update:modelValue", modelValue);
+      },
+    },
+  },
   mounted() {
     const canvasEl = this.$refs["moon-canvas"] as HTMLCanvasElement;
     this.context = canvasEl.getContext("2d") as CanvasRenderingContext2D;
@@ -81,6 +97,8 @@ export default {
   },
   methods: {
     drawLine() {
+      this.rotatingDeg = this.rotatingDeg + 0.05;
+
       const drawTimes = 2;
       for (let i = 0; i < drawTimes; i++) {
         this.count = this.count + 10;

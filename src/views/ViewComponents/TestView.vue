@@ -3,89 +3,87 @@
     <div class="parallax-container" ref="parallax-container">
       <div class="parallax-background parallax-layer" data-depth="0.10">
         <constellation-background
-          class="h-100 expand-init"
-          :speedModifier="1"
+          class="h-100 expand-init pointer-events-all"
+          :speedModifier="constellationSpeed"
         />
       </div>
 
-      <div class="parallax-layer h-100 pointer-events-none" data-depth="0.40">
+      <div class="parallax-layer h-100" data-depth="0.40">
         <circle-header-v2
           class="center-middle expand-init pointer-events-all"
+          v-model="circleRotatingAngle"
+          @mousemove="speedUpConstellation()"
         />
-        <!-- v-model="circleRotatingAngle"
-          @mousemove="speedUpConstellation()" -->
       </div>
 
-      <div
-        class="layer-0 parallax-layer pointer-events-none"
-        data-depth="0.1"
-      />
+      <div class="bg-fade-wave parallax-layer" data-depth="0.1" />
 
-      <div
-        class="layer-1 parallax-layer pointer-events-none"
-        data-depth="0.2"
-      />
+      <div class="bg-back-buildings parallax-layer" data-depth="0.3" />
 
-      <div
-        class="layer-2 parallax-layer pointer-events-none"
-        data-depth="0.5"
-      />
+      <div class="bg-front-buildings parallax-layer" data-depth="0.5" />
 
-      <!-- <div class="layer-3 parallax-layer pointer-events-none" data-depth="0.5" /> -->
-
-      <!-- <div class="layer-overlay parallax-layer" data-depth="0.85" /> -->
+      <div class="bg-railing-transition parallax-layer" data-depth="1" />
+      <div class="layer-overlay parallax-layer" data-depth="0.85" />
     </div>
 
     <div class="after-parallax">
-      <div style="height: 1500px">after</div>
+      <div style="min-height: 100vh">
+        after
+        {{ circleRotatingAngle }}
+      </div>
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { HtmlHTMLAttributes } from "vue";
-gsap.registerPlugin(ScrollTrigger);
+<script lang="ts" setup>
 import ConstellationBackground from "@/views/ViewComponents/Home/ConstellationBackground.vue";
 import CircleHeaderV2 from "@/views/ViewComponents/Home/CircleHeaderV2.vue";
 
-export default {
-  components: {
-    ConstellationBackground,
-    CircleHeaderV2,
-  },
-  data() {
-    return {};
-  },
-  mounted() {
-    this.initParallax();
-  },
-  methods: {
-    initParallax() {
-      let parallaxContainer = <HTMLElement>this.$refs["parallax-container"];
+import { onMounted, ref } from "vue";
+import { templateRef } from "@vueuse/core";
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: parallaxContainer,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+// ========= Scroll Parallax =========
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-      gsap.utils.toArray(".parallax-layer").forEach((layer: any) => {
-        const depth = layer.dataset.depth;
-        const movement = -(layer.offsetHeight * depth);
-        tl.to(layer, { y: movement, ease: "none" }, 0);
-      });
+gsap.registerPlugin(ScrollTrigger);
+onMounted(() => {
+  const parallaxContainer = templateRef<HTMLElement>("parallax-container");
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: parallaxContainer.value,
+      start: "top top",
+      end: "bottom top",
+      scrub: true,
     },
-  },
-};
+  });
+
+  gsap.utils.toArray(".parallax-layer").forEach((layer: any) => {
+    const depth = layer.dataset.depth;
+    const movement = -(layer.offsetHeight * depth);
+    tl.to(layer, { y: movement, ease: "none" }, 0);
+  });
+});
+// ========= Scroll Parallax =========
+
+const circleRotatingAngle = ref(0); // used in Styles v-bind
+
+const speedTimeout = ref<undefined | ReturnType<typeof setTimeout>>(undefined);
+const constellationSpeed = ref(1);
+
+function speedUpConstellation() {
+  clearTimeout(speedTimeout.value);
+  constellationSpeed.value = 5;
+  speedTimeout.value = setTimeout(() => {
+    constellationSpeed.value = 1;
+  }, 100);
+}
 </script>
 
 <style lang="scss">
 $parallaxHeight: 130vh;
+
+$rotatingAngle: v-bind(circleRotatingAngle);
 
 .parallax-container {
   height: $parallaxHeight;
@@ -97,7 +95,7 @@ $parallaxHeight: 130vh;
 }
 .after-parallax {
   position: relative;
-  background-color: #0a0914;
+  background-color: #050309;
 }
 .parallax-layer {
   background-position: bottom center;
@@ -106,6 +104,7 @@ $parallaxHeight: 130vh;
   width: 100%;
   height: $parallaxHeight;
   position: fixed;
+  pointer-events: none;
   z-index: -1;
 }
 
@@ -117,23 +116,23 @@ $parallaxHeight: 130vh;
   //filter: contrast(2);
 }
 
-.layer-0 {
+.bg-fade-wave {
   background-image: url("@/assets/heroHeader/bg-fade-wave.png");
   background-position: left bottom;
   background-size: 100% auto;
 }
-.layer-1 {
+.bg-back-buildings {
   background-image: url("@/assets/heroHeader/back-buildings-RESIZED.png");
   background-position: left bottom;
   background-size: 100% auto;
 }
-.layer-2 {
+.bg-front-buildings {
   background-image: url("@/assets/heroHeader/front-buildings-RESIZED.png");
   background-position: bottom;
   background-size: 100% auto;
 }
-.layer-3 {
-  background-image: url("@/assets/header/BuildingsHeader-3.png");
+.bg-railing-transition {
+  background-image: url("@/assets/heroHeader/transition-railing.png");
   background-position: right bottom;
   background-size: 100% auto;
 }
@@ -145,11 +144,10 @@ $parallaxHeight: 130vh;
   background-position: center;
   //opacity: 0.2;
   background-repeat: repeat;
-  box-shadow: inset 0 0 100px 15px red;
-}
+  box-shadow: inset 0 0 calc(#{$rotatingAngle} * 10vw)
+    calc(#{$rotatingAngle} * 10px) rgba(0, 0, 0, 0.5);
 
-.pointer-events-none {
-  pointer-events: none;
+  //box-shadow:  inset 0 0 1000px black;
 }
 .pointer-events-all {
   pointer-events: all;
