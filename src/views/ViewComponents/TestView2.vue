@@ -1,3 +1,13 @@
+<script lang="ts">
+export default {
+  data() {
+    return {};
+  },
+  mounted() {},
+  methods: {},
+};
+</script>
+
 <template>
   <div>
     <div id="app" class="d-flex flex-wrap justify-center mt-15">
@@ -16,17 +26,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts">
-export default {
-  data() {
-    return {};
-  },
-  mounted() {},
-  methods: {
-    gamer() {
-      console.log("gamner");
-    },
-  },
-};
-</script>

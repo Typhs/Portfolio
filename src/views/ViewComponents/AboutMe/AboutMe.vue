@@ -1,8 +1,3 @@
-<template>
-  <div class="">
-    <ghostly-typewriter :paragraphs="typewriterParagraphs" />
-  </div>
-</template>
 <script lang="ts">
 import GhostlyTypewriter from "@/components/GhostlyTypewriter.vue";
 
@@ -23,6 +18,12 @@ export default {
   methods: {},
 };
 </script>
+
+<template>
+  <div class="">
+    <ghostly-typewriter :paragraphs="typewriterParagraphs" />
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .words-container {

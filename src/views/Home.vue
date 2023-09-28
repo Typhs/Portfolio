@@ -1,3 +1,48 @@
+<script lang="ts" setup>
+import ConstellationBackground from "@/views/ViewComponents/Home/ConstellationBackground.vue";
+import CircleHeader from "@/views/ViewComponents/Home/CircleHeader.vue";
+
+import { onMounted, ref } from "vue";
+import { templateRef } from "@vueuse/core";
+
+// ========= Scroll Parallax =========
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+onMounted(() => {
+  const parallaxContainer = templateRef<HTMLElement>("parallax-container");
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: parallaxContainer.value,
+      start: "top top",
+      end: "bottom top",
+      scrub: true,
+    },
+  });
+
+  gsap.utils.toArray(".parallax-layer").forEach((layer: any) => {
+    const depth = layer.dataset.depth;
+    const movement = -(layer.offsetHeight * depth);
+    tl.to(layer, { y: movement, ease: "none" }, 0);
+  });
+});
+// ========= Scroll Parallax =========
+
+const darkeningIntensity = ref(0); // used in Styles v-bind
+
+const speedTimeout = ref<undefined | ReturnType<typeof setTimeout>>(undefined);
+const constellationSpeed = ref(1);
+
+function speedUpConstellation() {
+  clearTimeout(speedTimeout.value);
+  constellationSpeed.value = 5;
+  speedTimeout.value = setTimeout(() => {
+    constellationSpeed.value = 1;
+  }, 100);
+}
+</script>
+
 <template>
   <div>
     <div class="parallax-container" ref="parallax-container">
@@ -45,51 +90,6 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-import ConstellationBackground from "@/views/ViewComponents/Home/ConstellationBackground.vue";
-import CircleHeader from "@/views/ViewComponents/Home/CircleHeader.vue";
-
-import { onMounted, ref } from "vue";
-import { templateRef } from "@vueuse/core";
-
-// ========= Scroll Parallax =========
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-onMounted(() => {
-  const parallaxContainer = templateRef<HTMLElement>("parallax-container");
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: parallaxContainer.value,
-      start: "top top",
-      end: "bottom top",
-      scrub: true,
-    },
-  });
-
-  gsap.utils.toArray(".parallax-layer").forEach((layer: any) => {
-    const depth = layer.dataset.depth;
-    const movement = -(layer.offsetHeight * depth);
-    tl.to(layer, { y: movement, ease: "none" }, 0);
-  });
-});
-// ========= Scroll Parallax =========
-
-const darkeningIntensity = ref(0); // used in Styles v-bind
-
-const speedTimeout = ref<undefined | ReturnType<typeof setTimeout>>(undefined);
-const constellationSpeed = ref(1);
-
-function speedUpConstellation() {
-  clearTimeout(speedTimeout.value);
-  constellationSpeed.value = 5;
-  speedTimeout.value = setTimeout(() => {
-    constellationSpeed.value = 1;
-  }, 100);
-}
-</script>
 
 <style lang="scss">
 $parallaxHeight: 130vh;

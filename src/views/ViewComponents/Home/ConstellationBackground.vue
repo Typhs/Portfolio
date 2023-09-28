@@ -1,7 +1,3 @@
-<template>
-  <div :id="'particles-js-' + uuid" />
-</template>
-
 <script>
 import { v4 as uuidv4 } from "uuid";
 import { merge as _merge } from "lodash";
@@ -1726,5 +1722,9 @@ export default {
   },
 };
 </script>
+
+<template>
+  <div :id="'particles-js-' + uuid" />
+</template>
 
 <style lang="scss" scoped></style>

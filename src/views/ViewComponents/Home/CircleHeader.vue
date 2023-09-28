@@ -1,9 +1,3 @@
-<template>
-  <!-- <div> -->
-  <canvas ref="moon-canvas" class="moon-canvas" @mousemove="drawLine()" />
-  <!-- </div> -->
-</template>
-
 <script lang="ts">
 import * as d3 from "d3";
 
@@ -118,6 +112,12 @@ export default {
   },
 };
 </script>
+
+<template>
+  <!-- <div> -->
+  <canvas ref="moon-canvas" class="moon-canvas" @mousemove="drawLine()" />
+  <!-- </div> -->
+</template>
 
 <style lang="scss" scoped>
 $moon-color: rgb(165, 193, 230);

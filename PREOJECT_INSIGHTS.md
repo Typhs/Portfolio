@@ -3,7 +3,10 @@
 ---------- TO DO ----------
 
 - Hero Header
+
   - Create CSS Media Query rules for re-sizing background on smaller screens ('background-size: cover' is too small)
+
+- Light Refactoring to ConstellationBackground converting it to Setup and Typecript
 
 * Previous Projects Page
 * About-Me/Contact Page

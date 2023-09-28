@@ -1,33 +1,3 @@
-<template>
-  <div>
-    <div
-      class="perspective-card-wrap"
-      @mousemove="handleMouseMove"
-      @mouseenter="handleMouseEnter"
-      @mouseleave="handleMouseLeave"
-      ref="perspective-card"
-    >
-      <div class="perspective-card" :style="cardStyle">
-        <div
-          class="perspective-card-bg"
-          :style="[cardBgTransform, cardBgImage]"
-        ></div>
-
-        <div class="perspective-card-info">
-          <div class="card-title">
-            <slot name="header">Lorem Ipsum</slot>
-          </div>
-          <p class="card-content">
-            <slot name="content"
-              >Lorem ipsum dolor sit amet consectetur adipisicing elit.</slot
-            >
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script lang="ts">
 export default {
   data() {
@@ -95,6 +65,36 @@ export default {
   },
 };
 </script>
+
+<template>
+  <div>
+    <div
+      class="perspective-card-wrap"
+      @mousemove="handleMouseMove"
+      @mouseenter="handleMouseEnter"
+      @mouseleave="handleMouseLeave"
+      ref="perspective-card"
+    >
+      <div class="perspective-card" :style="cardStyle">
+        <div
+          class="perspective-card-bg"
+          :style="[cardBgTransform, cardBgImage]"
+        ></div>
+
+        <div class="perspective-card-info">
+          <div class="card-title">
+            <slot name="header">Lorem Ipsum</slot>
+          </div>
+          <p class="card-content">
+            <slot name="content"
+              >Lorem ipsum dolor sit amet consectetur adipisicing elit.</slot
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 $hoverEasing: cubic-bezier(0.23, 1, 0.32, 1);

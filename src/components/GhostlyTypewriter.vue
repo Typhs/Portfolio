@@ -1,32 +1,3 @@
-<template>
-  <div class="">
-    <div class="words-container" ref="words-container">
-      <!-- Keep in mind that nested V-Fors need to carry down a specific key for each parent V-For otherwise their keys repeat -->
-      <p
-        v-for="(paragraph, pIdx) in resultedSplit"
-        :key="'paragraph-' + pIdx"
-        class="d-flex flex-wrap mb-3"
-      >
-        <span
-          v-for="(word, wIdx) in paragraph"
-          :key="`word-${pIdx}-${wIdx}`"
-          class="d-flex typewritter-word"
-        >
-          <span
-            v-for="(letter, lIdx) in word"
-            :key="`letter-${pIdx}-${wIdx}-${lIdx}`"
-            class="typewritter-letter"
-            :class="`typewritter-letter-${pIdx}`"
-          >
-            {{ letter }}
-          </span>
-          <span v-html="'&nbsp;'"> </span>
-        </span>
-      </p>
-    </div>
-  </div>
-</template>
-
 <script lang="ts">
 import anime from "animejs";
 
@@ -129,6 +100,35 @@ export default {
   },
 };
 </script>
+
+<template>
+  <div class="">
+    <div class="words-container" ref="words-container">
+      <!-- Keep in mind that nested V-Fors need to carry down a specific key for each parent V-For otherwise their keys repeat -->
+      <p
+        v-for="(paragraph, pIdx) in resultedSplit"
+        :key="'paragraph-' + pIdx"
+        class="d-flex flex-wrap mb-3"
+      >
+        <span
+          v-for="(word, wIdx) in paragraph"
+          :key="`word-${pIdx}-${wIdx}`"
+          class="d-flex typewritter-word"
+        >
+          <span
+            v-for="(letter, lIdx) in word"
+            :key="`letter-${pIdx}-${wIdx}-${lIdx}`"
+            class="typewritter-letter"
+            :class="`typewritter-letter-${pIdx}`"
+          >
+            {{ letter }}
+          </span>
+          <span v-html="'&nbsp;'"> </span>
+        </span>
+      </p>
+    </div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .words-container {

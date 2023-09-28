@@ -1,12 +1,3 @@
-<template>
-  <div>
-    <br class="mt-5" />
-    <div class="typewriter-container">
-      {{ typewriterShown }}
-    </div>
-  </div>
-</template>
-
 <script lang="ts">
 export default {
   data() {
@@ -39,6 +30,15 @@ export default {
   },
 };
 </script>
+
+<template>
+  <div>
+    <br class="mt-5" />
+    <div class="typewriter-container">
+      {{ typewriterShown }}
+    </div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .typewriter-container {
