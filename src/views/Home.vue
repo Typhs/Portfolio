@@ -12,9 +12,9 @@
       </div>
 
       <div class="parallax-layer h-100" data-depth="0.40">
-        <circle-header-v2
+        <circle-header
           class="center-middle expand-init pointer-events-all"
-          v-model="circleRotatingAngle"
+          v-model="darkeningIntensity"
           @mousemove="speedUpConstellation()"
         />
       </div>
@@ -48,7 +48,7 @@
 
 <script lang="ts" setup>
 import ConstellationBackground from "@/views/ViewComponents/Home/ConstellationBackground.vue";
-import CircleHeaderV2 from "@/views/ViewComponents/Home/CircleHeaderV2.vue";
+import CircleHeader from "@/views/ViewComponents/Home/CircleHeader.vue";
 
 import { onMounted, ref } from "vue";
 import { templateRef } from "@vueuse/core";
@@ -77,7 +77,7 @@ onMounted(() => {
 });
 // ========= Scroll Parallax =========
 
-const circleRotatingAngle = ref(0); // used in Styles v-bind
+const darkeningIntensity = ref(0); // used in Styles v-bind
 
 const speedTimeout = ref<undefined | ReturnType<typeof setTimeout>>(undefined);
 const constellationSpeed = ref(1);
@@ -94,10 +94,10 @@ function speedUpConstellation() {
 <style lang="scss">
 $parallaxHeight: 130vh;
 
-$rotatingAngle: v-bind(circleRotatingAngle);
+$darkeningIntensity: v-bind(darkeningIntensity);
 
 @mixin darkenLayer {
-  filter: brightness(min(calc(1 / ($rotatingAngle / 25)), 1));
+  filter: brightness(min(calc(1 / ($darkeningIntensity / 25)), 1));
 }
 
 .parallax-container {
@@ -164,8 +164,8 @@ $rotatingAngle: v-bind(circleRotatingAngle);
   background-position: center;
   //opacity: 0.2;
   background-repeat: repeat;
-  box-shadow: inset 0 0 calc(#{$rotatingAngle} * 10vw)
-    calc(#{$rotatingAngle} * 10px) rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 calc(#{$darkeningIntensity} * 10vw)
+    calc(#{$darkeningIntensity} * 10px) rgba(0, 0, 0, 0.5);
 
   //box-shadow:  inset 0 0 1000px black;
 }

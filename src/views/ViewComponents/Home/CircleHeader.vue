@@ -39,7 +39,7 @@ export default {
     },
   },
   computed: {
-    rotatingDeg: {
+    darkening: {
       get() {
         return this.modelValue;
       },
@@ -102,7 +102,7 @@ export default {
       if (!this.geojson) {
         return;
       }
-      this.rotatingDeg = this.rotatingDeg + 0.05;
+      this.darkening = this.darkening + 0.05;
 
       const drawTimes = 2;
       for (let i = 0; i < drawTimes; i++) {
