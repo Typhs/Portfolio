@@ -2,20 +2,20 @@
 //   --v-theme-background: red;
 // }
 
-.w-fit-content{
-	width: fit-content;
+.w-fit-content {
+  width: fit-content;
 }
 
-.space-evenly{
-	justify-content: space-evenly;
+.space-evenly {
+  justify-content: space-evenly;
 }
 
-.outline-red{
-	outline: 1px solid red;
+.outline-red {
+  outline: 1px solid red;
 }
 
 // =========== SCROLLBAR CUSTOMIZATION ===========
-::-webkit-scrollbar { 
+::-webkit-scrollbar {
   width: 13px;
 }
 ::-webkit-scrollbar-track {
@@ -23,7 +23,7 @@
 }
 ::-webkit-scrollbar-thumb {
   background: #888;
-  &:hover{
+  &:hover {
     background: #555;
   }
 }
