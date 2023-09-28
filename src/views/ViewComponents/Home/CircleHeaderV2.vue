@@ -60,8 +60,10 @@ export default {
       .attr("width", this.dimention.width + "px")
       .attr("height", this.dimention.height + "px");
 
-    this.context.lineWidth = 0.4;
-    this.context.strokeStyle = "rgba(0, 0, 0, 0.7)";
+    this.context.lineWidth = 0.6;
+    this.context.strokeStyle = "rgba(0, 0, 0, 0.5)";
+
+    // this.context.setLineDash([30, 20])
 
     this.projection = d3
       .geoOrthographic()
@@ -89,7 +91,7 @@ export default {
         _this.projection.rotate([t / 100, t / 100, t / 100]);
         _this.geoGenerator(_this.geojson);
         _this.context.stroke();
-        // console.log(t)
+
         rotateProjection(_this, t + 4);
       });
     }
@@ -97,13 +99,16 @@ export default {
   },
   methods: {
     drawLine() {
+      if (!this.geojson) {
+        return;
+      }
       this.rotatingDeg = this.rotatingDeg + 0.05;
 
       const drawTimes = 2;
       for (let i = 0; i < drawTimes; i++) {
         this.count = this.count + 10;
-        if ((this.geojson as GeoJson).geometry.coordinates.length < 6000) {
-          (this.geojson as GeoJson).geometry.coordinates.push([
+        if (this.geojson.geometry.coordinates.length < 6000) {
+          this.geojson.geometry.coordinates.push([
             -180 + Math.random() * 360,
             -90 + Math.random() * 180,
           ]);
@@ -117,7 +122,7 @@ export default {
 <style lang="scss" scoped>
 $moon-color: rgb(165, 193, 230);
 $moon-color: rgb(61, 92, 160);
-$moon-color: rgb(61, 92, 160);
+$moon-color: rgb(103, 90, 226);
 .moon-canvas {
   border-radius: 50%;
   background-color: $moon-color;
@@ -125,7 +130,7 @@ $moon-color: rgb(61, 92, 160);
   box-shadow:
     inset 0 0 20px transparentize(#312094, 0.4),
     inset 0 0 100px 20px rgba(0, 0, 0, 0.5),
-    0 0 100px rgba(158, 187, 219, 0.25),
+    0 0 100px rgba(0, 0, 0, 0.25),
     0 0 100px 20px rgba(0, 0, 0, 0.1);
 }
 </style>

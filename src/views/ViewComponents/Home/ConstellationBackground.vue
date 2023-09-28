@@ -4,7 +4,7 @@
 
 <script>
 import { v4 as uuidv4 } from "uuid";
-import _ from "lodash";
+import { merge as _merge } from "lodash";
 
 export default {
   components: {},
@@ -34,20 +34,20 @@ export default {
           },
         },
         color: {
-          value: "#ffFfff",
+          value: "#a7a7a7",
         },
         shape: {
           type: ["circle", "triangle"],
           stroke: {
             width: 0,
-            color: "#000000",
+            color: "#FFF",
           },
           polygon: {
             nb_sides: 5,
           },
         },
         opacity: {
-          value: 0.5,
+          value: 1,
           random: false,
           anim: {
             enable: true,
@@ -68,8 +68,8 @@ export default {
         },
         line_linked: {
           enable: true,
-          distance: 50,
-          color: "#ffffff",
+          distance: 80,
+          color: "#a7a7a7",
           opacity: 0.4,
           width: 1,
         },
@@ -105,7 +105,7 @@ export default {
           grab: {
             distance: 130,
             line_linked: {
-              opacity: 0.15,
+              opacity: 0.2,
             },
           },
           bubble: {
@@ -133,7 +133,6 @@ export default {
     const targetId = "particles-js-" + this.uuid;
     particlesJS(targetId, config);
   },
-  computed: {},
   methods: {
     initParticlesJS() {
       // -------------------------------------------------------------
@@ -167,7 +166,7 @@ export default {
               type: "circle",
               stroke: {
                 width: 0,
-                color: "#ff0000",
+                color: "transparent",
               },
               polygon: {
                 nb_sides: 5,
@@ -268,7 +267,7 @@ export default {
           tmp: {},
         };
 
-        this.pJS = _.merge(defaultParams, params);
+        this.pJS = _merge(defaultParams, params);
 
         var pJS = this.pJS;
 

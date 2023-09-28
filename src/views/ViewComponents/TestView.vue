@@ -2,6 +2,14 @@
   <div>
     <div class="parallax-container" ref="parallax-container">
       <div class="parallax-background parallax-layer" data-depth="0.10">
+        <!-- <constellation-background
+          class="h-100 expand-init pointer-events-all"
+          :speedModifier="constellationSpeed"
+          /> -->
+      </div>
+
+      <div class="bg-shadow-overlay parallax-layer" data-depth="0.85" />
+      <div class="parallax-layer" data-depth="0.10">
         <constellation-background
           class="h-100 expand-init pointer-events-all"
           :speedModifier="constellationSpeed"
@@ -23,13 +31,21 @@
       <div class="bg-front-buildings parallax-layer" data-depth="0.5" />
 
       <div class="bg-railing-transition parallax-layer" data-depth="1" />
-      <div class="layer-overlay parallax-layer" data-depth="0.85" />
     </div>
 
     <div class="after-parallax">
       <div style="min-height: 100vh">
-        after
-        {{ circleRotatingAngle }}
+        <div>
+          <!-- ADD REST OF HOME PAGE HERE -->
+          <div align="center" class="pt-15">
+            <h1>My name is Ty</h1>
+            <p>And I'm a particularly clever Front-End Developer</p>
+
+            <br v-for="i in 5" :key="'home-br-spacer-' + i" />
+
+            <p>This project is yet in construction</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -92,6 +108,7 @@ $rotatingAngle: v-bind(circleRotatingAngle);
   max-width: 1920px;
   margin: 0 auto;
   z-index: 0;
+  background-color: #12172d;
 }
 .after-parallax {
   position: relative;
@@ -114,6 +131,7 @@ $rotatingAngle: v-bind(circleRotatingAngle);
   background-position: center;
   background-repeat: no-repeat;
   //filter: contrast(2);
+  opacity: 0.5;
 }
 
 .bg-fade-wave {
@@ -135,8 +153,9 @@ $rotatingAngle: v-bind(circleRotatingAngle);
   background-image: url("@/assets/heroHeader/transition-railing.png");
   background-position: right bottom;
   background-size: 100% auto;
+  box-shadow: 0px 100px 0px 0px #050309; // this covers the seams that sometimes appear after the end of Parllax Layers
 }
-.layer-overlay {
+.bg-shadow-overlay {
   //background-image: url("@/assets/header/BuildingsHeader-clouds.png");
   //background-color: red;
   background-position: bottom;
