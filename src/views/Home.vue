@@ -129,7 +129,6 @@ $darkeningIntensity: v-bind(darkeningIntensity);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  //filter: contrast(2);
   opacity: 0.5;
 }
 
@@ -157,17 +156,12 @@ $darkeningIntensity: v-bind(darkeningIntensity);
   box-shadow: 0px 100px 0px 0px #050309; // this covers the seams that sometimes appear after the end of Parllax Layers
 }
 .bg-shadow-overlay {
-  //background-image: url("@/assets/header/BuildingsHeader-clouds.png");
-  //background-color: red;
   background-position: bottom;
   background-size: cover;
   background-position: center;
-  //opacity: 0.2;
   background-repeat: repeat;
   box-shadow: inset 0 0 calc(#{$darkeningIntensity} * 10vw)
     calc(#{$darkeningIntensity} * 10px) rgba(0, 0, 0, 0.5);
-
-  //box-shadow:  inset 0 0 1000px black;
 }
 .pointer-events-all {
   pointer-events: all;
