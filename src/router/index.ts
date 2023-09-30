@@ -4,31 +4,31 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: () => import("@/views/Home.vue"),
+    component: () => import("@/views/home/Home.vue"),
     meta: {},
   },
   {
     path: "/about-me",
     name: "about-me",
-    component: () => import("@/views/ViewComponents/AboutMe/AboutMe.vue"),
+    component: () => import("@/views/AboutMe/AboutMe.vue"),
     meta: {},
   },
   {
     path: "/test",
     name: "test",
-    component: () => import("@/views/ViewComponents/TestView.vue"),
+    component: () => import("@/views/TestView.vue"),
     meta: {},
   },
   {
     path: "/test2",
     name: "test2",
-    component: () => import("@/views/ViewComponents/TestView2.vue"),
+    component: () => import("@/views/TestView2.vue"),
     meta: {},
   },
   {
     path: "/test3",
     name: "test3",
-    component: () => import("@/views/ViewComponents/TestView3.vue"),
+    component: () => import("@/views/TestView3.vue"),
     meta: {},
   },
   {

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import ConstellationBackground from "@/views/ViewComponents/Home/ConstellationBackground.vue";
-import CircleHeader from "@/views/ViewComponents/Home/CircleHeader.vue";
+import ConstellationBackground from "@/views/Home/ConstellationBackground.vue";
+import CircleHeader from "@/views/Home/CircleHeader.vue";
 
 import { onMounted, ref } from "vue";
 import { templateRef } from "@vueuse/core";
