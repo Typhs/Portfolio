@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import ConstellationBackground from "@/views/Home/ConstellationBackground.vue";
-import CircleHeader from "@/views/Home/CircleHeader.vue";
+import TheConstellationBackground from "@/views/Home/TheConstellationBackground.vue";
+import TheCircleHeader from "@/views/Home/TheCircleHeader.vue";
 
 import { onMounted, ref } from "vue";
 import { templateRef } from "@vueuse/core";
@@ -50,14 +50,14 @@ function speedUpConstellation() {
 
       <div class="bg-shadow-overlay parallax-layer" data-depth="0.85" />
       <div class="parallax-layer" data-depth="0.10">
-        <constellation-background
+        <the-constellation-background
           class="h-100 pointer-events-all"
           :speedModifier="constellationSpeed"
         />
       </div>
 
       <div class="parallax-layer h-100" data-depth="0.40">
-        <circle-header
+        <the-circle-header
           class="center-middle expand-init pointer-events-all"
           v-model="darkeningIntensity"
           @mousemove="speedUpConstellation()"

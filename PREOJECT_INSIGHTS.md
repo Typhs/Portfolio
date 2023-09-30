@@ -21,4 +21,6 @@
 - for interactivity we could do marshmallows - user can pick one up on a stick and the tip of the stick follows the position of the cursor
 
 * Use some Persona 5 style UI elements
+
+* Typewriter effect on Landing Page - page's text is written(with typing effect) as user scrolls down  
   ---------- IDEAS ----------
