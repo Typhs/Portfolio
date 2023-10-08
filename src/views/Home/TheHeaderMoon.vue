@@ -55,7 +55,7 @@ export default {
       .attr("height", this.dimention.height + "px");
 
     this.context.lineWidth = 0.6;
-    this.context.strokeStyle = "rgba(0, 0, 0, 0.5)";
+    this.context.strokeStyle = "rgba(0, 0, 0, 0.7)";
 
     // this.context.setLineDash([30, 20])
 
@@ -120,8 +120,6 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-$moon-color: rgb(165, 193, 230);
-$moon-color: rgb(61, 92, 160);
 $moon-color: rgb(103, 90, 226);
 .moon-canvas {
   border-radius: 50%;

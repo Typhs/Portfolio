@@ -1,6 +1,7 @@
-// .v-theme--light{
-//   --v-theme-background: red;
-// }
+a {
+  text-decoration: none;
+  color: unset;
+}
 
 .w-fit-content {
   width: fit-content;
@@ -10,8 +11,12 @@
   justify-content: space-evenly;
 }
 
-.outline-red {
-  outline: 1px solid red;
+.hover-underline {
+  transition: border-bottom 0.25s;
+  border-bottom: 1px solid transparent;
+  &:hover {
+    border-bottom: 1px solid currentColor;
+  }
 }
 
 // =========== SCROLLBAR CUSTOMIZATION ===========
