@@ -56,6 +56,7 @@ function speedUpConstellation() {
         />
       </div>
 
+      <div class="bg-fade-wave parallax-layer" data-depth="0.1" />
       <div class="parallax-layer h-100" data-depth="0.40">
         <the-header-moon
           class="center-middle expand-init pointer-events-all"
@@ -63,8 +64,6 @@ function speedUpConstellation() {
           @mousemove="speedUpConstellation()"
         />
       </div>
-
-      <div class="bg-fade-wave parallax-layer" data-depth="0.1" />
 
       <div class="bg-back-buildings parallax-layer" data-depth="0.3" />
 
