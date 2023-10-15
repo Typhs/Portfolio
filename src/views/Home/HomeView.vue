@@ -6,9 +6,14 @@ import TheParallaxHeader from "@/views/Home/TheParallaxHeader.vue";
   <the-parallax-header>
     <div align="center" class="pt-15">
       <h1 class="text-white">My name is Ty</h1>
-      <p class="mb-15">And I'm a particularly clever Front-End Developer</p>
+      <p class="mb-15">and I'm a particularly clever Front-End Developer</p>
 
-      <p>This project is yet in construction</p>
+      <p>
+        <v-chip color="primary">
+          <v-icon icon="mdi-tools" class="mr-2" />
+          This project is yet in construction
+        </v-chip>
+      </p>
     </div>
   </the-parallax-header>
 </template>

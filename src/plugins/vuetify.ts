@@ -21,7 +21,7 @@ export default createVuetify({
           "on-background": "#d1d1d1",
           primary: "#6857ff",
           "on-primary": "#ffffff",
-          secondary: "#eb6840",
+          secondary: "#fb8c00",
           "on-secondary": "#ffffff",
           white: "#ffff",
           "on-white": "#000000",

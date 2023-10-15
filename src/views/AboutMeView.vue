@@ -1,10 +1,5 @@
 <script lang="ts">
-import GhostlyTypewriter from "@/components/GhostlyTypewriter.vue";
-
 export default {
-  components: {
-    GhostlyTypewriter,
-  },
   data() {
     return {
       typewriterParagraphs: [
