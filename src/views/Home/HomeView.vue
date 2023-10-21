@@ -14,8 +14,16 @@ import TheParallaxHeader from "@/views/Home/TheParallaxHeader.vue";
           This project is yet in construction
         </v-chip>
       </p>
+      <div class="padding-y-500px">
+        <contact-info />
+      </div>
     </div>
   </the-parallax-header>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+.padding-y-500px {
+  padding-top: 500px;
+  padding-bottom: 500px;
+}
+</style>

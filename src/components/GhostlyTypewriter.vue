@@ -90,6 +90,18 @@ function gamer() {
 function playAnimations(forward: undefined | boolean = undefined) {
   animationReferences.value.forEach((animation) => {
     // have in mind -> the animation is by default reversed already
+    // reversed -> letters appear and align as text
+    // !reversed -> letters float away and disappear
+
+    // -------- guard rails --------
+    if (!forward && !animation.reversed && animation.completed) {
+      return;
+    }
+    if (forward && animation.reversed && animation.completed) {
+      return;
+    }
+    // -------- guard rails --------
+
     if (forward == null) {
       animation.reverse();
       animation.play();
