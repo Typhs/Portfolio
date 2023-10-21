@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { ref } from "vue";
-import Components from "unplugin-vue-components/vite";
+import { ref, onMounted } from "vue";
+import { templateRef } from "@vueuse/core";
+import GhostlyTypewriter from "./GhostlyTypewriter.vue";
 
 const threshholds = ref<number[]>([]);
 for (let i = 0; i <= 1.0; i += 0.01) {
@@ -10,13 +11,33 @@ for (let i = 0; i <= 1.0; i += 0.01) {
 const elHeight = ref(0);
 const isAfter = ref(false);
 
+const typewriterRefs = [
+  templateRef<InstanceType<typeof GhostlyTypewriter>>("typewriter-1"),
+  templateRef<InstanceType<typeof GhostlyTypewriter>>("typewriter-2"),
+  templateRef<InstanceType<typeof GhostlyTypewriter>>("typewriter-3"),
+];
+
 function handleIntersect(
   isVisible: boolean,
   entries: IntersectionObserverEntry[],
 ) {
-  elHeight.value = entries[0].intersectionRatio * 100;
+  const percentageVisible = entries[0].intersectionRatio * 100;
+  // 0 -> not at all on screen
+  // 100 -> completely visible on screen
+
+  elHeight.value = percentageVisible;
   isAfter.value = entries[0].boundingClientRect.top > 0;
+  typewrittersAnimate(percentageVisible >= 100);
 }
+
+function typewrittersAnimate(forward: boolean) {
+  typewriterRefs.forEach((tRef) => {
+    tRef.value.playAnimations(forward);
+  });
+}
+onMounted(() => {
+  typewrittersAnimate(false);
+});
 </script>
 
 <template>
@@ -29,32 +50,48 @@ function handleIntersect(
     }"
   >
     <div class="contact-info-container text-h6">
-      <h2 class="text-white mb-8">Contact info</h2>
+      <h2 class="text-white mb-8">
+        <ghostly-typewriter
+          :paragraphs="['Contact Info']"
+          ref="typewriter-1"
+          class="w-fit-content"
+        />
+      </h2>
 
       <div class="mb-4">
         <a
           href="https://github.com/Typhs/"
-          class="hover-underline pb-2 text-primary"
+          class="hover-underline pb-1 text-primary d-flex justify-center w-fit-content"
         >
-          <span class="text-primary">
+          <div class="text-primary">
             <v-icon icon="mdi-email" />
             <v-icon icon="mdi-arrow-right-thin" size="18" class="mx-1" />
-          </span>
-          <span class="text-indigo-lighten-3">bmtailan@gmail.com</span>
+          </div>
+          <div class="text-indigo-lighten-3">
+            <ghostly-typewriter
+              :paragraphs="['bmtailan@gmail.com']"
+              ref="typewriter-2"
+            />
+          </div>
         </a>
       </div>
 
       <div>
         <a
           href="https://github.com/Typhs/"
-          class="hover-underline pb-2 text-primary"
+          class="hover-underline pb-1 text-primary d-flex justify-center w-fit-content"
         >
-          <span class="text-primary">
+          <div class="text-primary">
             <v-icon icon="mdi-github" />
             <v-icon icon="mdi-arrow-right-thin" size="18" class="mx-1" />
-          </span>
-          <span class="text-indigo-lighten-3">https://github.com/Typhs</span></a
-        >
+          </div>
+          <div class="text-indigo-lighten-3">
+            <ghostly-typewriter
+              :paragraphs="['https://github.com/Typhs']"
+              ref="typewriter-3"
+            />
+          </div>
+        </a>
       </div>
     </div>
   </div>
@@ -74,5 +111,8 @@ function handleIntersect(
 }
 
 .contact-info-container {
+  border: 2px solid white;
+  padding: 30px;
+  border-radius: 10px;
 }
 </style>

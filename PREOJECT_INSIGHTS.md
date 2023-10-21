@@ -16,6 +16,13 @@
 
   ---------- IDEAS ----------
 
+* GhostlyTypewritter alternative
+
+  - have a container and inside it all the letters that compose the sentence are constantly moving around randomly
+  - when container scrolls into viewport the letters organize into the sentence (one by one left to right, like typewritter)
+  - when container scrolls out of viewport the letters return to randomly moving around
+  - Or maybe on mouse hover instead of scroll into viewport?
+
 * At the end of the page, we can have a campfire, with some nice ash and wisps effects with ParticlesJS
 
 - for interactivity we could do marshmallows - user can pick one up on a stick and the tip of the stick follows the position of the cursor
