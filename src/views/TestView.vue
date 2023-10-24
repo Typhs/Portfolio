@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .w-25 {
   transition: all 0.4s;
 }

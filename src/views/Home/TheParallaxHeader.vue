@@ -82,7 +82,7 @@ function speedUpConstellation() {
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $parallaxHeight: 130vh;
 
 $darkeningIntensity: v-bind(darkeningIntensity);

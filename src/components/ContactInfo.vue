@@ -66,7 +66,7 @@ onMounted(() => {
         </div>
         <div class="mb-4">
           <v-btn
-            href="https://github.com/Typhs/"
+            href="mailto:bmtailan@gmail.com"
             class="d-flex justify-center w-fit-content"
             color="primary"
             variant="text"
@@ -110,7 +110,7 @@ onMounted(() => {
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $primary: #6857ff;
 
 .contact-info-wrapper {

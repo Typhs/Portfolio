@@ -9,21 +9,21 @@ import TheParallaxHeader from "@/views/Home/TheParallaxHeader.vue";
       <p class="mb-15">and I'm a particularly clever Front-End Developer</p>
 
       <p>
-        <v-chip color="primary">
+        <v-chip color="warning">
           <v-icon icon="mdi-tools" class="mr-2" />
           This project is yet in construction
         </v-chip>
       </p>
-      <div class="padding-y-500px">
+      <div class="contact-info-wrapper">
         <contact-info />
       </div>
     </div>
   </the-parallax-header>
 </template>
 
-<style lang="scss">
-.padding-y-500px {
+<style lang="scss" scoped>
+.contact-info-wrapper {
   padding-top: 500px;
-  padding-bottom: 500px;
+  padding-bottom: 300px;
 }
 </style>
