@@ -1,0 +1,28 @@
+$spacing-step: 4px; //this is the value for each iteration of space in vuetify (ex: mb-1, pa-1, ...)
+
+$base-radius: 4px;
+
+$surface: rgb(var(--v-theme-surface));
+$on-surface: rgb(var(--v-theme-on-surface));
+$primary: rgb(var(--v-theme-primary));
+$on-primary: rgb(var(--v-theme-on-primary));
+$background: rgb(var(--v-theme-background));
+$on-background: rgb(var(--v-theme-on-background));
+$secondary: rgb(var(--v-theme-secondary));
+$on-secondary: rgb(var(--v-theme-on-secondary));
+$white: rgb(var(--v-theme-white));
+$on-white: rgb(var(--v-theme-on-white));
+$black: rgb(var(--v-theme-black));
+$on-black: rgb(var(--v-theme-on-black));
+
+$warning: rgb(var(--v-theme-warning));
+
+@function transparentize($color, $weight) {
+  $result: color-mix(in srgb, $color, transparent calc(100% * $weight));
+  @return $result;
+}
+
+@function mix($colorA, $colorB, $weight: 0.5) {
+  $result: color-mix(in srgb, $colorA, $colorB calc(100% * $weight));
+  @return $result;
+}

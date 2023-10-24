@@ -33,3 +33,12 @@ a {
   }
 }
 // =========== SCROLLBAR CUSTOMIZATION ===========
+
+// =========== VUETIFY OVERRIDES ===========
+.v-btn {
+  text-transform: none !important;
+}
+.v-card {
+  overflow: initial !important;
+}
+// =========== VUETIFY OVERRIDES ===========

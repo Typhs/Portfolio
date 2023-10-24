@@ -102,7 +102,7 @@ $darkeningIntensity: v-bind(darkeningIntensity);
 }
 .after-parallax {
   position: relative;
-  background-color: #050309;
+  background-color: $background;
 }
 .parallax-layer {
   background-position: bottom center;
@@ -144,7 +144,7 @@ $darkeningIntensity: v-bind(darkeningIntensity);
   background-image: url("@/assets/heroHeader/transition-railing.png");
   background-position: right bottom;
   background-size: 100% auto;
-  box-shadow: 0px 100px 0px 0px #050309; // this covers the seams that sometimes appear after the end of Parllax Layers
+  box-shadow: 0px 100px 0px 0px $background; // this covers the seams that sometimes appear after the end of Parllax Layers
 }
 .bg-shadow-overlay {
   background-position: bottom;

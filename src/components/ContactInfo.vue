@@ -50,8 +50,11 @@ onMounted(() => {
       options: { threshold: threshholds },
     }"
   >
-    <div class="contact-info-wrapper">
-      <div class="contact-info-container text-h6">
+    <div
+      class="contact-info-wrapper"
+      :class="{ 'fully-visible': fullyVisible }"
+    >
+      <div class="contact-info-container text-h6 pa-5">
         <h2 class="text-white">
           <ghostly-typewriter
             :paragraphs="['Contact info']"
@@ -59,7 +62,7 @@ onMounted(() => {
             class="w-fit-content"
           />
         </h2>
-        <div class="d-flex align-center my-3">
+        <div class="d-flex align-center my-3 contact-info-divider">
           <v-divider color="primary" thickness="1" class="border-opacity-75" />
           <v-icon class="mx-2" icon="mdi-phone" size="18" color="primary" />
           <v-divider color="primary" thickness="1" class="border-opacity-75" />
@@ -118,11 +121,24 @@ $primary: #6857ff;
   //outline: 2px solid red;
 }
 .contact-info-container {
-  border: 2px solid $primary;
-  padding: 30px;
+  transition: border 5s;
   border-radius: 10px;
-  background-color: transparentize($primary, 0.95);
+  border: 1px solid transparentize($primary, 1);
 }
+.contact-info-divider {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.fully-visible {
+  .contact-info-container {
+    border-color: transparentize($primary, 0.7);
+  }
+  .contact-info-divider {
+    opacity: 01;
+  }
+}
+
 .contact-icon {
   transition: opacity 2s;
   opacity: 1;
