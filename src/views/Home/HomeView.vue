@@ -21,6 +21,7 @@ import TheParallaxHeader from "@/views/Home/TheParallaxHeader.vue";
       <div>
         <about-me-tabs />
       </div>
+      <br style="margin-bottom: 50vh" />
     </div>
   </the-parallax-header>
 </template>

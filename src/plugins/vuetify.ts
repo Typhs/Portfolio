@@ -28,7 +28,7 @@ export default createVuetify({
           black: "#000000",
           "on-black": "#ffff",
           surface: "#110f1a",
-          "on-surface": "#a1a1a3",
+          "on-surface": "#bfbfc4",
         },
         variables: {
           "border-color": "#4B465C",
