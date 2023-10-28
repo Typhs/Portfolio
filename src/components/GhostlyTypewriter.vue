@@ -75,14 +75,9 @@ function animateParagraph(paragraph: string, pIdx: number) {
   });
 }
 
-function gamer() {
+function pauseAnimations() {
   animationReferences.value.forEach((animation) => {
-    if (animation.completed) {
-      return;
-    }
-    if (animation.paused) {
-      animation.play();
-    } else {
+    if (!animation.completed) {
       animation.pause();
     }
   });
@@ -123,6 +118,7 @@ function playAnimations(forward: undefined | boolean = undefined) {
 }
 defineExpose({
   playAnimations,
+  pauseAnimations,
 });
 </script>
 

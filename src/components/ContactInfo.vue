@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref, onMounted } from "vue";
 import { templateRef } from "@vueuse/core";
-import GhostlyTypewriter from "./GhostlyTypewriter.vue";
+import GhostlyTypewriter from "@/components/GhostlyTypewriter.vue";
 
 const threshholds = ref<number[]>([]);
 for (let i = 0; i <= 1.0; i += 0.01) {
@@ -36,8 +36,12 @@ function typewrittersAnimate(forward: boolean) {
     tRef.value.playAnimations(forward);
   });
 }
+
 onMounted(() => {
   typewrittersAnimate(false);
+  typewriterRefs.forEach((tRef) => {
+    tRef.value.pauseAnimations();
+  });
 });
 </script>
 
@@ -55,17 +59,19 @@ onMounted(() => {
       :class="{ 'fully-visible': fullyVisible }"
     >
       <div class="contact-info-container text-h6 pa-5">
-        <h2 class="text-white">
+        <h2 class="text-white mt-1">
           <ghostly-typewriter
             :paragraphs="['Contact info']"
             ref="typewriter-1"
             class="w-fit-content"
           />
         </h2>
-        <div class="d-flex align-center my-3 contact-info-divider">
-          <v-divider color="primary" thickness="1" class="border-opacity-75" />
-          <v-icon class="mx-2" icon="mdi-phone" size="18" color="primary" />
-          <v-divider color="primary" thickness="1" class="border-opacity-75" />
+        <div class="d-flex align-center my-4 contact-info-divider">
+          <v-divider color="primary" thickness="1" class="border-opacity-50" />
+          <v-avatar variant="outlined" color="primary" size="40">
+            <v-icon class="mx-2" icon="mdi-phone" size="18" color="primary" />
+          </v-avatar>
+          <v-divider color="primary" thickness="1" class="border-opacity-50" />
         </div>
         <div class="mb-4">
           <v-btn
