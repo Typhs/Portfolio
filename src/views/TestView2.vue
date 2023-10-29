@@ -10,7 +10,7 @@ export default {
 
 <template>
   <div>
-    <div id="app" class="d-flex flex-wrap justify-center mt-15">
+    <div class="d-flex flex-wrap justify-center mt-15">
       <perspective-card
         data-image="https://images.unsplash.com/photo-1479660656269-197ebb83b540?dpr=2&auto=compress,format&fit=crop&w=1199&h=798&q=80&cs=tinysrgb&crop="
       >

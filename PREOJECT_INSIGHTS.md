@@ -3,9 +3,7 @@
 ---------- TO DO ----------
 
 - Hero Header
-
   - Create CSS Media Query rules for re-sizing background on smaller screens ('background-size: cover' is too small)
-
 - Light Refactoring to ConstellationBackground converting it to Setup and Typecript
 
 * Previous Projects Page
@@ -19,10 +17,14 @@
 * At the end of the page, we can have a campfire, with some nice ash and wisps effects with ParticlesJS
   - for interactivity we could do marshmallows - user can pick one up on a stick and the tip of the stick follows the position of the cursor
 * Something like a Director's Commentary mode -> we have toggle somewhere that activates this
-
   - while this mode is on we make appear tooltips on any elements or parts of the Project that we think are particularly interesting
   - on these tooltips talk about how the parts were made, what was our process and stuff like that
   - highlight particular obstacles that we overcame in unusual, interesting ways
+* On ContactInfo - do a business card style effect
+
+  - we can use the 3D properties of PerspectiveCard
+  - first we pick and reproduce a business card aesthetic
+  - also have the text content use GhostlyTypewriter with 'scroll into view' effect
     ---------- IDEAS ----------
 
   ---------- STALE IDEAS ----------
