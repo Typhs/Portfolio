@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { templateRef } from "@vueuse/core";
-import { ref } from "vue";
+import { ref, defineComponent } from "vue";
 
 // TODO - add 'action' field to this Array -> call it when button is clicked
 const contactOptions = [
@@ -38,13 +38,13 @@ const contactOptions = [
                 <div class="w-fit-content vertical-flex-container">
                   <!-- LEFT  -->
                   <div class="w-fit-content mb-5">
-                    <h2><b>TAILAN gamer</b></h2>
+                    <h2>Tailan B. M.</h2>
                     <div class="w-100 bg-white mb-1">
                       <v-divider
                         color="primary"
                         width="40px"
                         thickness="2"
-                        class="d-block border-opacity-100"
+                        class="border-opacity-100"
                       />
                     </div>
                     <div>Senior Front-end developer</div>
@@ -75,13 +75,15 @@ const contactOptions = [
                 </div>
               </div>
             </div>
-            <div class="card-bg-effect">
+            <div class="card-bg-effect" style="font-size: 10px">
               <!-- https://www.google.com/search?q=hexagon+circuit&sca_esv=577513119&tbm=isch&source=lnms&sa=X&ved=2ahUKEwipy_zX-ZmCAxXNHLkGHQf-DlQQ_AUoAXoECAIQAw&biw=1920&bih=931&dpr=1#imgrc=yzftGeyampxRKM&imgdii=272IUIVvMPnneM -->
             </div>
           </div>
         </template>
       </perspective-card>
     </div>
+
+    <br />
   </div>
 </template>
 
@@ -122,9 +124,7 @@ const contactOptions = [
   top: 0;
   height: 100%;
   width: 100%;
-  z-index: -1;
-  //background-image: url('@/assets/mock-html.png');
-  //background-size: cover;
-  //transform: scaleX(-1);
+  z-index: 0;
+  pointer-events: none;
 }
 </style>

@@ -1,5 +1,6 @@
 // =========== FONT-FAMILY SETUP
 @import url("https://fonts.googleapis.com/css2?family=Sora&display=swap");
+
 html,
 #app {
   font-family: "Sora", sans-serif !important;
@@ -51,7 +52,16 @@ html,
   }
 }
 
-// =========== VUETIFY OVERRIDES ===========
+// =========== OVERRIDES ===========
+
+// === HIGHLIGHTJS===
+code.hljs {
+  background: unset;
+  text-align: left;
+}
+// === HIGHLIGHTJS===
+
+// === VUETIFY ===
 a {
   text-decoration: none;
   color: unset;
@@ -62,4 +72,6 @@ a {
 .v-card {
   overflow: initial !important;
 }
-// =========== VUETIFY OVERRIDES ===========
+// === VUETIFY ===
+
+// =========== OVERRIDES ===========
