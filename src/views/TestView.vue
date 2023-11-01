@@ -76,7 +76,10 @@ const contactOptions = [
               </div>
             </div>
             <div class="card-bg-effect" style="font-size: 10px">
-              <!-- https://www.google.com/search?q=hexagon+circuit&sca_esv=577513119&tbm=isch&source=lnms&sa=X&ved=2ahUKEwipy_zX-ZmCAxXNHLkGHQf-DlQQ_AUoAXoECAIQAw&biw=1920&bih=931&dpr=1#imgrc=yzftGeyampxRKM&imgdii=272IUIVvMPnneM -->
+              <div class="animation-container">
+                <bubbling-icons-animation height="100%" />
+              </div>
+              <!-- https://www.google.com/search?q=hexagon+circuit&sca_esv=57751119&tbm=isch&source=lnms&sa=X&ved=2ahUKEwipy_zX-ZmCAxXNHLkGHQf-DlQQ_AUoAXoECAIQAw&biw=1920&bih=931&dpr=1#imgrc=yzftGeyampxRKM&imgdii=272IUIVvMPnneM -->
             </div>
           </div>
         </template>
@@ -84,6 +87,9 @@ const contactOptions = [
     </div>
 
     <br />
+    <br />
+
+    <bubbling-icons-animation height="500px" />
   </div>
 </template>
 
@@ -92,6 +98,7 @@ const contactOptions = [
   position: relative;
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 .business-card {
@@ -120,10 +127,11 @@ const contactOptions = [
 
 .card-bg-effect {
   position: absolute;
-  right: 0;
+  right: -35%;
   top: 0;
   height: 100%;
   width: 100%;
+  transform: rotate(-70deg);
   z-index: 0;
   pointer-events: none;
 }

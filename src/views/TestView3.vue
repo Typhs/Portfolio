@@ -1,5 +1,9 @@
-<script setup lang="ts"></script>
+<script lang="ts" setup></script>
 
-<template></template>
+<template>
+  <div>
+    <bubbling-icons-animation />
+  </div>
+</template>
 
 <style lang="scss" scoped></style>

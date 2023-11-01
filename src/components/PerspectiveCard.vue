@@ -131,7 +131,7 @@ $card-rotate-y: calc(v-bind(mousePX) * 30 * 1deg);
         0.6s $hoverEasing,
         box-shadow 1s $hoverEasing;
 
-      outline: 1px solid transparentize(white, 0.5);
+      outline: 1px solid transparentize($white, 0.2);
     }
   }
 }
