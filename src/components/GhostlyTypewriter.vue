@@ -4,7 +4,7 @@ import { refWithControl, templateRef } from "@vueuse/core";
 import anime from "animejs";
 import { AnimeInstance } from "animejs";
 import { ref } from "vue";
-import { onMounted, computed, defineProps } from "vue";
+import { onMounted, computed } from "vue";
 import type { PropType } from "vue";
 import { v4 as uuidv4 } from "uuid";
 

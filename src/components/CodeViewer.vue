@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { templateRef } from "@vueuse/core";
-import { onMounted, defineProps } from "vue";
+import { onMounted } from "vue";
 import hljs from "highlight.js";
 
 // ======= LANGUAGES ======

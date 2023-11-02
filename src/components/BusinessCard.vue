@@ -17,7 +17,7 @@ const contactOptions = [
     label: "www.this-website.com", // TODO -> update website address
     icon: "mdi-cursor-default ",
     action: () => {
-      window.open("www.pudim.com.br", "_blank")?.focus();
+      window.open("http://pudim.com.br/", "_blank")?.focus();
     },
   },
 ] as const;
