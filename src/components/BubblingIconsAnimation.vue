@@ -16,6 +16,14 @@ const props = defineProps({
     type: Number,
     default: 3500,
   },
+  multiplier: {
+    type: [Number, String],
+    default: 10,
+  },
+  size: {
+    type: [Number, String],
+    default: 20,
+  },
 });
 
 const containerEl = templateRef<HTMLDivElement>("animtaion-container");
@@ -68,24 +76,24 @@ function initAnimation() {
 
 <template>
   <div class="animation-container" ref="animtaion-container">
-    <template v-for="i in 10">
-      <v-icon icon="mdi-hexagon" />
-      <v-icon icon="mdi-square-root" />
-      <v-icon icon="mdi-xml" />
-      <v-icon icon="mdi-xml" />
-      <v-icon icon="mdi-code-braces" />
-      <v-icon icon="mdi-qrcode" />
-      <v-icon icon="mdi-code-tags" />
-      <v-icon icon="mdi-database" />
-      <v-icon icon="mdi-source-branch" />
-      <v-icon icon="mdi-variable" />
-      <v-icon icon="mdi-file-code-outline" />
-      <v-icon icon="mdi-api" />
-      <v-icon icon="mdi-console" />
-      <v-icon icon="mdi-web" />
-      <v-icon icon="mdi-cog" />
-      <v-icon icon="mdi-atom" />
-      <v-icon icon="mdi-flask" />
+    <template v-for="i in Number(multiplier)">
+      <v-icon icon="mdi-hexagon" :size="props.size" />
+      <v-icon icon="mdi-square-root" :size="props.size" />
+      <v-icon icon="mdi-xml" :size="props.size" />
+      <v-icon icon="mdi-xml" :size="props.size" />
+      <v-icon icon="mdi-code-braces" :size="props.size" />
+      <v-icon icon="mdi-qrcode" :size="props.size" />
+      <v-icon icon="mdi-code-tags" :size="props.size" />
+      <v-icon icon="mdi-database" :size="props.size" />
+      <v-icon icon="mdi-source-branch" :size="props.size" />
+      <v-icon icon="mdi-variable" :size="props.size" />
+      <v-icon icon="mdi-file-code-outline" :size="props.size" />
+      <v-icon icon="mdi-api" :size="props.size" />
+      <v-icon icon="mdi-console" :size="props.size" />
+      <v-icon icon="mdi-web" :size="props.size" />
+      <v-icon icon="mdi-cog" :size="props.size" />
+      <v-icon icon="mdi-atom" :size="props.size" />
+      <v-icon icon="mdi-flask" :size="props.size" />
     </template>
   </div>
 </template>
@@ -93,7 +101,6 @@ function initAnimation() {
 <style lang="scss" scoped>
 $width: v-bind("props.width");
 $height: v-bind("props.height");
-
 .animation-container {
   height: $height;
   width: $width;

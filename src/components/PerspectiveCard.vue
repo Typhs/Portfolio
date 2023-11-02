@@ -57,10 +57,45 @@ export default {
     this.elHeight = cardEl.offsetHeight;
   },
   methods: {
-    handleMouseMove(e: any) {
+    handleMouseMove(e: MouseEvent) {
       const cardEl = this.$refs["perspective-card"];
-      this.mouseX = e.pageX - cardEl.offsetLeft - this.elWidth / 2;
-      this.mouseY = e.pageY - cardEl.offsetTop - this.elHeight / 2;
+
+      // this returns the coordinates of the Mouse in relation to a specified parent element
+      function getRelativeCoordinates(
+        event: MouseEvent,
+        referenceElement: HTMLDivElement,
+      ) {
+        const position = {
+          x: event.pageX,
+          y: event.pageY,
+        };
+
+        const offset = {
+          left: referenceElement.offsetLeft,
+          top: referenceElement.offsetTop,
+        };
+
+        let reference = referenceElement.offsetParent as HTMLElement;
+
+        while (reference) {
+          offset.left += reference.offsetLeft;
+          offset.top += reference.offsetTop;
+          reference = reference.offsetParent as HTMLElement;
+        }
+
+        return {
+          x: position.x - offset.left,
+          y: position.y - offset.top,
+        };
+      }
+
+      const { y: yRelativeToCard, x: xRelativeToCard } = getRelativeCoordinates(
+        e,
+        cardEl,
+      );
+
+      this.mouseX = xRelativeToCard - this.elWidth / 2;
+      this.mouseY = yRelativeToCard - this.elHeight / 2;
     },
     handleMouseEnter() {
       this.isHovered = true;
@@ -78,25 +113,23 @@ export default {
 </script>
 
 <template>
-  <div>
-    <div
-      class="perspective-card-wrap"
-      @mousemove="handleMouseMove"
-      @mouseenter="handleMouseEnter"
-      @mouseleave="handleMouseLeave"
-      ref="perspective-card"
-    >
-      <div class="perspective-card">
-        <div class="perspective-card-bg-container">
-          <div
-            class="perspective-card-bg"
-            :style="[cardBgTransform, cardBgImage]"
-          ></div>
-        </div>
+  <div
+    class="perspective-card-wrap"
+    @mousemove="handleMouseMove"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
+    ref="perspective-card"
+  >
+    <div class="perspective-card">
+      <div class="perspective-card-bg-container">
+        <div
+          class="perspective-card-bg"
+          :style="[cardBgTransform, cardBgImage]"
+        ></div>
+      </div>
 
-        <div class="perspective-card-content">
-          <slot name="default" :isHovered="isHovered"> </slot>
-        </div>
+      <div class="perspective-card-content">
+        <slot name="default" :isHovered="isHovered"> </slot>
       </div>
     </div>
   </div>
@@ -113,10 +146,8 @@ $card-rotate-x: calc(v-bind(mousePY) * (-30) * 1deg);
 $card-rotate-y: calc(v-bind(mousePX) * 30 * 1deg);
 
 .perspective-card-wrap {
+  width: fit-content;
   box-sizing: content-box;
-  margin: 10px;
-  //transform: perspective(800px);
-  //transform-style: preserve-3d;
 
   &:hover {
     .perspective-card-bg {
@@ -143,7 +174,7 @@ $card-rotate-y: calc(v-bind(mousePX) * 30 * 1deg);
   background-color: #333;
   border-radius: $card-radius;
   outline: 1px solid transparentize(white, 1);
-  box-shadow: black 0 30px 60px 0;
+  box-shadow: 0 30px 60px 0 rgb(2, 2, 36);
   transition:
     1s $returnEasing,
     outline 0.3s;

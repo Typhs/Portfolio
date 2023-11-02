@@ -5,8 +5,9 @@ import TheParallaxHeader from "@/views/Home/TheParallaxHeader.vue";
 <template>
   <the-parallax-header>
     <div align="center" class="py-15">
+      <spacer height="100px" />
       <h1 class="text-white">My name is Ty</h1>
-      <p class="mb-15">and I'm a particularly clever Front-End Developer</p>
+      <p class="mb-10">and I'm a particularly clever Front-End Developer</p>
 
       <p>
         <v-chip color="warning">
@@ -14,13 +15,20 @@ import TheParallaxHeader from "@/views/Home/TheParallaxHeader.vue";
           This project is yet in construction
         </v-chip>
       </p>
-      <div class="contact-info-wrapper">
-        <contact-info />
-      </div>
 
+      <!-- <div class="contact-info-wrapper">
+        <contact-info />
+      </div> -->
+
+      <spacer height="250px" />
       <div>
         <about-me-tabs />
       </div>
+
+      <div class="contact-info-wrapper">
+        <business-card />
+      </div>
+
       <br style="margin-bottom: 50vh" />
     </div>
   </the-parallax-header>
