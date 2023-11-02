@@ -81,9 +81,10 @@ function initAnimation() {
       <v-icon icon="mdi-square-root" :size="props.size" />
       <v-icon icon="mdi-xml" :size="props.size" />
       <v-icon icon="mdi-xml" :size="props.size" />
+      <v-icon icon="mdi-xml" :size="props.size" />
+      <v-icon icon="mdi-code-braces" :size="props.size" />
       <v-icon icon="mdi-code-braces" :size="props.size" />
       <v-icon icon="mdi-qrcode" :size="props.size" />
-      <v-icon icon="mdi-code-tags" :size="props.size" />
       <v-icon icon="mdi-database" :size="props.size" />
       <v-icon icon="mdi-source-branch" :size="props.size" />
       <v-icon icon="mdi-variable" :size="props.size" />
@@ -109,9 +110,9 @@ $height: v-bind("props.height");
   position: relative;
   background: linear-gradient(
     180deg,
-    rgba(2, 0, 36, 0) 0%,
-    rgba(104, 87, 255, 0.1) 63%,
-    rgba(104, 87, 255, 0.3) 100%
+    rgba(2, 0, 36, 0) 10%,
+    rgba(104, 87, 255, 0.1) 70%,
+    rgba(104, 87, 255, 0.25) 100%
   );
   > * {
     position: absolute;

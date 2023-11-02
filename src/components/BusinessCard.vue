@@ -2,19 +2,23 @@
 // TODO - add 'action' field to this Array -> call it when button is clicked
 const contactOptions = [
   {
-    href: "bmtailan@gmail.com",
     label: "bmtailan@gmail.com",
     icon: "mdi-email",
+    action: () => {},
   },
   {
     label: "https://github.com/Typhs/",
-    href: "https://github.com/Typhs/",
     icon: "mdi-github",
+    action: () => {
+      window.open("https://github.com/Typhs/", "_blank")?.focus();
+    },
   },
   {
     label: "www.this-website.com", // TODO -> update website address
-    href: "www.this-website.com",
     icon: "mdi-cursor-default ",
+    action: () => {
+      window.open("www.pudim.com.br", "_blank")?.focus();
+    },
   },
 ] as const;
 </script>
@@ -52,6 +56,7 @@ const contactOptions = [
                   variant="text"
                   v-for="(contact, cIdx) in contactOptions"
                   :key="cIdx"
+                  @click="contact.action()"
                 >
                   <v-avatar
                     variant="flat"
@@ -72,7 +77,7 @@ const contactOptions = [
         </div>
         <div class="card-bg-effect" style="font-size: 10px">
           <div class="animation-container">
-            <bubbling-icons-animation height="100%" multiplier="8" size="20" />
+            <bubbling-icons-animation height="100%" multiplier="5" size="20" />
           </div>
         </div>
       </div>
