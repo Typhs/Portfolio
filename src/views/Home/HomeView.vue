@@ -16,9 +16,9 @@ import TheParallaxHeader from "@/views/Home/TheParallaxHeader.vue";
         </v-chip>
       </p>
 
-      <!-- <div class="contact-info-wrapper">
+      <div class="contact-info-wrapper">
         <contact-info />
-      </div> -->
+      </div>
 
       <spacer height="250px" />
       <div>

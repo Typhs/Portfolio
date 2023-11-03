@@ -83,7 +83,7 @@ function initAnimation() {
       <v-icon icon="mdi-xml" :size="props.size" />
       <v-icon icon="mdi-xml" :size="props.size" />
       <v-icon icon="mdi-code-braces" :size="props.size" />
-      <v-icon icon="mdi-code-braces" :size="props.size" />
+      <v-icon icon="mdi-code-json" :size="props.size" />
       <v-icon icon="mdi-qrcode" :size="props.size" />
       <v-icon icon="mdi-database" :size="props.size" />
       <v-icon icon="mdi-source-branch" :size="props.size" />

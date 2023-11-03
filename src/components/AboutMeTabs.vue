@@ -1,27 +1,52 @@
 <script lang="ts" setup>
 import { ref, onMounted } from "vue";
-import anime from "animejs";
-import { templateRef } from "@vueuse/core";
+
 const tabItems = [
   {
-    label: "Technical abilities",
+    label: "Technical Abilities",
     icon: "mdi-sword-cross",
   },
   {
-    label: "Personal background",
+    label: "Personal Background",
     icon: "mdi-hiking",
   },
   {
-    label: "teste super",
-    icon: "mdi-card-account-details",
+    label: "Mastered Technologies",
+    icon: "mdi-xml",
   },
 ] as const;
 
+const abilitiesContent = [
+  {
+    icon: "mdi-thumb-up",
+    text: "<b>Excelent Front-end knowledge</b> - I know the ins and outs of all the different mechanisms that operate in a modern browser",
+  },
+  {
+    icon: "mdi-source-branch-check",
+    text: "I'm <b>specialized</b> for <b>high complexity desktop projects</b>",
+  },
+  {
+    icon: "mdi-dumbbell",
+    text: "I <b>thrive in adversity</b>, there's nothing I love more than <b>learning new stuff</b>",
+  },
+  {
+    icon: "mdi-book-open-page-variant",
+    text: "I'm entirely <b>self taught</b> and <b>I'll never stop getting better</b>",
+  },
+  {
+    // icon: "mdi-human-greeting-proximity",
+    icon: "mdi-human-male-board-poll",
+    text: "I can <b>handle ambiguidy</b> - all I need is a rough direction, I'm <b>great at planning and iterating</b> through options untill we're all happy with what we've got",
+  },
+  {
+    // icon: "mdi-human-greeting-proximity",
+    icon: "mdi-code-tags-check",
+    // text: "Everywhere I've worked, I've always being known for the speed of my output and the resilience of my code",
+    text: "I am known for my consistency in <b>speed</b> and the <b>reliability of my output</b>",
+  },
+];
+
 const currentTabIdx = ref(Math.floor(tabItems.length / 2));
-
-const navContainer = templateRef<HTMLDivElement>("nav-container");
-
-const signifierEl = templateRef<HTMLDivElement>("current-tab-signifier");
 
 function changeTabTo(newTabIdx: number) {
   currentTabIdx.value = newTabIdx;
@@ -29,12 +54,13 @@ function changeTabTo(newTabIdx: number) {
 </script>
 
 <template>
+  <!-- TODO -> add some media-queries or v-cols for this to work in smaller width devices  -->
   <div class="w-fit-content">
-    <h1 class="mb-5">About me</h1>
+    <h1 class="mb-5">All about me</h1>
     <v-card class="pa-10 w-fit-content" variant="text" max-width="800px">
-      <div class="position-relative">
+      <div class="position-relative mb-13">
         <div class="d-flex justify-center align-center" ref="nav-container">
-          <template v-for="(tab, tabIdx) in tabItems">
+          <template v-for="(tab, tabIdx) in tabItems" :key="tabIdx">
             <!-- <v-icon v-if="tabIdx > 0" icon="mdi-unfold-more-vertical"/> -->
             <div v-if="tabIdx > 0" class="px-2 text-primary opacity-50">
               <v-icon icon="mdi-minus" size="10" />
@@ -70,22 +96,40 @@ function changeTabTo(newTabIdx: number) {
           </template>
         </div>
       </div>
-      <v-divider class="my-8" color="primary" />
+
       <v-window v-model="currentTabIdx">
         <v-window-item>
           <!-- TECHNICAL HABILITIES -->
-          <div>
-            <p>I'm Specialized for high complexity desktop projects</p>
+          <div class="about-me-info-container">
+            <template v-for="(ability, aIdx) in abilitiesContent" :key="aIdx">
+              <div
+                class="d-flex align-center justify-center w-100 my-3"
+                v-if="aIdx > 0"
+              >
+                <v-divider color="white" />
+                <v-icon
+                  icon="mdi-xml"
+                  color="white"
+                  class="mx-4 opacity-25"
+                  size="20"
+                />
+                <v-divider color="white" />
+              </div>
 
-            <p>
-              Excelent Front-end knowledge -> I know the ins and outs of all the
-              different mechanisms that operate in a modern browser
-            </p>
-            <p>
-              I thrive in adversity, there's nothing I love more than learning
-              new stuff
-            </p>
-            <p>I'm entirely self taught and I'll never stop getting better</p>
+              <p>
+                <v-avatar
+                  variant="tonal"
+                  rounded="rounded"
+                  class="mr-2"
+                  size="35"
+                  color="primary"
+                >
+                  <v-icon :icon="ability.icon" />
+                </v-avatar>
+
+                <span v-html="ability.text"></span>
+              </p>
+            </template>
           </div>
         </v-window-item>
 
@@ -114,7 +158,7 @@ function changeTabTo(newTabIdx: number) {
 .nav-item-btn {
   padding-top: 8px;
   padding-bottom: 5px;
-  width: 180px;
+  width: 160px;
   margin: 0 10px;
   border-radius: 10px;
   border: 2px solid transparent;
@@ -146,5 +190,17 @@ function changeTabTo(newTabIdx: number) {
   color: $primary;
 
   box-shadow: 0 0 0px 5px transparentize($primary, 1);
+}
+
+.about-me-info-container {
+  $base-color: $primary;
+  p {
+    font-size: 1.05em;
+
+    &::v-deep b {
+      font-weight: 500;
+      color: mix($base-color, $white, 0.25);
+    }
+  }
 }
 </style>

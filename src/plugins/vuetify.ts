@@ -18,7 +18,7 @@ export default createVuetify({
       light: {
         colors: {
           background: "#090713",
-          "on-background": "#d1d1d1",
+          "on-background": "#d3d2d4",
           primary: "#6857ff",
           "on-primary": "#ffffff",
           secondary: "#fb8c00",
@@ -28,7 +28,7 @@ export default createVuetify({
           black: "#000000",
           "on-black": "#ffff",
           surface: "#110f1a",
-          "on-surface": "#bfbfc4",
+          "on-surface": "#d3d2d4",
         },
         variables: {
           "border-color": "#4B465C",
