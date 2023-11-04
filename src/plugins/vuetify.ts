@@ -7,15 +7,21 @@
 // Styles
 import "@mdi/font/css/materialdesignicons.css";
 import "vuetify/styles";
+import CustomIcons from "@/assets/customIcons";
+import type { IconSet, IconProps } from "vuetify";
+import { h } from "vue";
 
 // Composables
 import { createVuetify } from "vuetify";
+const customIconSet: IconSet = {
+  component: (props: IconProps) => h(CustomIcons[props.icon as any]),
+};
 
-// https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
 export default createVuetify({
   theme: {
+    defaultTheme: "base",
     themes: {
-      light: {
+      base: {
         colors: {
           background: "#090713",
           "on-background": "#d3d2d4",
@@ -40,6 +46,12 @@ export default createVuetify({
           "shadow-key-ambient-opacity": "rgba(12, 16, 27, 0.08)",
         },
       },
+    },
+  },
+  icons: {
+    defaultSet: "mdi",
+    sets: {
+      custom: customIconSet,
     },
   },
 });

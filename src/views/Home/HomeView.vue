@@ -19,6 +19,13 @@ import TheParallaxHeader from "@/views/Home/TheParallaxHeader.vue";
       <div class="contact-info-wrapper">
         <contact-info />
       </div>
+      <!-- <v-icon icon="custom:vue" color="red"/>
+      <v-icon icon="custom:git" color="red"/>
+      <v-icon icon="custom:typescript" color="red"/>
+      <v-icon icon="custom:javascript" color="red"/>
+      <v-icon icon="custom:vuetify" color="red"/>
+      <v-icon icon="custom:html" color="red"/>
+      <v-icon icon="custom:css" color="red"/> -->
 
       <spacer height="250px" />
       <div>

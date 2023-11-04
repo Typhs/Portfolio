@@ -197,7 +197,7 @@ function changeTabTo(newTabIdx: number) {
   p {
     font-size: 1.05em;
 
-    &::v-deep b {
+    :deep(b) {
       font-weight: 500;
       color: mix($base-color, $white, 0.25);
     }
