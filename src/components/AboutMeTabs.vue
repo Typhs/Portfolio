@@ -46,10 +46,33 @@ const abilitiesContent = [
   },
 ];
 
+const techMentions = [
+  {
+    label: "Vuetify",
+    logo: "vuetify",
+  },
+  {
+    label: "SASS",
+    logo: "sass",
+  },
+  {
+    label: "Anime.js",
+    logo: "animejs",
+  },
+  {
+    label: "D3",
+    logo: "d3",
+  },
+  {
+    label: "MySQL",
+    logo: "mysql",
+  },
+];
+
 const currentTabIdx = ref(Math.floor(tabItems.length / 2));
 // BANANA - remove later
 currentTabIdx.value = 2;
-//
+// BANANA
 
 function changeTabTo(newTabIdx: number) {
   currentTabIdx.value = newTabIdx;
@@ -144,30 +167,26 @@ function changeTabTo(newTabIdx: number) {
         <v-window-item>
           <!-- MASTERED TECHNOLOGIES -->
           <div class="about-me-info-container">
-            <p>
-              <v-avatar
-                variant="tonal"
-                rounded="rounded"
-                class="mr-2"
-                size="35"
-                color="primary"
-              >
-                <v-icon icon="custom:vue" />
-              </v-avatar>
-
-              <span
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
-                impedit iure sapiente rerum quisquam, velit consectetur
-                asperiores odit repellendus assumenda?</span
-              >
-            </p>
-
-            <third-party-logo from="vue" />
-            <third-party-logo from="css" />
-            <third-party-logo from="html" />
-            <third-party-logo from="typescript" />
-            <third-party-logo from="javascript" />
-            <third-party-logo from="python" />
+            <the-skill-table :key="currentTabIdx == 2" />
+            <!-- using 'key' here to provoke the init animation when this tab is activated -->
+            <div class="pt-10">
+              <v-card max-width="400px" variant="text">
+                <h4 class="mb-2">Honorable mentions:</h4>
+                <v-chip
+                  class="mx-1 mb-2"
+                  v-for="(mention, mIdx) in techMentions"
+                  :key="mIdx"
+                  pill
+                >
+                  <v-avatar start color="white">
+                    <v-img
+                      :src="`src/assets/thirdParty/${mention.logo}-logo.png`"
+                    ></v-img>
+                  </v-avatar>
+                  {{ mention.label }}
+                </v-chip>
+              </v-card>
+            </div>
           </div>
         </v-window-item>
       </v-window>
