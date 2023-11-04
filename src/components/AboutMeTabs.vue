@@ -47,6 +47,9 @@ const abilitiesContent = [
 ];
 
 const currentTabIdx = ref(Math.floor(tabItems.length / 2));
+// BANANA - remove later
+currentTabIdx.value = 2;
+//
 
 function changeTabTo(newTabIdx: number) {
   currentTabIdx.value = newTabIdx;
@@ -139,8 +142,33 @@ function changeTabTo(newTabIdx: number) {
         </v-window-item>
 
         <v-window-item>
-          <!-- OTHER -->
-          s
+          <!-- MASTERED TECHNOLOGIES -->
+          <div class="about-me-info-container">
+            <p>
+              <v-avatar
+                variant="tonal"
+                rounded="rounded"
+                class="mr-2"
+                size="35"
+                color="primary"
+              >
+                <v-icon icon="custom:vue" />
+              </v-avatar>
+
+              <span
+                >Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
+                impedit iure sapiente rerum quisquam, velit consectetur
+                asperiores odit repellendus assumenda?</span
+              >
+            </p>
+
+            <third-party-logo from="vue" />
+            <third-party-logo from="css" />
+            <third-party-logo from="html" />
+            <third-party-logo from="typescript" />
+            <third-party-logo from="javascript" />
+            <third-party-logo from="python" />
+          </div>
         </v-window-item>
       </v-window>
     </v-card>

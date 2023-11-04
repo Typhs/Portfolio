@@ -77,7 +77,7 @@ const contactOptions = [
         </div>
         <div class="card-bg-effect" style="font-size: 10px">
           <div class="animation-container">
-            <bubbling-icons-animation height="100%" multiplier="5" size="20" />
+            <bubbling-icons-animation height="100%" multiplier="4" size="20" />
           </div>
         </div>
       </div>

@@ -39,7 +39,7 @@ import TheParallaxHeader from "@/views/Home/TheParallaxHeader.vue";
       <br style="margin-bottom: 50vh" />
     </div>
     <div>
-      <bubbling-icons-animation height="500px" size="25" multiplier="7" />
+      <bubbling-icons-animation height="500px" size="25" multiplier="6" />
     </div>
   </the-parallax-header>
 </template>
