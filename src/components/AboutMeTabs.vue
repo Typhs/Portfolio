@@ -1,6 +1,13 @@
 <script lang="ts" setup>
 import { ref, onMounted } from "vue";
 
+function calculateAge(birthday: Date) {
+  const ageDifMs = Date.now() - birthday.getTime();
+  const ageDate = new Date(ageDifMs); // miliseconds from epoch
+  return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
+const currentAge = calculateAge(new Date("2002-12-26"));
+
 const tabItems = [
   {
     label: "Technical Abilities",
@@ -167,18 +174,20 @@ function changeTabTo(newTabIdx: number) {
         <v-window-item>
           <!-- PERSONAL BACKGROUND -->
           <the-personal-journey-map :key="currentTabIdx == 1" />
+          <div class="mx-auto w-fit-content pt-5" align="left">
+            <h4 align="center" class="mb-2">Also notably:</h4>
+            <v-icon icon="mdi-star" size="10" color="primary" class="mr-1" />
+            I'm <b>brazilian</b> <image-as-icon from="brazil-flag" size="25" />
+            <br />
 
-          Studied code on my own since highschool <br /><br />
-          Enroled in University doing Systems Analysis and Development for 2
-          years <br /><br />
-          Spent 1 month as a intern in Fiqon <br />
-          Spent 2 months as a Junior Developer in Fiqon <br />
-          Spent 8 months as a Mid Developer in Fiqon <br />
-          Spent 7 months as a Senior Developer in Fiqon <br /><br />
+            <v-icon icon="mdi-star" size="10" color="primary" class="mr-1" />
+            I'm currently <b>{{ currentAge }} years old</b>
+            <v-icon icon="mdi-party-popper" color="primary" /> <br />
 
-          Am 20 years old <br />
-          Am brazilian <br />
-          Speak english fluently
+            <v-icon icon="mdi-star" size="10" color="primary" />
+            I'm a <b>fluent English speaker</b>
+            <v-icon icon="mdi-translate" color="primary" class="mr-1" /><br />
+          </div>
         </v-window-item>
 
         <v-window-item>
@@ -200,7 +209,7 @@ function changeTabTo(newTabIdx: number) {
                 >
                   <v-avatar start color="white">
                     <v-img
-                      :src="`src/assets/thirdParty/${mention.logo}-logo.png`"
+                      :src="`src/assets/images/${mention.logo}.png`"
                     ></v-img>
                   </v-avatar>
                   {{ mention.label }}
@@ -266,7 +275,7 @@ function changeTabTo(newTabIdx: number) {
 
     :deep(b) {
       font-weight: 500;
-      color: mix($base-color, $white, 0.25);
+      color: $primary-accent;
     }
   }
 }

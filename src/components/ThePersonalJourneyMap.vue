@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { templateRef } from "@vueuse/core";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import anime from "animejs";
 import { v4 as uuidv4 } from "uuid";
 const id = uuidv4(); // unique id generated, used to uniquify the IDs of svg elements
@@ -12,20 +12,32 @@ const mapPoints = [
     label: "SCHOOL",
     key: "a",
     icon: "custom:school",
+    cardPlacement: "left",
+    stage: 1,
   },
   {
     label: "UNIVERSITY",
     key: "b",
     icon: "custom:college",
+    cardPlacement: "right",
+    stage: 2,
   },
   {
     label: "WORK",
     key: "c",
     icon: "mdi-tie",
+    cardPlacement: "left",
+    stage: 3,
   },
-];
+] as const;
 
-onMounted(async () => {
+const initStage = ref(0);
+
+onMounted(() => {
+  initAnimation();
+});
+
+function initAnimation() {
   anime({
     //initialize all the paths as invisible
     targets: svgEl.value?.querySelectorAll(`path.mask`),
@@ -37,13 +49,24 @@ onMounted(async () => {
     scale: 0,
     duration: 0,
   });
+  anime({
+    targets: mapPointCardEls.value,
+    scaleY: 0,
+    duration: 0,
+  });
 
-  await animatePoint("a");
-  await animatePath(1);
-  await animatePoint("b");
-  await animatePath(2);
-  await animatePoint("c");
-});
+  setTimeout(async () => {
+    initStage.value = 0;
+    await animatePoint("a");
+    initStage.value = 1;
+    await animatePath(1);
+    await animatePoint("b");
+    initStage.value = 2;
+    await animatePath(2);
+    await animatePoint("c");
+    initStage.value = 3;
+  }, 300);
+}
 
 function animatePath(pathNum: 1 | 2) {
   return new Promise((resolve) => {
@@ -59,13 +82,27 @@ function animatePath(pathNum: 1 | 2) {
 }
 
 const mapPointEls = templateRef<HTMLElement[]>("map-point");
+const mapPointCardEls = templateRef<HTMLElement[]>("map-point-card");
+
 function animatePoint(pointId: "a" | "b" | "c") {
   return new Promise((resolve) => {
-    const el = mapPointEls.value.find(
+    const pointEl = mapPointEls.value.find(
       (el) => String(el.dataset.pointId) == String(pointId),
     );
+    const cardEl = mapPointCardEls.value.find(
+      (el) => String(el.dataset.pointId) == String(pointId),
+    );
+
     anime({
-      targets: el,
+      targets: cardEl,
+      scaleY: [0, 1],
+      easing: "easeInQuad",
+      duration: 150,
+      delay: 900,
+    });
+
+    anime({
+      targets: pointEl,
       scale: [0, 1],
       easing: "spring(1, 100, 50, 20)",
       complete: resolve,
@@ -136,6 +173,7 @@ function animatePoint(pointId: "a" | "b" | "c") {
         />
       </g>
     </svg>
+
     <div class="superpositioned-on-svg">
       <div
         class="map-point"
@@ -149,6 +187,85 @@ function animatePoint(pointId: "a" | "b" | "c") {
           </v-avatar>
           <div class="map-point-label">
             {{ point.label }}
+          </div>
+        </div>
+
+        <div
+          class="point-card-container"
+          :class="
+            point.cardPlacement == 'left'
+              ? 'positioned-left'
+              : 'positioned-right'
+          "
+        >
+          <div
+            class="d-flex align-center"
+            :class="
+              point.cardPlacement == 'left' ? 'justify-start' : 'justify-end'
+            "
+            ref="map-point-card"
+            :data-point-id="point.key"
+          >
+            <v-icon
+              icon="mdi-arrow-left-thin"
+              class="ml-4"
+              size="30"
+              v-if="point.cardPlacement == 'left'"
+            />
+            <v-expand-transition>
+              <div class="point-card" v-show="initStage >= point.stage">
+                <template v-if="point.key == 'a'">
+                  <div align="right" class="card-date">
+                    <v-chip size="small" class="mb-1"> 2018 </v-chip>
+                  </div>
+                  <div>
+                    Started <b>studying code on my own</b> since Highschool
+                  </div>
+                </template>
+                <template v-else-if="point.key == 'b'">
+                  <div align="left" class="card-date">
+                    <v-chip size="small" class="mb-1"> 2020 </v-chip>
+                  </div>
+                  <div>
+                    Enroled in University for
+                    <b>Systems Analysis and Development</b>
+                  </div>
+                </template>
+                <template v-else-if="point.key == 'c'">
+                  <div align="right" class="card-date">
+                    <v-chip size="small" class="mb-1"> 2022 </v-chip>
+                  </div>
+                  <div>
+                    Entered the industry in Fiqon as: <br />
+                    <small>
+                      <v-icon icon="mdi-square-rounded" size="5" class="mr-1" />
+                      <b>Intern</b>
+                      <v-icon icon="mdi-arrow-right-thin" size="14" /> 1 month
+                      <br />
+                      <v-icon icon="mdi-square-rounded" size="5" class="mr-1" />
+                      <b>Junior Frontend dev</b>
+                      <v-icon icon="mdi-arrow-right-thin" size="14" /> 2 months
+                      <br />
+                      <v-icon icon="mdi-square-rounded" size="5" class="mr-1" />
+                      <b>Mid Frontend dev</b>
+                      <v-icon icon="mdi-arrow-right-thin" size="14" /> 8 months
+                      <br />
+                      <v-icon icon="mdi-square-rounded" size="5" class="mr-1" />
+                      <b>Senior Frontend dev</b>
+                      <v-icon icon="mdi-arrow-right-thin" size="14" /> 7 months
+                      <br />
+                    </small>
+                  </div>
+                </template>
+              </div>
+            </v-expand-transition>
+
+            <v-icon
+              icon="mdi-arrow-right-thin"
+              class="mr-4"
+              size="30"
+              v-if="point.cardPlacement == 'right'"
+            />
           </div>
         </div>
       </div>
@@ -165,13 +282,17 @@ function animatePoint(pointId: "a" | "b" | "c") {
   width: 100%;
 
   .map-point {
+    &:hover {
+      .point-card-container {
+        opacity: 1 !important;
+      }
+    }
     $point-color: $secondary;
     $point-bg: mix($point-color, $background, 0.9);
     position: absolute;
     transform: translate(-50%, -50%);
     :deep(.v-avatar) {
       box-shadow: 0 0 0 10px $point-bg;
-      //outline: 12px solid $point-bg;
       .v-icon {
         color: $point-bg;
       }
@@ -200,6 +321,51 @@ function animatePoint(pointId: "a" | "b" | "c") {
     &.point-c {
       left: calc(50 / 200 * 100 * 1%);
       top: calc(183 / 200 * 100 * 1%);
+    }
+
+    .point-card-container {
+      $card-color: $info;
+      color: $card-color;
+      position: absolute;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+      &.positioned-left {
+        right: 0;
+        top: 50%;
+        transform: translate(100%, -50%);
+        .point-card {
+          border-left-width: 3px;
+          margin-left: -7px;
+        }
+      }
+      &.positioned-right {
+        left: 0;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        .point-card {
+          border-right-width: 3px;
+          margin-right: -7px;
+        }
+      }
+
+      .point-card {
+        position: relative;
+        //color: $on-background;
+        text-align: left;
+        width: max-content;
+        max-width: 300px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: mix($card-color, $background, 0.9);
+        border: 0 solid $card-color;
+        .card-date {
+          position: absolute;
+          width: 100%;
+          top: 0;
+          left: 0;
+          transform: translateY(-100%);
+        }
+      }
     }
   }
 }

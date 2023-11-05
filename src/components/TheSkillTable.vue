@@ -129,7 +129,7 @@ onMounted(() => {
         <tr v-for="(tech, tIdx) in technologiesContent" :key="tIdx">
           <td align="right" class="white-space-nowrap pr-3">
             <span class="font-weight-black text-h6">{{ tech.label }}</span>
-            <third-party-logo :from="tech.logo" class="ml-2" size="40" />
+            <image-as-icon :from="tech.logo" class="ml-2" size="40" />
           </td>
 
           <td>

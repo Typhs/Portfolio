@@ -12,7 +12,7 @@ const props = defineProps({
 });
 
 const imgUrl = computed(() => {
-  return `src/assets/thirdParty/${props.from}-logo.png`;
+  return `src/assets/images/${props.from}.png`;
 });
 </script>
 
