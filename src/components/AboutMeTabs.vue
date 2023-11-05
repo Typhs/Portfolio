@@ -50,22 +50,27 @@ const techMentions = [
   {
     label: "Vuetify",
     logo: "vuetify",
+    url: "https://vuetifyjs.com/",
   },
   {
     label: "SASS",
     logo: "sass",
+    url: "https://sass-lang.com/",
   },
   {
     label: "Anime.js",
     logo: "animejs",
+    url: "https://animejs.com/",
   },
   {
-    label: "D3",
+    label: "D3.js",
     logo: "d3",
+    url: "https://d3js.org/",
   },
   {
     label: "MySQL",
     logo: "mysql",
+    url: "https://www.mysql.com/",
   },
 ];
 
@@ -173,7 +178,10 @@ function changeTabTo(newTabIdx: number) {
               <v-card max-width="400px" variant="text">
                 <h4 class="mb-2">Honorable mentions:</h4>
                 <v-chip
+                  link
+                  :href="mention.url"
                   class="mx-1 mb-2"
+                  target="_blank"
                   v-for="(mention, mIdx) in techMentions"
                   :key="mIdx"
                   pill

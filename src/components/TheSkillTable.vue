@@ -5,12 +5,6 @@ import anime from "animejs";
 
 const technologiesContent = [
   {
-    label: "VUE",
-    logo: "vue",
-    percentage: "92",
-    color: "#40b782",
-  },
-  {
     label: "CSS",
     logo: "css",
     percentage: "95",
@@ -19,8 +13,14 @@ const technologiesContent = [
   {
     label: "JAVASCRIPT",
     logo: "javascript",
-    percentage: "93",
+    percentage: "94",
     color: "#f0dc4e",
+  },
+  {
+    label: "VUE",
+    logo: "vue",
+    percentage: "92",
+    color: "#40b782",
   },
   {
     label: "TYPESCRIPT",
@@ -31,7 +31,7 @@ const technologiesContent = [
   {
     label: "PYTHON",
     logo: "python",
-    percentage: "65",
+    percentage: "60",
     color: "#fec32c",
   },
 ];
@@ -55,10 +55,12 @@ onMounted(() => {
       targets: Array.from(barEl.children).filter((e) =>
         e.className.includes("skill-bar"),
       ),
-      width: 0,
-      direction: "reverse",
-      duration: 1000,
-      easing: "easeInQuad",
+      width: (el: HTMLElement) => {
+        return [0, `${el.dataset.percentage}%`];
+      },
+      duration: 700,
+      easing: "easeInOutQuad",
+      delay: idx * 200,
     });
   });
 
@@ -137,7 +139,11 @@ onMounted(() => {
               ref="skill-bar"
             >
               <div class="percentage-label">{{ tech.percentage }}%</div>
-              <div class="skill-bar" :style="`width: ${tech.percentage}%;`" />
+              <div
+                class="skill-bar"
+                :style="`width: ${tech.percentage}%;`"
+                :data-percentage="tech.percentage"
+              />
             </div>
           </td>
         </tr>
