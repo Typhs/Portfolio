@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import ConstellationBackground from "@/views/ViewComponents/Home/ConstellationBackground.vue";
-import CircleHeader from "@/views/ViewComponents/Home/CircleHeader.vue";
+import TheHeaderConstellation from "@/views/Home/TheHeaderConstellation.vue";
+import TheHeaderMoon from "@/views/Home/TheHeaderMoon.vue";
 
 import { onMounted, ref } from "vue";
 import { templateRef } from "@vueuse/core";
@@ -50,21 +50,20 @@ function speedUpConstellation() {
 
       <div class="bg-shadow-overlay parallax-layer" data-depth="0.85" />
       <div class="parallax-layer" data-depth="0.10">
-        <constellation-background
+        <the-header-constellation
           class="h-100 pointer-events-all"
           :speedModifier="constellationSpeed"
         />
       </div>
 
+      <div class="bg-fade-wave parallax-layer" data-depth="0.1" />
       <div class="parallax-layer h-100" data-depth="0.40">
-        <circle-header
+        <the-header-moon
           class="center-middle expand-init pointer-events-all"
           v-model="darkeningIntensity"
           @mousemove="speedUpConstellation()"
         />
       </div>
-
-      <div class="bg-fade-wave parallax-layer" data-depth="0.1" />
 
       <div class="bg-back-buildings parallax-layer" data-depth="0.3" />
 
@@ -76,22 +75,14 @@ function speedUpConstellation() {
     <div class="after-parallax">
       <div style="min-height: 100vh">
         <div>
-          <!-- ADD REST OF HOME PAGE HERE -->
-          <div align="center" class="pt-15">
-            <h1>My name is Ty</h1>
-            <p class="mb-15">
-              And I'm a particularly clever Front-End Developer
-            </p>
-
-            <p>This project is yet in construction</p>
-          </div>
+          <slot name="default"></slot>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $parallaxHeight: 130vh;
 
 $darkeningIntensity: v-bind(darkeningIntensity);
@@ -111,7 +102,7 @@ $darkeningIntensity: v-bind(darkeningIntensity);
 }
 .after-parallax {
   position: relative;
-  background-color: #050309;
+  background-color: $background;
 }
 .parallax-layer {
   background-position: bottom center;
@@ -129,7 +120,6 @@ $darkeningIntensity: v-bind(darkeningIntensity);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  //filter: contrast(2);
   opacity: 0.5;
 }
 
@@ -154,20 +144,15 @@ $darkeningIntensity: v-bind(darkeningIntensity);
   background-image: url("@/assets/heroHeader/transition-railing.png");
   background-position: right bottom;
   background-size: 100% auto;
-  box-shadow: 0px 100px 0px 0px #050309; // this covers the seams that sometimes appear after the end of Parllax Layers
+  box-shadow: 0px 100px 0px 0px $background; // this covers the seams that sometimes appear after the end of Parllax Layers
 }
 .bg-shadow-overlay {
-  //background-image: url("@/assets/header/BuildingsHeader-clouds.png");
-  //background-color: red;
   background-position: bottom;
   background-size: cover;
   background-position: center;
-  //opacity: 0.2;
   background-repeat: repeat;
   box-shadow: inset 0 0 calc(#{$darkeningIntensity} * 10vw)
     calc(#{$darkeningIntensity} * 10px) rgba(0, 0, 0, 0.5);
-
-  //box-shadow:  inset 0 0 1000px black;
 }
 .pointer-events-all {
   pointer-events: all;

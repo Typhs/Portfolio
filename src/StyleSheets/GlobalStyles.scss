@@ -1,0 +1,77 @@
+// =========== FONT-FAMILY SETUP
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&display=swap");
+
+html,
+#app {
+  font-family: "Sora", sans-serif !important;
+}
+
+// =========== SCROLLBAR CUSTOMIZATION ===========
+::-webkit-scrollbar {
+  width: 13px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+  &:hover {
+    background: #555;
+  }
+}
+// =========== SCROLLBAR CUSTOMIZATION ===========
+.opacity-0 {
+  opacity: 0;
+}
+.opacity-25 {
+  opacity: 0.25;
+}
+.opacity-50 {
+  opacity: 0.5;
+}
+.opacity-75 {
+  opacity: 0.75;
+}
+.opacity-100 {
+  opacity: 1;
+}
+
+.w-fit-content {
+  width: fit-content;
+}
+
+.space-evenly {
+  justify-content: space-evenly;
+}
+
+.hover-underline {
+  transition: border-bottom 0.25s;
+  border-bottom: 1px solid transparent;
+  &:hover {
+    border-bottom: 1px solid currentColor;
+  }
+}
+
+// =========== OVERRIDES ===========
+
+// === HIGHLIGHTJS===
+code.hljs {
+  background: unset;
+  text-align: left;
+}
+// === HIGHLIGHTJS===
+
+// === VUETIFY ===
+a {
+  text-decoration: none;
+  color: unset;
+}
+.v-btn {
+  text-transform: none !important;
+}
+.v-card {
+  overflow: initial !important;
+}
+// === VUETIFY ===
+
+// =========== OVERRIDES ===========

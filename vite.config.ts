@@ -19,6 +19,13 @@ export default defineConfig({
     }),
     Components(),
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import '@/StyleSheets/ThemeVariables.scss';`,
+      },
+    },
+  },
   define: { "process.env": {} },
   resolve: {
     alias: {
