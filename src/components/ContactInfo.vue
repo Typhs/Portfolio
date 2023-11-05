@@ -103,7 +103,7 @@ onMounted(() => {
             size="large"
           >
             <div class="contact-icon" :class="{ 'opacity-0': !fullyVisible }">
-              <v-icon icon="mdi-github" />
+              <v-icon icon="custom:git" />
               <v-icon icon="mdi-arrow-right-thin" size="18" class="mx-1" />
             </div>
             <div class="text-indigo-lighten-3">

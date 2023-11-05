@@ -141,14 +141,14 @@ function changeTabTo(newTabIdx: number) {
                 class="d-flex align-center justify-center w-100 my-3"
                 v-if="aIdx > 0"
               >
-                <v-divider color="white" />
+                <v-divider color="secondary" class="border-opacity-25" />
                 <v-icon
                   icon="mdi-xml"
-                  color="white"
-                  class="mx-4 opacity-25"
+                  color="secondary"
+                  class="mx-4 opacity-50"
                   size="20"
                 />
-                <v-divider color="white" />
+                <v-divider color="secondary" class="border-opacity-25" />
               </div>
 
               <p>

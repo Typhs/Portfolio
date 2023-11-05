@@ -8,7 +8,7 @@ const contactOptions = [
   },
   {
     label: "https://github.com/Typhs/",
-    icon: "mdi-github",
+    icon: "custom:git",
     action: () => {
       window.open("https://github.com/Typhs/", "_blank")?.focus();
     },

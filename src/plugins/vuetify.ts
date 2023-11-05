@@ -35,7 +35,7 @@ export default createVuetify({
           "on-black": "#ffff",
           surface: "#110f1a",
           "on-surface": "#d3d2d4",
-          "primary-accent": "#6d64c4",
+          "primary-accent": "#897ef3",
         },
         variables: {
           "border-color": "#4B465C",
