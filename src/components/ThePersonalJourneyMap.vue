@@ -274,6 +274,10 @@ function animatePoint(pointId: "a" | "b" | "c") {
 </template>
 
 <style lang="scss" scoped>
+$point-color: $secondary;
+$card-color: $on-background;
+$map-path-color: $primary;
+
 .superpositioned-on-svg {
   position: absolute;
   left: 0;
@@ -287,7 +291,6 @@ function animatePoint(pointId: "a" | "b" | "c") {
         opacity: 1 !important;
       }
     }
-    $point-color: $secondary;
     $point-bg: mix($point-color, $background, 0.9);
     position: absolute;
     transform: translate(-50%, -50%);
@@ -324,7 +327,6 @@ function animatePoint(pointId: "a" | "b" | "c") {
     }
 
     .point-card-container {
-      $card-color: $info;
       color: $card-color;
       position: absolute;
       opacity: 0.8;
@@ -370,11 +372,11 @@ function animatePoint(pointId: "a" | "b" | "c") {
   }
 }
 svg.journey-map-svg {
-  fill: $primary;
+  fill: $map-path-color;
 
   path.content {
     fill: none;
-    stroke: $primary;
+    stroke: $map-path-color;
     stroke-width: 1.2;
     stroke-dasharray: 4;
     stroke-dashoffset: 4;

@@ -96,11 +96,11 @@ function changeTabTo(newTabIdx: number) {
   <div class="w-fit-content">
     <h1 class="mb-5">All about me</h1>
     <v-card class="pa-10 w-fit-content" variant="text" max-width="800px">
-      <div class="position-relative mb-13">
+      <div class="position-relative">
         <div class="d-flex justify-center align-center" ref="nav-container">
           <template v-for="(tab, tabIdx) in tabItems" :key="tabIdx">
             <!-- <v-icon v-if="tabIdx > 0" icon="mdi-unfold-more-vertical"/> -->
-            <div v-if="tabIdx > 0" class="px-2 text-primary opacity-50">
+            <div v-if="tabIdx > 0" class="px-2 text-white opacity-50">
               <v-icon icon="mdi-minus" size="10" />
               <v-icon icon="mdi-rhombus" size="10" />
               <v-icon icon="mdi-minus" size="10" />
@@ -138,7 +138,7 @@ function changeTabTo(newTabIdx: number) {
       <v-window v-model="currentTabIdx">
         <v-window-item>
           <!-- TECHNICAL HABILITIES -->
-          <div class="about-me-info-container">
+          <div class="about-me-info-container mt-10">
             <template v-for="(ability, aIdx) in abilitiesContent" :key="aIdx">
               <div
                 class="d-flex align-center justify-center w-100 my-3"
@@ -173,26 +173,42 @@ function changeTabTo(newTabIdx: number) {
 
         <v-window-item>
           <!-- PERSONAL BACKGROUND -->
-          <the-personal-journey-map :key="currentTabIdx == 1" />
-          <div class="mx-auto w-fit-content pt-5" align="left">
-            <h4 align="center" class="mb-2">Also notably:</h4>
-            <v-icon icon="mdi-star" size="10" color="primary" class="mr-1" />
-            I'm <b>brazilian</b> <image-as-icon from="brazil-flag" size="25" />
-            <br />
+          <the-personal-journey-map :key="currentTabIdx == 1" class="mt-5" />
+          <v-divider class="mb-3" />
+          <v-card class="mx-auto w-fit-content" align="left" variant="text">
+            <v-card-item>
+              <v-card-title align="center"> Also notably: </v-card-title>
+              <h4 align="center" class="mb-2"></h4>
+              <v-icon icon="mdi-star" size="10" color="primary" class="mr-1" />
+              I'm <b>Brazilian</b>
+              <image-as-icon from="brazil-flag" size="25" class="mx-1" />
+              <br />
 
-            <v-icon icon="mdi-star" size="10" color="primary" class="mr-1" />
-            I'm currently <b>{{ currentAge }} years old</b>
-            <v-icon icon="mdi-party-popper" color="primary" /> <br />
+              <v-icon icon="mdi-star" size="10" color="primary" class="mr-1" />
+              I'm currently <b>{{ currentAge }} years old</b>
+              <v-icon
+                icon="mdi-party-popper"
+                color="primary"
+                size="20"
+                class="mx-1"
+              />
+              <br />
 
-            <v-icon icon="mdi-star" size="10" color="primary" />
-            I'm a <b>fluent English speaker</b>
-            <v-icon icon="mdi-translate" color="primary" class="mr-1" /><br />
-          </div>
+              <v-icon icon="mdi-star" size="10" color="primary" />
+              I'm a <b>fluent English speaker</b>
+              <v-icon
+                icon="mdi-translate"
+                color="primary"
+                size="20"
+                class="mx-1"
+              /><br />
+            </v-card-item>
+          </v-card>
         </v-window-item>
 
         <v-window-item>
           <!-- MASTERED TECHNOLOGIES -->
-          <div class="about-me-info-container">
+          <div class="about-me-info-container mt-10">
             <the-skill-table :key="currentTabIdx == 2" />
             <!-- using 'key' here to provoke the init animation when this tab is activated -->
             <div class="pt-10">
