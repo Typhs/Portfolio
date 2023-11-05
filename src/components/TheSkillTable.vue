@@ -187,6 +187,7 @@ onMounted(() => {
       color: $primary-accent;
       text-align: center;
       font-size: 13px;
+      font-weight: bolder;
     }
   }
 }

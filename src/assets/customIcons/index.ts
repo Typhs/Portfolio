@@ -5,6 +5,8 @@ import Typescript from "@/assets/customIcons/TypescriptLogo.vue";
 import Javascript from "@/assets/customIcons/JavascriptLogo.vue";
 import Vuetify from "@/assets/customIcons/VuetifyLogo.vue";
 import Html from "@/assets/customIcons/HtmlLogo.vue";
+import School from "@/assets/customIcons/School.vue";
+import College from "@/assets/customIcons/College.vue";
 
 /* ------------------- ADD ICON FILES HERE ------------------- */
 const iconFiles = {
@@ -15,6 +17,8 @@ const iconFiles = {
   Vuetify,
   Html,
   Css,
+  School,
+  College,
 } as any;
 /* ------------------- ADD ICON FILES HERE ------------------- */
 

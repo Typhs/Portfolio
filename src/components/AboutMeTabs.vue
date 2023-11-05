@@ -76,7 +76,7 @@ const techMentions = [
 
 const currentTabIdx = ref(Math.floor(tabItems.length / 2));
 // BANANA - remove later
-currentTabIdx.value = 2;
+currentTabIdx.value = 1;
 // BANANA
 
 function changeTabTo(newTabIdx: number) {
@@ -166,7 +166,19 @@ function changeTabTo(newTabIdx: number) {
 
         <v-window-item>
           <!-- PERSONAL BACKGROUND -->
-          s
+          <the-personal-journey-map :key="currentTabIdx == 1" />
+
+          Studied code on my own since highschool <br /><br />
+          Enroled in University doing Systems Analysis and Development for 2
+          years <br /><br />
+          Spent 1 month as a intern in Fiqon <br />
+          Spent 2 months as a Junior Developer in Fiqon <br />
+          Spent 8 months as a Mid Developer in Fiqon <br />
+          Spent 7 months as a Senior Developer in Fiqon <br /><br />
+
+          Am 20 years old <br />
+          Am brazilian <br />
+          Speak english fluently
         </v-window-item>
 
         <v-window-item>
