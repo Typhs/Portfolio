@@ -216,7 +216,9 @@ function animatePoint(pointId: "a" | "b" | "c") {
               <div class="point-card" v-show="initStage >= point.stage">
                 <template v-if="point.key == 'a'">
                   <div align="right" class="card-date">
-                    <v-chip size="small" class="mb-1"> 2018 </v-chip>
+                    <v-chip size="small" class="mb-1" v-if="point.key == 'a'">
+                      2018
+                    </v-chip>
                   </div>
                   <div>
                     Started <b>studying code on my own</b> since Highschool
@@ -224,7 +226,9 @@ function animatePoint(pointId: "a" | "b" | "c") {
                 </template>
                 <template v-else-if="point.key == 'b'">
                   <div align="left" class="card-date">
-                    <v-chip size="small" class="mb-1"> 2020 </v-chip>
+                    <v-chip size="small" class="mb-1" v-if="point.key == 'b'">
+                      2020
+                    </v-chip>
                   </div>
                   <div>
                     Enroled in University for
@@ -233,7 +237,9 @@ function animatePoint(pointId: "a" | "b" | "c") {
                 </template>
                 <template v-else-if="point.key == 'c'">
                   <div align="right" class="card-date">
-                    <v-chip size="small" class="mb-1"> 2022 </v-chip>
+                    <v-chip size="small" class="mb-1" v-if="point.key == 'c'">
+                      2022
+                    </v-chip>
                   </div>
                   <div>
                     Entered the industry in Fiqon as: <br />
@@ -366,6 +372,11 @@ $map-path-color: $primary;
           top: 0;
           left: 0;
           transform: translateY(-100%);
+          animation: transition-opacity 0.6s;
+          animation-timing-function: linear;
+          animation-fill-mode: both;
+          animation-delay: 0.4s;
+          animation-iteration-count: 1;
         }
       }
     }
@@ -385,6 +396,15 @@ svg.journey-map-svg {
     fill: none;
     stroke: white;
     stroke-width: 5;
+  }
+}
+
+@keyframes transition-opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 </style>
