@@ -46,7 +46,7 @@ const contactOptions = [
                     class="border-opacity-100"
                   />
                 </div>
-                <div>Senior Front-end developer</div>
+                <div>Senior Front-End developer</div>
               </div>
 
               <div>

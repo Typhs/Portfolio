@@ -26,7 +26,7 @@ const tabItems = [
 const abilitiesContent = [
   {
     icon: "mdi-thumb-up",
-    text: "<b>Excelent Front-end knowledge</b> - I know the ins and outs of all the different mechanisms that operate in a modern browser",
+    text: "<b>Excelent Front-End knowledge</b> - I know the ins and outs of all the different mechanisms that operate in a modern browser",
   },
   {
     icon: "mdi-source-branch-check",
@@ -82,9 +82,6 @@ const techMentions = [
 ];
 
 const currentTabIdx = ref(Math.floor(tabItems.length / 2));
-// BANANA - remove later
-currentTabIdx.value = 1;
-// BANANA
 
 function changeTabTo(newTabIdx: number) {
   currentTabIdx.value = newTabIdx;
@@ -194,7 +191,7 @@ function changeTabTo(newTabIdx: number) {
               />
               <br />
 
-              <v-icon icon="mdi-star" size="10" color="primary" />
+              <v-icon icon="mdi-star" size="10" color="primary" class="mr-1" />
               I'm a <b>fluent English speaker</b>
               <v-icon
                 icon="mdi-translate"
