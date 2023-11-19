@@ -12,7 +12,7 @@ const props = defineProps({
 });
 
 const imgUrl = computed(() => {
-  return `src/assets/images/${props.from}.png`;
+  return `dynamicAssets/${props.from}.png`;
 });
 </script>
 

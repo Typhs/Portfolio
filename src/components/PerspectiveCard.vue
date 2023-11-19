@@ -11,7 +11,7 @@ export default {
     };
   },
   props: {
-    dataImage: {
+    bgImage: {
       type: String,
       default: "",
     },
@@ -47,7 +47,7 @@ export default {
     },
     cardBgImage() {
       return {
-        backgroundImage: `url(${this.dataImage})`,
+        backgroundImage: `url(${this.bgImage})`,
       };
     },
   },
