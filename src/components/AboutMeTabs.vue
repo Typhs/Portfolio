@@ -221,9 +221,7 @@ function changeTabTo(newTabIdx: number) {
                   pill
                 >
                   <v-avatar start color="white">
-                    <v-img
-                      :src="`src/assets/images/${mention.logo}.png`"
-                    ></v-img>
+                    <v-img :src="`dynamicAssets/${mention.logo}.png`"></v-img>
                   </v-avatar>
                   {{ mention.label }}
                 </v-chip>

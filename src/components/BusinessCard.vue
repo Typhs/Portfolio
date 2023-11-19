@@ -25,7 +25,7 @@ const contactOptions = [
 
 <template>
   <perspective-card
-    data-image="src/assets/paper-texture.jpg"
+    bg-image="dynamicAssets/paper-texture.jpg"
     width="525px"
     height="300px"
     :background-parallax="false"
