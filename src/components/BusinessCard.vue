@@ -14,10 +14,10 @@ const contactOptions = [
     },
   },
   {
-    label: "www.this-website.com", // TODO -> update website address
+    label: window.location.host,
     icon: "mdi-cursor-default ",
     action: () => {
-      window.open("http://pudim.com.br/", "_blank")?.focus();
+      window.open(window.location.origin, "_blank")?.focus();
     },
   },
 ] as const;

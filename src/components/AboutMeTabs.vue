@@ -81,7 +81,7 @@ const techMentions = [
   },
 ];
 
-const currentTabIdx = ref(Math.floor(tabItems.length / 2));
+const currentTabIdx = ref(0);
 
 function changeTabTo(newTabIdx: number) {
   currentTabIdx.value = newTabIdx;
