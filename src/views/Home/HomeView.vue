@@ -65,12 +65,18 @@ import TheParallaxHeader from "@/views/Home/TheParallaxHeader.vue";
         >
       </v-card>
 
-      <spacer height="50vh" />
+      <spacer height="30vh" />
     </div>
+
+    <contact-info />
+
+    <spacer height="20vh" />
+
     <div>
       <bubbling-icons-animation height="500px" size="25" multiplier="6" />
     </div>
+
+    <the-mouse-filter v-if="false" />
+    <!-- REVIEW mouse filter effect -->
   </the-parallax-header>
 </template>
-
-<style lang="scss" scoped></style>

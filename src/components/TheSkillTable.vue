@@ -25,7 +25,7 @@ const technologiesContent = [
   {
     label: "TYPESCRIPT",
     logo: "typescript",
-    percentage: "75",
+    percentage: "85",
     color: "#2d79c7",
   },
   {
