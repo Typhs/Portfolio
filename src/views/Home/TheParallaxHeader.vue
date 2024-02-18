@@ -11,11 +11,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import anime from "animejs";
 
 gsap.registerPlugin(ScrollTrigger);
+const parallaxContainerEl = templateRef<HTMLElement>("parallax-container");
 onMounted(() => {
-  const parallaxContainer = templateRef<HTMLElement>("parallax-container");
   const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: parallaxContainer.value,
+      trigger: parallaxContainerEl.value,
       start: "top top",
       end: "bottom top",
       scrub: true,
@@ -45,14 +45,48 @@ function speedUpConstellation() {
 
 // ========= Mounted animation =========
 const moonContainerEl = templateRef<HTMLElement>("moon-container");
-onMounted(() => {
-  anime({
-    targets: moonContainerEl.value,
-    duration: 1500,
-    opacity: [0, 1],
-    scale: [0, 1],
-    easing: "spring(1, 50, 20, 16)",
+function animateHeaderInit() {
+  document.documentElement.scrollTop = 270;
+  const timeline = anime.timeline({
+    autoplay: false,
   });
+  timeline.add(
+    {
+      targets: moonContainerEl.value,
+      opacity: [0, 1],
+      scale: [0, 1],
+      easing: "spring(1, 50, 20, 16)",
+    },
+    0,
+  );
+
+  timeline.add(
+    {
+      targets: parallaxContainerEl.value.querySelectorAll(
+        ".constellation-container",
+      ),
+      duration: 1300,
+      easing: "spring(3, 50, 20, 1)",
+      scale: [0, 1],
+    },
+    0,
+  );
+
+  timeline.add(
+    {
+      targets: parallaxContainerEl.value.querySelectorAll(".init-move-up"),
+      duration: 1000,
+      translateY: [500, 0],
+      delay: anime.stagger(400),
+      easing: "easeOutQuad",
+    },
+    0,
+  );
+  timeline.play();
+}
+
+onMounted(() => {
+  animateHeaderInit();
 });
 // ========= Mounted animation =========
 </script>
@@ -60,39 +94,56 @@ onMounted(() => {
 <template>
   <div>
     <div class="parallax-container" ref="parallax-container">
-      <div class="parallax-background parallax-layer" data-depth="0.10"></div>
-
-      <div class="bg-shadow-overlay parallax-layer" data-depth="0.85" />
       <div class="parallax-layer" data-depth="0.10">
-        <the-header-constellation
-          class="h-100 pointer-events-all"
-          :speedModifier="constellationSpeed"
-        />
+        <div class="parallax-background" />
       </div>
 
-      <div class="bg-fade-wave parallax-layer" data-depth="0.1" />
+      <div class="parallax-layer" data-depth="0.85">
+        <div class="bg-shadow-overlay" />
+      </div>
+
+      <div class="parallax-layer" data-depth="0.10">
+        <div class="constellation-container">
+          <the-header-constellation
+            class="h-100 pointer-events-all"
+            :speedModifier="constellationSpeed"
+          />
+        </div>
+      </div>
+
+      <div class="parallax-layer" data-depth="0.1">
+        <div class="bg-fade-wave init-move-up" />
+      </div>
 
       <div class="parallax-layer h-100" data-depth="0.40">
-        <div class="center-middle">
-          <div ref="moon-container">
-            <the-header-moon
-              class="pointer-events-all"
-              v-model="darkeningIntensity"
-              @mousemove="speedUpConstellation()"
-            />
+        <div>
+          <div class="center-middle">
+            <div ref="moon-container">
+              <the-header-moon
+                class="pointer-events-all"
+                v-model="darkeningIntensity"
+                @mousemove="speedUpConstellation()"
+              />
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="bg-back-buildings parallax-layer" data-depth="0.3" />
+      <div class="parallax-layer" data-depth="0.3">
+        <div class="bg-back-buildings init-move-up" />
+      </div>
 
-      <div class="bg-front-buildings parallax-layer" data-depth="0.5" />
+      <div class="parallax-layer" data-depth="0.5">
+        <div class="bg-front-buildings init-move-up" />
+      </div>
 
-      <div class="bg-railing-transition parallax-layer" data-depth="1" />
+      <div class="parallax-layer" data-depth="1">
+        <div class="bg-railing-transition" />
+      </div>
     </div>
 
     <div class="after-parallax">
-      <div style="min-height: 100vh">
+      <div class="min-height-100vh">
         <div>
           <slot name="default"></slot>
         </div>
@@ -132,6 +183,13 @@ $darkeningIntensity: v-bind(darkeningIntensity);
   position: fixed;
   pointer-events: none;
   z-index: -1;
+  > * {
+    height: 100%;
+    width: 100%;
+    background-position: bottom center;
+    background-size: auto;
+    background-repeat: no-repeat;
+  }
 }
 
 .parallax-background {
@@ -182,5 +240,9 @@ $darkeningIntensity: v-bind(darkeningIntensity);
   top: 50vh;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.min-height-100vh {
+  min-height: 100vh;
 }
 </style>
