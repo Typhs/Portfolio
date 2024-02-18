@@ -1,16 +1,13 @@
 <script lang="ts">
 import * as d3 from "d3";
-
 interface GeoJson {
   type: string;
   geometry: Geometry;
 }
-
 interface Geometry {
   type: string;
   coordinates: any[];
 }
-
 export default {
   data() {
     return {

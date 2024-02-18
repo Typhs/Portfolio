@@ -8,6 +8,7 @@ import { templateRef } from "@vueuse/core";
 // ========= Scroll Parallax =========
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import anime from "animejs";
 
 gsap.registerPlugin(ScrollTrigger);
 onMounted(() => {
@@ -41,6 +42,19 @@ function speedUpConstellation() {
     constellationSpeed.value = 1;
   }, 100);
 }
+
+// ========= Mounted animation =========
+const moonContainerEl = templateRef<HTMLElement>("moon-container");
+onMounted(() => {
+  anime({
+    targets: moonContainerEl.value,
+    duration: 1500,
+    opacity: [0, 1],
+    scale: [0, 1],
+    easing: "spring(1, 50, 20, 16)",
+  });
+});
+// ========= Mounted animation =========
 </script>
 
 <template>
@@ -57,12 +71,17 @@ function speedUpConstellation() {
       </div>
 
       <div class="bg-fade-wave parallax-layer" data-depth="0.1" />
+
       <div class="parallax-layer h-100" data-depth="0.40">
-        <the-header-moon
-          class="center-middle expand-init pointer-events-all"
-          v-model="darkeningIntensity"
-          @mousemove="speedUpConstellation()"
-        />
+        <div class="center-middle">
+          <div ref="moon-container">
+            <the-header-moon
+              class="pointer-events-all"
+              v-model="darkeningIntensity"
+              @mousemove="speedUpConstellation()"
+            />
+          </div>
+        </div>
       </div>
 
       <div class="bg-back-buildings parallax-layer" data-depth="0.3" />
