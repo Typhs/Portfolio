@@ -55,14 +55,24 @@ const abilitiesContent = [
 
 const techMentions = [
   {
+    label: "React",
+    logo: "react",
+    url: "https://react.dev/",
+  },
+  {
     label: "Vuetify",
     logo: "vuetify",
     url: "https://vuetifyjs.com/",
   },
   {
-    label: "SASS",
-    logo: "sass",
-    url: "https://sass-lang.com/",
+    label: "Bootstrap",
+    logo: "bootstrap",
+    url: "https://getbootstrap.com/",
+  },
+  {
+    label: "D3.js",
+    logo: "d3",
+    url: "https://d3js.org/",
   },
   {
     label: "Anime.js",
@@ -70,9 +80,9 @@ const techMentions = [
     url: "https://animejs.com/",
   },
   {
-    label: "D3.js",
-    logo: "d3",
-    url: "https://d3js.org/",
+    label: "SASS",
+    logo: "sass",
+    url: "https://sass-lang.com/",
   },
   {
     label: "MySQL",
@@ -209,7 +219,7 @@ function changeTabTo(newTabIdx: number) {
             <the-skill-table :key="currentTabIdx == 2" />
             <!-- using 'key' here to provoke the init animation when this tab is activated -->
             <div class="pt-10">
-              <v-card max-width="400px" variant="text">
+              <v-card max-width="450px" variant="text">
                 <h4 class="mb-2">Honorable mentions:</h4>
                 <v-chip
                   link
