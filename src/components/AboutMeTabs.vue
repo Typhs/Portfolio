@@ -41,14 +41,11 @@ const abilitiesContent = [
     text: "I'm entirely <b>self taught</b> and <b>I'll never stop getting better</b>",
   },
   {
-    // icon: "mdi-human-greeting-proximity",
     icon: "mdi-human-male-board-poll",
     text: "I can <b>handle ambiguidy</b> - all I need is a rough direction, I'm <b>great at planning and iterating</b> through options untill we're all happy with what we've got",
   },
   {
-    // icon: "mdi-human-greeting-proximity",
     icon: "mdi-code-tags-check",
-    // text: "Everywhere I've worked, I've always being known for the speed of my output and the resilience of my code",
     text: "I am known for my consistency in <b>speed</b> and the <b>reliability of my output</b>",
   },
 ];
@@ -106,7 +103,6 @@ function changeTabTo(newTabIdx: number) {
       <div class="position-relative">
         <div class="d-flex justify-center align-center" ref="nav-container">
           <template v-for="(tab, tabIdx) in tabItems" :key="tabIdx">
-            <!-- <v-icon v-if="tabIdx > 0" icon="mdi-unfold-more-vertical"/> -->
             <div v-if="tabIdx > 0" class="px-2 text-white opacity-50">
               <v-icon icon="mdi-minus" size="10" />
               <v-icon icon="mdi-rhombus" size="10" />

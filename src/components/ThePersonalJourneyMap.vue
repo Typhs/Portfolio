@@ -242,7 +242,9 @@ function animatePoint(pointId: "a" | "b" | "c") {
                     </v-chip>
                   </div>
                   <div>
-                    Entered the industry in Fiqon as: <br />
+                    <span data-nosnippet
+                      >Entered the industry in Fiqon as: </span
+                    ><br />
                     <small>
                       <v-icon icon="mdi-square-rounded" size="5" class="mr-1" />
                       <b>Intern</b>
