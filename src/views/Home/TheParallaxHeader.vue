@@ -122,7 +122,8 @@ onMounted(() => {
               <the-header-moon
                 class="pointer-events-all"
                 v-model="darkeningIntensity"
-                @mousemove="speedUpConstellation()"
+                @onHover="speedUpConstellation()"
+                @onClick="speedUpConstellation()"
               />
             </div>
           </div>

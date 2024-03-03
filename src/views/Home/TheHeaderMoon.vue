@@ -106,26 +106,65 @@ export default {
         }
       }
     },
+    onHover() {
+      this.$emit("onHover");
+      this.drawLine();
+    },
+    onClick() {
+      this.$emit("onClick");
+      for (let i = 0; i < 30; i++) {
+        this.drawLine();
+      }
+    },
   },
 };
 </script>
 
 <template>
-  <!-- <div> -->
-  <canvas ref="moon-canvas" class="moon-canvas" @mousemove="drawLine()" />
-  <!-- </div> -->
+  <div
+    class="moon-canvas-container"
+    v-ripple="{
+      circle: true,
+    }"
+    tabindex="0"
+  >
+    <canvas
+      ref="moon-canvas"
+      class="moon-canvas"
+      @mousemove="onHover()"
+      @click="onClick()"
+    />
+  </div>
 </template>
 
 <style lang="scss" scoped>
 $moon-color: rgb(103, 90, 226);
-.moon-canvas {
-  border-radius: 50%;
-  background-color: $moon-color;
+$outline-color: black;
 
-  box-shadow:
-    inset 0 0 20px transparentize(#312094, 0.4),
-    inset 0 0 100px 20px rgba(0, 0, 0, 0.5),
-    0 0 100px rgba(0, 0, 0, 0.25),
-    0 0 100px 20px rgba(0, 0, 0, 0.1);
+.moon-canvas-container {
+  border-radius: 50%;
+  transition:
+    outline 0.2s,
+    filter 0.02s,
+    scale 0.4s;
+  color: transparentize($moon-color, 0.54);
+  cursor: pointer;
+  &:hover {
+    scale: 1.03;
+  }
+  &:active {
+    filter: brightness(1.03);
+  }
+  .moon-canvas {
+    border-radius: inherit;
+    background-color: $moon-color;
+    outline: 0px solid transparent;
+
+    box-shadow:
+      inset 0 0 20px transparentize(#312094, 0.4),
+      inset 0 0 100px 20px rgba(0, 0, 0, 0.5),
+      0 0 100px rgba(0, 0, 0, 0.25),
+      0 0 100px 20px rgba(0, 0, 0, 0.1);
+  }
 }
 </style>
