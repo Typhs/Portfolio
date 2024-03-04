@@ -1,3 +1,5 @@
+<!-- LTeX: language=off -->
+
 - use PerspectiveCard.vue for mapping out links to previous projects
 
 ---------- TO DO ----------
@@ -20,16 +22,12 @@
   - while this mode is on we make appear tooltips on any elements or parts of the Project that we think are particularly interesting
   - on these tooltips talk about how the parts were made, what was our process and stuff like that
   - highlight particular obstacles that we overcame in unusual, interesting ways
-* On ContactInfo - do a business card style effect
-  - we can use the 3D properties of PerspectiveCard
-  - first we pick and reproduce a business card aesthetic
-  - also have the text content use GhostlyTypewriter with 'scroll into view' effect
 * I'm really interested in doing something with 3D rendering on a website
   - Don't really know what yet
   - checkout for inspiraiton -> https://jesse-zhou.com/ , https://bruno-simon.com/ and https://dvlpr.pro/#home
 * Code lens / minimap or something
 
-- on some corder of the screen we add the code that composes that section of the page
+- on some corner of the screen we add the code that composes that section of the page
 - like a minimap, and we can have the code display change as the user moves their mouse across the items on the screen and scrolls  
    ---------- IDEAS ----------
 

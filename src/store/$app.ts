@@ -1,8 +1,8 @@
 // Utilities
 import { defineStore } from "pinia";
 
-export const useAppStore = defineStore("app", {
+export const use$App = defineStore("$app", {
   state: () => ({
-    //
+    isDirectorMode: false,
   }),
 });
