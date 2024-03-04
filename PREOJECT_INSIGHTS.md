@@ -41,3 +41,8 @@
   - when container scrolls out of viewport the letters return to randomly moving around
   - Or maybe on mouse hover instead of scroll into viewport?
     ---------- STALE IDEAS ----------
+
+Example GitHub file Fetch:
+
+curl --location 'https://api.github.com/repos/Typhs/portfolio-v2/contents/src/components/BubblingIconsAnimation.vue' \
+--header 'Accept: application/vnd.github.v3.raw'

@@ -32,13 +32,13 @@ const $app = use$App();
           <p></p>
         </div>
         <v-btn
-          :variant="$app.isDirectorMode ? 'tonal' : 'elevated'"
+          :variant="$app.directorMode.isOn ? 'tonal' : 'elevated'"
           color="secondary"
           class="mt-5"
-          @click="$app.isDirectorMode = !$app.isDirectorMode"
+          @click="$app.directorMode.isOn = !$app.directorMode.isOn"
         >
           <v-icon icon="mdi-comment-text" class="mr-2" />
-          <span v-if="!$app.isDirectorMode"> ACTIVATE </span>
+          <span v-if="!$app.directorMode.isOn"> ACTIVATE </span>
           <span v-else> DEACTIVATE </span>
         </v-btn>
       </v-card>

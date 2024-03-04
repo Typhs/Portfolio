@@ -7,7 +7,7 @@ const $app = use$App();
 <template>
   <div
     class="commentary-overlay-wrapper"
-    :class="{ 'is-mode-active': $app.isDirectorMode }"
+    :class="{ 'is-mode-active': $app.directorMode.isOn }"
   >
     <div class="d-flex justify-space-between align-start ma-5">
       <div class="commentary-header">
@@ -21,11 +21,13 @@ const $app = use$App();
               label="Show components code"
               hide-details
               density="comfortable"
+              v-model="$app.directorMode.showCode"
             />
             <v-checkbox
               label="Show comments"
               hide-details
               density="comfortable"
+              v-model="$app.directorMode.showComment"
             >
             </v-checkbox>
           </div>
@@ -36,7 +38,7 @@ const $app = use$App();
         variant="tonal"
         class="clickable"
         color="yellow"
-        @click="$app.isDirectorMode = false"
+        @click="$app.directorMode.isOn = false"
       >
         EXIT COMMENTARY MODE
         <v-icon icon="mdi-close-circle" class="ml-2" />
@@ -47,7 +49,7 @@ const $app = use$App();
 
 <style lang="scss" scoped>
 $overlay-color: $secondary;
-$overlay-bg: transparentize($primary, 0.9);
+$overlay-bg: transparentize($primary, 0.92);
 
 .commentary-overlay-wrapper {
   background-color: $overlay-bg;
