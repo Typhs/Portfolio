@@ -143,9 +143,8 @@ function changeTabTo(newTabIdx: number) {
           <!-- TECHNICAL HABILITIES -->
           <div class="about-me-info-container mt-10">
             <template v-for="(ability, aIdx) in abilitiesContent" :key="aIdx">
-              <div
+              <!-- <div
                 class="d-flex align-center justify-center w-100 my-3"
-                v-if="aIdx > 0"
               >
                 <v-divider color="secondary" class="border-opacity-25" />
                 <v-icon
@@ -155,7 +154,13 @@ function changeTabTo(newTabIdx: number) {
                   size="20"
                 />
                 <v-divider color="secondary" class="border-opacity-25" />
-              </div>
+              </div> -->
+              <icon-divider
+                class="my-3"
+                color="secondary"
+                icon="mdi-xml"
+                v-if="aIdx > 0"
+              />
 
               <p>
                 <v-avatar
