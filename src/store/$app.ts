@@ -4,9 +4,10 @@ import { defineStore } from "pinia";
 export const use$App = defineStore("$app", {
   state: () => ({
     directorMode: {
-      isOn: true,
+      isOn: false,
       showCode: true,
       showComment: true,
+      showPermanentToggle: false,
     },
   }),
 });

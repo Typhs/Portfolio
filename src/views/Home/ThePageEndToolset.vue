@@ -2,6 +2,14 @@
 import { use$App } from "@/store/$app";
 
 const $app = use$App();
+
+function toggleDirectosCommentary() {
+  $app.directorMode.showPermanentToggle = true;
+  $app.directorMode.showCode = true;
+  $app.directorMode.showComment = true;
+
+  $app.directorMode.isOn = !$app.directorMode.isOn;
+}
 </script>
 
 <template>
@@ -39,7 +47,7 @@ const $app = use$App();
           :variant="$app.directorMode.isOn ? 'tonal' : 'elevated'"
           color="secondary"
           class="mt-5"
-          @click="$app.directorMode.isOn = !$app.directorMode.isOn"
+          @click="toggleDirectosCommentary()"
         >
           <v-icon icon="mdi-comment-text" class="mr-2" />
           <span v-if="!$app.directorMode.isOn"> ACTIVATE </span>
