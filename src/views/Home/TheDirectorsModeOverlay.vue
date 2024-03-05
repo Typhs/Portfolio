@@ -73,20 +73,22 @@ function highlightComponents() {
           <div class="commentary-toggles-container">
             <div>
               <v-checkbox
+                color="secondary"
                 class="clickable w-fit-content"
                 label="Show components code"
                 hide-details
                 density="comfortable"
                 v-model="$app.directorMode.showCode"
               />
-              <v-checkbox
+              <!-- <v-checkbox
+                color="secondary"
                 class="clickable w-fit-content"
                 label="Show comments"
                 hide-details
                 density="comfortable"
                 v-model="$app.directorMode.showComment"
               >
-              </v-checkbox>
+              </v-checkbox> -->
             </div>
           </div>
         </div>
