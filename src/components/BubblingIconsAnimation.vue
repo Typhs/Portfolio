@@ -24,6 +24,10 @@ const props = defineProps({
     type: [Number, String],
     default: 20,
   },
+  disableDirectorsCommentary: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const containerEl = templateRef<HTMLDivElement>("animtaion-container");
@@ -75,34 +79,36 @@ function initAnimation() {
 </script>
 
 <template>
-  <div class="animation-container" ref="animtaion-container">
-    <template v-for="i in Number(multiplier)">
-      <!-- <v-icon icon="mdi-hexagon" :size="props.size" /> -->
-      <!-- <v-icon icon="mdi-atom" :size="props.size" /> -->
-      <!-- <v-icon icon="mdi-qrcode" :size="props.size" /> -->
-      <v-icon icon="mdi-square-root" :size="props.size" />
-      <v-icon icon="mdi-xml" :size="props.size" />
-      <v-icon icon="mdi-xml" :size="props.size" />
-      <v-icon icon="mdi-xml" :size="props.size" />
-      <v-icon icon="mdi-code-braces" :size="props.size" />
-      <v-icon icon="mdi-code-json" :size="props.size" />
-      <v-icon icon="mdi-database" :size="props.size" />
-      <v-icon icon="mdi-source-branch" :size="props.size" />
-      <v-icon icon="mdi-variable" :size="props.size" />
-      <v-icon icon="mdi-file-code-outline" :size="props.size" />
-      <v-icon icon="mdi-api" :size="props.size" />
-      <v-icon icon="mdi-console" :size="props.size" />
-      <v-icon icon="mdi-web" :size="props.size" />
-      <v-icon icon="mdi-cog" :size="props.size" />
-      <v-icon icon="mdi-flask" :size="props.size" />
-      <v-icon icon="custom:vue" />
-      <v-icon icon="custom:git" />
-      <v-icon icon="custom:typescript" />
-      <v-icon icon="custom:javascript" />
-      <v-icon icon="custom:vuetify" />
-      <v-icon icon="custom:html" />
-      <v-icon icon="custom:css" />
-    </template>
+  <div data-git-path="src/components/BubblingIconsAnimation.vue">
+    <div class="animation-container" ref="animtaion-container">
+      <template v-for="i in Number(multiplier)">
+        <!-- <v-icon icon="mdi-hexagon" :size="props.size" /> -->
+        <!-- <v-icon icon="mdi-atom" :size="props.size" /> -->
+        <!-- <v-icon icon="mdi-qrcode" :size="props.size" /> -->
+        <v-icon icon="mdi-square-root" :size="props.size" />
+        <v-icon icon="mdi-xml" :size="props.size" />
+        <v-icon icon="mdi-xml" :size="props.size" />
+        <v-icon icon="mdi-xml" :size="props.size" />
+        <v-icon icon="mdi-code-braces" :size="props.size" />
+        <v-icon icon="mdi-code-json" :size="props.size" />
+        <v-icon icon="mdi-database" :size="props.size" />
+        <v-icon icon="mdi-source-branch" :size="props.size" />
+        <v-icon icon="mdi-variable" :size="props.size" />
+        <v-icon icon="mdi-file-code-outline" :size="props.size" />
+        <v-icon icon="mdi-api" :size="props.size" />
+        <v-icon icon="mdi-console" :size="props.size" />
+        <v-icon icon="mdi-web" :size="props.size" />
+        <v-icon icon="mdi-cog" :size="props.size" />
+        <v-icon icon="mdi-flask" :size="props.size" />
+        <v-icon icon="custom:vue" />
+        <v-icon icon="custom:git" />
+        <v-icon icon="custom:typescript" />
+        <v-icon icon="custom:javascript" />
+        <v-icon icon="custom:vuetify" />
+        <v-icon icon="custom:html" />
+        <v-icon icon="custom:css" />
+      </template>
+    </div>
   </div>
 </template>
 

@@ -24,65 +24,71 @@ const contactOptions = [
 </script>
 
 <template>
-  <perspective-card
-    bg-image="dynamicAssets/paper-texture.jpg"
-    width="525px"
-    height="300px"
-    :background-parallax="false"
-  >
-    <template #default="{ isHovered }">
-      <div class="business-card-container">
-        <div class="business-card">
-          <div>
-            <div class="w-fit-content vertical-flex-container">
-              <!-- LEFT  -->
-              <div class="w-fit-content mb-5">
-                <h2>Tailan B. M.</h2>
-                <div class="w-100 bg-white mb-1">
-                  <v-divider
-                    color="primary"
-                    width="40px"
-                    thickness="2"
-                    class="border-opacity-100"
-                  />
+  <div data-git-path="src/components/BusinessCard.vue">
+    <perspective-card
+      bg-image="dynamicAssets/paper-texture.jpg"
+      width="525px"
+      height="300px"
+      :background-parallax="false"
+    >
+      <template #default="{ isHovered }">
+        <div class="business-card-container">
+          <div class="business-card">
+            <div>
+              <div class="w-fit-content vertical-flex-container">
+                <!-- LEFT  -->
+                <div class="w-fit-content mb-5">
+                  <h2>Tailan B. M.</h2>
+                  <div class="w-100 bg-white mb-1">
+                    <v-divider
+                      color="primary"
+                      width="40px"
+                      thickness="2"
+                      class="border-opacity-100"
+                    />
+                  </div>
+                  <div>Senior Front-End developer</div>
                 </div>
-                <div>Senior Front-End developer</div>
-              </div>
 
-              <div>
-                <v-btn
-                  class="mb-2 pl-0 pr-2 d-block"
-                  color="white"
-                  variant="text"
-                  v-for="(contact, cIdx) in contactOptions"
-                  :key="cIdx"
-                  @click="contact.action()"
-                >
-                  <v-avatar
-                    variant="flat"
-                    size="30"
-                    color="primary"
-                    class="mr-2"
-                    rounded="rounded"
+                <div>
+                  <v-btn
+                    class="mb-2 pl-0 pr-2 d-block"
+                    color="white"
+                    variant="text"
+                    v-for="(contact, cIdx) in contactOptions"
+                    :key="cIdx"
+                    @click="contact.action()"
                   >
-                    <v-icon :icon="contact.icon" />
-                  </v-avatar>
-                  <span class="">
-                    {{ contact.label }}
-                  </span>
-                </v-btn>
+                    <v-avatar
+                      variant="flat"
+                      size="30"
+                      color="primary"
+                      class="mr-2"
+                      rounded="rounded"
+                    >
+                      <v-icon :icon="contact.icon" />
+                    </v-avatar>
+                    <span class="">
+                      {{ contact.label }}
+                    </span>
+                  </v-btn>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="card-bg-effect" style="font-size: 10px">
-          <div class="animation-container">
-            <bubbling-icons-animation height="100%" multiplier="4" size="20" />
+          <div class="card-bg-effect" style="font-size: 10px">
+            <div>
+              <bubbling-icons-animation
+                height="350px"
+                multiplier="4"
+                size="20"
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </template>
-  </perspective-card>
+      </template>
+    </perspective-card>
+  </div>
 </template>
 
 <style lang="scss" scoped>

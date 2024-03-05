@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { templateRef } from "@vueuse/core";
-import { onMounted } from "vue";
+import { onBeforeMount, onMounted } from "vue";
 
 const mouseFilterEl = templateRef<HTMLElement>("mouse-filter");
 onMounted(() => {
@@ -8,6 +8,10 @@ onMounted(() => {
     mouseFilterEl.value.style.left = evt.clientX + "px";
     mouseFilterEl.value.style.top = evt.clientY + "px";
   };
+});
+
+onBeforeMount(() => {
+  window.onmousemove = null;
 });
 </script>
 

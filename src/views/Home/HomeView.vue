@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import TheParallaxHeader from "@/views/Home/TheParallaxHeader.vue";
+import ThePageEndToolset from "@/views/Home/ThePageEndToolset.vue";
 import { onMounted } from "vue";
 import { templateRef } from "@vueuse/core";
 import anime from "animejs";
@@ -73,6 +74,10 @@ import anime from "animejs";
       </div>
 
       <contact-info />
+
+      <spacer height="20vh" />
+
+      <the-page-end-toolset />
 
       <spacer height="20vh" />
 

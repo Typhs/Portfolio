@@ -47,7 +47,8 @@ onMounted(() => {
 
 <template>
   <div
-    class="position-relative w-fit-content mx-auto"
+    data-git-path="src/components/ContactInfo.vue"
+    class="position-relative w-fit-content mx-auto px-5"
     align="center"
     v-intersect="{
       handler: handleIntersect,

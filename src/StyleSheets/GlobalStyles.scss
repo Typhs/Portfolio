@@ -40,8 +40,19 @@ html,
   width: fit-content;
 }
 
+.text-small {
+  font-size: 0.8rem;
+}
+
 .space-evenly {
   justify-content: space-evenly;
+}
+
+.b-highlighter-container {
+  b {
+    font-weight: bolder;
+    color: mix($primary-accent, currentColor, 0.5);
+  }
 }
 
 .hover-underline {
