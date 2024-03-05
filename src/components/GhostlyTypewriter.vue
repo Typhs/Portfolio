@@ -123,7 +123,11 @@ defineExpose({
 </script>
 
 <template>
-  <div class="words-container" ref="words-container">
+  <div
+    class="words-container"
+    ref="words-container"
+    data-git-path="src/components/GhostlyTypewriter.vue"
+  >
     <!-- Keep in mind that nested V-Fors need to carry down a specific key for each parent V-For otherwise their keys repeat -->
     <p
       v-for="(paragraph, pIdx) in resultedSplit"

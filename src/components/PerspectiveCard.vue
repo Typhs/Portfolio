@@ -119,6 +119,7 @@ export default {
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
     ref="perspective-card"
+    data-git-path="src/components/PerspectiveCard.vue"
   >
     <div class="perspective-card">
       <div class="perspective-card-bg-container">

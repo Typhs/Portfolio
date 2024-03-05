@@ -32,7 +32,7 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div data-git-path="src/components/old/Typewriter.vue">
     <br class="mt-5" />
     <div class="typewriter-container">
       {{ typewriterShown }}

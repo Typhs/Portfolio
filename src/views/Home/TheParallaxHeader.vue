@@ -19,6 +19,9 @@ onMounted(() => {
       start: "top top",
       end: "bottom top",
       scrub: true,
+      onscroll: () => {
+        console.log("scrolling");
+      },
     },
   });
 

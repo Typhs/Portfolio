@@ -12,7 +12,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div>
+  <div data-git-path="src/components/IconDivider.vue">
     <div class="d-flex align-center justify-center w-100">
       <v-divider class="border-opacity-25" :color="props.color" />
       <v-icon

@@ -97,7 +97,7 @@ function changeTabTo(newTabIdx: number) {
 
 <template>
   <!-- TODO -> add some media-queries or v-cols for this to work in smaller width devices  -->
-  <div class="w-fit-content">
+  <div class="w-fit-content" data-git-path="src/components/AboutMeTabs.vue">
     <h1 class="mb-5">All about me</h1>
     <v-card class="pa-10 w-fit-content" variant="text" max-width="800px">
       <div class="position-relative">
@@ -141,7 +141,7 @@ function changeTabTo(newTabIdx: number) {
       <v-window v-model="currentTabIdx">
         <v-window-item>
           <!-- TECHNICAL HABILITIES -->
-          <div class="about-me-info-container mt-10">
+          <div class="about-me-info-container mt-10 px-2">
             <template v-for="(ability, aIdx) in abilitiesContent" :key="aIdx">
               <!-- <div
                 class="d-flex align-center justify-center w-100 my-3"
@@ -181,7 +181,9 @@ function changeTabTo(newTabIdx: number) {
 
         <v-window-item>
           <!-- PERSONAL BACKGROUND -->
-          <the-personal-journey-map :key="currentTabIdx == 1" class="mt-5" />
+          <div class="pa-3">
+            <the-personal-journey-map :key="currentTabIdx == 1" class="mt-5" />
+          </div>
           <v-divider class="mb-3" />
           <v-card class="mx-auto w-fit-content" align="left" variant="text">
             <v-card-item>
@@ -217,7 +219,9 @@ function changeTabTo(newTabIdx: number) {
         <v-window-item>
           <!-- MASTERED TECHNOLOGIES -->
           <div class="about-me-info-container mt-10">
-            <the-skill-table :key="currentTabIdx == 2" />
+            <div class="pa-3">
+              <the-skill-table :key="currentTabIdx == 2" />
+            </div>
             <!-- using 'key' here to provoke the init animation when this tab is activated -->
             <div class="pt-10">
               <v-card max-width="450px" variant="text">

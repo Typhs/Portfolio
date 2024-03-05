@@ -112,7 +112,10 @@ function animatePoint(pointId: "a" | "b" | "c") {
 </script>
 
 <template>
-  <div class="position-relative mb-10">
+  <div
+    class="position-relative mb-10"
+    data-git-path="src/components/ThePersonalJourneyMap.vue"
+  >
     <svg class="journey-map-svg" viewBox="0 0 200 200" width="100%" ref="svg">
       <!-- 
         ============ HOW THIS WORKS ============

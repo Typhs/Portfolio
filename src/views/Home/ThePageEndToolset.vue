@@ -5,7 +5,11 @@ const $app = use$App();
 </script>
 
 <template>
-  <div align="center">
+  <div
+    align="center"
+    data-git-path="src/views/Home/ThePageEndToolset.vue"
+    class="w-fit-content mx-auto"
+  >
     Here you can see some of the behind the scenes of this project
     <div class="mt-3 d-flex align-center justify-center">
       <v-card

@@ -73,7 +73,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
+  <div data-git-path="src/components/TheSkillTable.vue">
     <table class="tech-skills-table">
       <thead>
         <tr class="text-primary-accent">

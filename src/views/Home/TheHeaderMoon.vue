@@ -121,19 +121,21 @@ export default {
 </script>
 
 <template>
-  <div
-    class="moon-canvas-container"
-    v-ripple="{
-      circle: true,
-    }"
-    tabindex="0"
-  >
-    <canvas
-      ref="moon-canvas"
-      class="moon-canvas"
-      @mousemove="onHover()"
-      @click="onClick()"
-    />
+  <div data-git-path="src/views/Home/TheHeaderMoon.vue">
+    <div
+      class="moon-canvas-container"
+      v-ripple="{
+        circle: true,
+      }"
+      tabindex="0"
+    >
+      <canvas
+        ref="moon-canvas"
+        class="moon-canvas"
+        @mousemove="onHover()"
+        @click="onClick()"
+      />
+    </div>
   </div>
 </template>
 
