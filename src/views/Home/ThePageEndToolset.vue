@@ -37,8 +37,8 @@ function toggleDirectosCommentary() {
         <div class="text-small text-muted b-highlighter-container">
           <p>
             Shows <b>notes</b> from the author on
-            <b>how the project was built</b> along with some of the challenges
-            faced. Also <b>highlights code snippets</b> and
+            <b>how this project was built</b> along with some of the
+            <b> challenges faced</b>. Also <b>highlights code snippets</b> and
             <b>code componentization</b>.
           </p>
           <p></p>

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import TheParallaxHeader from "@/views/Home/TheParallaxHeader.vue";
 import ThePageEndToolset from "@/views/Home/ThePageEndToolset.vue";
+import TheDirectorProjectInsight from "@/views/Home/TheDirectorProjectInsight.vue";
 import { onMounted } from "vue";
 import { templateRef } from "@vueuse/core";
 import anime from "animejs";
@@ -70,12 +71,16 @@ import anime from "animejs";
           >
         </v-card>
 
-        <spacer height="30vh" />
+        <spacer height="200px" />
       </div>
 
       <contact-info />
 
-      <spacer height="20vh" />
+      <spacer height="200px" />
+
+      <the-director-project-insight />
+
+      <spacer height="200px" />
 
       <the-page-end-toolset />
 

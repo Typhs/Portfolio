@@ -97,9 +97,12 @@ function changeTabTo(newTabIdx: number) {
 
 <template>
   <!-- TODO -> add some media-queries or v-cols for this to work in smaller width devices  -->
-  <div class="w-fit-content" data-git-path="src/components/AboutMeTabs.vue">
+  <div
+    class="w-fit-content home-max-width"
+    data-git-path="src/components/AboutMeTabs.vue"
+  >
     <h1 class="mb-5">All about me</h1>
-    <v-card class="pa-10 w-fit-content" variant="text" max-width="800px">
+    <v-card class="pa-10 w-fit-content" variant="text">
       <div class="position-relative">
         <div class="d-flex justify-center align-center" ref="nav-container">
           <template v-for="(tab, tabIdx) in tabItems" :key="tabIdx">
