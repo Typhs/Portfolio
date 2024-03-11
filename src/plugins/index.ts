@@ -10,7 +10,6 @@ import vuetify from "./vuetify";
 import pinia from "../store";
 import router from "../router";
 
-import "highlight.js/styles/atom-one-dark.css";
 // Types
 import type { App } from "vue";
 
