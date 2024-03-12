@@ -69,6 +69,49 @@ const projectLibraries = [
                 </span>
               </li>
               <li>
+                For development I'm using
+                <v-chip
+                  color="secondary"
+                  variant="tonal"
+                  size="small"
+                  class="font-weight-bold"
+                >
+                  git </v-chip
+                >,
+                <v-chip
+                  color="secondary"
+                  variant="tonal"
+                  size="small"
+                  class="font-weight-bold"
+                >
+                  Vite </v-chip
+                >,
+                <v-chip
+                  color="secondary"
+                  variant="tonal"
+                  size="small"
+                  class="font-weight-bold"
+                >
+                  Yarn </v-chip
+                >,
+                <v-chip
+                  color="secondary"
+                  variant="tonal"
+                  size="small"
+                  class="font-weight-bold"
+                >
+                  Webpack </v-chip
+                >, and
+                <v-chip
+                  color="secondary"
+                  variant="tonal"
+                  size="small"
+                  class="font-weight-bold"
+                >
+                  Husky
+                </v-chip>
+              </li>
+              <li>
                 You can checkout the entire project on
                 <a href="https://github.com/Typhs/">Github</a>
               </li>

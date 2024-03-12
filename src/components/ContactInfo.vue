@@ -48,7 +48,7 @@ onMounted(() => {
 <template>
   <div
     data-git-path="src/components/ContactInfo.vue"
-    class="position-relative w-fit-content mx-auto px-5"
+    class="position-relative w-fit-content mx-auto"
     align="center"
     v-intersect="{
       handler: handleIntersect,
@@ -56,7 +56,7 @@ onMounted(() => {
     }"
   >
     <div
-      class="contact-info-wrapper"
+      class="contact-info-wrapper px-5"
       :class="{ 'fully-visible': fullyVisible }"
     >
       <div class="contact-info-container text-h6 pa-5">
