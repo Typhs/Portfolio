@@ -31,6 +31,7 @@ function cleanupOverlay() {
     .querySelectorAll(".commentary-overlay-component-label")
     .forEach((e) => e.remove());
 }
+
 function highlightComponents() {
   if (!$app.directorMode.isOn || !$app.directorMode.showCode) {
     return;
@@ -43,12 +44,17 @@ function highlightComponents() {
       null
     ) {
       const newEl = document.createElement("div");
-      newEl.classList.add("commentary-overlay-component-label");
-      newEl.appendChild(document.createElement("div"));
-
       const componentPath: string = (componentEl.attributes as any)[
         "data-git-path"
       ].value;
+
+      newEl.onclick = () => {
+        $app.selectCodePath(componentPath);
+      };
+
+      newEl.classList.add("commentary-overlay-component-label");
+      newEl.appendChild(document.createElement("div"));
+
       let name = componentPath.split("/").pop()!;
       newEl.firstChild!.textContent = name;
 
@@ -92,6 +98,19 @@ function highlightComponents() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="w-fit-content clickable">
+        <v-expand-transition>
+          <div v-if="$app.directorMode.currentCodePath">
+            <v-card width="500px" height="550px" variant="text">
+              <component-code-viewer
+                :key="$app.directorMode.currentCodePath"
+                :path="$app.directorMode.currentCodePath"
+              />
+            </v-card>
+          </div>
+        </v-expand-transition>
       </div>
     </div>
     <div
@@ -235,12 +254,17 @@ body.commentary-mode-active {
     color: $black;
     cursor: pointer;
     z-index: 10;
-    transition: all 0.2s;
+    transition:
+      all 0.2s,
+      filter 0;
     font-family: monospace;
     text-rendering: optimizeLegibility;
 
     &:hover {
       background-color: $overlay-color;
+    }
+    &:active {
+      filter: brightness(0.9);
     }
   }
 }

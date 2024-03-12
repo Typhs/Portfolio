@@ -44,6 +44,9 @@ html,
   font-size: 0.8rem;
 }
 
+.home-max-width {
+  max-width: 800px;
+}
 .space-evenly {
   justify-content: space-evenly;
 }
@@ -75,7 +78,10 @@ code.hljs {
 // === VUETIFY ===
 a {
   text-decoration: none;
-  color: unset;
+  color: $primary;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 .v-btn {
   text-transform: none !important;

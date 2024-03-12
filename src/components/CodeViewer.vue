@@ -1,52 +1,79 @@
 <script lang="ts" setup>
-import { templateRef } from "@vueuse/core";
-import { onMounted } from "vue";
-import hljs from "highlight.js";
+import { onMounted, nextTick, PropType, computed, ref, watch } from "vue";
 
-// ======= LANGUAGES ======
-import javascript from "highlight.js/lib/languages/javascript";
-import { watch } from "vue";
-hljs.registerLanguage("javascript", javascript);
-// ======= LANGUAGES ======
+import "codemirror/lib/codemirror.css";
+
+import CodeMirror from "codemirror";
+
+import "codemirror/mode/javascript/javascript";
+
+import "codemirror/theme/material.css";
+import "codemirror/mode/vue/vue";
+
+import { templateRef } from "@vueuse/core";
+import { debounce as _debounce } from "lodash-es";
+type EditorLanguage = "vue" | "text";
+
+// TODO - add custom Linting and Highlighting for Engine Variable Syntax (aka: {{$,middleware_id.variable}})
+// TODO - add a way to  fix the issue of when creating a CodeEditor while a v-expand is opening
 
 const props = defineProps({
+  language: {
+    type: String as PropType<EditorLanguage>,
+    default: "text",
+  },
   code: {
     type: String,
     default: "",
   },
-  language: {
-    type: String,
-    default: "plain-text",
-  },
+});
+onMounted(async () => {
+  await nextTick();
+  // setTimeout(() => {
+  mountEditor();
+  // }, 300);
 });
 
 watch(
-  props,
+  () => props.code,
   () => {
-    initCode();
+    if (editorInstance.value) {
+      const scrollInfo = editorInstance.value.getScrollInfo();
+      editorInstance.value.setValue(props.code);
+      nextTick(() => {
+        editorInstance.value!.scrollTo(scrollInfo.left, scrollInfo.top);
+      });
+    }
   },
-  { deep: true },
 );
 
-const codeEl = templateRef<HTMLPreElement>("code");
-
-onMounted(() => {
-  initCode();
-});
-
-function initCode() {
-  codeEl.value;
-  const html = hljs.highlight(props.code, { language: props.language }).value;
-  codeEl.value.innerHTML = html;
+const editorEl = templateRef<HTMLTextAreaElement>("code-editor");
+const editorInstance = ref<CodeMirror.Editor | null>(null);
+function mountEditor() {
+  editorInstance.value = CodeMirror.fromTextArea(editorEl.value, {
+    lineNumbers: true,
+    mode: props.language,
+    theme: "material",
+    fixedGutter: true,
+    lineWrapping: true,
+    readOnly: true,
+    viewportMargin: Infinity,
+  });
 }
 </script>
 
 <template>
-  <pre ref="code" class="code-viewer-pre"></pre>
+  <div class="custom-cm-editor-container">
+    <textarea ref="code-editor">{{ props.code }}</textarea>
+  </div>
 </template>
 
-<style lang="scss" scoped>
-.code-viewer-pre {
-  text-align: left;
+<style lang="scss">
+.custom-cm-editor-container {
+  font-size: 13px;
+  .CodeMirror {
+    border-radius: inherit;
+    height: 500px;
+  }
 }
 </style>

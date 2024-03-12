@@ -1,9 +1,13 @@
 <script lang="ts" setup>
 import TheParallaxHeader from "@/views/Home/TheParallaxHeader.vue";
 import ThePageEndToolset from "@/views/Home/ThePageEndToolset.vue";
+import TheProjectInsights from "@/views/Home/TheProjectInsights.vue";
 import { onMounted } from "vue";
 import { templateRef } from "@vueuse/core";
 import anime from "animejs";
+import { use$App } from "@/store/$app";
+
+const $app = use$App();
 </script>
 
 <template>
@@ -70,16 +74,20 @@ import anime from "animejs";
           >
         </v-card>
 
-        <spacer height="30vh" />
+        <spacer height="200px" />
       </div>
 
       <contact-info />
 
-      <spacer height="20vh" />
+      <spacer height="200px" />
 
       <the-page-end-toolset />
 
-      <spacer height="20vh" />
+      <spacer height="150px" />
+
+      <the-project-insights />
+
+      <spacer height="200px" />
 
       <div>
         <bubbling-icons-animation height="500px" size="25" multiplier="6" />
