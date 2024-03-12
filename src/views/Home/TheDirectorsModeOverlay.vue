@@ -105,7 +105,7 @@ function highlightComponents() {
           <div v-if="$app.directorMode.currentCodePath">
             <v-card width="500px" height="550px" variant="text">
               <component-code-viewer
-                path="src/views/Home/TheProjectInsights.vue"
+                :path="$app.directorMode.currentCodePath"
               />
             </v-card>
           </div>

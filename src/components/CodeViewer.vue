@@ -57,6 +57,7 @@ function mountEditor() {
 
 <style lang="scss">
 .custom-cm-editor-container {
+  font-size: 13px;
   .CodeMirror {
     border-radius: inherit;
     height: 500px;

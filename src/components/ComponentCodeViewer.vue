@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { use$App } from "@/store/$app";
-import { computed, onMounted } from "vue";
+import { computed, onMounted, ref } from "vue";
+import { use$github } from "@/store/$github";
 
 const props = defineProps({
   path: {
@@ -15,7 +16,15 @@ const fileName = computed(() => {
 
 const $app = use$App();
 
-onMounted(() => {});
+const $github = use$github();
+
+const loadedCode = ref<undefined | string>();
+onMounted(() => {
+  $github.fetchGitCode(props.path).then((res) => {
+    console.log(res);
+    loadedCode.value = res;
+  });
+});
 </script>
 
 <template>
@@ -35,7 +44,22 @@ onMounted(() => {});
           <v-icon icon="mdi-close" size="15" />
         </v-btn>
       </h4>
-      <code-viewer language="vue" class="component-code" />
+
+      <code-viewer
+        language="vue"
+        :code="loadedCode"
+        class="component-code"
+        v-if="loadedCode"
+      />
+      <div v-else class="code-loading-indicator">
+        <div align="center" class="progress-container">
+          <v-progress-circular indeterminate size="50" width="7" />
+          <div class="font-weight-black mt-4">
+            <v-icon icon="custom:git" size="35" />
+            LOADING...
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -58,10 +82,23 @@ $container-radius: 8px;
   font-size: 18px;
   z-index: 1;
 }
-.component-code {
+.component-code,
+.code-loading-indicator {
   border-radius: $container-radius;
   border-top-left-radius: 0;
   border: 2px solid $container-color;
   box-shadow: 0 0 15px transparentize($black, 0.6);
+}
+
+.code-loading-indicator {
+  color: $secondary;
+  height: 500px;
+  background-color: transparentize($black, 0.5);
+  .progress-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 </style>
