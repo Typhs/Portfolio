@@ -31,8 +31,6 @@ const intervalInstance = ref<undefined | ReturnType<typeof setInterval>>();
 function typewriteCode(fullCode: string) {
   clearInterval(intervalInstance.value);
   const splitCode = fullCode.match(/.{1,10}/gs)!; // divide the code into an array of strings of 10 characters each
-
-  // console.log(JSON.stringify(fullCode));
   let idx = 0;
   loadedCode.value = "";
 

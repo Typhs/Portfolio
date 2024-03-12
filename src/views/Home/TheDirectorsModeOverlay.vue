@@ -105,6 +105,7 @@ function highlightComponents() {
           <div v-if="$app.directorMode.currentCodePath">
             <v-card width="500px" height="550px" variant="text">
               <component-code-viewer
+                :key="$app.directorMode.currentCodePath"
                 :path="$app.directorMode.currentCodePath"
               />
             </v-card>
