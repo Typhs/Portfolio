@@ -34,6 +34,19 @@ onMounted(async () => {
   // }, 300);
 });
 
+watch(
+  () => props.code,
+  () => {
+    if (editorInstance.value) {
+      const scrollInfo = editorInstance.value.getScrollInfo();
+      editorInstance.value.setValue(props.code);
+      nextTick(() => {
+        editorInstance.value!.scrollTo(scrollInfo.left, scrollInfo.top);
+      });
+    }
+  },
+);
+
 const editorEl = templateRef<HTMLTextAreaElement>("code-editor");
 const editorInstance = ref<CodeMirror.Editor | null>(null);
 function mountEditor() {

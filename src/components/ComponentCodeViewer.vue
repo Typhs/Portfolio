@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { use$App } from "@/store/$app";
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, onUnmounted, ref } from "vue";
 import { use$github } from "@/store/$github";
+import { on } from "events";
 
 const props = defineProps({
   path: {
@@ -19,11 +20,40 @@ const $app = use$App();
 const $github = use$github();
 
 const loadedCode = ref<undefined | string>();
+
 onMounted(() => {
   $github.fetchGitCode(props.path).then((res) => {
-    console.log(res);
-    loadedCode.value = res;
+    typewriteCode(res);
   });
+});
+
+const intervalInstance = ref<undefined | ReturnType<typeof setInterval>>();
+function typewriteCode(fullCode: string) {
+  clearInterval(intervalInstance.value);
+  const splitCode = fullCode.match(/.{1,10}/gs)!; // divide the code into an array of strings of 10 characters each
+  console.log(JSON.stringify(fullCode));
+  console.log(JSON.stringify(splitCode));
+  let idx = 0;
+  loadedCode.value = "";
+
+  intervalInstance.value = setInterval(() => {
+    if (idx < splitCode.length) {
+      loadedCode.value = loadedCode.value + splitCode[idx];
+      idx = idx + 1;
+    } else {
+      clearInterval(intervalInstance.value);
+    }
+  }, 20);
+
+  setTimeout(() => {
+    clearInterval(intervalInstance.value);
+    loadedCode.value = fullCode;
+    // after 4 seconds fully load the code - avoid keeping the user waiting
+  }, 3000);
+}
+
+onUnmounted(() => {
+  clearInterval(intervalInstance.value);
 });
 </script>
 
@@ -53,7 +83,7 @@ onMounted(() => {
       />
       <div v-else class="code-loading-indicator">
         <div align="center" class="progress-container">
-          <v-progress-circular indeterminate size="50" width="7" />
+          <v-progress-circular indeterminate size="50" width="5" />
           <div class="font-weight-black mt-4">
             <v-icon icon="custom:git" size="35" />
             LOADING...
