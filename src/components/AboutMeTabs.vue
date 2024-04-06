@@ -192,12 +192,12 @@ function changeTabTo(newTabIdx: number) {
             <v-card-item>
               <v-card-title align="center"> Also notably: </v-card-title>
               <h4 align="center" class="mb-2"></h4>
-              <v-icon icon="mdi-star" size="10" color="primary" class="mr-1" />
+              <v-icon icon="mdi-circle" size="8" color="primary" class="mr-1" />
               I'm <b>Brazilian</b>
               <image-as-icon from="brazil-flag" size="25" class="mx-1" />
               <br />
 
-              <v-icon icon="mdi-star" size="10" color="primary" class="mr-1" />
+              <v-icon icon="mdi-circle" size="8" color="primary" class="mr-1" />
               I'm currently <b>{{ currentAge }} years old</b>
               <v-icon
                 icon="mdi-party-popper"
@@ -207,7 +207,7 @@ function changeTabTo(newTabIdx: number) {
               />
               <br />
 
-              <v-icon icon="mdi-star" size="10" color="primary" class="mr-1" />
+              <v-icon icon="mdi-circle" size="8" color="primary" class="mr-1" />
               I'm a <b>fluent English speaker</b>
               <v-icon
                 icon="mdi-translate"
