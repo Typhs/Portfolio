@@ -56,6 +56,7 @@ function animateHeaderInit() {
       opacity: [0, 1],
       scale: [0, 1],
       easing: "spring(1, 50, 20, 16)",
+      delay: 100,
     },
     0,
   );
@@ -65,9 +66,10 @@ function animateHeaderInit() {
       targets: parallaxContainerEl.value.querySelectorAll(
         ".constellation-container",
       ),
-      duration: 1300,
+      duration: 1500,
       easing: "spring(3, 50, 20, 1)",
       scale: [0, 1],
+      delay: 1500,
     },
     0,
   );
@@ -77,7 +79,7 @@ function animateHeaderInit() {
       targets: parallaxContainerEl.value.querySelectorAll(".init-move-up"),
       duration: 1000,
       translateY: [500, 0],
-      delay: anime.stagger(400),
+      delay: anime.stagger(450),
       easing: "easeOutQuad",
     },
     0,
