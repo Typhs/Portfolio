@@ -26,8 +26,8 @@ const CONTACT_INFO = [
       <div class="resume-content">
         <!-- ================== HEADER ================== -->
         <div class="resume-header">
-          <div class="resume-title">Noah Tchumanji</div>
-          <div class="resume-subtitle">Software developer</div>
+          <div class="resume-title">Tailan B. Morita</div>
+          <div class="resume-subtitle">Front-end Engineer</div>
         </div>
         <!-- ================== HEADER ================== -->
 
@@ -45,9 +45,9 @@ const CONTACT_INFO = [
             </resume-section>
 
             <resume-section section-title="Skills ">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-              accusamus iste consequuntur rerum aut perspiciatis quo natus
-              inventore quos dolorem!
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis
+              consequatur nostrum, excepturi itaque commodi impedit velit odit
+              autem natus dicta?
             </resume-section>
             <resume-section section-title="Education ">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim

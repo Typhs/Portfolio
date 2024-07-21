@@ -8,6 +8,13 @@ $cv-bg2: #eff0f2;
 $cv-primary: #57585a;
 $cv-border-thickness: 3px;
 
+// ------ REMOVE AFTER TESTING ------
+$cv-bg1: #2a2b36;
+$cv-text-color: #d0d1d3;
+$cv-bg2: #2d303f;
+$cv-primary: #788d9e;
+// ------ REMOVE AFTER TESTING ------
+
 @mixin heading {
   font-style: normal;
   font-weight: 800;
