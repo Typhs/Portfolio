@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+$page-bg: #121216;
+$cv-bg1: #ffffff;
+$cv-text-color: #57585a;
+$cv-bg2: #eff0f2;
+
+$cv-primary: #57585a;
+$cv-border-thickness: 3px;
+
+@mixin heading {
+  font-style: normal;
+  font-weight: 800;
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

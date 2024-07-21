@@ -117,14 +117,14 @@ function animatePoint(pointId: "a" | "b" | "c") {
     data-git-path="src/components/ThePersonalJourneyMap.vue"
   >
     <svg class="journey-map-svg" viewBox="0 0 200 200" width="100%" ref="svg">
-      <!-- 
+      <!--
         ============ HOW THIS WORKS ============
         each actual dashed real-path has an equivalent mask-path and uses it.
         the mask-path has the same coordenates than the real-path.
         to do the animation, we are animating the mask-path growing instead of animating the real-path.
         we do that because we depend on dasharray operations to make any path animations
         and we can't spare those properties of the real-path, since it uses them to make the dashed line style
-        
+
         Example -> https://codepen.io/PointC/pen/xxZGqJM/8379a51c7fd5152f177ab3e0f7eca26f
         ============ HOW THIS WORKS ============
       -->
@@ -133,9 +133,9 @@ function animatePoint(pointId: "a" | "b" | "c") {
           <path
             class="map-path-1 mask"
             d="
-              M 35,25 
-              S 20,75  80 55 
-              S 80 100  160 100 
+              M 35,25
+              S 20,75  80 55
+              S 80 100  160 100
             "
           />
         </mask>
@@ -144,9 +144,9 @@ function animatePoint(pointId: "a" | "b" | "c") {
           <path
             class="map-path-2 mask"
             d="
-              M 160, 100 
-              S 210, 150 150 130 
-              S 100, 140 90 150 
+              M 160, 100
+              S 210, 150 150 130
+              S 100, 140 90 150
               S 20, 150 50 185
             "
           />
@@ -157,9 +157,9 @@ function animatePoint(pointId: "a" | "b" | "c") {
         <path
           class="map-path-1 content"
           d="
-            M 35,25 
-            S 20,75  80 55 
-            S 80 100  160 100 
+            M 35,25
+            S 20,75  80 55
+            S 80 100  160 100
           "
         />
       </g>
@@ -168,9 +168,9 @@ function animatePoint(pointId: "a" | "b" | "c") {
         <path
           class="map-path-2 content"
           d="
-            M 160, 100 
-            S 210, 150 150 130 
-            S 100, 140 90 150 
+            M 160, 100
+            S 210, 150 150 130
+            S 100, 140 90 150
             S 20, 150 50 185
           "
         />
@@ -297,11 +297,6 @@ $map-path-color: $primary;
   width: 100%;
 
   .map-point {
-    &:hover {
-      .point-card-container {
-        opacity: 1 !important;
-      }
-    }
     $point-bg: mix($point-color, $background, 0.9);
     position: absolute;
     transform: translate(-50%, -50%);
@@ -309,6 +304,11 @@ $map-path-color: $primary;
       box-shadow: 0 0 0 10px $point-bg;
       .v-icon {
         color: $point-bg;
+      }
+    }
+    &:hover {
+      .point-card-container {
+        opacity: 1 !important;
       }
     }
     .map-point-label {

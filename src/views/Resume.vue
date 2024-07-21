@@ -1,4 +1,23 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const CONTACT_INFO = [
+  {
+    icon: "mdi-email",
+    label: "bmtailan@gmail.com",
+  },
+  {
+    icon: "mdi-phone",
+    label: "+55 42 99152-0362",
+  },
+  {
+    icon: "mdi-web",
+    label: "https://tailan.site",
+  },
+  {
+    icon: "custom:git",
+    label: "https://github.com/Typhs",
+  },
+] as const;
+</script>
 
 <template>
   <div class="page-root">
@@ -16,20 +35,48 @@
         <div class="d-flex align-start w-100">
           <!-- ==== LEFT COLUMN ==== -->
           <div class="resume-column-a">
-            <div class="section-title">Lorem Ipsum Cars</div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-            accusamus iste consequuntur rerum aut perspiciatis quo natus
-            inventore quos dolorem!
+            <resume-section section-title="Contact ">
+              <div v-for="point in CONTACT_INFO" class="mb-4">
+                <v-avatar class="icon-avatar mr-3" :icon="point.icon" size="25">
+                  <v-icon :icon="point.icon" size="15" />
+                </v-avatar>
+                {{ point.label }}
+              </div>
+            </resume-section>
+
+            <resume-section section-title="Skills ">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
+              accusamus iste consequuntur rerum aut perspiciatis quo natus
+              inventore quos dolorem!
+            </resume-section>
+            <resume-section section-title="Education ">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
+              accusamus iste consequuntur rerum aut perspiciatis quo natus
+              inventore quos dolorem!
+            </resume-section>
+            <resume-section section-title="Languages ">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
+              accusamus iste consequuntur rerum aut perspiciatis quo natus
+              inventore quos dolorem!
+            </resume-section>
           </div>
           <!-- ==== LEFT COLUMN ==== -->
 
           <!-- ==== RIGHT COLUMN ==== -->
           <div class="resume-column-b">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium
-            consectetur commodi porro! Quisquam neque, accusamus perspiciatis
-            minima facilis exercitationem sequi officia quo iusto?
-            Necessitatibus voluptate quia amet unde, culpa facere recusandae
-            magnam ipsa neque, rerum laudantium dolorem esse, odit minima.
+            <resume-section section-title="Sumary">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laudantium consectetur commodi porro! Quisquam neque, accusamus
+              perspiciatis minima facilis exercitationem sequi officia quo
+              iusto? Necessitatibus voluptate quia amet unde, culpa facere
+              recusandae magnam ipsa neque, rerum laudantium dolorem esse, odit
+              minima.
+            </resume-section>
+            <resume-section section-title="Experience">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
+              accusamus iste consequuntur rerum aut perspiciatis quo natus
+              inventore quos dolorem!
+            </resume-section>
           </div>
           <!-- ==== LEFT COLUMN ==== -->
         </div>
@@ -47,16 +94,8 @@
 </template>
 
 <style lang="scss" scoped>
-@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
-
-$page-bg: #121216;
-
-$cv-bg1: #ffffff;
-$cv-text-color: #57585a;
-$cv-bg2: #eff0f2;
-
-$cv-primary: #57585a;
-$cv-border-thickness: 3px;
+@import "@/StyleSheets/ResumeStyles.scss";
+$column-padding: 40px;
 
 .page-root {
   height: 100%;
@@ -64,13 +103,6 @@ $cv-border-thickness: 3px;
   padding: 80px;
 }
 
-@mixin heading {
-  font-style: normal;
-  font-weight: 800;
-  font-family: "Raleway", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
 .resume-container {
   position: relative;
   aspect-ratio: 210 / 297;
@@ -103,6 +135,7 @@ $cv-border-thickness: 3px;
       margin: auto;
       margin-bottom: 60px;
       text-align: center;
+      background-color: $cv-bg1;
 
       .resume-title {
         @include heading;
@@ -111,10 +144,8 @@ $cv-border-thickness: 3px;
       .resume-subtitle {
         font-size: 20px;
       }
-      background-color: $cv-bg1;
     }
 
-    $column-padding: 40px;
     .resume-column-a {
       width: 40%;
       padding-inline: $column-padding;
@@ -123,33 +154,9 @@ $cv-border-thickness: 3px;
       width: 60%;
       padding-inline: $column-padding;
     }
-
-    .section-title {
-      @include heading;
-      font-size: 24px;
-      position: relative;
-      margin-bottom: 20px;
-      padding-bottom: 4px;
-      &::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        bottom: 0;
-        left: 0;
-        height: $cv-border-thickness;
-        background-color: $cv-primary;
-      }
-      &::after {
-        content: "";
-        position: absolute;
-        right: 0;
-        bottom: calc($cv-border-thickness / 2);
-        height: 10px;
-        border-radius: 2px;
-        aspect-ratio: 1 /1;
-        background-color: $cv-primary;
-        transform: translateY(50%);
-      }
+    .icon-avatar {
+      background-color: $cv-text-color;
+      color: $cv-bg2;
     }
   }
 }
