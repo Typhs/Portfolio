@@ -49,35 +49,27 @@ const $app = use$App();
 
         <spacer height="250px" />
 
-        <div class="contact-info-wrapper">
-          <div class="mb-5 text-secondary">
-            If you ever need me, here's a contact card
-          </div>
-          <business-card />
-        </div>
+        <contact-info />
+
+        <spacer height="200px" />
+
+        <the-page-end-toolset />
+
         <spacer height="200px" />
 
         <v-card max-width="550px" variant="text">
           <div class="text-h5">Thank you for coming by</div>
           <br />
           <div class="mb-5">
-            Hopefully i was able to show off some of the cool stuff I can pull
+            Hopefully I was able to show off some of the cool stuff I can pull
           </div>
 
           The quickest way to get to me is through the email: <br />
-          <span class="text-primary-accent font-weight-bold"
-            >bmtailan@gmail.com</span
-          >
+          <span class="text-primary-accent font-weight-bold">
+            bmtailan@gmail.com
+          </span>
         </v-card>
-
-        <spacer height="200px" />
       </div>
-
-      <contact-info />
-
-      <spacer height="200px" />
-
-      <the-page-end-toolset />
 
       <spacer height="150px" />
 

@@ -128,9 +128,9 @@ defineExpose({
     ref="words-container"
     data-git-path="src/components/GhostlyTypewriter.vue"
   >
-    <!-- 
-      Keep in mind that nested V-Fors need to carry down a specific key for each parent V-For otherwise their keys repeat 
-      [UPDATE] - this is no longer true, it used to be like this in Vue 2, but now Vue 3 does this automatically
+    <!--
+      Keep in mind that nested V-Fors need to carry down a specific key for each parent V-For otherwise their keys repeat
+      [UPDATE] - this is no longer true, it used to be like this in Vue 2, but now Vue 3 does this automatically, I'll keep the keys as a nod to the past tho
     -->
     <p
       v-for="(paragraph, pIdx) in resultedSplit"
