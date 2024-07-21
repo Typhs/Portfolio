@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import resumeData from "@/enums/ResumeData";
+
 const CONTACT_INFO = [
   {
     icon: "mdi-email",
@@ -26,8 +28,8 @@ const CONTACT_INFO = [
       <div class="resume-content">
         <!-- ================== HEADER ================== -->
         <div class="resume-header">
-          <div class="resume-title">Tailan B. Morita</div>
-          <div class="resume-subtitle">Front-end Engineer</div>
+          <div class="resume-title">{{ resumeData.name }}</div>
+          <div class="resume-subtitle">{{ resumeData.job_title }}</div>
         </div>
         <!-- ================== HEADER ================== -->
 
@@ -35,36 +37,32 @@ const CONTACT_INFO = [
         <div class="d-flex align-start w-100">
           <!-- ==== LEFT COLUMN ==== -->
           <div class="resume-column-a">
-            <resume-section section-title="Contact ">
+            <!-- <resume-section section-title="Contact ">
               <div v-for="point in CONTACT_INFO" class="mb-4">
                 <v-avatar class="icon-avatar mr-3" :icon="point.icon" size="25">
                   <v-icon :icon="point.icon" size="15" />
                 </v-avatar>
                 {{ point.label }}
               </div>
-            </resume-section>
+            </resume-section> -->
 
-            <resume-section section-title="Skills ">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis
-              consequatur nostrum, excepturi itaque commodi impedit velit odit
-              autem natus dicta?
-            </resume-section>
-            <resume-section section-title="Education ">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-              accusamus iste consequuntur rerum aut perspiciatis quo natus
-              inventore quos dolorem!
-            </resume-section>
-            <resume-section section-title="Languages ">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-              accusamus iste consequuntur rerum aut perspiciatis quo natus
-              inventore quos dolorem!
-            </resume-section>
+            <resume-section
+              :section-data="section"
+              :is-root="true"
+              v-for="section in resumeData.column_left"
+            />
           </div>
           <!-- ==== LEFT COLUMN ==== -->
 
           <!-- ==== RIGHT COLUMN ==== -->
           <div class="resume-column-b">
-            <resume-section section-title="Sumary">
+            <resume-section
+              :section-data="section"
+              :is-root="true"
+              v-for="section in resumeData.column_right"
+            />
+
+            <!-- <resume-section section-title="Sumary">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Laudantium consectetur commodi porro! Quisquam neque, accusamus
               perspiciatis minima facilis exercitationem sequi officia quo
@@ -76,7 +74,7 @@ const CONTACT_INFO = [
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
               accusamus iste consequuntur rerum aut perspiciatis quo natus
               inventore quos dolorem!
-            </resume-section>
+            </resume-section> -->
           </div>
           <!-- ==== LEFT COLUMN ==== -->
         </div>
@@ -153,10 +151,6 @@ $column-padding: 40px;
     .resume-column-b {
       width: 60%;
       padding-inline: $column-padding;
-    }
-    .icon-avatar {
-      background-color: $cv-text-color;
-      color: $cv-bg2;
     }
   }
 }

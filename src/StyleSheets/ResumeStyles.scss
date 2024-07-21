@@ -22,3 +22,16 @@ $cv-primary: #788d9e;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+
+:root {
+  .resume-container {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      font-family: "Raleway", sans-serif;
+      text-transform: uppercase;
+    }
+  }
+}

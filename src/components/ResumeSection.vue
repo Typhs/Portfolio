@@ -1,18 +1,61 @@
 <script lang="ts" setup>
+import { PropType } from "vue";
+
 const props = defineProps({
-  sectionTitle: {
-    type: String,
-    default: "",
+  sectionData: {
+    type: Object as PropType<ResumeSection>,
+    default: {},
+  },
+  isRoot: {
+    type: Boolean,
+    default: false,
   },
 });
 </script>
 
 <template>
-  <div class="mb-8">
-    <div class="section-title">{{ props.sectionTitle }}</div>
+  <div class="mb-10">
+    <div class="section-title" v-if="props.sectionData.title">
+      {{ props.sectionData.title }}
+    </div>
 
     <div>
-      <slot name="default" />
+      <div v-for="item in props.sectionData.items" class="mb-4">
+        <h3 v-if="item.title" class="font-weight-bold mb-2">
+          {{ item.title }}
+        </h3>
+        <div v-if="item.subtitle" class="mb-2 font-weight-medium">
+          {{ item.subtitle }}
+        </div>
+
+        <div v-if="typeof item.content == 'string'">
+          <div class="whitespace-pre">
+            <v-avatar class="icon-avatar mr-2" icon size="25" v-if="item.icon">
+              <v-icon :icon="item.icon" size="15" />
+            </v-avatar>
+            <v-icon
+              v-else-if="props.sectionData.type == 'bullet-list'"
+              icon="mdi-circle"
+              size="6"
+              class="mr-2"
+            />
+            {{ item.content }}
+          </div>
+          <div>
+            <v-progress-linear
+              v-if="item.percentage != null"
+              :model-value="item.percentage"
+              height="8"
+              rounded
+            >
+            </v-progress-linear>
+          </div>
+        </div>
+
+        <div v-else class="pl-4">
+          <resume-section :section-data="item.content" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -46,5 +89,10 @@ const props = defineProps({
     background-color: $cv-primary;
     transform: translateY(50%);
   }
+}
+
+.icon-avatar {
+  background-color: $cv-text-color;
+  color: $cv-bg2;
 }
 </style>
