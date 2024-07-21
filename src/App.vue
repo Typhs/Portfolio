@@ -1,6 +1,12 @@
 <script setup lang="ts">
+import { onMounted } from "vue";
+import appStartedScript from "@/functions/AppStartedScript";
 import RouteViewFrame from "@/layouts/RouteViewFrame.vue";
 import TheDirectorsModeOverlay from "@/views/Home/TheDirectorsModeOverlay.vue";
+
+onMounted(() => {
+  appStartedScript();
+});
 </script>
 
 <template>

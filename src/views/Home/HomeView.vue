@@ -42,10 +42,6 @@ const $app = use$App();
           </v-btn>
         </div>
 
-        <!-- <div class="contact-info-wrapper">
-        <contact-info />
-      </div> -->
-
         <spacer height="250px" />
         <div>
           <about-me-tabs />
