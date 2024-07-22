@@ -10,21 +10,25 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  classMargin: {
+    type: String,
+    default: "mb-10",
+  },
 });
 </script>
 
 <template>
-  <div class="mb-10">
+  <div :class="props.classMargin">
     <div class="section-title" v-if="props.sectionData.title">
       {{ props.sectionData.title }}
     </div>
 
     <div>
-      <div v-for="item in props.sectionData.items" class="mb-4">
-        <h3 v-if="item.title" class="font-weight-bold mb-2">
+      <div v-for="item in props.sectionData.items" class="mb-2">
+        <h3 v-if="item.title" class="font-weight-bold mb-1 mt-4">
           {{ item.title }}
         </h3>
-        <div v-if="item.subtitle" class="mb-2 font-weight-medium">
+        <div v-if="item.subtitle" class="mb-1 font-weight-medium">
           {{ item.subtitle }}
         </div>
 
@@ -39,7 +43,9 @@ const props = defineProps({
               size="6"
               class="mr-2"
             />
-            {{ item.content }}
+            <span>
+              {{ item.content }}
+            </span>
           </div>
           <div>
             <v-progress-linear
@@ -52,8 +58,8 @@ const props = defineProps({
           </div>
         </div>
 
-        <div v-else class="pl-4">
-          <resume-section :section-data="item.content" />
+        <div v-else class="pl-5">
+          <resume-section :section-data="item.content" class-margin="" />
         </div>
       </div>
     </div>

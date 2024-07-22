@@ -82,6 +82,46 @@ const resumeData: ResumeData = {
       type: "simple-list",
       items: [
         {
+          title: "Lead front-end developer",
+          subtitle: "Fiqon - ??? to ???",
+          content: {
+            type: "bullet-list",
+            items: [
+              {
+                content:
+                  "Led the evolution of the System Integrations IDE Platform, crafting a brand new front-end foundation by:",
+              },
+              {
+                content: {
+                  type: "bullet-list",
+                  items: [
+                    {
+                      content:
+                        "Thoroughly researching new technologies and libraries - strategically hand-picking which ones to be used in this new codebase while considering performance, ease of use, future-proofing, and customization",
+                    },
+                    {
+                      content:
+                        "Defining clear guidelines, technical documentation of development patterns, and a robust architecture to ease onboarding, ensure code reliability, and swift collaboration within the front-end team - up to 5 concurrent contributors",
+                    },
+                  ],
+                },
+              },
+              {
+                content:
+                  "Spearheaded the front-end development of said project encompassing over X files. Fostered a collaborative front-end development team, providing mentorship through comprehensive code reviews, insightful guidance, and strategic implementation suggestions",
+              },
+              {
+                content:
+                  "Worked closely with designers and back-end developers to ensure clear communication of front-end requirements and cohesion throughout development",
+              },
+              {
+                content:
+                  "Translated intricate Figma designs into robust and functional web interfaces, ensuring a seamless user experience. Adhered to relevant standards, guidelines, browser support, and best practices",
+              },
+            ],
+          },
+        },
+        {
           title: "Mid front-end developer",
           subtitle: "Fiqon - ??? to ???",
           content: {

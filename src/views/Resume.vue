@@ -108,7 +108,7 @@ $column-padding: 40px;
   margin: auto;
   padding-block: 60px;
   color: $cv-text-color;
-  font-size: 16px;
+  font-size: 15px;
 
   background-color: $cv-bg1;
 
