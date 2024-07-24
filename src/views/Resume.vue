@@ -28,8 +28,8 @@ const CONTACT_INFO = [
       <div class="resume-content">
         <!-- ================== HEADER ================== -->
         <div class="resume-header">
-          <div class="resume-title">{{ resumeData.name }}</div>
-          <div class="resume-subtitle">{{ resumeData.job_title }}</div>
+          <h1 class="resume-title">{{ resumeData.name }}</h1>
+          <h5 class="resume-subtitle">{{ resumeData.job_title }}</h5>
         </div>
         <!-- ================== HEADER ================== -->
 
@@ -37,15 +37,6 @@ const CONTACT_INFO = [
         <div class="d-flex align-start w-100">
           <!-- ==== LEFT COLUMN ==== -->
           <div class="resume-column-a">
-            <!-- <resume-section section-title="Contact ">
-              <div v-for="point in CONTACT_INFO" class="mb-4">
-                <v-avatar class="icon-avatar mr-3" :icon="point.icon" size="25">
-                  <v-icon :icon="point.icon" size="15" />
-                </v-avatar>
-                {{ point.label }}
-              </div>
-            </resume-section> -->
-
             <resume-section
               :section-data="section"
               :is-root="true"
@@ -61,20 +52,6 @@ const CONTACT_INFO = [
               :is-root="true"
               v-for="section in resumeData.column_right"
             />
-
-            <!-- <resume-section section-title="Sumary">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laudantium consectetur commodi porro! Quisquam neque, accusamus
-              perspiciatis minima facilis exercitationem sequi officia quo
-              iusto? Necessitatibus voluptate quia amet unde, culpa facere
-              recusandae magnam ipsa neque, rerum laudantium dolorem esse, odit
-              minima.
-            </resume-section>
-            <resume-section section-title="Experience">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-              accusamus iste consequuntur rerum aut perspiciatis quo natus
-              inventore quos dolorem!
-            </resume-section> -->
           </div>
           <!-- ==== LEFT COLUMN ==== -->
         </div>
@@ -94,6 +71,7 @@ const CONTACT_INFO = [
 <style lang="scss" scoped>
 @import "@/StyleSheets/ResumeStyles.scss";
 $column-padding: 40px;
+$header-padding: 40px;
 
 .page-root {
   height: 100%;
@@ -106,7 +84,7 @@ $column-padding: 40px;
   aspect-ratio: 210 / 297;
   width: 1000px;
   margin: auto;
-  padding-block: 60px;
+  padding-block: $header-padding;
   color: $cv-text-color;
   font-size: 15px;
 
@@ -131,16 +109,17 @@ $column-padding: 40px;
       border: $cv-border-thickness solid $cv-primary;
       padding: 20px 75px;
       margin: auto;
-      margin-bottom: 60px;
+      margin-bottom: $header-padding;
       text-align: center;
       background-color: $cv-bg1;
 
       .resume-title {
         @include heading;
-        font-size: 40px;
+        font-size: 35px;
       }
       .resume-subtitle {
         font-size: 20px;
+        font-weight: normal;
       }
     }
 

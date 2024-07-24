@@ -10,7 +10,8 @@ $cv-border-thickness: 3px;
 
 // ------ REMOVE AFTER TESTING ------
 $cv-bg1: #2a2b36;
-$cv-text-color: #d0d1d3;
+$cv-text-color: #cacace;
+$cv-header-color: #dee0e2;
 $cv-bg2: #2d303f;
 $cv-primary: #788d9e;
 // ------ REMOVE AFTER TESTING ------
@@ -32,6 +33,7 @@ $cv-primary: #788d9e;
     h5 {
       font-family: "Raleway", sans-serif;
       text-transform: uppercase;
+      color: $cv-header-color;
     }
   }
 }

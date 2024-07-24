@@ -19,18 +19,22 @@ const props = defineProps({
 
 <template>
   <div :class="props.classMargin">
-    <div class="section-title" v-if="props.sectionData.title">
+    <h2 class="section-title" v-if="props.sectionData.title">
       {{ props.sectionData.title }}
-    </div>
+    </h2>
 
     <div>
-      <div v-for="item in props.sectionData.items" class="mb-2">
-        <h3 v-if="item.title" class="font-weight-bold mb-1 mt-4">
+      <div
+        v-for="item in props.sectionData.items"
+        class="mb-2"
+        :class="{ 'mb-10': item.title && props.sectionData.items.length > 1 }"
+      >
+        <h3 v-if="item.title" class="font-weight-bold mb-1 content-item-title">
           {{ item.title }}
         </h3>
-        <div v-if="item.subtitle" class="mb-1 font-weight-medium">
+        <h4 v-if="item.subtitle" class="mb-1 font-weight-medium">
           {{ item.subtitle }}
-        </div>
+        </h4>
 
         <div v-if="typeof item.content == 'string'">
           <div class="whitespace-pre">
@@ -58,7 +62,7 @@ const props = defineProps({
           </div>
         </div>
 
-        <div v-else class="pl-5">
+        <div v-else :class="{ 'pl-5': !props.isRoot }">
           <resume-section :section-data="item.content" class-margin="" />
         </div>
       </div>
@@ -71,7 +75,6 @@ const props = defineProps({
 
 .section-title {
   @include heading;
-  font-size: 24px;
   position: relative;
   margin-bottom: 20px;
   padding-bottom: 4px;
@@ -96,7 +99,9 @@ const props = defineProps({
     transform: translateY(50%);
   }
 }
-
+.content-item-title {
+  font-size: 16.5px;
+}
 .icon-avatar {
   background-color: $cv-text-color;
   color: $cv-bg2;
