@@ -3,6 +3,20 @@ const resumeData: ResumeData = {
   job_title: "Front-end Engineer",
   column_left: [
     {
+      title: "Summary",
+      items: [
+        {
+          content:
+            "Highly skilled modern front-end developer with 3 years of experience designing, developing, and implementing complex web applications",
+        },
+        {
+          content:
+            "Proven ability to mentor and collaborate with development teams, translate designs into functional interfaces, troubleshoot, and fix bugs. Extensive experience working with Vue.js, Typescript, CSS, Figma, and collaborating with UX/UI designers and back-end developers",
+        },
+      ],
+      type: "simple-list",
+    },
+    {
       title: "Contact",
       type: "simple-list",
       items: [
@@ -67,16 +81,6 @@ const resumeData: ResumeData = {
     },
   ],
   column_right: [
-    {
-      title: "Summary",
-      items: [
-        {
-          content:
-            "Highly skilled modern front-end developer with 3 years of experience designing, developing, and implementing complex web applications. \nProven ability to mentor and collaborate with development teams, translate designs into functional interfaces, troubleshoot, and fix bugs. Extensive experience working with Vue.js, JavaScript, CSS, Figma, and collaborating with UX/UI designers and back-end developers",
-        },
-      ],
-      type: "simple-list",
-    },
     {
       title: "Experience",
       type: "simple-list",

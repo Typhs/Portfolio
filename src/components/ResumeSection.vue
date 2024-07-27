@@ -37,7 +37,7 @@ const props = defineProps({
         </h4>
 
         <div v-if="typeof item.content == 'string'">
-          <div class="whitespace-pre">
+          <div class="whitespace-pre text-j">
             <v-avatar class="icon-avatar mr-2" icon size="25" v-if="item.icon">
               <v-icon :icon="item.icon" size="15" />
             </v-avatar>

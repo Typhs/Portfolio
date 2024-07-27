@@ -72,6 +72,8 @@ const CONTACT_INFO = [
 @import "@/StyleSheets/ResumeStyles.scss";
 $column-padding: 40px;
 $header-padding: 40px;
+$resume-width: 1000px;
+$pdf-aspect-ratio: 210 / 297;
 
 .page-root {
   height: 100%;
@@ -81,12 +83,13 @@ $header-padding: 40px;
 
 .resume-container {
   position: relative;
-  aspect-ratio: 210 / 297;
-  width: 1000px;
+  aspect-ratio: $pdf-aspect-ratio;
+  width: $resume-width;
   margin: auto;
   padding-block: $header-padding;
   color: $cv-text-color;
   font-size: 15px;
+  height: $resume-width / $pdf-aspect-ratio;
 
   background-color: $cv-bg1;
 
