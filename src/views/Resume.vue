@@ -4,7 +4,7 @@ import resumeData from "@/enums/ResumeData";
 
 <template>
   <div class="page-root">
-    <div class="resume-wrapper">
+    <div data-nosnippet>
       <div class="resume-container" ref="resume-container">
         <div class="resume-left-bg" />
         <div class="resume-content">
