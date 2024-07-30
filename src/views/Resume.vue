@@ -1,35 +1,26 @@
 <script lang="ts" setup>
 import resumeData from "@/enums/ResumeData";
+import { templateRef } from "@vueuse/core";
 
-const CONTACT_INFO = [
-  {
-    icon: "mdi-email",
-    label: "bmtailan@gmail.com",
-  },
-  {
-    icon: "mdi-phone",
-    label: "+55 42 99152-0362",
-  },
-  {
-    icon: "mdi-web",
-    label: "https://tailan.site",
-  },
-  {
-    icon: "custom:git",
-    label: "https://github.com/Typhs",
-  },
-] as const;
+const resumeContainerEl = templateRef<HTMLElement>("resume-container");
+// onMounted(()=>{
+//   html2pdf().from(resumeContainerEl.value).save()
+
+// })
 </script>
 
 <template>
   <div class="page-root">
-    <div class="resume-container">
+    <div class="resume-container" ref="resume-container">
       <div class="resume-left-bg" />
       <div class="resume-content">
         <!-- ================== HEADER ================== -->
         <div class="resume-header">
           <h1 class="resume-title">{{ resumeData.name }}</h1>
           <h5 class="resume-subtitle">{{ resumeData.job_title }}</h5>
+          <a :href="resumeData.portfolio.href" class="portfolio-link">
+            {{ resumeData.portfolio.label }}
+          </a>
         </div>
         <!-- ================== HEADER ================== -->
 
@@ -88,7 +79,6 @@ $pdf-aspect-ratio: 210 / 297;
   margin: auto;
   padding-block: $header-padding;
   color: $cv-text-color;
-  font-size: 15px;
   height: $resume-width / $pdf-aspect-ratio;
 
   background-color: $cv-bg1;
@@ -115,14 +105,23 @@ $pdf-aspect-ratio: 210 / 297;
       margin-bottom: $header-padding;
       text-align: center;
       background-color: $cv-bg1;
+      position: relative;
 
       .resume-title {
-        @include heading;
         font-size: 35px;
       }
       .resume-subtitle {
         font-size: 20px;
         font-weight: normal;
+      }
+      .portfolio-link {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        background-color: $cv-bg1;
+        padding: 0 10px;
+        color: $cv-text-color;
       }
     }
 

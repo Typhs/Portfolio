@@ -1,13 +1,17 @@
 const resumeData: ResumeData = {
   name: "Tailan B. Morita",
   job_title: "Front-end Engineer",
+  portfolio: {
+    label: "www.tailan.site",
+    href: "https://tailan.site",
+  },
   column_left: [
     {
       title: "Summary",
       items: [
         {
           content:
-            "Highly skilled modern front-end developer with 3 years of experience designing, developing, and implementing complex web applications",
+            "Highly skilled modern front-end engineer with 3 years of experience designing, developing, and implementing complex web applications",
         },
         {
           content:
@@ -71,14 +75,14 @@ const resumeData: ResumeData = {
         },
       ],
     },
-    {
-      title: "Languages",
-      type: "bullet-list",
-      items: [
-        { content: "Portuguese (br) - native" },
-        { content: "English - fluent" },
-      ],
-    },
+    // {
+    //   title: "Languages",
+    //   type: "bullet-list",
+    //   items: [
+    //     { content: "Portuguese (br) - native" },
+    //     { content: "English - fluent" },
+    //   ],
+    // },
   ],
   column_right: [
     {
@@ -87,13 +91,13 @@ const resumeData: ResumeData = {
       items: [
         {
           title: "Lead front-end developer",
-          subtitle: "Fiqon - ??? to ???",
+          subtitle: "FiqOn - August(2023) to July(2024)",
           content: {
             type: "bullet-list",
             items: [
               {
                 content:
-                  "Led the evolution of the System Integrations IDE Platform, crafting a brand new front-end foundation by:",
+                  "Led the development of the System Integrations IDE Platform, crafting a brand new front-end foundation by:",
               },
               {
                 content: {
@@ -127,7 +131,7 @@ const resumeData: ResumeData = {
         },
         {
           title: "Mid front-end developer",
-          subtitle: "Fiqon - ??? to ???",
+          subtitle: "FiqOn - November(2022) to  August(2023)",
           content: {
             type: "bullet-list",
             items: [
@@ -148,7 +152,7 @@ const resumeData: ResumeData = {
         },
         {
           title: "Junior front-end developer",
-          subtitle: "Fiqon - ??? to ???",
+          subtitle: "FiqOn - June(2022) to November(2022)",
           content: {
             type: "bullet-list",
             items: [

@@ -1,39 +1,38 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
 $page-bg: #121216;
 $cv-bg1: #ffffff;
-$cv-text-color: #57585a;
+$cv-text-color: #474849;
 $cv-bg2: #eff0f2;
 
 $cv-primary: #57585a;
-$cv-border-thickness: 3px;
-
-// ------ REMOVE AFTER TESTING ------
-$cv-bg1: #2a2b36;
-$cv-text-color: #cacace;
-$cv-header-color: #dee0e2;
-$cv-bg2: #2d303f;
-$cv-primary: #788d9e;
-// ------ REMOVE AFTER TESTING ------
-
-@mixin heading {
-  font-style: normal;
-  font-weight: 800;
-  font-family: "Raleway", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
+$cv-border-thickness: 2px;
+$cv-header-color: #474849;
 
 :root {
   .resume-container {
+    font-size: 15px;
     h1,
     h2,
     h3,
     h4,
     h5 {
-      font-family: "Raleway", sans-serif;
+      font-family: "Work Sans", sans-serif;
+
       text-transform: uppercase;
       color: $cv-header-color;
+    }
+  }
+
+  @media print {
+    body {
+      visibility: hidden;
+    }
+    .resume-container {
+      visibility: visible;
+      position: absolute;
+      left: 0;
+      top: 0;
     }
   }
 }

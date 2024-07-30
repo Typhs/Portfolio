@@ -18,6 +18,10 @@ declare global {
   type ResumeData = {
     name: string;
     job_title: string;
+    portfolio: {
+      label: string;
+      href: string;
+    };
     column_left: ResumeSection[];
     column_right: ResumeSection[];
   };

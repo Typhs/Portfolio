@@ -32,12 +32,15 @@ const props = defineProps({
         <h3 v-if="item.title" class="font-weight-bold mb-1 content-item-title">
           {{ item.title }}
         </h3>
-        <h4 v-if="item.subtitle" class="mb-1 font-weight-medium">
+        <h3
+          v-if="item.subtitle"
+          class="mb-1 font-weight-medium text-transform-none"
+        >
           {{ item.subtitle }}
-        </h4>
+        </h3>
 
         <div v-if="typeof item.content == 'string'">
-          <div class="whitespace-pre text-j">
+          <div class="whitespace-pre position-relative">
             <v-avatar class="icon-avatar mr-2" icon size="25" v-if="item.icon">
               <v-icon :icon="item.icon" size="15" />
             </v-avatar>
@@ -50,9 +53,17 @@ const props = defineProps({
             <span>
               {{ item.content }}
             </span>
+            <span
+              v-if="item.percentage != null"
+              class="text-small position-absolute right-0"
+            >
+              {{ item.percentage }}%
+            </span>
           </div>
+
           <div>
             <v-progress-linear
+              class="mb-3"
               v-if="item.percentage != null"
               :model-value="item.percentage"
               height="8"
@@ -74,7 +85,6 @@ const props = defineProps({
 @import "@/StyleSheets/ResumeStyles.scss";
 
 .section-title {
-  @include heading;
   position: relative;
   margin-bottom: 20px;
   padding-bottom: 4px;
