@@ -15,6 +15,22 @@ const props = defineProps({
     default: "mb-10",
   },
 });
+
+function isValidUrl(text: string) {
+  let url;
+
+  try {
+    url = new URL(text);
+  } catch (_) {
+    return false;
+  }
+
+  return url.protocol === "http:" || url.protocol === "https:";
+}
+
+function sectionHighlightSplit(text: string) {
+  return text.split("**");
+}
 </script>
 
 <template>
@@ -50,9 +66,26 @@ const props = defineProps({
               size="6"
               class="mr-2"
             />
-            <span>
+
+            <!-- ====== CONTENT ====== -->
+            <a
+              :href="item.content"
+              v-if="isValidUrl(item.content)"
+              class="text-color-unset"
+            >
               {{ item.content }}
+            </a>
+            <span v-else>
+              <template
+                v-for="(txt, tIdx) in sectionHighlightSplit(item.content)"
+              >
+                <span :class="{ 'cv-content-highlight': tIdx % 2 != 0 }">
+                  {{ txt }}
+                </span>
+              </template>
             </span>
+            <!-- ====== CONTENT ====== -->
+
             <span
               v-if="item.percentage != null"
               class="text-small position-absolute right-0 pt-1"
@@ -115,5 +148,8 @@ const props = defineProps({
 .icon-avatar {
   background-color: $cv-text-color;
   color: $cv-bg2;
+}
+.text-color-unset {
+  color: $cv-text-color;
 }
 </style>

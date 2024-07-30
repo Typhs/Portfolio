@@ -11,11 +11,11 @@ const resumeData: ResumeData = {
       items: [
         {
           content:
-            "Highly skilled modern front-end engineer with 3 years of experience designing, developing, and implementing complex web applications",
+            "Highly skilled **modern front-end engineer** with **3 years of experience** designing, developing, and implementing **complex web applications**",
         },
         {
           content:
-            "Proven ability to mentor and collaborate with development teams, translate designs into functional interfaces, troubleshoot, and fix bugs. Extensive experience working with Vue.js, Typescript, CSS, Figma, and collaborating with UX/UI designers and back-end developers",
+            "Proven ability to **mentor** and **collaborate** with **development teams**, translate designs into functional interfaces, troubleshoot, and fix bugs. Extensive experience working with Vue.js, Typescript, CSS, Figma, and collaborating with UX/UI designers and back-end developers",
         },
       ],
       type: "simple-list",
@@ -97,7 +97,7 @@ const resumeData: ResumeData = {
             items: [
               {
                 content:
-                  "Led the development of the System Integrations IDE Platform, crafting a brand new front-end foundation by:",
+                  "Led the development of the **System Integrations IDE Platform**, crafting a new **front-end foundation** by:",
               },
               {
                 content: {
@@ -105,26 +105,26 @@ const resumeData: ResumeData = {
                   items: [
                     {
                       content:
-                        "Thoroughly researching new technologies and libraries - strategically hand-picking which ones to be used in this new codebase while considering performance, ease of use, future-proofing, and customization",
+                        "Thoroughly **researching new technologies and libraries** - hand-picking which ones to be used in this new codebase while considering **performance**, **ease of use**, **future-proofing**, and **customization**",
                     },
                     {
                       content:
-                        "Defining clear guidelines, technical documentation of development patterns, and a robust architecture to ease onboarding, ensure code reliability, and swift collaboration within the front-end team - up to 5 concurrent contributors",
+                        "Defining **clear guidelines**, **technical documentation of development patterns**, and a **robust architecture** to ease onboarding, ensure code reliability, and swift collaboration within the front-end team - up to 5 concurrent contributors",
                     },
                   ],
                 },
               },
               {
                 content:
-                  "Coordinated the front-end development of said project encompassing over 150 files. Fostered a collaborative front-end development team, providing mentorship through comprehensive code reviews, insightful guidance, and strategic implementation suggestions",
+                  "Coordinated the front-end development of said project encompassing over 150 files. Fostered a **productive front-end development team**, providing mentorship through **code reviews**, **implementation suggestions** and **insightful guidance**",
               },
               {
                 content:
-                  "Worked closely with designers and back-end developers to ensure clear communication of front-end requirements and cohesion throughout development",
+                  "Worked closely with **designers** and **back-end developers** to ensure **clear communication of front-end requirements** and **cohesion** throughout development",
               },
               {
                 content:
-                  "Translated intricate Figma designs into robust and functional web interfaces, ensuring a seamless user experience. Adhered to relevant standards, guidelines, browser support, and best practices",
+                  "Translated intricate **Figma designs** into robust and functional **web interfaces**, ensuring a seamless user experience. Adhered to relevant **guidelines**, **browser support**, and **best practices**",
               },
             ],
           },
@@ -137,15 +137,15 @@ const resumeData: ResumeData = {
             items: [
               {
                 content:
-                  "Worked alongside the UX team to improve user satisfaction through smoothing transitions, animations, and feedback on the interface",
+                  "Worked alongside the **UX team** to improve **user satisfaction** through **smoothing transitions**, **animations**, and **feedback** on the interface",
               },
               {
                 content:
-                  "Developed and configured the core UI library used within the project with Vue, JavaScript, and CSS",
+                  "Developed and configured the **core UI library** used within the project with **Vue**, **JavaScript**, and **CSS**",
               },
               {
                 content:
-                  "Developed new major features with reliability and minimal bugs on top of an existing system with constantly active users",
+                  "Developed **new major features** with reliability and minimal bugs on top of an existing system with **constantly active users**",
               },
             ],
           },
@@ -158,7 +158,7 @@ const resumeData: ResumeData = {
             items: [
               {
                 content:
-                  "Design and implementation of minor features into an existing Vue codebase while maintaining development patterns and guidelines",
+                  "Design and implementation of **minor features** into an **existing Vue codebase** while maintaining development patterns and guidelines",
               },
               {
                 content:
