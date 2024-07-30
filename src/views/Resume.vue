@@ -56,8 +56,8 @@ import resumeData from "@/enums/ResumeData";
 
 <style lang="scss" scoped>
 @import "@/StyleSheets/ResumeStyles.scss";
-$column-padding: 40px;
-$header-padding: 40px;
+$column-padding: 35px;
+$header-padding: 35px;
 $resume-width: 1100px;
 $pdf-aspect-ratio: 210 / 297;
 
