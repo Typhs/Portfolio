@@ -59,7 +59,7 @@ import resumeData from "@/enums/ResumeData";
 $column-padding: 35px;
 $header-padding: 35px;
 $resume-width: 1100px;
-$pdf-aspect-ratio: 210 / 297;
+$pdf-aspect-ratio: calc(210 / 297);
 
 .page-root {
   height: 100%;
@@ -74,7 +74,7 @@ $pdf-aspect-ratio: 210 / 297;
   margin: auto;
   padding-block: $header-padding;
   color: $cv-text-color;
-  height: $resume-width / $pdf-aspect-ratio;
+  height: calc($resume-width / $pdf-aspect-ratio);
 
   background-color: $cv-bg1;
 
