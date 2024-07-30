@@ -2,7 +2,6 @@
 import { use$App } from "@/store/$app";
 import { computed, onMounted, onUnmounted, ref } from "vue";
 import { use$github } from "@/store/$github";
-import { on } from "events";
 
 const props = defineProps({
   path: {
@@ -22,8 +21,11 @@ const $github = use$github();
 const loadedCode = ref<undefined | string>();
 
 onMounted(() => {
+  const requestedPath = structuredClone(props.path);
   $github.fetchGitCode(props.path).then((res) => {
-    typewriteCode(res);
+    if (requestedPath == props.path) {
+      typewriteCode(res);
+    }
   });
 });
 

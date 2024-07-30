@@ -35,14 +35,20 @@ function toggleDirectosCommentary() {
           <!-- <v-divider class="my-2 border-opacity-25" color="primary-accent"/> -->
           <icon-divider class="my-2" icon="mdi-xml" color="secondary" />
 
-          <div class="text-small text-muted b-highlighter-container">
+          <div
+            class="text-small text-muted b-highlighter-container"
+            align="center"
+          >
             <p>
               Shows <b>notes</b> from the author on
               <b>how this project was built</b> along with some of the
-              <b> challenges faced</b>. Also <b>highlights code snippets</b> and
+              <b> challenges faced</b>.
+            </p>
+            <br />
+            <p>
+              Also <b>highlights code snippets</b> and
               <b>code componentization</b>.
             </p>
-            <p></p>
           </div>
           <v-btn
             :variant="$app.directorMode.isOn ? 'tonal' : 'elevated'"

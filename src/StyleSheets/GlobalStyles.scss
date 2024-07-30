@@ -1,5 +1,5 @@
 // =========== FONT-FAMILY SETUP
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800;900&display=swap");
 
 html,
 #app {
@@ -44,11 +44,19 @@ html,
   font-size: 0.8rem;
 }
 
+.text-transform-none {
+  text-transform: none !important;
+}
+
 .home-max-width {
   max-width: 800px;
 }
 .space-evenly {
   justify-content: space-evenly;
+}
+
+.whitespace-pre {
+  white-space: pre-wrap;
 }
 
 .b-highlighter-container {

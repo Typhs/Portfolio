@@ -29,9 +29,7 @@ const props = defineProps({
 });
 onMounted(async () => {
   await nextTick();
-  // setTimeout(() => {
   mountEditor();
-  // }, 300);
 });
 
 watch(

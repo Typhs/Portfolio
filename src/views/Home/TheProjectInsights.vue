@@ -112,7 +112,7 @@ const projectLibraries = [
                 </v-chip>
               </li>
               <li>
-                You can checkout the entire project on
+                The entire project is available on
                 <a href="https://github.com/Typhs/">Github</a>
               </li>
             </ul>

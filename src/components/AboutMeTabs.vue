@@ -29,16 +29,12 @@ const abilitiesContent = [
     text: "<b>Excelent Front-End knowledge</b> - I know the ins and outs of all the different mechanisms that operate in a modern browser",
   },
   {
-    icon: "mdi-source-branch-check",
-    text: "I'm <b>specialized</b> for <b>high complexity desktop projects</b>",
-  },
-  {
     icon: "mdi-dumbbell",
     text: "I <b>thrive in adversity</b>, there's nothing I love more than <b>learning new stuff</b>",
   },
   {
     icon: "mdi-book-open-page-variant",
-    text: "I'm entirely <b>self taught</b> and <b>I'll never stop getting better</b>",
+    text: "I'm mostly <b>self taught</b> and <b>I'll never stop getting better</b>",
   },
   {
     icon: "mdi-human-male-board-poll",
@@ -144,20 +140,11 @@ function changeTabTo(newTabIdx: number) {
       <v-window v-model="currentTabIdx">
         <v-window-item>
           <!-- TECHNICAL HABILITIES -->
-          <div class="about-me-info-container mt-10 px-2">
+          <div
+            class="about-me-info-container mt-10 px-2 py-3"
+            :key="`window-1-${currentTabIdx == 0}`"
+          >
             <template v-for="(ability, aIdx) in abilitiesContent" :key="aIdx">
-              <!-- <div
-                class="d-flex align-center justify-center w-100 my-3"
-              >
-                <v-divider color="secondary" class="border-opacity-25" />
-                <v-icon
-                  icon="mdi-xml"
-                  color="secondary"
-                  class="mx-4 opacity-50"
-                  size="20"
-                />
-                <v-divider color="secondary" class="border-opacity-25" />
-              </div> -->
               <icon-divider
                 class="my-3"
                 color="secondary"
@@ -185,19 +172,22 @@ function changeTabTo(newTabIdx: number) {
         <v-window-item>
           <!-- PERSONAL BACKGROUND -->
           <div class="pa-3">
-            <the-personal-journey-map :key="currentTabIdx == 1" class="mt-5" />
+            <the-personal-journey-map
+              :key="`window-2-${currentTabIdx == 1}`"
+              class="mt-5"
+            />
           </div>
           <v-divider class="mb-3" />
           <v-card class="mx-auto w-fit-content" align="left" variant="text">
             <v-card-item>
               <v-card-title align="center"> Also notably: </v-card-title>
               <h4 align="center" class="mb-2"></h4>
-              <v-icon icon="mdi-star" size="10" color="primary" class="mr-1" />
+              <v-icon icon="mdi-circle" size="8" color="primary" class="mr-1" />
               I'm <b>Brazilian</b>
               <image-as-icon from="brazil-flag" size="25" class="mx-1" />
               <br />
 
-              <v-icon icon="mdi-star" size="10" color="primary" class="mr-1" />
+              <v-icon icon="mdi-circle" size="8" color="primary" class="mr-1" />
               I'm currently <b>{{ currentAge }} years old</b>
               <v-icon
                 icon="mdi-party-popper"
@@ -207,7 +197,7 @@ function changeTabTo(newTabIdx: number) {
               />
               <br />
 
-              <v-icon icon="mdi-star" size="10" color="primary" class="mr-1" />
+              <v-icon icon="mdi-circle" size="8" color="primary" class="mr-1" />
               I'm a <b>fluent English speaker</b>
               <v-icon
                 icon="mdi-translate"
@@ -223,7 +213,7 @@ function changeTabTo(newTabIdx: number) {
           <!-- MASTERED TECHNOLOGIES -->
           <div class="about-me-info-container mt-10">
             <div class="pa-3">
-              <the-skill-table :key="currentTabIdx == 2" />
+              <the-skill-table :key="`window-3-${currentTabIdx == 2}`" />
             </div>
             <!-- using 'key' here to provoke the init animation when this tab is activated -->
             <div class="pt-10">

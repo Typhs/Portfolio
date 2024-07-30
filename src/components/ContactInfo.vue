@@ -31,6 +31,11 @@ function handleIntersect(
   typewrittersAnimate(fullyVisible.value);
 }
 
+function onHoverChange(isHovered: boolean) {
+  fullyVisible.value = isHovered;
+  typewrittersAnimate(isHovered);
+}
+
 function typewrittersAnimate(forward: boolean) {
   typewriterRefs.forEach((tRef) => {
     tRef.value.playAnimations(forward);
@@ -50,15 +55,19 @@ onMounted(() => {
     data-git-path="src/components/ContactInfo.vue"
     class="position-relative w-fit-content mx-auto"
     align="center"
-    v-intersect="{
-      handler: handleIntersect,
-      options: { threshold: threshholds },
-    }"
+    @mouseenter="onHoverChange(true)"
+    @mouseleave="onHoverChange(false)"
   >
     <div
       class="contact-info-wrapper px-5"
       :class="{ 'fully-visible': fullyVisible }"
     >
+      <div class="hover-indicator">
+        <v-chip color="primary" size="large">
+          <v-icon icon="mdi-cursor-default-click" start />
+          Hover me
+        </v-chip>
+      </div>
       <div class="contact-info-container text-h6 pa-5">
         <h2 class="text-white mt-1">
           <ghostly-typewriter
@@ -121,11 +130,25 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-$primary: #6857ff;
-
 .contact-info-wrapper {
   padding: 100px 0;
+  position: relative;
   //outline: 2px solid red;
+
+  &.fully-visible {
+    .hover-indicator {
+      opacity: 0;
+      transition: all 0.2s ease-out;
+    }
+  }
+  .hover-indicator {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    transition: all 0.5s ease-in 4s;
+  }
 }
 .contact-info-container {
   transition: border 5s;

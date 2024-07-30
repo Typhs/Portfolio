@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-// TODO - add 'action' field to this Array -> call it when button is clicked
 const contactOptions = [
   {
     label: "bmtailan@gmail.com",

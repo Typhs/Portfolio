@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+$page-bg: #121216;
+$cv-bg1: #ffffff;
+$cv-text-color: #474849;
+$cv-bg2: #eff0f2;
+
+$cv-primary: #57585a;
+$cv-border-thickness: 2px;
+$cv-header-color: #494a4d;
+
+:root {
+  .resume-container {
+    font-size: 16px;
+    color: $cv-text-color;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      font-family: "Work Sans", sans-serif;
+
+      text-transform: uppercase;
+      color: $cv-header-color;
+    }
+
+    .cv-content-highlight {
+      font-weight: 550;
+      color: $cv-header-color;
+    }
+  }
+
+  @media print {
+    body {
+      background-color: $cv-bg1 !important;
+    }
+    #app {
+      visibility: hidden !important;
+    }
+    .resume-container {
+      width: 1000px !important;
+      aspect-ratio: unset !important;
+      visibility: visible;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+}

@@ -12,6 +12,12 @@ export default [
     meta: {},
   },
   {
+    path: "/resume",
+    name: "resume",
+    component: () => import("@/views/Resume.vue"),
+    meta: {},
+  },
+  {
     path: "/test",
     name: "test",
     component: () => import("@/views/TestView.vue"),
