@@ -26,9 +26,14 @@ $cv-header-color: #474849;
 
   @media print {
     body {
-      visibility: hidden;
+      background-color: $cv-bg1 !important;
+    }
+    #app {
+      visibility: hidden !important;
     }
     .resume-container {
+      width: 1000px !important;
+      aspect-ratio: unset !important;
       visibility: visible;
       position: absolute;
       left: 0;

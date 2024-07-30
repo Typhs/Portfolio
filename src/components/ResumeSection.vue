@@ -55,7 +55,7 @@ const props = defineProps({
             </span>
             <span
               v-if="item.percentage != null"
-              class="text-small position-absolute right-0"
+              class="text-small position-absolute right-0 pt-1"
             >
               {{ item.percentage }}%
             </span>

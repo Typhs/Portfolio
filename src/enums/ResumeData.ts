@@ -48,15 +48,15 @@ const resumeData: ResumeData = {
       items: [
         {
           content: "Vue.js",
-          percentage: 90,
+          percentage: 93,
         },
         {
           content: "Javascript / Typescript",
-          percentage: 90,
+          percentage: 91,
         },
         {
           content: "CSS",
-          percentage: 90,
+          percentage: 95,
         },
         {
           content: "Python",
@@ -116,7 +116,7 @@ const resumeData: ResumeData = {
               },
               {
                 content:
-                  "Spearheaded the front-end development of said project encompassing over X files. Fostered a collaborative front-end development team, providing mentorship through comprehensive code reviews, insightful guidance, and strategic implementation suggestions",
+                  "Coordinated the front-end development of said project encompassing over 150 files. Fostered a collaborative front-end development team, providing mentorship through comprehensive code reviews, insightful guidance, and strategic implementation suggestions",
               },
               {
                 content:

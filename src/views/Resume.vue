@@ -1,52 +1,47 @@
 <script lang="ts" setup>
 import resumeData from "@/enums/ResumeData";
-import { templateRef } from "@vueuse/core";
-
-const resumeContainerEl = templateRef<HTMLElement>("resume-container");
-// onMounted(()=>{
-//   html2pdf().from(resumeContainerEl.value).save()
-
-// })
 </script>
 
 <template>
   <div class="page-root">
-    <div class="resume-container" ref="resume-container">
-      <div class="resume-left-bg" />
-      <div class="resume-content">
-        <!-- ================== HEADER ================== -->
-        <div class="resume-header">
-          <h1 class="resume-title">{{ resumeData.name }}</h1>
-          <h5 class="resume-subtitle">{{ resumeData.job_title }}</h5>
-          <a :href="resumeData.portfolio.href" class="portfolio-link">
-            {{ resumeData.portfolio.label }}
-          </a>
-        </div>
-        <!-- ================== HEADER ================== -->
-
-        <!-- ================== CONTENT ================== -->
-        <div class="d-flex align-start w-100">
-          <!-- ==== LEFT COLUMN ==== -->
-          <div class="resume-column-a">
-            <resume-section
-              :section-data="section"
-              :is-root="true"
-              v-for="section in resumeData.column_left"
-            />
+    <div class="resume-wrapper">
+      <div class="resume-container" ref="resume-container">
+        <div class="resume-left-bg" />
+        <div class="resume-content">
+          <!-- ================== HEADER ================== -->
+          <div class="resume-header">
+            <h1 class="resume-title">{{ resumeData.name }}</h1>
+            <h5 class="resume-subtitle">{{ resumeData.job_title }}</h5>
+            <a :href="resumeData.portfolio.href" class="portfolio-link">
+              {{ resumeData.portfolio.label }}
+            </a>
           </div>
-          <!-- ==== LEFT COLUMN ==== -->
+          <!-- ================== HEADER ================== -->
 
-          <!-- ==== RIGHT COLUMN ==== -->
-          <div class="resume-column-b">
-            <resume-section
-              :section-data="section"
-              :is-root="true"
-              v-for="section in resumeData.column_right"
-            />
+          <!-- ================== CONTENT ================== -->
+          <div class="d-flex align-start w-100">
+            <!-- ==== LEFT COLUMN ==== -->
+            <div class="resume-column-a">
+              <resume-section
+                :section-data="section"
+                :is-root="true"
+                v-for="section in resumeData.column_left"
+              />
+            </div>
+            <!-- ==== LEFT COLUMN ==== -->
+
+            <!-- ==== RIGHT COLUMN ==== -->
+            <div class="resume-column-b">
+              <resume-section
+                :section-data="section"
+                :is-root="true"
+                v-for="section in resumeData.column_right"
+              />
+            </div>
+            <!-- ==== LEFT COLUMN ==== -->
           </div>
-          <!-- ==== LEFT COLUMN ==== -->
+          <!-- ================== CONTENT ================== -->
         </div>
-        <!-- ================== CONTENT ================== -->
       </div>
     </div>
 
@@ -63,7 +58,7 @@ const resumeContainerEl = templateRef<HTMLElement>("resume-container");
 @import "@/StyleSheets/ResumeStyles.scss";
 $column-padding: 40px;
 $header-padding: 40px;
-$resume-width: 1000px;
+$resume-width: 1100px;
 $pdf-aspect-ratio: 210 / 297;
 
 .page-root {
@@ -135,4 +130,8 @@ $pdf-aspect-ratio: 210 / 297;
     }
   }
 }
+</style>
+
+<style lang="scss">
+@import "@/StyleSheets/ResumeStyles.scss";
 </style>
