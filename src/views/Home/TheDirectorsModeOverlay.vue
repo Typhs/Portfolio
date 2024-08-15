@@ -48,7 +48,9 @@ function highlightComponents() {
         "data-git-path"
       ].value;
 
-      newEl.onclick = () => {
+      newEl.onclick = (e: MouseEvent) => {
+        e.preventDefault();
+        e.stopImmediatePropagation();
         $app.selectCodePath(componentPath);
       };
 

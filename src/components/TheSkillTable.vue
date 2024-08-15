@@ -29,6 +29,12 @@ const technologiesContent = [
     color: "#2d79c7",
   },
   {
+    label: "REACT",
+    logo: "react",
+    percentage: "72",
+    color: "#00ccff",
+  },
+  {
     label: "PYTHON",
     logo: "python",
     percentage: "60",

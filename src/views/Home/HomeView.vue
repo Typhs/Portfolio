@@ -16,7 +16,7 @@ const $app = use$App();
       <div align="center" class="py-15">
         <spacer height="100px" />
         <h1 class="text-white">My name is Tailan</h1>
-        <p class="mb-10">and I'm a particularly clever Front-End Developer</p>
+        <p class="mb-10">and I'm a clever Front-End Developer</p>
 
         <p>
           <v-chip color="warning">
