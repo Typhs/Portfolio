@@ -150,7 +150,7 @@ defineExpose({
         >
           {{ letter }}
         </span>
-        <span v-html="'&nbsp;'"> </span>
+        <span v-html="'&nbsp;'" class="opacity-0"> </span>
       </span>
     </p>
   </div>

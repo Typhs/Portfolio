@@ -1,6 +1,9 @@
 <script lang="ts" setup>
+import emitter from "@/plugins/mitt";
 import { use$App } from "@/store/$app";
-import { onMounted, watch } from "vue";
+import { templateRef } from "@vueuse/core";
+import anime from "animejs";
+import { nextTick, onMounted, watch } from "vue";
 
 const $app = use$App();
 
@@ -48,7 +51,9 @@ function highlightComponents() {
         "data-git-path"
       ].value;
 
-      newEl.onclick = () => {
+      newEl.onclick = (e: MouseEvent) => {
+        e.preventDefault();
+        e.stopImmediatePropagation();
         $app.selectCodePath(componentPath);
       };
 
@@ -62,6 +67,67 @@ function highlightComponents() {
     }
   });
 }
+
+const btnIndicatorEl = templateRef<HTMLElement>("btn-indicator");
+emitter.on("animate-director-mode-indicator", async (originContainer) => {
+  await nextTick();
+  const btnContainer = btnIndicatorEl.value.parentElement!;
+  const originBoundings = originContainer.getBoundingClientRect();
+  const btnBoundings = btnContainer.getBoundingClientRect();
+
+  const dif = {
+    x: originBoundings.x - btnBoundings.x,
+    y: originBoundings.y - btnBoundings.y,
+  };
+
+  const timeline = anime.timeline({
+    targets: btnIndicatorEl.value,
+    easing: "easeInOutQuad",
+  });
+
+  originContainer.style.opacity = "0";
+  const indicatorSize = 15;
+  timeline
+    .add({
+      opacity: [0, 1],
+      duration: 0,
+    })
+    .add({
+      borderRadius: ["5px", "50%"],
+      width: [originContainer.offsetWidth, indicatorSize],
+      height: [originContainer.offsetHeight, indicatorSize],
+      translateX: originContainer.offsetWidth / 2,
+      translateY: originContainer.offsetHeight / 2,
+      duration: 250,
+    })
+    .add({
+      top: [dif.y, 0],
+      left: [dif.x, 0],
+      duration: 400,
+    })
+    .add({
+      borderRadius: ["50%", "5px"],
+      width: [indicatorSize, btnContainer.offsetWidth],
+      height: [indicatorSize, btnContainer.offsetHeight],
+      translateX: [btnContainer.offsetWidth / 2, 0],
+      translateY: [btnContainer.offsetHeight / 2, 0],
+      duration: 250,
+    })
+    .add({
+      opacity: [1, 0],
+      duration: 10,
+    });
+
+  timeline.finished.then(() => {
+    $app.directorMode.showPermanentToggle = true;
+    anime({
+      targets: originContainer,
+      opacity: [0, 1],
+      duration: 1000,
+      easing: "easeOutQuad",
+    });
+  });
+});
 </script>
 
 <template>
@@ -113,27 +179,31 @@ function highlightComponents() {
         </v-expand-transition>
       </div>
     </div>
-    <div
-      class="corner-right-btn pa-5"
-      v-if="$app.directorMode.showPermanentToggle"
-    >
-      <v-btn
-        variant="tonal"
-        class="clickable"
-        :color="$app.directorMode.isOn ? 'white' : 'secondary'"
-        @click="$app.directorMode.isOn = !$app.directorMode.isOn"
-      >
-        <span v-if="$app.directorMode.isOn"> EXIT COMMENTARY MODE </span>
-        <span v-else> ENTER COMMENTARY MODE </span>
-        <v-icon
-          :icon="
-            $app.directorMode.isOn
-              ? 'mdi-close-circle-outline'
-              : 'mdi-script-text'
-          "
-          class="ml-2"
-        />
-      </v-btn>
+    <div class="corner-right-btn pa-5 clickable">
+      <!-- v-if="$app.directorMode.showPermanentToggle" -->
+      <div class="position-relative">
+        <div class="director-mode-btn-indicator" ref="btn-indicator" />
+        <span :class="{ 'opacity-0': !$app.directorMode.showPermanentToggle }">
+          <v-btn
+            v-if="$app.directorMode.isOn"
+            variant="tonal"
+            color="secondary"
+            @click="$app.directorMode.isOn = !$app.directorMode.isOn"
+          >
+            EXIT COMMENTARY MODE
+            <v-icon icon="mdi-close-circle-outline" class="ml-2" />
+          </v-btn>
+          <v-btn
+            v-else
+            variant="elevated"
+            color="secondary"
+            @click="$app.directorMode.isOn = !$app.directorMode.isOn"
+          >
+            ENTER COMMENTARY MODE
+            <v-icon icon="mdi-script-text" class="ml-2" />
+          </v-btn>
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -175,9 +245,7 @@ $overlay-bg: transparentize($primary, 0.92);
     position: fixed;
     top: 0;
     right: 0;
-    .clickable {
-      pointer-events: initial;
-    }
+    pointer-events: initial;
   }
   // =============
 
@@ -206,6 +274,17 @@ $overlay-bg: transparentize($primary, 0.92);
       padding-top: 10px;
     }
   }
+}
+
+.director-mode-btn-indicator {
+  background-color: $secondary;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 5px;
 }
 </style>
 

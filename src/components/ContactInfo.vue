@@ -88,7 +88,7 @@ onMounted(() => {
             href="mailto:bmtailan@gmail.com"
             class="d-flex justify-center w-fit-content"
             color="primary"
-            variant="text"
+            variant="plain"
             size="large"
           >
             <div class="contact-icon" :class="{ 'opacity-0': !fullyVisible }">
@@ -109,7 +109,7 @@ onMounted(() => {
             href="https://github.com/Typhs/"
             class="d-flex justify-center w-fit-content"
             color="primary"
-            variant="text"
+            variant="plain"
             size="large"
           >
             <div class="contact-icon" :class="{ 'opacity-0': !fullyVisible }">

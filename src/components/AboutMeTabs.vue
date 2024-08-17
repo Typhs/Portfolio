@@ -48,11 +48,6 @@ const abilitiesContent = [
 
 const techMentions = [
   {
-    label: "React",
-    logo: "react",
-    url: "https://react.dev/",
-  },
-  {
     label: "Vuetify",
     logo: "vuetify",
     url: "https://vuetifyjs.com/",

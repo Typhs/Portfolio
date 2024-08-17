@@ -84,13 +84,14 @@ code.hljs {
 // === HIGHLIGHTJS===
 
 // === VUETIFY ===
-a {
+a:not(.v-btn) {
   text-decoration: none;
-  color: $primary;
+  color: mix($primary-accent, currentColor, 0.5);
   &:hover {
     text-decoration: underline;
   }
 }
+
 .v-btn {
   text-transform: none !important;
 }
