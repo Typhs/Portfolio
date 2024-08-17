@@ -43,7 +43,7 @@ const projectLibraries = [
           <div class="pl-5 mt-2">
             <ul class="ul-spacer">
               <li>
-                The main libraries used in this project are
+                The main libraries used are
 
                 <span v-for="(library, lIdx) in projectLibraries" :key="lIdx">
                   <v-chip

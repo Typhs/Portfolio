@@ -8,11 +8,18 @@ const props = defineProps({
     type: String,
     default: "white",
   },
+  width: {
+    type: String,
+    default: "unset",
+  },
 });
 </script>
 
 <template>
-  <div data-git-path="src/components/IconDivider.vue">
+  <div
+    data-git-path="src/components/IconDivider.vue"
+    :style="`width: ${props.width};`"
+  >
     <div class="d-flex align-center justify-center w-100">
       <v-divider class="border-opacity-25" :color="props.color" />
       <v-icon
