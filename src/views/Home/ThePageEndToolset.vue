@@ -3,7 +3,7 @@ import { use$App } from "@/store/$app";
 
 const $app = use$App();
 
-function toggleDirectosCommentary() {
+function toggleDirectorsCommentary() {
   $app.directorMode.showPermanentToggle = true;
   $app.directorMode.showCode = true;
   $app.directorMode.showComment = true;
@@ -46,7 +46,7 @@ function toggleDirectosCommentary() {
             :variant="$app.directorMode.isOn ? 'tonal' : 'elevated'"
             color="secondary"
             class="mt-5"
-            @click="toggleDirectosCommentary()"
+            @click="toggleDirectorsCommentary()"
           >
             <v-icon icon="mdi-comment-text" class="mr-2" />
             <span v-if="!$app.directorMode.isOn"> ACTIVATE </span>

@@ -55,41 +55,73 @@ function typewriteCode(fullCode: string) {
 onUnmounted(() => {
   clearInterval(intervalInstance.value);
 });
+
+function handleMouseDown(event: MouseEvent) {
+  offset.value.x = event.clientX - position.value.x;
+  offset.value.y = event.clientY - position.value.y;
+
+  window.addEventListener("mousemove", handleMouseMove);
+  window.addEventListener("mouseup", handleMouseUp);
+}
+const offset = ref({ x: 0, y: 0 });
+const position = ref({ x: 0, y: 0 });
+
+function handleMouseMove(event: MouseEvent) {
+  position.value.x = event.clientX - offset.value.x;
+  position.value.y = event.clientY - offset.value.y;
+}
+
+function handleMouseUp() {
+  window.removeEventListener("mousemove", handleMouseMove);
+  window.removeEventListener("mouseup", handleMouseUp);
+}
 </script>
 
 <template>
   <div>
-    <div class="px-3">
-      <h4 class="component-title">
-        {{ fileName }}
-        <v-btn
-          variant="tonal"
-          color="black"
-          class="ml-2"
-          icon
-          size="22"
-          density="comfortable"
-          @click="$app.unselectCodePath()"
+    <div class="px-3 position-relative" ref="container">
+      <!-- <UseDraggable v-slot="{ x, y }" class="position-fixed"> -->
+      <div
+        :style="{ transform: `translate(${position.x}px, ${position.y}px)` }"
+        class="code-viewer-container"
+      >
+        <!-- {{ x }} , {{ y }} -->
+        <h4
+          class="component-title"
+          @mousedown="handleMouseDown"
+          @mouseup="handleMouseUp"
         >
-          <v-icon icon="mdi-close" size="15" />
-        </v-btn>
-      </h4>
+          {{ fileName }}
+          <v-btn
+            variant="tonal"
+            color="black"
+            class="ml-2"
+            icon
+            size="22"
+            density="comfortable"
+            @click="$app.unselectCodePath()"
+          >
+            <v-icon icon="mdi-close" size="15" />
+          </v-btn>
+        </h4>
 
-      <code-viewer
-        language="vue"
-        :code="loadedCode"
-        class="component-code"
-        v-if="loadedCode"
-      />
-      <div v-else class="code-loading-indicator">
-        <div align="center" class="progress-container">
-          <v-progress-circular indeterminate size="50" width="5" />
-          <div class="font-weight-black mt-4">
-            <v-icon icon="custom:git" size="35" />
-            LOADING...
+        <code-viewer
+          language="vue"
+          :code="loadedCode"
+          class="component-code"
+          v-if="loadedCode"
+        />
+        <div v-else class="code-loading-indicator">
+          <div align="center" class="progress-container">
+            <v-progress-circular indeterminate size="50" width="5" />
+            <div class="font-weight-black mt-4">
+              <v-icon icon="custom:git" size="35" />
+              LOADING...
+            </div>
           </div>
         </div>
       </div>
+      <!-- </UseDraggable> -->
     </div>
   </div>
 </template>
@@ -99,6 +131,7 @@ $container-color: mix($secondary, $black, 0.2);
 $container-radius: 8px;
 
 .component-title {
+  cursor: move;
   position: relative;
   color: $black;
   background-color: $container-color;
