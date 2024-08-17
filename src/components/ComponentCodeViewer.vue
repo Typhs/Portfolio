@@ -143,6 +143,7 @@ $container-radius: 8px;
   font-family: monospace;
   font-weight: 600;
   font-size: 18px;
+  user-select: none;
   z-index: 1;
 }
 .component-code,
