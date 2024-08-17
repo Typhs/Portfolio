@@ -15,25 +15,18 @@ const $app = use$App();
     <the-parallax-header>
       <div align="center" class="py-15">
         <spacer height="100px" />
-        <h1 class="text-white">My name is Tailan</h1>
-        <p class="mb-10">and I'm a clever Front-End Developer</p>
-
-        <p>
-          <v-chip color="warning">
-            <v-icon icon="mdi-tools" class="mr-2" />
-            This project is yet in construction
-          </v-chip>
-        </p>
-
-        <spacer height="150px" />
 
         <div>
-          <span class="text-h5">Hello and welcome!</span> <br />
-          <span class="text-h6">This is my personal portfolio</span> <br />
+          <h1 class="text-white mb-2">My name is Tailan</h1>
+          <p>and I'm a clever Front-End Developer</p>
+        </div>
+        <icon-divider width="400px" color="secondary" class="my-5" />
+
+        <div>
+          <p class="mb-3">Welcome to my personal portfolio</p>
           <v-btn
             href="https://github.com/Typhs/portfolio-v2"
             target="_blank"
-            class="mt-5"
             color="secondary"
             variant="tonal"
           >
@@ -47,10 +40,8 @@ const $app = use$App();
           <about-me-tabs />
         </div>
 
-        <spacer height="250px" />
-
+        <spacer height="200px" />
         <contact-info />
-
         <spacer height="200px" />
 
         <the-page-end-toolset />
