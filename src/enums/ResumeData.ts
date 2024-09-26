@@ -42,25 +42,41 @@ const resumeData: ResumeData = {
         },
       ],
     },
+    // {
+    //   title: "Skills",
+    //   type: "skill-list",
+    //   items: [
+    //     {
+    //       content: "Vue.js",
+    //       percentage: 93,
+    //     },
+    //     {
+    //       content: "Javascript / Typescript",
+    //       percentage: 91,
+    //     },
+    //     {
+    //       content: "CSS",
+    //       percentage: 95,
+    //     },
+    //     {
+    //       content: "Python",
+    //       percentage: 60,
+    //     },
+    //   ],
+    // },
     {
       title: "Skills",
-      type: "skill-list",
+      type: "simple-list",
       items: [
         {
-          content: "Vue.js",
-          percentage: 93,
+          content: "**Logic: **Javascript/Typescript, Node.js and Python",
         },
         {
-          content: "Javascript / Typescript",
-          percentage: 91,
+          content: "**Frameworks**: Vue.js, React and React Native",
         },
         {
-          content: "CSS",
-          percentage: 95,
-        },
-        {
-          content: "Python",
-          percentage: 60,
+          content:
+            "**Front-end adjacent:** HTML and CSS, SASS, Vuetify, Bootstrap, Vuex, Pinea, D3, Anime.js, Jest and Cypress",
         },
       ],
     },
@@ -105,7 +121,7 @@ const resumeData: ResumeData = {
                   items: [
                     {
                       content:
-                        "Thoroughly **researching new technologies and libraries** - hand-picking which ones to be used in this new codebase while considering **performance**, **ease of use**, **future-proofing**, and **customization**",
+                        "Thoroughly **researching new technologies and libraries** - deciding which ones to be used in this new codebase while considering **performance**, **ease of use**, **future-proofing**, and **customization**",
                     },
                     {
                       content:
@@ -124,7 +140,7 @@ const resumeData: ResumeData = {
               },
               {
                 content:
-                  "Worked closely with **designers** and **back-end developers** to ensure **clear communication of front-end requirements** and **cohesion** throughout development",
+                  "Worked closely with **designers** and **back-end developers** to ensure **clear communication of front-end requirements** and **cohesion throughout development**",
               },
               // {
               //   content:
