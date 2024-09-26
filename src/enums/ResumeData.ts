@@ -11,11 +11,11 @@ const resumeData: ResumeData = {
       items: [
         {
           content:
-            "Highly skilled **modern front-end engineer** with **3 years of experience** designing, developing, and implementing **complex web applications**",
+            "Highly skilled **modern front-end engineer** with **3 years of experience** designing, developing, and implementing **complex web applications**.",
         },
         {
           content:
-            "Proven ability to **mentor** and **collaborate** with **development teams**, translate designs into functional interfaces, troubleshoot, and fix bugs. Extensive experience working with Vue.js, Typescript, CSS, Figma, and collaborating with UX/UI designers and back-end developers",
+            "Proven ability to **mentor** and **collaborate** with **development teams**, translate **designs** into **functional interfaces** and troubleshoot issues. Has extensive experience working with front-end development, and collaborating with UX/UI designers as well as back-end developers.",
         },
       ],
       type: "simple-list",
@@ -42,25 +42,41 @@ const resumeData: ResumeData = {
         },
       ],
     },
+    // {
+    //   title: "Skills",
+    //   type: "skill-list",
+    //   items: [
+    //     {
+    //       content: "Vue.js",
+    //       percentage: 93,
+    //     },
+    //     {
+    //       content: "Javascript / Typescript",
+    //       percentage: 91,
+    //     },
+    //     {
+    //       content: "CSS",
+    //       percentage: 95,
+    //     },
+    //     {
+    //       content: "Python",
+    //       percentage: 60,
+    //     },
+    //   ],
+    // },
     {
       title: "Skills",
-      type: "skill-list",
+      type: "simple-list",
       items: [
         {
-          content: "Vue.js",
-          percentage: 93,
+          content: "**Logic: **Javascript/Typescript, Node.js and Python",
         },
         {
-          content: "Javascript / Typescript",
-          percentage: 91,
+          content: "**Frameworks**: Vue.js, React and React Native",
         },
         {
-          content: "CSS",
-          percentage: 95,
-        },
-        {
-          content: "Python",
-          percentage: 60,
+          content:
+            "**Front-end adjacent:** HTML and CSS, SASS, Vuetify, Bootstrap, Vuex, Pinea, D3, Anime.js, Jest and Cypress",
         },
       ],
     },
@@ -91,13 +107,13 @@ const resumeData: ResumeData = {
       items: [
         {
           title: "Lead front-end developer",
-          subtitle: "FiqOn - August(2023) to July(2024)",
+          subtitle: "FiqOn - August(2023) to September(2024)",
           content: {
             type: "bullet-list",
             items: [
               {
                 content:
-                  "Led the development of the **System Integrations IDE Platform**, crafting a new **front-end foundation** by:",
+                  "Led the development of the **SaaS System Integrations IDE Platform**, crafting a new **front-end foundation** by:",
               },
               {
                 content: {
@@ -105,11 +121,15 @@ const resumeData: ResumeData = {
                   items: [
                     {
                       content:
-                        "Thoroughly **researching new technologies and libraries** - hand-picking which ones to be used in this new codebase while considering **performance**, **ease of use**, **future-proofing**, and **customization**",
+                        "Thoroughly **researching new technologies and libraries** - deciding which ones to be used in this new codebase while considering **performance**, **ease of use**, **future-proofing**, and **customization**",
                     },
                     {
                       content:
-                        "Defining **clear guidelines**, **technical documentation of development patterns**, and a **robust architecture** to ease onboarding, ensure code reliability, and swift collaboration within the front-end team - up to 5 concurrent contributors",
+                        "Defining **clear guidelines**, **technical documentation of development patterns**, and a **robust architecture** to ease onboarding, ensure code reliability, and swift collaboration within the front-end team - up to 6 concurrent contributors",
+                    },
+                    {
+                      content:
+                        "Setting up **automated unit testing** to ensure **code quality** and **avoid regression**",
                     },
                   ],
                 },
@@ -120,12 +140,12 @@ const resumeData: ResumeData = {
               },
               {
                 content:
-                  "Worked closely with **designers** and **back-end developers** to ensure **clear communication of front-end requirements** and **cohesion** throughout development",
+                  "Worked closely with **designers** and **back-end developers** to ensure **clear communication of front-end requirements** and **cohesion throughout development**",
               },
-              {
-                content:
-                  "Translated intricate **Figma designs** into robust and functional **web interfaces**, ensuring a seamless user experience. Adhered to relevant **guidelines**, **browser support**, and **best practices**",
-              },
+              // {
+              //   content:
+              //     "Translated intricate **Figma designs** into robust and functional **web interfaces**, ensuring a seamless user experience. Adhered to relevant **guidelines**, **browser support**, and **best practices**",
+              // },
             ],
           },
         },
@@ -137,15 +157,15 @@ const resumeData: ResumeData = {
             items: [
               {
                 content:
-                  "Worked alongside the **UX team** to improve **user satisfaction** through **smoothing transitions**, **animations**, and **feedback** on the interface",
+                  "Worked alongside the **UX team** to **improve user satisfaction by 60%** through smoothing transitions, animations, and enhanced feedback on the interface",
               },
               {
                 content:
-                  "Developed and configured the **core UI library** used within the project with **Vue**, **JavaScript**, and **CSS**",
+                  "Developed and configured the **core UI library** used within the project using **Vue**, **JavaScript**, **Bootstrap**, and **CSS**",
               },
               {
                 content:
-                  "Developed **new major features** with reliability and minimal bugs on top of an existing system with **constantly active users**",
+                  "Developed **new major features** with reliability and minimal bugs on top of an existing system with **hundreds of active users**",
               },
             ],
           },
