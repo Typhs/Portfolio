@@ -11,7 +11,7 @@ const resumeData: ResumeData = {
       items: [
         {
           content:
-            "Highly skilled **modern front-end engineer** with **3 years of experience** designing, developing, and implementing **complex web applications**.",
+            "Highly skilled **modern front-end engineer** with **4 years of experience** designing, developing, and implementing **complex web applications**.",
         },
         {
           content:
@@ -76,7 +76,7 @@ const resumeData: ResumeData = {
         },
         {
           content:
-            "**Front-end adjacent:** HTML and CSS, SASS, Vuetify, Bootstrap, Vuex, Pinea, D3, Anime.js, Jest and Cypress",
+            "**Front-end adjacent:** HTML and CSS, SASS, Tailwind, Vuetify, Bootstrap, Vuex, Pinea, D3, Anime.js, Jest and Cypress",
         },
       ],
     },
@@ -165,7 +165,7 @@ const resumeData: ResumeData = {
               },
               {
                 content:
-                  "Developed **new major features** with reliability and minimal bugs on top of an existing system with **hundreds of active users**",
+                  "Developed **major features** with reliability and minimal bugs on top of an existing system with **hundreds of active users**",
               },
             ],
           },
