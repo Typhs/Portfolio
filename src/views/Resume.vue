@@ -22,6 +22,25 @@ const resumeContent = computed(() => {
 
 <template>
   <div class="page-root">
+    <div align="center" class="mb-10">
+      <v-btn
+        color="primary"
+        density="comfortable"
+        icon="mdi-home"
+        rounded
+        :to="{ name: 'home' }"
+        class="mr-3"
+      />
+      <v-btn
+        color="primary"
+        :to="{ name: 'resume-pt' }"
+        v-if="props.lang == 'en'"
+        >change to Portuguese</v-btn
+      >
+      <v-btn color="primary" :to="{ name: 'resume' }" v-else
+        >change to English</v-btn
+      >
+    </div>
     <div data-nosnippet>
       <div class="resume-container" ref="resume-container">
         <div class="resume-left-bg" />

@@ -56,6 +56,9 @@ export const resumeDataEn: ResumeData = {
           content:
             "**Front-end related:** HTML and CSS, SASS, Tailwind, Vuetify, Bootstrap, Vuex, Pinea, D3, Anime.js, Jest and Cypress",
         },
+        {
+          content: "**Languages:** native Portuguese(BR) and  fluent English",
+        },
       ],
     },
     {
@@ -69,14 +72,6 @@ export const resumeDataEn: ResumeData = {
         },
       ],
     },
-    // {
-    //   title: "Languages",
-    //   type: "bullet-list",
-    //   items: [
-    //     { content: "Portuguese (br) - native" },
-    //     { content: "English - fluent" },
-    //   ],
-    // },
   ],
   column_right: [
     {
@@ -168,7 +163,7 @@ export const resumeDataEn: ResumeData = {
       ],
     },
   ],
-};
+} as const;
 
 export default resumeDataEn;
 
@@ -221,7 +216,7 @@ export const resumeDataPt: ResumeData = {
       type: "simple-list",
       items: [
         {
-          content: "**Logica: **Javascript/Typescript, Node.js e Python",
+          content: "**Lógica: **Javascript/Typescript, Node.js e Python",
         },
         {
           content: "**Frameworks**: Vue.js, React e React Native",
@@ -229,6 +224,9 @@ export const resumeDataPt: ResumeData = {
         {
           content:
             "**Front-end relacionadas:** HTML e CSS, SASS, Tailwind, Vuetify, Bootstrap, Vuex, Pinea, D3, Anime.js, Jest e Cypress",
+        },
+        {
+          content: "**Línguas:** português(BR) nativo e inglês fluente",
         },
       ],
     },
@@ -241,14 +239,6 @@ export const resumeDataPt: ResumeData = {
           subtitle: "UTFPR - Ponta Grossa (PR)",
           content: "2021 - presente",
         },
-      ],
-    },
-    {
-      title: "Linguagens",
-      type: "bullet-list",
-      items: [
-        { content: "Português(BR) - nativo" },
-        { content: "Inglês - fluente" },
       ],
     },
   ],
@@ -334,4 +324,4 @@ export const resumeDataPt: ResumeData = {
       ],
     },
   ],
-};
+} as const;
