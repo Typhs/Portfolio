@@ -1,9 +1,9 @@
-const resumeData: ResumeData = {
+export const resumeDataEn: ResumeData = {
   name: "Tailan B. Morita",
   job_title: "Front-end Engineer",
   portfolio: {
-    label: "www.tailan.site",
-    href: "https://tailan.site",
+    label: "www.tailan.pro",
+    href: "https://tailan.pro",
   },
   column_left: [
     {
@@ -34,7 +34,7 @@ const resumeData: ResumeData = {
         },
         {
           icon: "mdi-web",
-          content: "https://tailan.site",
+          content: "https://tailan.pro",
         },
         {
           icon: "custom:git",
@@ -42,28 +42,6 @@ const resumeData: ResumeData = {
         },
       ],
     },
-    // {
-    //   title: "Skills",
-    //   type: "skill-list",
-    //   items: [
-    //     {
-    //       content: "Vue.js",
-    //       percentage: 93,
-    //     },
-    //     {
-    //       content: "Javascript / Typescript",
-    //       percentage: 91,
-    //     },
-    //     {
-    //       content: "CSS",
-    //       percentage: 95,
-    //     },
-    //     {
-    //       content: "Python",
-    //       percentage: 60,
-    //     },
-    //   ],
-    // },
     {
       title: "Skills",
       type: "simple-list",
@@ -76,7 +54,7 @@ const resumeData: ResumeData = {
         },
         {
           content:
-            "**Front-end adjacent:** HTML and CSS, SASS, Tailwind, Vuetify, Bootstrap, Vuex, Pinea, D3, Anime.js, Jest and Cypress",
+            "**Front-end related:** HTML and CSS, SASS, Tailwind, Vuetify, Bootstrap, Vuex, Pinea, D3, Anime.js, Jest and Cypress",
         },
       ],
     },
@@ -86,7 +64,7 @@ const resumeData: ResumeData = {
       items: [
         {
           title: "Technologist Degree in Systems Analysis and Development",
-          subtitle: "URFPR - Ponta Grossa (PR), Brazil",
+          subtitle: "UTFPR - Ponta Grossa (PR), Brazil",
           content: "2021 - present",
         },
       ],
@@ -192,4 +170,168 @@ const resumeData: ResumeData = {
   ],
 };
 
-export default resumeData;
+export default resumeDataEn;
+
+export const resumeDataPt: ResumeData = {
+  name: "Tailan B. Morita",
+  job_title: "Engenheiro de Front-end",
+  portfolio: {
+    label: "www.tailan.pro",
+    href: "https://tailan.pro",
+  },
+  column_left: [
+    {
+      title: "Resumo",
+      items: [
+        {
+          content:
+            "Desenvolvedor **front-end especialista** com **4 anos de experiência** em projetar, desenvolver e implementar aplicações web de alta complexidade.",
+        },
+        {
+          content:
+            "Capacidade comprovada de **mentorar** e **colaborar** com **equipes de desenvolvimento**, traduzir **designs** em **interfaces funcionais** e solucionar problemas. Possui ampla experiência em desenvolvimento front-end e colaboração com designers UX/UI, bem como desenvolvedores back-end.",
+        },
+      ],
+      type: "simple-list",
+    },
+    {
+      title: "Contato",
+      type: "simple-list",
+      items: [
+        {
+          icon: "mdi-email",
+          content: "bmtailan@gmail.com",
+        },
+        {
+          icon: "mdi-phone",
+          content: "+55 42 99152-0362",
+        },
+        {
+          icon: "mdi-web",
+          content: "https://tailan.pro",
+        },
+        {
+          icon: "custom:git",
+          content: "https://github.com/Typhs",
+        },
+      ],
+    },
+    {
+      title: "Habilidades",
+      type: "simple-list",
+      items: [
+        {
+          content: "**Logica: **Javascript/Typescript, Node.js e Python",
+        },
+        {
+          content: "**Frameworks**: Vue.js, React e React Native",
+        },
+        {
+          content:
+            "**Front-end relacionadas:** HTML e CSS, SASS, Tailwind, Vuetify, Bootstrap, Vuex, Pinea, D3, Anime.js, Jest e Cypress",
+        },
+      ],
+    },
+    {
+      title: "Educação",
+      type: "simple-list",
+      items: [
+        {
+          title: "Tecnologia em Análise e Desenvolvimento de Sistemas",
+          subtitle: "UTFPR - Ponta Grossa (PR)",
+          content: "2021 - presente",
+        },
+      ],
+    },
+    {
+      title: "Linguagens",
+      type: "bullet-list",
+      items: [
+        { content: "Português(BR) - nativo" },
+        { content: "Inglês - fluente" },
+      ],
+    },
+  ],
+  column_right: [
+    {
+      title: "Experiência",
+      type: "simple-list",
+      items: [
+        {
+          title: "desenvolvedor front-end líder",
+          subtitle: "FiqOn - de Agosto(2023) a Setembro(2024)",
+          content: {
+            type: "bullet-list",
+            items: [
+              {
+                content:
+                  "Liderou o desenvolvimento da **plataforma IDE de Integrações de Sistemas SaaS**, criando uma nova **fundação front-end** por meio de:",
+              },
+              {
+                content: {
+                  type: "bullet-list",
+                  items: [
+                    {
+                      content:
+                        "Meticulosamente **pesquisando novas tecnologias e bibliotecas** - decidindo quais usar nesta nova base de código considerando **desempenho**, **facilidade de uso**, **preparação para o futuro**, e **personalização**",
+                    },
+                    {
+                      content:
+                        "Definindo uma **arquitetura robusta**, **diretrizes claras** e **documentação técnica de padrões de desenvolvimento** para facilitar a integração, garantir a confiabilidade do código e a colaboração rápida dentro da equipe de front-end - até 6 colaboradores simultâneos",
+                    },
+                    {
+                      content:
+                        "Configurando **testes unitários automatizados** para garantir **qualidade do código** e **evitar regressão**",
+                    },
+                  ],
+                },
+              },
+              {
+                content:
+                  "Coordenou o desenvolvimento front-end do projeto, abrangendo mais de 150 arquivos. Fomentou uma **equipe produtiva de desenvolvimento front-end**, fornecendo mentoria por meio de **revisões de código**, **sugestões de implementação** e **orientação inteligente**",
+              },
+            ],
+          },
+        },
+        {
+          title: "Desenvolvedor front-end pleno",
+          subtitle: "FiqOn - de Novembro(2022) a  Agosto(2023)",
+          content: {
+            type: "bullet-list",
+            items: [
+              {
+                content:
+                  "Trabalhou junto com a **equipe de UX** para **melhorar a satisfação do usuário em 60%** por meio de transições suaves, animações e feedback aprimorado na interface",
+              },
+              {
+                content:
+                  "Desenvolveu e configurou a **principal biblioteca de itens de interface ** utilizada no projeto com **Vue**, **JavaScript**, **Bootstrap** e **CSS**",
+              },
+              {
+                content:
+                  "Desenvolveu **funcionalidades principais** com confiabilidade e bugs mínimos em um sistema com **centenas de usuários ativos**",
+              },
+            ],
+          },
+        },
+        {
+          title: "Desenvolvedor front-end junior",
+          subtitle: "FiqOn - de Junho(2022) a Novembro(2022)",
+          content: {
+            type: "bullet-list",
+            items: [
+              {
+                content:
+                  "Design e implementação de **funcionalidades menores** em um **projeto Vue.js preexistente**, mantendo padrões e diretrizes de desenvolvimento",
+              },
+              {
+                content:
+                  "Diagnóstico e correção de bugs já existentes na interface",
+              },
+            ],
+          },
+        },
+      ],
+    },
+  ],
+};
