@@ -18,6 +18,15 @@ export default [
     meta: {},
   },
   {
+    path: "/resume-pt",
+    name: "resume-pt",
+    component: () => import("@/views/Resume.vue"),
+    meta: {},
+    props: {
+      lang: "pt",
+    },
+  },
+  {
     path: "/test",
     name: "test",
     component: () => import("@/views/TestView.vue"),

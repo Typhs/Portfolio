@@ -1,19 +1,56 @@
 <script lang="ts" setup>
-import resumeData from "@/enums/ResumeData";
+import { resumeDataEn, resumeDataPt } from "@/enums/ResumeData";
+import { computed, PropType } from "vue";
+
+const props = defineProps({
+  lang: {
+    type: String as PropType<"en" | "pt">,
+    default: "en",
+  },
+});
+
+const resumeContent = computed(() => {
+  if (props.lang == "en") {
+    return resumeDataEn;
+  }
+  if (props.lang == "pt") {
+    return resumeDataPt;
+  }
+  return resumeDataEn;
+});
 </script>
 
 <template>
   <div class="page-root">
+    <div align="center" class="mb-10">
+      <v-btn
+        color="primary"
+        density="comfortable"
+        icon="mdi-home"
+        rounded
+        :to="{ name: 'home' }"
+        class="mr-3"
+      />
+      <v-btn
+        color="primary"
+        :to="{ name: 'resume-pt' }"
+        v-if="props.lang == 'en'"
+        >change to Portuguese</v-btn
+      >
+      <v-btn color="primary" :to="{ name: 'resume' }" v-else
+        >change to English</v-btn
+      >
+    </div>
     <div data-nosnippet>
       <div class="resume-container" ref="resume-container">
         <div class="resume-left-bg" />
         <div class="resume-content">
           <!-- ================== HEADER ================== -->
           <div class="resume-header">
-            <h1 class="resume-title">{{ resumeData.name }}</h1>
-            <h5 class="resume-subtitle">{{ resumeData.job_title }}</h5>
-            <a :href="resumeData.portfolio.href" class="portfolio-link">
-              {{ resumeData.portfolio.label }}
+            <h1 class="resume-title">{{ resumeContent.name }}</h1>
+            <h5 class="resume-subtitle">{{ resumeContent.job_title }}</h5>
+            <a :href="resumeContent.portfolio.href" class="portfolio-link">
+              {{ resumeContent.portfolio.label }}
             </a>
           </div>
           <!-- ================== HEADER ================== -->
@@ -25,7 +62,7 @@ import resumeData from "@/enums/ResumeData";
               <resume-section
                 :section-data="section"
                 :is-root="true"
-                v-for="section in resumeData.column_left"
+                v-for="section in resumeContent.column_left"
               />
             </div>
             <!-- ==== LEFT COLUMN ==== -->
@@ -35,7 +72,7 @@ import resumeData from "@/enums/ResumeData";
               <resume-section
                 :section-data="section"
                 :is-root="true"
-                v-for="section in resumeData.column_right"
+                v-for="section in resumeContent.column_right"
               />
             </div>
             <!-- ==== LEFT COLUMN ==== -->
