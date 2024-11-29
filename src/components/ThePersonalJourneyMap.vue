@@ -262,8 +262,8 @@ function animatePoint(pointId: "a" | "b" | "c") {
                       <v-icon icon="mdi-arrow-right-thin" size="14" /> 8 months
                       <br />
                       <v-icon icon="mdi-square-rounded" size="5" class="mr-1" />
-                      <b>Senior Front-End dev</b>
-                      <v-icon icon="mdi-arrow-right-thin" size="14" /> 13 months
+                      <b>Lead Front-End dev</b>
+                      <v-icon icon="mdi-arrow-right-thin" size="14" /> 16 months
                       <br />
                     </small>
                   </div>

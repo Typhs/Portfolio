@@ -54,7 +54,7 @@ export const resumeDataEn: ResumeData = {
         },
         {
           content:
-            "**Front-end related:** HTML and CSS, SASS, Tailwind, Vuetify, Bootstrap, Vuex, Pinea, D3, Anime.js, Jest and Cypress",
+            "**Front-end related:** HTML and CSS, SASS, Vite, Git, Tailwind, Vuetify, Bootstrap, Vuex, Pinea, D3, Anime.js, Jest and Cypress",
         },
         {
           content: "**Languages:** native Portuguese(BR) and  fluent English",
@@ -223,7 +223,7 @@ export const resumeDataPt: ResumeData = {
         },
         {
           content:
-            "**Front-end relacionadas:** HTML e CSS, SASS, Tailwind, Vuetify, Bootstrap, Vuex, Pinea, D3, Anime.js, Jest e Cypress",
+            "**Front-end relacionadas:** HTML e CSS, SASS, Vite, Git, Tailwind, Vuetify, Bootstrap, Vuex, Pinea, D3, Anime.js, Jest e Cypress",
         },
         {
           content: "**Línguas:** português(BR) nativo e inglês fluente",
