@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import SkillTreeDataset from "@/enums/SkillTreeDataset";
-import { computed, onMounted, ref } from "vue";
+import { templateRef } from "@vueuse/core";
+import anime, { Animation, AnimeInstance } from "animejs";
+import { computed, nextTick, onBeforeMount, onMounted, ref } from "vue";
 import { useTheme } from "vuetify/lib/framework.mjs";
 const viewBox = {
   width: 200,
@@ -29,6 +31,7 @@ function makeCoordsPath(coordinates: string[]) {
   return [path, finalCoords] as const;
 }
 
+onBeforeMount(buildSkillTree);
 const skills = ref<SkillTreeItem[]>([]);
 function buildSkillTree() {
   SkillTreeDataset.forEach((skill) => {
@@ -37,23 +40,49 @@ function buildSkillTree() {
       finalCoords: finalCoords,
       img: skill.img,
       path: path,
+      label: skill.label,
+      id: skill.id,
     });
   });
 }
-onMounted(buildSkillTree);
 
-function onHoverSkill() {
-  xlog("onhover");
+onMounted(setupAnimations);
+const animationMap: { [k: string]: AnimeInstance } = {};
+const containerEl = templateRef<HTMLElement>("container");
+function setupAnimations() {
+  skills.value.forEach((skill) => {
+    const el = containerEl.value.querySelector(
+      `path[data-path-id="${skill.id}"]`,
+    );
+    console.log(el);
+    animationMap[skill.id] = anime({
+      targets: el,
+      strokeDashoffset: [anime.setDashoffset, 0],
+      easing: "easeInOutQuad",
+      duration: 1000,
+      autoplay: false,
+    });
+  });
 }
-function onUnhoverSkill() {
-  xlog("on unhover");
+
+function onHoverSkill(id: string) {
+  if (animationMap[id].reversed) {
+    animationMap[id].reverse();
+  }
+  animationMap[id].play();
+}
+function onHoverOutSkill(id: string) {
+  if (!animationMap[id].reversed) {
+    animationMap[id].reverse();
+  }
+  animationMap[id].play();
 }
 
 const theme = useTheme();
 </script>
 
 <template>
-  <div class="position-relative">
+  <div class="position-relative" ref="container">
     <svg
       width="100%"
       :viewBox="`00 00 ${viewBox.width} ${viewBox.height}`"
@@ -63,23 +92,42 @@ const theme = useTheme();
       class="skill-tree-svg d-block"
     >
       <template v-for="skill in skills">
+        <!-- pipe lines, always visible -->
         <path
-          stroke-width="0.8"
+          stroke-width="0.5"
           fill="none"
           stroke-linejoin="round"
           :d="skill.path"
         />
         <circle :cx="skill.finalCoords.x" :cy="skill.finalCoords.y" r="1" />
       </template>
-      <circle :cx="viewBox.width / 2" :cy="viewBox.height / 2" r="3" />
+
+      <template v-for="skill in skills">
+        <!-- inner pipe lines, visible on hover of each skill -->
+        <path
+          stroke-width="0.5"
+          fill="none"
+          stroke="gold"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+          :d="skill.path"
+          class="inner-path"
+          :data-path-id="skill.id"
+        />
+      </template>
+
+      <!-- circle in the middle of SVG -->
+      <circle :cx="viewBox.width / 2" :cy="viewBox.height / 2" r="1.3" />
     </svg>
+
     <template v-for="skill in skills">
       <skill-tree-node
         :img="skill.img"
+        :label="skill.label"
         class="node-position"
         :style="`left: ${(100 * skill.finalCoords.x) / viewBox.width}%; top: ${(100 * skill.finalCoords.y) / viewBox.height}%;`"
-        @mouseenter="onHoverSkill()"
-        @mouseleave="onUnhoverSkill()"
+        @mouseenter="onHoverSkill(skill.id)"
+        @mouseleave="onHoverOutSkill(skill.id)"
       />
     </template>
   </div>
@@ -89,6 +137,10 @@ const theme = useTheme();
 .skill-tree-svg {
   circle {
     stroke-width: 0.5px;
+  }
+
+  .inner-path {
+    filter: drop-shadow(0px 0px 1.5px $secondary);
   }
 }
 

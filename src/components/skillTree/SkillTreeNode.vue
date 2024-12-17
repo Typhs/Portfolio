@@ -3,15 +3,18 @@ const props = defineProps({
   img: {
     default: "",
   },
+  label: {
+    default: "",
+  },
 });
 </script>
 
 <template>
   <div>
-    <div class="node-container">
+    <div class="node-container" v-ripple="true">
       <div class="skill-tree-node">
-        <img :src="props.img" class="mr-2" />
-        <h4>sd sad</h4>
+        <img :src="props.img" class="mr-1" />
+        <h4>{{ props.label }}</h4>
       </div>
     </div>
   </div>
@@ -22,12 +25,12 @@ $node-color: $secondary;
 .node-container {
   width: fit-content;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 4px;
 
   .skill-tree-node {
     border-radius: inherit;
     padding: 8px 10px;
-    border: 5px solid $node-color;
+    border: 3px solid $node-color;
     background-color: mix($node-color, $background, 0.5);
     display: flex;
     align-items: center;
