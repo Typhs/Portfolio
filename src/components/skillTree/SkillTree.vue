@@ -42,6 +42,13 @@ function buildSkillTree() {
 }
 onMounted(buildSkillTree);
 
+function onHoverSkill() {
+  xlog("onhover");
+}
+function onUnhoverSkill() {
+  xlog("on unhover");
+}
+
 const theme = useTheme();
 </script>
 
@@ -71,6 +78,8 @@ const theme = useTheme();
         :img="skill.img"
         class="node-position"
         :style="`left: ${(100 * skill.finalCoords.x) / viewBox.width}%; top: ${(100 * skill.finalCoords.y) / viewBox.height}%;`"
+        @mouseenter="onHoverSkill()"
+        @mouseleave="onUnhoverSkill()"
       />
     </template>
   </div>
