@@ -2,7 +2,9 @@
 
 <template>
   <div>
-    <skill-tree />
+    <div>
+      <skill-tree />
+    </div>
   </div>
 </template>
 

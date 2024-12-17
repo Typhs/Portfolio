@@ -7,15 +7,6 @@ const viewBox = {
   height: 100,
 };
 
-type Skill = {
-  img: string;
-  path: string;
-  finalCoords: {
-    x: number;
-    y: number;
-  };
-};
-
 function makeCoordsPath(coordinates: string[]) {
   const coords = coordinates.map((c) => c.toLowerCase());
   const finalCoords = { x: viewBox.width / 2, y: viewBox.height / 2 };
@@ -38,7 +29,7 @@ function makeCoordsPath(coordinates: string[]) {
   return [path, finalCoords] as const;
 }
 
-const skills = ref<Skill[]>([]);
+const skills = ref<SkillTreeItem[]>([]);
 function buildSkillTree() {
   SkillTreeDataset.forEach((skill) => {
     const [path, finalCoords] = makeCoordsPath(skill.coords);
@@ -55,14 +46,14 @@ const theme = useTheme();
 </script>
 
 <template>
-  <div>
+  <div class="position-relative">
     <svg
       width="100%"
       :viewBox="`00 00 ${viewBox.width} ${viewBox.height}`"
       xmlns="http://www.w3.org/2000/svg"
       :stroke="theme.current.value.colors.secondary"
-      style="border: 1px solid red"
-      class="skill-tree-svg"
+      style="outline: 1px solid red"
+      class="skill-tree-svg d-block"
     >
       <template v-for="skill in skills">
         <path
@@ -75,21 +66,13 @@ const theme = useTheme();
       </template>
       <circle :cx="viewBox.width / 2" :cy="viewBox.height / 2" r="3" />
     </svg>
-    {{ skills }}
-
-    <!-- <path d="M 50 50 v 5 h 5 v 10" fill="none" stroke-width="1" /> -->
-    <!-- <path
-          d="M 50 50 L 50 55 L 55 55 L 55 60"
-          fill="none"
-          stroke="white"
-          stroke-width="2"
-        /> -->
-
-    <!-- <path d="M 0 0 L 0 5 L 5 5 L 5 10" fill="none" stroke-width="1" /> -->
-    <!--
-      <svg width="50" height="100" viewBox="0 0 5 10" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 0 0 L 0 5 L 5 5 L 5 10" fill="none" stroke="white" stroke-width="0.5"/>
-    </svg> -->
+    <template v-for="skill in skills">
+      <skill-tree-node
+        :img="skill.img"
+        class="node-position"
+        :style="`left: ${(100 * skill.finalCoords.x) / viewBox.width}%; top: ${(100 * skill.finalCoords.y) / viewBox.height}%;`"
+      />
+    </template>
   </div>
 </template>
 
@@ -98,5 +81,10 @@ const theme = useTheme();
   circle {
     stroke-width: 0.5px;
   }
+}
+
+.node-position {
+  position: absolute;
+  transform: translate(-50%, -50%);
 }
 </style>
