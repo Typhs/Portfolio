@@ -54,7 +54,6 @@ function setupAnimations() {
     const el = containerEl.value.querySelector(
       `path[data-path-id="${skill.id}"]`,
     );
-    console.log(el);
     animationMap[skill.id] = anime({
       targets: el,
       strokeDashoffset: [anime.setDashoffset, 0],
@@ -117,7 +116,7 @@ const theme = useTheme();
       </template>
 
       <!-- circle in the middle of SVG -->
-      <circle :cx="viewBox.width / 2" :cy="viewBox.height / 2" r="1.3" />
+      <circle :cx="viewBox.width / 2" :cy="viewBox.height / 2" r="2" />
     </svg>
 
     <template v-for="skill in skills">

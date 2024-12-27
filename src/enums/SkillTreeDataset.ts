@@ -38,7 +38,7 @@ export default [
   {
     label: "Scooby do2oo",
     id: "vuhhhe",
-    coords: ["y-15", "x10"],
+    coords: ["y-15"],
     img: "https://doggiedonyc.com/wp-content/uploads/2014/06/dog2.jpg",
   },
   {
