@@ -289,29 +289,42 @@ $overlay-bg: transparentize($primary, 0.92);
 </style>
 
 <style lang="scss">
-/* NOTE - WHAT I'M DOING RIGHT NOW:
-  Stylizing components with 'data-git-name' set attribute when Commentary Mode is active
-  currently the only one with that attribute set is 'AboutMeTabs.vue'
-
-  also need to do the code that creates an overlapping cloned box element to the original one, so that we don't style the actual component
-
-  when user clicks on the label of that component, open a section with its file's code
-  we'll be using the github api for that
-*/
-
 $overlay-color: $secondary;
 $overlay-color-faded: transparentize($overlay-color, 0.4);
 $tab-radius: 5px;
 
 body.commentary-mode-active {
   [data-git-path] {
-    outline: 1px solid $overlay-color-faded;
-    border-radius: 5px;
-    border-top-left-radius: 0;
-    transition: all 0.2s;
-    &:has(> .commentary-overlay-component-label div:hover) {
+    position: relative;
+    &::before {
+      border-radius: 5px;
+      border-top-left-radius: 0;
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      outline: 1px solid $overlay-color-faded;
+      animation: init-outline 0.15s;
+      animation-iteration-count: 1;
+      animation-timing-function: ease-out;
+    }
+
+    &:has(> .commentary-overlay-component-label div:hover)::before {
       outline-color: $overlay-color;
     }
+  }
+}
+
+@keyframes init-outline {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
   }
 }
 
