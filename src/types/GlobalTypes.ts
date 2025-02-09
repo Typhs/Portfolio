@@ -29,6 +29,7 @@ declare global {
   type SkillTreeItem = {
     img: string;
     path: string;
+    size: number;
     id: string;
     label: string;
     finalCoords: {

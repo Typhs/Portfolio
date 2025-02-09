@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { templateRef } from "@vueuse/core";
 import anime, { AnimeInstance } from "animejs";
-import { onMounted, ref, h } from "vue";
+import { onMounted, ref, h, computed } from "vue";
 
 const props = defineProps({
   img: {
@@ -9,6 +9,9 @@ const props = defineProps({
   },
   label: {
     default: "",
+  },
+  size: {
+    default: 1,
   },
 });
 
@@ -38,10 +41,10 @@ function onHoverChange(isOpen: boolean) {
         v-ripple="true"
         v-bind="hoverProps"
       >
-        <div class="skill-tree-node">
-          <div class="d-flex align-center">
+        <div class="skill-tree-node" :class="`skill-size-${props.size}`">
+          <div class="node-title">
             <img :src="props.img" class="mr-1" />
-            <h4>{{ props.label }}</h4>
+            <span class="node-title-label">{{ props.label }}</span>
           </div>
           <div class="node-content">
             <div>
@@ -61,7 +64,7 @@ $node-color: $secondary;
 .node-container {
   width: fit-content;
   align-items: center;
-  border-radius: 4px;
+  border-radius: 8px;
   transition:
     box-shadow 0.5s,
     transform 0.2s;
@@ -72,11 +75,42 @@ $node-color: $secondary;
   &:hover {
     transform: scale(1.1);
   }
-  &.node-expanded {
-    box-shadow: 0 0 50px 5px transparentize($node-color, 0.8);
-    .node-content {
-      max-width: 500px;
-      max-height: 400px;
+
+  .skill-tree-node {
+    border-radius: inherit;
+    padding: 0 5px;
+    border: 3px solid $node-color;
+    background-color: mix($node-color, $background, 0.8);
+
+    &.skill-size-1 {
+      font-size: 12px;
+    }
+    &.skill-size-2 {
+      font-size: 15px;
+    }
+    &.skill-size-3 {
+      font-size: 18px;
+    }
+
+    img {
+      width: 1.5em;
+      aspect-ratio: 1 / 1;
+    }
+  }
+
+  .node-title {
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+    background-color: inherit;
+    width: fit-content;
+    padding: 4px 2px;
+    border-radius: inherit;
+    border: 3px solid transparent;
+
+    .node-title-label {
+      font-size: 1.1em;
+      font-weight: bold;
     }
   }
 
@@ -85,21 +119,26 @@ $node-color: $secondary;
     transition: all 0.3s;
     max-width: 0;
     max-height: 0;
+
     & > * {
+      padding: 0 9px 10px 8px;
       min-width: 500px;
       max-width: 500px;
     }
   }
 
-  .skill-tree-node {
-    border-radius: inherit;
-    padding: 8px 10px;
-    border: 3px solid $node-color;
-    background-color: mix($node-color, $background, 0.8);
-
-    img {
-      width: 30px;
-      aspect-ratio: 1 / 1;
+  &.node-expanded {
+    box-shadow: 0 0 50px 5px transparentize($node-color, 0.8);
+    .node-content {
+      margin-top: -15px;
+      max-width: 500px;
+      max-height: 400px;
+    }
+    .node-title {
+      transform: translateY(-50%);
+      border-color: $node-color;
+      margin-left: 10px;
+      padding: 5px 10px;
     }
   }
 }

@@ -36,12 +36,12 @@ const skills = ref<SkillTreeItem[]>([]);
 function buildSkillTree() {
   SkillTreeDataset.forEach((skill) => {
     const [path, finalCoords] = makeCoordsPath(skill.coords);
+    const t = { ...structuredClone(skill), coords: undefined };
+
     skills.value.push({
       finalCoords: finalCoords,
-      img: skill.img,
       path: path,
-      label: skill.label,
-      id: skill.id,
+      ...t,
     });
   });
 }
@@ -87,7 +87,6 @@ const theme = useTheme();
       :viewBox="`00 00 ${viewBox.width} ${viewBox.height}`"
       xmlns="http://www.w3.org/2000/svg"
       :stroke="theme.current.value.colors.secondary"
-      style="outline: 1px solid red"
       class="skill-tree-svg d-block"
     >
       <template v-for="skill in skills">
@@ -106,7 +105,7 @@ const theme = useTheme();
         <path
           stroke-width="0.5"
           fill="none"
-          stroke="gold"
+          :stroke="theme.current.value.colors.primary"
           stroke-linejoin="round"
           stroke-linecap="round"
           :d="skill.path"
@@ -123,6 +122,7 @@ const theme = useTheme();
       <skill-tree-node
         :img="skill.img"
         :label="skill.label"
+        :size="skill.size"
         class="node-position"
         :style="`left: ${(100 * skill.finalCoords.x) / viewBox.width}%; top: ${(100 * skill.finalCoords.y) / viewBox.height}%;`"
         @mouseenter="onHoverSkill(skill.id)"
