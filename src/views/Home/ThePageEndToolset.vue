@@ -31,14 +31,20 @@ const btnContainerEl = templateRef<HTMLElement>("btn-container");
     <div class="pa-4">
       Here you can see some of the behind the scenes of this project
       <div class="mt-3 d-flex align-center justify-center">
-        <v-card variant="tonal" color="primary" class="pa-5" max-width="600px">
+        <v-card
+          variant="tonal"
+          color="primary"
+          class="pa-5"
+          max-width="600px"
+          rounded="lg"
+        >
           <h3 class="font-weight-bolder text-secondary">
-            <v-icon icon="mdi-script-text" class="mr-2" />
-            Director's Commentary
+            <v-icon icon="mdi-xml" class="mr-2" />
+            Dev Mode
           </h3>
 
           <!-- <v-divider class="my-2 border-opacity-25" color="primary-accent"/> -->
-          <icon-divider class="my-2" icon="mdi-xml" color="secondary" />
+          <icon-divider class="my-2" icon="mdi-code-json" color="secondary" />
 
           <div class="text-muted b-highlighter-container" align="center">
             <p>
@@ -58,7 +64,7 @@ const btnContainerEl = templateRef<HTMLElement>("btn-container");
               color="secondary"
               @click="toggleDirectorsCommentary()"
             >
-              <v-icon icon="mdi-comment-text" class="mr-2" />
+              <v-icon icon="mdi-xml" class="mr-2" />
               <span v-if="!$app.directorMode.isOn"> ACTIVATE </span>
               <span v-else> DEACTIVATE </span>
             </v-btn>

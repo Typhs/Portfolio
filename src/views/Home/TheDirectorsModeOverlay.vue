@@ -140,8 +140,8 @@ emitter.on("animate-director-mode-indicator", async (originContainer) => {
       <div class="d-flex justify-start align-start pa-5">
         <div class="commentary-header">
           <h2 class="commentary-title clickable">
-            <v-icon icon="mdi-script-text" class="mr-2" size="small" />
-            Dev mode
+            <v-icon icon="mdi-xml" class="mr-2" size="small" />
+            Dev Mode
           </h2>
           <div class="commentary-toggles-container">
             <div>
@@ -201,7 +201,7 @@ emitter.on("animate-director-mode-indicator", async (originContainer) => {
             @click="$app.directorMode.isOn = !$app.directorMode.isOn"
           >
             ENTER DEV MODE
-            <v-icon icon="mdi-script-text" class="ml-2" />
+            <v-icon icon="mdi-xml" class="ml-2" />
           </v-btn>
         </span>
       </div>

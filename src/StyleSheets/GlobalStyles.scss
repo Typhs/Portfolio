@@ -62,7 +62,7 @@ html,
 .b-highlighter-container {
   b {
     font-weight: bolder;
-    color: mix($primary-accent, currentColor, 0.5);
+    color: transparentize($white, 0.3);
   }
 }
 .pointer-events-none {
