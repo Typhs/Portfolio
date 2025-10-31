@@ -65,6 +65,9 @@ html,
     color: mix($primary-accent, currentColor, 0.5);
   }
 }
+.pointer-events-none {
+  pointer-events: none;
+}
 
 .hover-underline {
   transition: border-bottom 0.25s;

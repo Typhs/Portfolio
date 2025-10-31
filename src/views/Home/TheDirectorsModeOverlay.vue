@@ -4,6 +4,7 @@ import { use$App } from "@/store/$app";
 import { templateRef } from "@vueuse/core";
 import anime from "animejs";
 import { nextTick, onMounted, watch } from "vue";
+import SleekLineCursor from "@/components/SleekLineCursor.vue";
 
 const $app = use$App();
 
@@ -140,7 +141,7 @@ emitter.on("animate-director-mode-indicator", async (originContainer) => {
         <div class="commentary-header">
           <h2 class="commentary-title clickable">
             <v-icon icon="mdi-script-text" class="mr-2" size="small" />
-            Director's Commentary
+            Dev mode
           </h2>
           <div class="commentary-toggles-container">
             <div>
@@ -190,7 +191,7 @@ emitter.on("animate-director-mode-indicator", async (originContainer) => {
             color="secondary"
             @click="$app.directorMode.isOn = !$app.directorMode.isOn"
           >
-            EXIT COMMENTARY MODE
+            EXIT DEV MODE
             <v-icon icon="mdi-close-circle-outline" class="ml-2" />
           </v-btn>
           <v-btn
@@ -199,12 +200,18 @@ emitter.on("animate-director-mode-indicator", async (originContainer) => {
             color="secondary"
             @click="$app.directorMode.isOn = !$app.directorMode.isOn"
           >
-            ENTER COMMENTARY MODE
+            ENTER DEV MODE
             <v-icon icon="mdi-script-text" class="ml-2" />
           </v-btn>
         </span>
       </div>
     </div>
+    <SleekLineCursor
+      v-if="$app.directorMode.isOn"
+      :dampening="0"
+      :trails="12"
+      :size="20"
+    />
   </div>
 </template>
 
@@ -225,7 +232,6 @@ $overlay-bg: transparentize($primary, 0.92);
     background-color: $overlay-bg;
     color: $commentary-color;
     width: 100%;
-    height: 100%;
     transition: all 0.2s;
     opacity: 0;
     &.is-mode-active {
