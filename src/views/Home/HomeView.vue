@@ -2,9 +2,6 @@
 import TheParallaxHeader from "@/views/Home/TheParallaxHeader.vue";
 import ThePageEndToolset from "@/views/Home/ThePageEndToolset.vue";
 import TheProjectInsights from "@/views/Home/TheProjectInsights.vue";
-import { onMounted } from "vue";
-import { templateRef } from "@vueuse/core";
-import anime from "animejs";
 import { use$App } from "@/store/$app";
 
 const $app = use$App();
