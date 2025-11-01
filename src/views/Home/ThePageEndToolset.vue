@@ -11,10 +11,7 @@ function toggleDirectorsCommentary() {
 
   $app.directorMode.isOn = !$app.directorMode.isOn;
 
-  if (
-    $app.directorMode.isOn == false &&
-    !$app.directorMode.showPermanentToggle
-  ) {
+  if (!$app.directorMode.showPermanentToggle) {
     emitter.emit("animate-director-mode-indicator", btnContainerEl.value);
   }
 }
@@ -43,7 +40,6 @@ const btnContainerEl = templateRef<HTMLElement>("btn-container");
             Dev Mode
           </h3>
 
-          <!-- <v-divider class="my-2 border-opacity-25" color="primary-accent"/> -->
           <icon-divider class="my-2" icon="mdi-code-json" color="secondary" />
 
           <div class="text-muted b-highlighter-container" align="center">

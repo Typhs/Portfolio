@@ -106,19 +106,19 @@ onMounted(() => {
 
         <div>
           <v-btn
-            href="https://github.com/Typhs/"
+            href="https://www.linkedin.com/in/tailan/"
             class="d-flex justify-center w-fit-content"
             color="primary"
             variant="plain"
             size="large"
           >
             <div class="contact-icon" :class="{ 'opacity-0': !fullyVisible }">
-              <v-icon icon="custom:git" />
+              <v-icon icon="mdi-linkedin" />
               <v-icon icon="mdi-arrow-right-thin" size="18" class="mx-1" />
             </div>
             <div class="text-indigo-lighten-3">
               <ghostly-typewriter
-                :paragraphs="['https://github.com/Typhs']"
+                :paragraphs="['https://www.linkedin.com/in/tailan']"
                 ref="typewriter-3"
               />
             </div>
