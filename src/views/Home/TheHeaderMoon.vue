@@ -42,9 +42,10 @@ export default {
   mounted() {
     const canvasEl = this.$refs["moon-canvas"] as HTMLCanvasElement;
     this.context = canvasEl.getContext("2d") as CanvasRenderingContext2D;
-
-    this.dimention.width = 600;
-    this.dimention.height = 600;
+    const viewWidth = window.innerWidth;
+    const moonSize = Math.min(600, Math.max(viewWidth - 300, 300));
+    this.dimention.width = moonSize;
+    this.dimention.height = moonSize;
     var size = d3.min([this.dimention.width, this.dimention.height]) as number;
 
     d3.select(canvasEl)

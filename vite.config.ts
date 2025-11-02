@@ -2,6 +2,7 @@
 import vue from "@vitejs/plugin-vue";
 import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 import Components from "unplugin-vue-components/vite";
+import vueDevTools from "vite-plugin-vue-devtools";
 
 // Utilities
 import { defineConfig } from "vite";
@@ -17,6 +18,7 @@ export default defineConfig({
     vuetify({
       autoImport: true,
     }),
+    vueDevTools(),
     Components(),
   ],
   css: {

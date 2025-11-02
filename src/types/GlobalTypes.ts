@@ -25,4 +25,16 @@ declare global {
     column_left: ResumeSection[];
     column_right: ResumeSection[];
   };
+
+  type SkillTreeItem = {
+    img: string;
+    path: string;
+    size: number;
+    id: string;
+    label: string;
+    finalCoords: {
+      x: number;
+      y: number;
+    };
+  };
 }

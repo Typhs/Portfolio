@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 import emitter from "@/plugins/mitt";
 import { use$App } from "@/store/$app";
-import { templateRef } from "@vueuse/core";
+import { templateRef, useWindowSize } from "@vueuse/core";
 import anime from "animejs";
-import { nextTick, onMounted, watch } from "vue";
+import { computed, nextTick, onMounted, watch } from "vue";
+import SleekLineCursor from "@/components/SleekLineCursor.vue";
 
 const $app = use$App();
 
@@ -128,6 +129,9 @@ emitter.on("animate-director-mode-indicator", async (originContainer) => {
     });
   });
 });
+
+const { width: windowWidth } = useWindowSize();
+const isSmallScreen = computed(() => windowWidth.value < 700);
 </script>
 
 <template>
@@ -137,10 +141,10 @@ emitter.on("animate-director-mode-indicator", async (originContainer) => {
       :class="{ 'is-mode-active': $app.directorMode.isOn }"
     >
       <div class="d-flex justify-start align-start pa-5">
-        <div class="commentary-header">
+        <div class="commentary-header" :class="{ 'mt-12': isSmallScreen }">
           <h2 class="commentary-title clickable">
-            <v-icon icon="mdi-script-text" class="mr-2" size="small" />
-            Director's Commentary
+            <v-icon icon="mdi-xml" class="mr-2" size="small" />
+            Dev Mode
           </h2>
           <div class="commentary-toggles-container">
             <div>
@@ -179,8 +183,10 @@ emitter.on("animate-director-mode-indicator", async (originContainer) => {
         </v-expand-transition>
       </div>
     </div>
-    <div class="corner-right-btn pa-5 clickable">
-      <!-- v-if="$app.directorMode.showPermanentToggle" -->
+    <div
+      class="corner-right-btn pa-4 clickable"
+      :class="{ 'w-100': isSmallScreen }"
+    >
       <div class="position-relative">
         <div class="director-mode-btn-indicator" ref="btn-indicator" />
         <span :class="{ 'opacity-0': !$app.directorMode.showPermanentToggle }">
@@ -189,8 +195,9 @@ emitter.on("animate-director-mode-indicator", async (originContainer) => {
             variant="tonal"
             color="secondary"
             @click="$app.directorMode.isOn = !$app.directorMode.isOn"
+            :block="isSmallScreen"
           >
-            EXIT COMMENTARY MODE
+            EXIT DEV MODE
             <v-icon icon="mdi-close-circle-outline" class="ml-2" />
           </v-btn>
           <v-btn
@@ -198,13 +205,20 @@ emitter.on("animate-director-mode-indicator", async (originContainer) => {
             variant="elevated"
             color="secondary"
             @click="$app.directorMode.isOn = !$app.directorMode.isOn"
+            block
           >
-            ENTER COMMENTARY MODE
-            <v-icon icon="mdi-script-text" class="ml-2" />
+            ENTER DEV MODE
+            <v-icon icon="mdi-xml" class="ml-2" />
           </v-btn>
         </span>
       </div>
     </div>
+    <SleekLineCursor
+      v-if="$app.directorMode.isOn"
+      :dampening="0"
+      :trails="12"
+      :size="20"
+    />
   </div>
 </template>
 
@@ -225,7 +239,6 @@ $overlay-bg: transparentize($primary, 0.92);
     background-color: $overlay-bg;
     color: $commentary-color;
     width: 100%;
-    height: 100%;
     transition: all 0.2s;
     opacity: 0;
     &.is-mode-active {
@@ -289,29 +302,42 @@ $overlay-bg: transparentize($primary, 0.92);
 </style>
 
 <style lang="scss">
-/* NOTE - WHAT I'M DOING RIGHT NOW:
-  Stylizing components with 'data-git-name' set attribute when Commentary Mode is active
-  currently the only one with that attribute set is 'AboutMeTabs.vue'
-
-  also need to do the code that creates an overlapping cloned box element to the original one, so that we don't style the actual component
-
-  when user clicks on the label of that component, open a section with its file's code
-  we'll be using the github api for that
-*/
-
 $overlay-color: $secondary;
 $overlay-color-faded: transparentize($overlay-color, 0.4);
 $tab-radius: 5px;
 
 body.commentary-mode-active {
   [data-git-path] {
-    outline: 1px solid $overlay-color-faded;
-    border-radius: 5px;
-    border-top-left-radius: 0;
-    transition: all 0.2s;
-    &:has(> .commentary-overlay-component-label div:hover) {
+    position: relative;
+    &::before {
+      border-radius: 5px;
+      border-top-left-radius: 0;
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      outline: 1px solid $overlay-color-faded;
+      animation: init-outline 0.15s;
+      animation-iteration-count: 1;
+      animation-timing-function: ease-out;
+    }
+
+    &:has(> .commentary-overlay-component-label div:hover)::before {
       outline-color: $overlay-color;
     }
+  }
+}
+
+@keyframes init-outline {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
   }
 }
 

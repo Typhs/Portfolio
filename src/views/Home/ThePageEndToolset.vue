@@ -11,10 +11,7 @@ function toggleDirectorsCommentary() {
 
   $app.directorMode.isOn = !$app.directorMode.isOn;
 
-  if (
-    $app.directorMode.isOn == false &&
-    !$app.directorMode.showPermanentToggle
-  ) {
+  if (!$app.directorMode.showPermanentToggle) {
     emitter.emit("animate-director-mode-indicator", btnContainerEl.value);
   }
 }
@@ -29,27 +26,31 @@ const btnContainerEl = templateRef<HTMLElement>("btn-container");
     class="w-fit-content mx-auto"
   >
     <div class="pa-4">
-      Here you can see some of the behind the scenes of this project
+      Here you can see some some more info on this project
       <div class="mt-3 d-flex align-center justify-center">
-        <v-card variant="tonal" color="primary" class="pa-5" max-width="600px">
+        <v-card
+          variant="outlined"
+          color="secondary"
+          class="pa-5"
+          max-width="600px"
+          rounded="lg"
+        >
           <h3 class="font-weight-bolder text-secondary">
-            <v-icon icon="mdi-script-text" class="mr-2" />
-            Director's Commentary
+            <v-icon icon="mdi-xml" class="mr-2" />
+            Dev Mode
           </h3>
 
-          <!-- <v-divider class="my-2 border-opacity-25" color="primary-accent"/> -->
-          <icon-divider class="my-2" icon="mdi-xml" color="secondary" />
+          <icon-divider class="my-2" icon="mdi-code-json" color="secondary" />
 
-          <div class="text-muted b-highlighter-container" align="center">
+          <div class="on-background b-highlighter-container" align="center">
             <p>
               Shows <b>notes</b> from the author on
-              <b>how this project was built</b> along with some of the
+              <b>how this web app was built</b> along with some of the
               <b> challenges faced</b>.
             </p>
             <br />
             <p>
-              Also <b>highlights code snippets</b> and
-              <b>code componentization</b>.
+              Also <b>highlights code snippets</b> and <b>componentization</b>.
             </p>
           </div>
           <div ref="btn-container" class="w-fit-content mx-auto mt-5">
@@ -58,7 +59,7 @@ const btnContainerEl = templateRef<HTMLElement>("btn-container");
               color="secondary"
               @click="toggleDirectorsCommentary()"
             >
-              <v-icon icon="mdi-comment-text" class="mr-2" />
+              <v-icon icon="mdi-xml" class="mr-2" />
               <span v-if="!$app.directorMode.isOn"> ACTIVATE </span>
               <span v-else> DEACTIVATE </span>
             </v-btn>

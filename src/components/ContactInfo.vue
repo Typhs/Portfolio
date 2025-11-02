@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, onMounted } from "vue";
-import { templateRef } from "@vueuse/core";
+import { templateRef, useIntersectionObserver } from "@vueuse/core";
 import GhostlyTypewriter from "@/components/GhostlyTypewriter.vue";
 
 const threshholds = ref<number[]>([]);
@@ -48,6 +48,18 @@ onMounted(() => {
     tRef.value.pauseAnimations();
   });
 });
+
+const containerEl = templateRef<HTMLDivElement>("container");
+const hasActivated = ref(false);
+const userHasMouse = matchMedia("(pointer:fine)").matches;
+
+useIntersectionObserver(containerEl, ([entry]) => {
+  console.log("??");
+  if (!userHasMouse && !hasActivated.value && entry?.isIntersecting) {
+    hasActivated.value = true;
+    onHoverChange(true);
+  }
+});
 </script>
 
 <template>
@@ -57,6 +69,7 @@ onMounted(() => {
     align="center"
     @mouseenter="onHoverChange(true)"
     @mouseleave="onHoverChange(false)"
+    ref="container"
   >
     <div
       class="contact-info-wrapper px-5"
@@ -106,19 +119,19 @@ onMounted(() => {
 
         <div>
           <v-btn
-            href="https://github.com/Typhs/"
+            href="https://www.linkedin.com/in/tailan/"
             class="d-flex justify-center w-fit-content"
             color="primary"
             variant="plain"
             size="large"
           >
             <div class="contact-icon" :class="{ 'opacity-0': !fullyVisible }">
-              <v-icon icon="custom:git" />
+              <v-icon icon="mdi-linkedin" />
               <v-icon icon="mdi-arrow-right-thin" size="18" class="mx-1" />
             </div>
             <div class="text-indigo-lighten-3">
               <ghostly-typewriter
-                :paragraphs="['https://github.com/Typhs']"
+                :paragraphs="['https://www.linkedin.com/in/tailan']"
                 ref="typewriter-3"
               />
             </div>
@@ -133,6 +146,8 @@ onMounted(() => {
 .contact-info-wrapper {
   padding: 100px 0;
   position: relative;
+  max-width: 100vw;
+  overflow: hidden;
   //outline: 2px solid red;
 
   &.fully-visible {

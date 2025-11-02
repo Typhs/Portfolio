@@ -83,5 +83,6 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "cSpell.language": "en,pt,pt_BR"
+  "cSpell.language": "en,pt,pt_BR",
+  "cSpell.ignoreWords": ["vuetify"]
 }

@@ -2,9 +2,6 @@
 import TheParallaxHeader from "@/views/Home/TheParallaxHeader.vue";
 import ThePageEndToolset from "@/views/Home/ThePageEndToolset.vue";
 import TheProjectInsights from "@/views/Home/TheProjectInsights.vue";
-import { onMounted } from "vue";
-import { templateRef } from "@vueuse/core";
-import anime from "animejs";
 import { use$App } from "@/store/$app";
 
 const $app = use$App();
@@ -18,7 +15,13 @@ const $app = use$App();
 
         <div>
           <h1 class="text-white mb-2">My name is Tailan</h1>
-          <p>and I'm a clever Front-End Developer</p>
+          <p class="mb-2">and I'm a clever Front-End Developer</p>
+          <v-btn
+            variant="tonal"
+            prepend-icon="mdi-linkedin"
+            href="https://www.linkedin.com/in/tailan/"
+            >Here's my profile</v-btn
+          >
         </div>
         <icon-divider width="400px" color="secondary" class="my-5" />
 
@@ -36,15 +39,18 @@ const $app = use$App();
         </div>
 
         <spacer height="250px" />
+
         <div>
           <about-me-tabs />
         </div>
 
         <spacer height="200px" />
-        <contact-info />
-        <spacer height="200px" />
 
         <the-page-end-toolset />
+
+        <spacer height="200px" />
+
+        <contact-info />
 
         <spacer height="200px" />
 

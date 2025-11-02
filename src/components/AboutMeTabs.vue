@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { ref, onMounted } from "vue";
+import { useWindowSize } from "@vueuse/core";
+import { ref, computed } from "vue";
 
 function calculateAge(birthday: Date) {
   const ageDifMs = Date.now() - birthday.getTime();
@@ -84,26 +85,45 @@ const currentTabIdx = ref(0);
 function changeTabTo(newTabIdx: number) {
   currentTabIdx.value = newTabIdx;
 }
+
+const { width: windowWidth } = useWindowSize();
+const isSmallScreen = computed(() => windowWidth.value < 700);
 </script>
 
 <template>
-  <!-- TODO -> add some media-queries or v-cols for this to work in smaller width devices  -->
-  <div
-    class="w-fit-content home-max-width"
-    data-git-path="src/components/AboutMeTabs.vue"
-  >
+  <div class="home-max-width" data-git-path="src/components/AboutMeTabs.vue">
     <h1 class="mb-5">All about me</h1>
-    <v-card class="pa-10 w-fit-content" variant="text">
+    <v-card variant="text">
       <div class="position-relative">
-        <div class="d-flex justify-center align-center" ref="nav-container">
+        <div
+          class="justify-center align-center"
+          :class="{ 'd-flex': !isSmallScreen }"
+          ref="nav-container"
+        >
           <template v-for="(tab, tabIdx) in tabItems" :key="tabIdx">
-            <div v-if="tabIdx > 0" class="px-2 text-white opacity-50">
+            <div
+              v-if="tabIdx > 0 && !isSmallScreen"
+              class="px-2 text-white opacity-50"
+            >
               <v-icon icon="mdi-minus" size="10" />
               <v-icon icon="mdi-rhombus" size="10" />
               <v-icon icon="mdi-minus" size="10" />
             </div>
 
+            <div v-if="isSmallScreen" class="px-1">
+              <v-btn
+                @click="changeTabTo(tabIdx)"
+                :prepend-icon="tab.icon"
+                color="primary"
+                block
+                class="mb-1"
+                :variant="currentTabIdx == tabIdx ? 'elevated' : 'tonal'"
+              >
+                {{ tab.label }}
+              </v-btn>
+            </div>
             <button
+              v-else
               class="nav-item-btn"
               @click="changeTabTo(tabIdx)"
               :class="{ 'active-nav': currentTabIdx == tabIdx }"
@@ -111,15 +131,6 @@ function changeTabTo(newTabIdx: number) {
               <span class="nav-item-icon">
                 <v-icon :icon="tab.icon" size="30" />
               </span>
-              <v-avatar
-                v-if="false"
-                color="primary"
-                class="mb-2"
-                :variant="currentTabIdx == tabIdx ? 'elevated' : 'tonal'"
-                size="50"
-              >
-                <v-icon :icon="tab.icon" />
-              </v-avatar>
               <div class="font-weight-black w-fit-content mx-auto">
                 <span class="px-1">{{ tab.label }}</span>
                 <div
