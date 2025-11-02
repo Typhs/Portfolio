@@ -37,6 +37,7 @@ const $app = use$App();
             Source code
           </v-btn>
         </div>
+
         <spacer height="250px" />
 
         <div>
@@ -44,10 +45,12 @@ const $app = use$App();
         </div>
 
         <spacer height="200px" />
-        <contact-info />
-        <spacer height="200px" />
 
         <the-page-end-toolset />
+
+        <spacer height="200px" />
+
+        <contact-info />
 
         <spacer height="200px" />
 

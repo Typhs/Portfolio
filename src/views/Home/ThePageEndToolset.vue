@@ -26,11 +26,11 @@ const btnContainerEl = templateRef<HTMLElement>("btn-container");
     class="w-fit-content mx-auto"
   >
     <div class="pa-4">
-      Here you can see some of the behind the scenes of this project
+      Here you can see some some more info on this project
       <div class="mt-3 d-flex align-center justify-center">
         <v-card
-          variant="tonal"
-          color="primary"
+          variant="outlined"
+          color="secondary"
           class="pa-5"
           max-width="600px"
           rounded="lg"
@@ -42,16 +42,15 @@ const btnContainerEl = templateRef<HTMLElement>("btn-container");
 
           <icon-divider class="my-2" icon="mdi-code-json" color="secondary" />
 
-          <div class="text-muted b-highlighter-container" align="center">
+          <div class="on-background b-highlighter-container" align="center">
             <p>
               Shows <b>notes</b> from the author on
-              <b>how this project was built</b> along with some of the
+              <b>how this web app was built</b> along with some of the
               <b> challenges faced</b>.
             </p>
             <br />
             <p>
-              Also <b>highlights code snippets</b> and
-              <b>code componentization</b>.
+              Also <b>highlights code snippets</b> and <b>componentization</b>.
             </p>
           </div>
           <div ref="btn-container" class="w-fit-content mx-auto mt-5">
