@@ -366,7 +366,7 @@ $map-path-color: $primary;
         //color: $on-background;
         text-align: left;
         width: max-content;
-        max-width: 300px;
+        max-width: min(300px, 45vw);
         padding: 5px 10px;
         border-radius: 5px;
         background-color: mix($card-color, $background, 0.9);

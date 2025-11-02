@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { templateRef } from "@vueuse/core";
-import { onMounted } from "vue";
+import { templateRef, useWindowSize } from "@vueuse/core";
+import { computed, onMounted } from "vue";
 import anime from "animejs";
 
 const technologiesContent = [
@@ -76,6 +76,9 @@ onMounted(() => {
     easing: "spring(0.5, 80, 10, 10)",
   });
 });
+
+const { width: windowWidth } = useWindowSize();
+const isSmallScreen = computed(() => windowWidth.value < 700);
 </script>
 
 <template>
@@ -134,7 +137,9 @@ onMounted(() => {
 
         <tr v-for="(tech, tIdx) in technologiesContent" :key="tIdx">
           <td align="right" class="white-space-nowrap pr-3">
-            <span class="font-weight-black text-h6">{{ tech.label }}</span>
+            <span v-if="!isSmallScreen" class="font-weight-black text-h6">{{
+              tech.label
+            }}</span>
             <image-as-icon :from="tech.logo" class="ml-2" size="40" />
           </td>
 

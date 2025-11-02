@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, onMounted } from "vue";
-import { templateRef } from "@vueuse/core";
+import { templateRef, useIntersectionObserver } from "@vueuse/core";
 import GhostlyTypewriter from "@/components/GhostlyTypewriter.vue";
 
 const threshholds = ref<number[]>([]);
@@ -48,6 +48,18 @@ onMounted(() => {
     tRef.value.pauseAnimations();
   });
 });
+
+const containerEl = templateRef<HTMLDivElement>("container");
+const hasActivated = ref(false);
+const userHasMouse = matchMedia("(pointer:fine)").matches;
+
+useIntersectionObserver(containerEl, ([entry]) => {
+  console.log("??");
+  if (!userHasMouse && !hasActivated.value && entry?.isIntersecting) {
+    hasActivated.value = true;
+    onHoverChange(true);
+  }
+});
 </script>
 
 <template>
@@ -57,6 +69,7 @@ onMounted(() => {
     align="center"
     @mouseenter="onHoverChange(true)"
     @mouseleave="onHoverChange(false)"
+    ref="container"
   >
     <div
       class="contact-info-wrapper px-5"
@@ -133,6 +146,8 @@ onMounted(() => {
 .contact-info-wrapper {
   padding: 100px 0;
   position: relative;
+  max-width: 100vw;
+  overflow: hidden;
   //outline: 2px solid red;
 
   &.fully-visible {

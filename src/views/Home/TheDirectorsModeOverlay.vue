@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import emitter from "@/plugins/mitt";
 import { use$App } from "@/store/$app";
-import { templateRef } from "@vueuse/core";
+import { templateRef, useWindowSize } from "@vueuse/core";
 import anime from "animejs";
-import { nextTick, onMounted, watch } from "vue";
+import { computed, nextTick, onMounted, watch } from "vue";
 import SleekLineCursor from "@/components/SleekLineCursor.vue";
 
 const $app = use$App();
@@ -129,6 +129,9 @@ emitter.on("animate-director-mode-indicator", async (originContainer) => {
     });
   });
 });
+
+const { width: windowWidth } = useWindowSize();
+const isSmallScreen = computed(() => windowWidth.value < 700);
 </script>
 
 <template>
@@ -138,7 +141,7 @@ emitter.on("animate-director-mode-indicator", async (originContainer) => {
       :class="{ 'is-mode-active': $app.directorMode.isOn }"
     >
       <div class="d-flex justify-start align-start pa-5">
-        <div class="commentary-header">
+        <div class="commentary-header" :class="{ 'mt-12': isSmallScreen }">
           <h2 class="commentary-title clickable">
             <v-icon icon="mdi-xml" class="mr-2" size="small" />
             Dev Mode
@@ -180,8 +183,10 @@ emitter.on("animate-director-mode-indicator", async (originContainer) => {
         </v-expand-transition>
       </div>
     </div>
-    <div class="corner-right-btn pa-5 clickable">
-      <!-- v-if="$app.directorMode.showPermanentToggle" -->
+    <div
+      class="corner-right-btn pa-4 clickable"
+      :class="{ 'w-100': isSmallScreen }"
+    >
       <div class="position-relative">
         <div class="director-mode-btn-indicator" ref="btn-indicator" />
         <span :class="{ 'opacity-0': !$app.directorMode.showPermanentToggle }">
@@ -190,6 +195,7 @@ emitter.on("animate-director-mode-indicator", async (originContainer) => {
             variant="tonal"
             color="secondary"
             @click="$app.directorMode.isOn = !$app.directorMode.isOn"
+            :block="isSmallScreen"
           >
             EXIT DEV MODE
             <v-icon icon="mdi-close-circle-outline" class="ml-2" />
@@ -199,6 +205,7 @@ emitter.on("animate-director-mode-indicator", async (originContainer) => {
             variant="elevated"
             color="secondary"
             @click="$app.directorMode.isOn = !$app.directorMode.isOn"
+            block
           >
             ENTER DEV MODE
             <v-icon icon="mdi-xml" class="ml-2" />

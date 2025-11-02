@@ -2,6 +2,7 @@
 import anime from "animejs";
 import { templateRef } from "@vueuse/core";
 import { onMounted } from "vue";
+import SkillTree from "@/components/skillTree/SkillTree.vue";
 
 const cloudContainerEl = templateRef<HTMLElement>("cloud-container");
 
@@ -37,6 +38,8 @@ function animationInit() {
 
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
     possimus sequi illum itaque inventore quae, quis porro autem amet ipsum!
+
+    <SkillTree></SkillTree>
 
     <commentary-bubble />
   </div>

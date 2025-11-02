@@ -140,7 +140,7 @@ defineExpose({
       <span
         v-for="(word, wIdx) in paragraph"
         :key="`word-${pIdx}-${wIdx}`"
-        class="d-flex typewritter-word"
+        class="d-flex typewritter-word flex-wrap"
       >
         <span
           v-for="(letter, lIdx) in word"
@@ -155,9 +155,12 @@ defineExpose({
     </p>
   </div>
 
-  <!-- <v-btn @click="gamer()">gamer</v-btn>
+  <!--
+  usability examples
+  <v-btn @click="gamer()">gamer</v-btn>
   <v-btn @click="playAnimations(true)">Forward</v-btn>
-  <v-btn @click="playAnimations(false)">Backward</v-btn> -->
+  <v-btn @click="playAnimations(false)">Backward</v-btn>
+  -->
 </template>
 
 <style lang="scss" scoped>
@@ -167,7 +170,6 @@ defineExpose({
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  //overflow: hidden;
   .typewritter-letter {
     position: relative;
     opacity: 0;
