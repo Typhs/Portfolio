@@ -198,7 +198,7 @@ function render(): void {
     ctx.globalCompositeOperation = "source-over";
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     ctx.globalCompositeOperation = "lighter";
-    ctx.strokeStyle = `#53eb973a`;
+    ctx.strokeStyle = `#53eb971b`;
     ctx.lineWidth = 1;
 
     for (let t = 0; t < E.trails; t++) {
