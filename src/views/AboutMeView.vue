@@ -10,7 +10,7 @@ const profile = {
     location: "PR - Brazil",
   },
   summary:
-    "I have extensive professional experience developing, deploying and debugging user interfaces, working closely with backend developers and designers to ensure seamless integration. I strive to be pleasant to work with and am quickly learn any new technologies.",
+    "I have extensive professional experience developing, deploying and debugging user interfaces, working closely with backend developers and designers to ensure seamless integration. I strive to be pleasant to work with and I'm quick to learn any new technologies.",
   skills: [
     { name: "Javascript", level: "EXPERT" },
     { name: "Typescript", level: "EXPERT" },
