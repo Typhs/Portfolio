@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import { useTheme } from "vuetify/lib/framework.mjs";
+
+const theme = useTheme();
 const profile = {
   core: {
     name: "Tailan Barros Morita",
@@ -42,7 +45,7 @@ const profile = {
       title: "Mid-level Developer",
       period: "Jan 2025 — Present",
       company: "Kognit",
-      color: "#F59E0B",
+      color: theme.current.value.colors["primary-accent"],
       description:
         "Led new frontend features on a SaaS insurance creation system. Organized the development team for delivering highly complex functionalities. Built system guidelines and standards to help the team maintain high productivity with cutting-edge tools.",
       technologies: [
@@ -63,7 +66,7 @@ const profile = {
       title: "Lead Front-End Developer",
       period: "Aug 2023 — Jan 2025",
       company: "FiqOn",
-      color: "#34D399",
+      color: theme.current.value.colors.secondary,
       description:
         "Led the architectural redesign of a SaaS Integration Platform, strategically selecting tech stack to optimize performance, scalability, and developer experience. Defined guidelines, technical documentation, and a robust architecture. Set up automated unit testing with Vitest and Cypress. Coordinated front-end development encompassing over 150 files.",
       technologies: [
@@ -79,7 +82,7 @@ const profile = {
       title: "Mid Front-End Developer",
       period: "Oct 2022 — Aug 2023",
       company: "FiqOn",
-      color: "#60A5FA",
+      color: theme.current.value.colors.primary,
       description:
         "Worked alongside the UX team to enhance the interface through smoothing transitions and animations — resulting in 40% increased user satisfaction. Developed and configured the core UI library used within the project. Developed crucial features on top of a running system with hundreds of active users.",
       technologies: ["Vue", "JavaScript", "Bootstrap", "CSS"],
@@ -88,7 +91,7 @@ const profile = {
       title: "Junior Front-End Developer",
       period: "May 2022 — Oct 2022",
       company: "FiqOn",
-      color: "#A78BFA",
+      color: theme.current.value.colors.info,
       description:
         "Design and implementation of dozens of features into an existing Vue codebase while maintaining patterns and guidelines. Diagnosing and fixing hundreds of pre-existing bugs on the interface.",
       technologies: ["Vue", "JavaScript", "CSS"],
@@ -106,11 +109,11 @@ const skillLevelMap: Record<string, number> = {
 const skillColor = (level: string) => {
   return (
     {
-      EXPERT: "amber",
-      ADVANCED: "teal",
-      INTERMEDIATE: "blue",
-      BEGINNER: "grey",
-    }[level] ?? "grey"
+      EXPERT: theme.current.value.colors.secondary,
+      ADVANCED: theme.current.value.colors.info,
+      INTERMEDIATE: theme.current.value.colors.warning,
+      BEGINNER: theme.current.value.colors["on-background"],
+    }[level] ?? theme.current.value.colors["on-background"]
   );
 };
 </script>
@@ -202,9 +205,7 @@ const skillColor = (level: string) => {
 
           <v-col cols="12" md="4" class="d-flex justify-center justify-md-end">
             <div class="avatar-ring">
-              <div class="avatar-inner">
-                <span class="avatar-initials">TM</span>
-              </div>
+              <div class="avatar-inner"></div>
             </div>
           </v-col>
         </v-row>
@@ -243,7 +244,6 @@ const skillColor = (level: string) => {
                   :color="skillColor(skill.level)"
                   rounded
                   height="4"
-                  bg-color="rgba(255,255,255,0.06)"
                   class="skill-bar"
                 />
               </div>
@@ -311,7 +311,7 @@ const skillColor = (level: string) => {
             >
               <!-- connector -->
               <div class="timeline-connector">
-                <div class="tl-dot" :style="{ background: job.color }" />
+                <div class="tl-dot" :style="{ color: job.color }" />
                 <div
                   v-if="idx < profile.experience.length - 1"
                   class="tl-line"
@@ -357,20 +357,19 @@ const skillColor = (level: string) => {
 
 <style lang="scss" scoped>
 // ─── TOKENS ────────────────────────────────────────────────
-$bg: #0d0f14;
-$surface: #14171f;
-$surface2: #1c2030;
-$border: rgba(255, 255, 255, 0.07);
-$text: #e8eaf0;
-$muted: #6b7280;
-$accent: #f59e0b;
+$bg: $background;
+$surface: $surface;
+$surface2: $background;
+$border: mix($black, $white, 0.2);
+$text: $on-background;
+$secondary-text: transparentize($text, 0.3);
+$muted: $muted;
+$accent: $secondary;
 
 // ─── ROOT ──────────────────────────────────────────────────
 .resume-root {
   background: $bg;
   min-height: 100vh;
-  color: $text;
-  font-family: "DM Sans", "Segoe UI", sans-serif;
 }
 
 // ─── HERO ──────────────────────────────────────────────────
@@ -384,13 +383,13 @@ $accent: #f59e0b;
 
 .hero-bg-accent {
   position: absolute;
-  top: -120px;
-  right: -120px;
+  top: -150px;
+  right: -150px;
   width: 480px;
   height: 480px;
   background: radial-gradient(
     circle,
-    rgba(245, 158, 11, 0.12) 0%,
+    transparentize($primary-accent, 0.9) 0%,
     transparent 70%
   );
   pointer-events: none;
@@ -415,14 +414,13 @@ $accent: #f59e0b;
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.1;
-  color: #fff;
   margin-bottom: 20px;
 }
 
 .hero-summary {
   font-size: 0.95rem;
   line-height: 1.75;
-  color: $muted;
+  color: $secondary-text;
   max-width: 540px;
   margin-bottom: 28px;
 }
@@ -453,10 +451,11 @@ $accent: #f59e0b;
 
 // ─── AVATAR ────────────────────────────────────────────────
 .avatar-ring {
-  width: 140px;
-  height: 140px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  background: conic-gradient(from 0deg, $accent, #34d399, #60a5fa, $accent);
+  background: $text;
+  box-shadow: 0 0 100px transparentize($primary, 0.9);
   padding: 3px;
   display: flex;
   align-items: center;
@@ -472,6 +471,10 @@ $accent: #f59e0b;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url("/profile-picture.jpg");
+  background-position: center;
+  background-size: cover;
+  box-shadow: inset 0 0 50px transparentize($bg, 0.8);
 }
 
 .avatar-initials {
@@ -581,7 +584,7 @@ $accent: #f59e0b;
 
 .lang-level {
   font-size: 0.76rem;
-  color: $muted;
+  color: $secondary-text;
 }
 
 // ─── EDUCATION ─────────────────────────────────────────────
@@ -602,7 +605,7 @@ $accent: #f59e0b;
 
 .edu-institution {
   font-size: 0.78rem;
-  color: $muted;
+  color: $secondary-text;
   margin-bottom: 12px;
 }
 
@@ -641,7 +644,8 @@ $accent: #f59e0b;
   height: 12px;
   border-radius: 50%;
   flex-shrink: 0;
-  box-shadow: 0 0 10px currentColor;
+  background-color: currentColor;
+  box-shadow: 0 0 0px 4px transparentize(currentColor, 0.8);
 }
 
 .tl-line {
@@ -665,7 +669,7 @@ $accent: #f59e0b;
     transform 0.25s;
 
   &:hover {
-    border-color: rgba(245, 158, 11, 0.25);
+    border-color: mix($border, $white, 0.2);
     transform: translateY(-2px);
   }
 }
@@ -680,7 +684,7 @@ $accent: #f59e0b;
 .job-title {
   font-size: 1rem;
   font-weight: 700;
-  color: #fff;
+  color: $white;
   margin-bottom: 4px;
 }
 
@@ -706,7 +710,7 @@ $accent: #f59e0b;
 .job-description {
   font-size: 0.84rem;
   line-height: 1.7;
-  color: #9ca3af;
+  color: $secondary-text;
   margin-bottom: 16px;
 }
 
