@@ -9,6 +9,7 @@ export const use$App = defineStore("$app", {
       showComment: true,
       showPermanentToggle: false,
       currentCodePath: undefined as undefined | string,
+      allowEdit: false,
     },
   }),
   actions: {

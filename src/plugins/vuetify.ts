@@ -51,6 +51,11 @@ export default createVuetify({
       },
     },
   },
+  defaults: {
+    VTooltip: {
+      maxWidth: 350,
+    },
+  },
   icons: {
     defaultSet: "mdi",
     sets: {

@@ -3,7 +3,7 @@ import emitter from "@/plugins/mitt";
 import { use$App } from "@/store/$app";
 import { templateRef, useWindowSize } from "@vueuse/core";
 import anime from "animejs";
-import { computed, nextTick, onMounted, watch } from "vue";
+import { computed, nextTick, watch } from "vue";
 import SleekLineCursor from "@/components/SleekLineCursor.vue";
 
 const $app = use$App();
@@ -30,6 +30,14 @@ watch(
   { immediate: true },
 );
 
+watch(
+  () => $app.directorMode.allowEdit,
+  (newValue) => {
+    if (newValue) {
+      document.querySelector("#allow-editing-checkbox");
+    }
+  },
+);
 function cleanupOverlay() {
   document
     .querySelectorAll(".commentary-overlay-component-label")
@@ -72,7 +80,7 @@ function highlightComponents() {
 const btnIndicatorEl = templateRef<HTMLElement>("btn-indicator");
 emitter.on("animate-director-mode-indicator", async (originContainer) => {
   await nextTick();
-  const btnContainer = btnIndicatorEl.value.parentElement!;
+  const btnContainer = btnIndicatorEl.value?.parentElement!;
   const originBoundings = originContainer.getBoundingClientRect();
   const btnBoundings = btnContainer.getBoundingClientRect();
 
@@ -155,16 +163,22 @@ const isSmallScreen = computed(() => windowWidth.value < 700);
                 hide-details
                 density="comfortable"
                 v-model="$app.directorMode.showCode"
+                v-tooltip="
+                  'Highlights front-end componentization - click a component to see it\'s raw code'
+                "
               />
-              <!-- <v-checkbox
+              <v-checkbox
+                id="allow-editing-checkbox"
                 color="secondary"
                 class="clickable w-fit-content"
-                label="Show comments"
+                label="Allow editing"
                 hide-details
                 density="comfortable"
-                v-model="$app.directorMode.showComment"
-              >
-              </v-checkbox> -->
+                v-model="$app.directorMode.allowEdit"
+                v-tooltip="
+                  'Makes the whole web page editable - click anywhere and start typing'
+                "
+              />
             </div>
           </div>
         </div>
@@ -189,7 +203,12 @@ const isSmallScreen = computed(() => windowWidth.value < 700);
     >
       <div class="position-relative">
         <div class="director-mode-btn-indicator" ref="btn-indicator" />
-        <span :class="{ 'opacity-0': !$app.directorMode.showPermanentToggle }">
+        <span
+          :class="{
+            'opacity-0 pointer-events-none':
+              !$app.directorMode.showPermanentToggle,
+          }"
+        >
           <v-btn
             v-if="$app.directorMode.isOn"
             variant="tonal"
@@ -216,7 +235,7 @@ const isSmallScreen = computed(() => windowWidth.value < 700);
     <SleekLineCursor
       v-if="$app.directorMode.isOn"
       :dampening="0"
-      :trails="12"
+      :trails="8"
       :size="20"
     />
   </div>
