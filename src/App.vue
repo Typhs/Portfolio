@@ -1,17 +1,19 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
 import appStartedScript from "@/functions/AppStartedScript";
-import RouteViewFrame from "@/layouts/RouteViewFrame.vue";
 import TheDirectorsModeOverlay from "@/views/Home/TheDirectorsModeOverlay.vue";
+import { use$App } from "./store/$app";
 
 onMounted(() => {
   appStartedScript();
 });
+
+const $app = use$App();
 </script>
 
 <template>
   <v-app>
-    <v-main>
+    <v-main :contentEditable="$app.directorMode.allowEdit ? 'true' : 'false'">
       <router-view />
       <the-directors-mode-overlay />
     </v-main>

@@ -5,33 +5,39 @@ import anime from "animejs";
 
 const technologiesContent = [
   {
+    label: "JAVASCRIPT",
+    logo: "javascript",
+    percentage: "97",
+    color: "#f0dc4e",
+  },
+  {
     label: "CSS",
     logo: "css",
     percentage: "95",
     color: "#204be4",
   },
   {
-    label: "JAVASCRIPT",
-    logo: "javascript",
+    label: "TYPESCRIPT",
+    logo: "typescript",
     percentage: "94",
-    color: "#f0dc4e",
+    color: "#2d79c7",
   },
   {
     label: "VUE",
     logo: "vue",
-    percentage: "92",
+    percentage: "91",
     color: "#40b782",
-  },
-  {
-    label: "TYPESCRIPT",
-    logo: "typescript",
-    percentage: "85",
-    color: "#2d79c7",
   },
   {
     label: "REACT",
     logo: "react",
-    percentage: "72",
+    percentage: "84",
+    color: "#00ccff",
+  },
+  {
+    label: "C# and .NET",
+    logo: "cSharp",
+    percentage: "70",
     color: "#00ccff",
   },
   {

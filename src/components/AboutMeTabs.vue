@@ -54,11 +54,6 @@ const techMentions = [
     url: "https://vuetifyjs.com/",
   },
   {
-    label: "Bootstrap",
-    logo: "bootstrap",
-    url: "https://getbootstrap.com/",
-  },
-  {
     label: "D3.js",
     logo: "d3",
     url: "https://d3js.org/",
