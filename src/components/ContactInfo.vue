@@ -54,7 +54,6 @@ const hasActivated = ref(false);
 const userHasMouse = matchMedia("(pointer:fine)").matches;
 
 useIntersectionObserver(containerEl, ([entry]) => {
-  console.log("??");
   if (!userHasMouse && !hasActivated.value && entry?.isIntersecting) {
     hasActivated.value = true;
     onHoverChange(true);
