@@ -46,8 +46,8 @@ function initAnimation() {
       const coordX = anime.random(0, elWidth);
       const colorDeviation = 30;
       const randColor = `rgba(
-        ${104 + anime.random(-colorDeviation, colorDeviation)}, 
-        ${87 + anime.random(-colorDeviation, colorDeviation)}, 
+        ${104 + anime.random(-colorDeviation, colorDeviation)},
+        ${87 + anime.random(-colorDeviation, colorDeviation)},
         ${255 + anime.random(-colorDeviation, colorDeviation)},
         ${anime.random(0.6, 1)}
       )`;
@@ -83,8 +83,8 @@ function initAnimation() {
     <div class="animation-container" ref="animtaion-container">
       <template v-for="i in Number(multiplier)">
         <!-- <v-icon icon="mdi-hexagon" :size="props.size" /> -->
-        <!-- <v-icon icon="mdi-atom" :size="props.size" /> -->
         <!-- <v-icon icon="mdi-qrcode" :size="props.size" /> -->
+        <v-icon icon="mdi-atom" :size="props.size" />
         <v-icon icon="mdi-square-root" :size="props.size" />
         <v-icon icon="mdi-xml" :size="props.size" />
         <v-icon icon="mdi-xml" :size="props.size" />

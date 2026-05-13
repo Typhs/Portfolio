@@ -95,10 +95,10 @@ const $app = use$App();
       <spacer height="200px" />
 
       <div>
-        <bubbling-icons-animation height="500px" size="25" multiplier="6" />
+        <bubbling-icons-animation height="500px" size="25" multiplier="2" />
       </div>
 
-      <the-mouse-filter v-if="false" />
+      <!-- <the-mouse-filter v-if="false" /> -->
       <!-- REVIEW mouse filter effect -->
     </the-parallax-header>
   </div>
