@@ -140,13 +140,11 @@ const $app = use$App();
 @keyframes pulse-ring {
   0%,
   100% {
-    transform: scale(1);
     box-shadow:
       0 0 60px rgba(var(--v-theme-primary-rgb), 0.4),
       0 0 120px rgba(var(--v-theme-secondary-rgb), 0.2);
   }
   50% {
-    transform: scale(1.02);
     box-shadow:
       0 0 80px rgba(var(--v-theme-primary-rgb), 0.5),
       0 0 140px rgba(var(--v-theme-secondary-rgb), 0.3);
