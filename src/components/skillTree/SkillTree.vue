@@ -82,6 +82,8 @@ const theme = useTheme();
 
 <template>
   <div class="position-relative" ref="container">
+    <skill-tree-background :color="theme.current.value.colors.secondary" />
+
     <svg
       width="100%"
       :viewBox="`00 00 ${viewBox.width} ${viewBox.height}`"
@@ -112,10 +114,16 @@ const theme = useTheme();
           class="inner-path"
           :data-path-id="skill.id"
         />
+        n
       </template>
 
       <!-- circle in the middle of SVG -->
-      <circle :cx="viewBox.width / 2" :cy="viewBox.height / 2" r="2" />
+      <circle
+        :cx="viewBox.width / 2"
+        :cy="viewBox.height / 2"
+        r="0.8"
+        :fill="theme.current.value.colors.secondary"
+      />
     </svg>
 
     <template v-for="skill in skills">
@@ -134,6 +142,8 @@ const theme = useTheme();
 
 <style lang="scss" scoped>
 .skill-tree-svg {
+  position: relative;
+
   circle {
     stroke-width: 0.5px;
   }

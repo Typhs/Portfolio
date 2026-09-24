@@ -46,22 +46,23 @@ const profile = {
   ],
   experience: [
     {
-      title: "Mid-level Developer",
+      title: "Squad Leader",
       period: "Jan 2025 — Present",
       company: "Kognit",
       color: theme.current.value.colors["primary-accent"],
       description:
-        "Led new frontend features on a SaaS insurance creation system. Organized the development team for delivering highly complex functionalities. Built system guidelines and standards to help the team maintain high productivity with cutting-edge tools.",
+        "Led a development squad on a high-complexity SaaS insurance creation system, owning delivery from planning to production. Mentored developers through code reviews and technical guidance with a focus on raising overall team quality. Oversaw critical features end-to-end, ensuring deadlines were consistently hit without compromising quality. Managed client expectations and translated business needs into clear technical direction. Designed software solutions across frontend and backend, and guaranteed architectural robustness by defining guidelines and standards that kept the system scalable and maintainable.",
       technologies: [
+        "Team Leadership",
         "React",
         "React Native",
         "TypeScript",
         "Redux",
-        "Redux Saga",
-        "Styled Components",
-        "Material UI",
+        "React Query",
         "C#",
         ".Net",
+        "SQL Server",
+        "SignalR",
         "Cypress",
         "TDD",
       ],
